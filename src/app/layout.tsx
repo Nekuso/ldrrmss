@@ -3,7 +3,6 @@ import { Inter, Sora } from "next/font/google";
 import Navbar from './components/Navbar';
 import "./globals.css";
 
-
 const inter = Sora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
