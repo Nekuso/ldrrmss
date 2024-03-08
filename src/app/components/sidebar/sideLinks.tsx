@@ -1,37 +1,39 @@
+import { FaHome, FaMobileAlt, FaBell, FaUserAlt, FaCog, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
+
 export const sideLinks = [
   {
     title: "Dashboard",
     href: "/application",
-    icon: "",
+    icon: <FaHome />,
   },
   {
     title: "Mobile Request",
     href: "/application/mobilerequest",
-    icon: "",
+    icon: <FaMobileAlt />,
   },
   {
     title: "Announcements",
     href: "/application/announcement",
-    icon: "",
+    icon: <FaBell />,
   },
   {
     title: "Account",
     href: "/application/account",
-    icon: "",
+    icon: <FaUserAlt />,
   },
   {
     title: "Settings",
     href: "/application/settings",
-    icon: "",
+    icon: <FaCog />,
   },
   {
     title: "Reports",
     href: "#",
-    icon: "",
+    icon: <FaChartBar />,
   },
   {
     title: "Logout",
     href: "#",
-    icon: "",
+    icon: <FaSignOutAlt />,
   },
 ];
