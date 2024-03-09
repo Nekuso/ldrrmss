@@ -9,20 +9,20 @@ const Mobilerequest: React.FC = () => {
 <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
 
 <div className="flex mt-2 ml-2">
-  <button className=" text-black border border-white bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">All Requests</button>
-  <button className=" text-black border border-white bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Ongoing</button>
-  <button className=" text-black border border-white bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Completed</button>
-  <button className=" text-black border border-white bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Archived</button>
+  <button className=" text-black border border-zinc-400 bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">All Requests</button>
+  <button className=" text-black border border-zinc-400 bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Ongoing</button>
+  <button className=" text-black border border-zinc-400 bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Completed</button>
+  <button className=" text-black border border-zinc-400 bg-zinc-200 hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Archived</button>
   
 </div>
 
 
 <div className="flex ml-2">
-  <input className="text-black border border-white bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="text" placeholder="Request No." />
-  <input className="text-black border border-white bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" placeholder="Name" />
-  <input className="text-black border border-white bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="text" placeholder="Request Type" />
-  <input className="text-black border border-white bg-zinc-200  hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="datetime-local" />
-  <button className="text-black border border-white bg-zinc-200 hover:bg-gray-400  focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Create Request</button>
+  <input className="text-black border border-zinc-400 bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="text" placeholder="Request No." />
+  <input className="text-black border border-zinc-400 bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" placeholder="Name" />
+  <input className="text-black border border-zinc-400 bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="text" placeholder="Request Type" />
+  <input className="text-black border border-zinc-400 bg-zinc-200  hover:bg-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="datetime-local" />
+  <button className="text-black border border-zinc-400 bg-zinc-200 hover:bg-gray-400  focus:outline-none focus:ring-1 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Create Request</button>
 </div>
 
 

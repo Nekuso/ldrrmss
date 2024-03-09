@@ -2,7 +2,7 @@ import ApexCharts from 'apexcharts';
 
 
 const options = {
-    // add data series via arrays, learn more here: https://apexcharts.com/docs/series/
+
     series: [
       {
         name: "Developer Edition",
