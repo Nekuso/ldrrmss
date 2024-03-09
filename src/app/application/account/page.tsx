@@ -1,8 +1,13 @@
-export default function Account() {
-    return (
-      <div className="w-full h-full p-4 bg-darkComponentBg rounded-2xl border border-lightBorder bg-white">
-        <h1 className="py-3.5">Account</h1>
-      </div>
-    );
-  }
-  
+import React from 'react';
+
+const Account: React.FC = () => {
+  return (
+    <div className="w-full h-full">
+        <h1 className="text-black font-bold ml-4 mb-2 ">Account</h1>
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
+
+
+</div></div>
+);
+}
+export default Account;

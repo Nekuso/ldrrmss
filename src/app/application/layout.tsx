@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-      <div className="flex place-items-center justify-center w-screen h-screen bg-gradient-to-t from-zinc-700  to-zinc-800 p-7 gap-6">
+      <div className="flex place-items-center justify-center w-screen h-screen bg-gradient-to-t from-zinc-200  to-zinc-100 p-7 gap-6">
           <SideBar />
           {children}
         </div>
