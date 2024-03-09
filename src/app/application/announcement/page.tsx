@@ -33,12 +33,12 @@ const Announcement: React.FC = () => {
             </div>
             <div>
               <p className="font-bold">New Memorandum</p>
-              <p className="text-sm">Make sure you know how these changes affect you.</p>
+              <p className="text-sm">Dont slack off guys</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-orange-200 border-t-4 border-orange-700 rounded-lg text-teal-900 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
+        <div className="bg-orange-200 border-t-4 border-orange-700 rounded-lg text-gray-700 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
           <div className="flex items-center">
             <div className="py-1">
               <svg className="fill-current h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -47,7 +47,21 @@ const Announcement: React.FC = () => {
             </div>
             <div>
               <p className="font-bold">New Rescue tips </p>
-              <p className="text-sm">Make sure you know how these changes affect you.</p>
+              <p className="text-sm">Training will be at Friday</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-blue-500 border-t-4 border-blue-800 rounded-lg text-slate-200 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
+          <div className="flex items-center">
+            <div className="py-1">
+              <svg className="fill-current h-6 w-6 text-white mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+              </svg>
+            </div>
+            <div>
+              <p className="font-bold">No rest day until we graduate</p>
+              <p className="text-sm">Keep Pushing, hope to finish</p>
             </div>
           </div>
         </div>
