@@ -52,10 +52,10 @@ const Mobilerequest: React.FC = () => {
         <tbody>
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer">
-                    09-xxx-xxx-xxx
+                   <a href='../../application/requestview'> 09-xxx-xxx-xxx</a>
                 </th>
                 <td className="px-6 py-4">
-                    Melus D. Phonta
+                    Nat
                 </td>
                 <td className="px-6 py-4">
                     Landslide
@@ -69,10 +69,10 @@ const Mobilerequest: React.FC = () => {
             </tr>
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer">
-                    09-xxx-xxx-xxx
+                <a href='../../application/requestview'> 09-xxx-xxx-xxx</a>
                 </th>
                 <td className="px-6 py-4">
-                    Furina D. Fontain
+                    Arian
                 </td>
                 <td className="px-6 py-4">
                     Flood
@@ -86,13 +86,13 @@ const Mobilerequest: React.FC = () => {
             </tr>
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer">
-                    09-xxx-xxx-xxx
+                <a href='../../application/requestview'> 09-xxx-xxx-xxx</a>
                 </th>
                 <td className="px-6 py-4">
                     Phil Diaz
                 </td>
                 <td className="px-6 py-4">
-                    Typhoon
+                    Pogi
                 </td>
                 <td className="px-6 py-4">
                     27/02/2024
@@ -103,13 +103,13 @@ const Mobilerequest: React.FC = () => {
             </tr>
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer">
-                    09-xxx-xxx-xxx
+                <a href='../../application/requestview'> 09-xxx-xxx-xxx</a>
                 </th>
                 <td className="px-6 py-4">
                     Junnard Ty. Olbo
                 </td>
                 <td className="px-6 py-4">
-                    Buybust
+                    Vehicular Accident
                 </td>
                 <td className="px-6 py-4">
                     28/02/2024
@@ -120,10 +120,10 @@ const Mobilerequest: React.FC = () => {
             </tr>
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer">
-                    09-xxx-xxx-xxx
+                <a href='../../application/requestview'> 09-xxx-xxx-xxx</a>
                 </th>
                 <td className="px-6 py-4">
-                    Emmanuel Chug Lopez
+                    Emmanuel Lopez
                 </td>
                 <td className="px-6 py-4">
                     Earthquake

@@ -24,7 +24,7 @@ const Announcement: React.FC = () => {
 
 
 
-        <div className="bg-teal-100 border-t-4 border-teal-500 rounded-lg text-teal-900 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
+        <div className="bg-teal-100 border-t-4 border-teal-500 rounded-lg text-teal-900 px-1 py-3 shadow-md mt-2 ml-2 w-[98%]" role="alert">
           <div className="flex items-center">
             <div className="py-1">
               <svg className="fill-current h-6 w-6 text-teal-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -38,7 +38,7 @@ const Announcement: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-orange-200 border-t-4 border-orange-700 rounded-lg text-gray-700 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
+        <div className="bg-orange-200 border-t-4 border-orange-700 rounded-lg text-gray-700 px-1 py-3 shadow-md mt-2 ml-2 w-[98%]" role="alert">
           <div className="flex items-center">
             <div className="py-1">
               <svg className="fill-current h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -52,7 +52,7 @@ const Announcement: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-blue-500 border-t-4 border-blue-800 rounded-lg text-slate-200 px-1 py-3 shadow-md mt-2 ml-2 w-[90%]" role="alert">
+        <div className="bg-blue-500 border-t-4 border-blue-800 rounded-lg text-slate-200 px-1 py-3 shadow-md mt-2 ml-2 w-[98%]" role="alert">
           <div className="flex items-center">
             <div className="py-1">
               <svg className="fill-current h-6 w-6 text-white mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

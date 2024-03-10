@@ -18,10 +18,10 @@ const Chatbox: React.FC = () => {
   <tbody>
     <tr className="">
       <td className="flex flex-col px-2 py-1 font-medium text-gray-900 cursor-pointer">
-        <div className="mb-2">Joshua No Amores</div>
-        <div className="mb-2">Phil Baby Diaz</div>
-        <div className="mb-2">Dragon Ronel Beriana</div>
-        <div className="mb-2">This guy will be back</div>
+        <div className="mb-2">Joshua Amores</div>
+        <div className="mb-2">Phil Diaz</div>
+        <div className="mb-2">Dragon Ronel</div>
+        <div className="mb-2">Apolonux</div>
       </td>
     </tr>
   </tbody>

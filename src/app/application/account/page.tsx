@@ -93,7 +93,17 @@ const Account: React.FC = () => {
             </button>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-4 ">
+            <div className="flex-col">
+              <label className="text-gray-700 font-semibold">Address</label>
+              <span className="ml-2">Talay Purok Makugihon</span>
+            </div>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
+              Edit
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between mb-4 ">
             <div className="flex-col">
               <label className="text-gray-700 font-semibold">Password:</label>
               <span className="ml-2">********</span>
@@ -102,6 +112,8 @@ const Account: React.FC = () => {
               Edit
             </button>
           </div>
+
+
         </div>
       </div>
     </div>
