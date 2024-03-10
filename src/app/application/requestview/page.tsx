@@ -12,13 +12,14 @@ const Requestview: React.FC = () => {
 <img className="mx-auto rounded-full h-36 w-36" src="https://i.imgflip.com/4l0t4u.png" alt="author avatar"></img>
 <div className="flex flex-col py-4 ">
     
-<h1>Name:</h1>
-<p>Alex</p> 
-<h1>Email:</h1>
-<p>Alex123@gmail.com</p>
-<h1>Address:</h1>
-<p>Amlan</p>
-
+<h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Name:</h1>
+<p className="mb-2">Alex P. Diaz</p> 
+<h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Email:</h1>
+<p className="mb-2">Alex123@gmail.com</p>
+<h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Address:</h1>
+<p className="mb-2">Amlan</p>
+<h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Phone No.</h1>
+<p className="mb-2">0967-506-4225</p>
 </div>
 
 </div>
@@ -45,6 +46,7 @@ const Requestview: React.FC = () => {
 <h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Request Type: Road Block</h1>
 <h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Date & Time: 26/02/2024 : : 2PM</h1>
 <h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Status: Ongoing</h1>
+<a href="#" className="text-black font-medium rounded-lg text-sm dark:bg-gray-800 underline">Stocks Used</a><br/>
 <button className=" text-black border border-emerald-600 bg-emerald-200 hover:bg-emerald-300 focus:outline-none focus:ring-1 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2">Accept</button>
 <button className=" text-black border border-red-600 bg-red-200 hover:bg-red-300 focus:outline-none focus:ring-1 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2">Reject</button>
 <button className=" text-black border border-emerald-600 bg-emerald-200 hover:bg-emerald-300 focus:outline-none focus:ring-1 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2">Complete</button>
@@ -55,9 +57,14 @@ const Requestview: React.FC = () => {
 
 
 <div className="flex w-[100%] h-[64%] justify-center mt-1 ">
-<div className="w-[99%] px-1 py-1  text-center bg-zinc-200 rounded-lg lg:mt-0 xl:px-1  border border-zinc-400 shadow-lg">
+<div className="w-[50%] m-1 py-1  text-center bg-zinc-200 rounded-lg lg:mt-0  border border-zinc-400 shadow-lg">
+</div>
 
-</div></div>
+<div className="w-[50%] m-1 py-1  text-center bg-zinc-200 rounded-lg lg:mt-0 border border-zinc-400 shadow-lg">
+
+
+</div>
+</div>
 
 
 </div>
