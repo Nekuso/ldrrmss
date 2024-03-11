@@ -57,13 +57,24 @@ const Requestview: React.FC = () => {
 
 
 <div className="flex w-[100%] h-[64%] justify-center mt-1 ">
-<div className="w-[50%] m-1 py-1  text-center bg-zinc-200 rounded-lg lg:mt-0  border border-zinc-400 shadow-lg">
+<div className="w-[50%] m-1 py-1 text-center bg-zinc-200 rounded-lg lg:mt-0 border border-zinc-400 shadow-lg">
+  <img
+    src="https://media.sciencephoto.com/c0/42/67/06/c0426706-800px-wm.jpg"
+    alt="Description of the image"
+    className="w-full h-full"
+  />
 </div>
+
 
 <div className="w-[50%] m-1 py-1  text-center bg-zinc-200 rounded-lg lg:mt-0 border border-zinc-400 shadow-lg">
+<h1 className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800">Extra Information </h1>
+<p className=" text-black font-medium rounded-lg text-sm dark:bg-gray-800 text-left mt-2 m-2">
 
+I urgently seek assistance due to a road block, affecting 10 nearly residents. This obstacle is disrupting daily life and poses safety concerns. Your prompt attention is crucial to resolve this matter.
 
+Thank you,</p>
 </div>
+
 </div>
 
 

@@ -54,11 +54,13 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:max-w-sm lg:w-full md:w-1/2 w-5/6">
-          <div className="object-cover object-center rounded">
-          <img alt="gallery" className="rounded-lg h-[40vh] opacity-75" src="/images/amlaners.png" />
+          <div className="lg:w-1/3 sm:w-1/2 p-4">
+          <div className="flex relative rounded">
+          <img alt="gallery" className="rounded-lg w-[40vw] h-[40vh] opacity-75" src="/images/amlaners.png" />
           </div>
           </div>
+
+          
         </div>
       </section>
 
@@ -67,9 +69,7 @@ const LandingPage: React.FC = () => {
 <section className="text-gray-400 bg-gray-900 body-font">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-col text-center w-full mb-20">
-      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">LOCATION</h1>
-      <p className="lg:w-2/3 mx-auto leading-relaxed text-base">pics nila and sa workplace ning lalom</p>
-      <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Provide design to all pages related to client, error on dashboard, Replace the video,Request view not settled </p>
+      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Hover On These Images</h1>
     </div>
 
     <div className="flex flex-wrap -m-4">
@@ -78,7 +78,7 @@ const LandingPage: React.FC = () => {
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/pic1.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
             <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Location</h2>
-            <p className="leading-relaxed">Amlan People Center, F67F+VC4, Negros Oriental</p>
+            <p className="leading-relaxed">Amlan People Center, F67F+VC4, Negros Oriental <br/><br/><br/><br/><br/></p>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ const LandingPage: React.FC = () => {
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/posing.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
             <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Contact Information</h2>
-            <p className="leading-relaxed">09171307272 https://www.facebook.com/ldrrmoamlan </p>
+            <p className="leading-relaxed">09171307272 https://www.facebook.com/ldrrmoamlan <br/><br/><br/><br/><br/></p>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ const LandingPage: React.FC = () => {
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/practice.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
             <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1"> Working hours</h2>
-            <p className="leading-relaxed">Weekdays: 8:00AM - 5:00PM <br /> Saturday-Sunday: ClOSED</p>
+            <p className="leading-relaxed">Weekdays: 8:00AM - 5:00PM Saturday-Sunday: ClOSED <br/><br/><br/><br/><br/> </p>
           </div>
         </div>
       </div>
