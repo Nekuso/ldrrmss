@@ -69,7 +69,9 @@ const LandingPage: React.FC = () => {
 <section className="text-gray-400 bg-gray-900 body-font">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-col text-center w-full mb-20">
-      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Hover On These Images</h1>
+      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">For any immediate emergency, please contact the appropriate office:</h1>
+      <p className="leading-relaxed">Official MDRRMO No - 0955 788 4396 <br/> Amlan PNP - 09176349162 <br/> Amlan Fire Station - 09978043965 <br/> Ambulance - 09169100718<br/>
+</p>
     </div>
 
     <div className="flex flex-wrap -m-4">
@@ -77,7 +79,7 @@ const LandingPage: React.FC = () => {
         <div className="flex relative">
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/pic1.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Location</h2>
+            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Information</h2>
             <p className="leading-relaxed">Amlan People Center, F67F+VC4, Negros Oriental <br/><br/><br/><br/><br/></p>
           </div>
         </div>
@@ -87,8 +89,8 @@ const LandingPage: React.FC = () => {
         <div className="flex relative">
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/posing.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Contact Information</h2>
-            <p className="leading-relaxed">09171307272 https://www.facebook.com/ldrrmoamlan <br/><br/><br/><br/><br/></p>
+            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Information</h2>
+            <p className="leading-relaxed"> Facebook - facebook/ldrrmoamlan <br/><br/><br/><br/><br/><br/></p>
           </div>
         </div>
       </div>
@@ -97,8 +99,8 @@ const LandingPage: React.FC = () => {
         <div className="flex relative">
           <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="/images/practice.jpeg" />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1"> Working hours</h2>
-            <p className="leading-relaxed">Weekdays: 8:00AM - 5:00PM Saturday-Sunday: ClOSED <br/><br/><br/><br/><br/> </p>
+            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">Amlan Information</h2>
+            <p className="leading-relaxed">Weekdays: 8:00AM - 5:00PM <br/> Saturday-Sunday: ClOSED <br/><br/><br/><br/><br/> </p>
           </div>
         </div>
       </div>
