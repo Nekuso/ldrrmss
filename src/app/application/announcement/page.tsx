@@ -33,7 +33,7 @@ const Announcement: React.FC = () => {
             </div>
             <div>
               <p className="font-bold">New Memorandum</p>
-              <p className="text-sm">Dont slack off guys</p>
+              <p className="text-sm">Details Will be further discussed</p>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ const Announcement: React.FC = () => {
             </div>
             <div>
               <p className="font-bold">New Rescue tips </p>
-              <p className="text-sm">Training will be at Friday</p>
+              <p className="text-sm">Details Will be further discussed</p>
             </div>
           </div>
         </div>
@@ -60,8 +60,8 @@ const Announcement: React.FC = () => {
               </svg>
             </div>
             <div>
-              <p className="font-bold">No rest day until we graduate</p>
-              <p className="text-sm">Keep Pushing, hope to finish</p>
+              <p className="font-bold">New Announcement</p>
+              <p className="text-sm">Details Will be further discussed</p>
             </div>
           </div>
         </div>

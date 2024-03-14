@@ -7,10 +7,15 @@ const Stocks: React.FC = () => {
     amount: '10',
     date: '02/25/2024',
 
-    name1: '555 Sardines (Per kilo)',
+    name1: '555 Sardines',
     category1: 'Canned Food',
     amount1: '10',
     date1: '02/25/2024',
+
+    name2: 'Dignity kit',
+    category2: 'Kit',
+    amount2: '10',
+    date2: '02/25/2024',
   };
   
 
@@ -76,6 +81,38 @@ const Stocks: React.FC = () => {
                 <td className="px-4 py-3">{product.category1}</td>
                 <td className="px-4 py-3">{product.amount1}</td>
                 <td className="px-4 py-3">{product.date1}</td>
+                <td className="px-4 py-3 relative group">
+                  <button
+                    type="button"
+                    className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        fillRule="evenodd"
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      />
+                    </svg>
+                    <span className="text-gray-500">Edit</span>
+                  </button>
+
+
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr>
+                <td className="px-4 py-3">{product.name2}</td>
+                <td className="px-4 py-3">{product.category2}</td>
+                <td className="px-4 py-3">{product.amount2}</td>
+                <td className="px-4 py-3">{product.date2}</td>
                 <td className="px-4 py-3 relative group">
                   <button
                     type="button"
