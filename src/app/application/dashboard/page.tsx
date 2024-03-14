@@ -32,7 +32,7 @@ export default function DashboardPage() {
   return (
     <div className="w-full h-full">
     <h1 className="text-black font-bold ml-4 mb-2">Account</h1>
-    <div className="w-[100%] h-[100%] rounded-xl border border-white bg-white shadow-2xl p-2 flex">
+    <div className="w-[100%] h-[100%] rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center">
     <>
       <div className="md:hidden">
         <Image
@@ -52,7 +52,7 @@ export default function DashboardPage() {
       </div>
 
 
-      <div className="hidden flex-col md:flex">
+      <div className="hidden flex-col md:flex w-full">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <TeamSwitcher />
