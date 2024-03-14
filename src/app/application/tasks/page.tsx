@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function TaskPage() {
 
   return (
+    <div className="w-full h-full">
+    <h1 className="text-black font-bold ml-4 mb-2">Account</h1>
+    <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white shadow-2xl p-2 flex">
     <>
       <div className="md:hidden">
         <Image
@@ -34,13 +37,11 @@ export default function TaskPage() {
           className="hidden dark:block"
         />
       </div>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
-        <div className="flex items-center justify-between space-y-2">
+
+      <div className="h-full flex-1 w-full flex-col space-y-1 md:flex">
+
+        <div className="flex items-center justify-between space-y-1">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
-            <p className="text-muted-foreground">
-              Here&apos;s a list of your tasks for this month!
-            </p>
           </div>
           <div className="flex items-center space-x-2">
             <UserNav />
@@ -49,5 +50,6 @@ export default function TaskPage() {
         <DataTable data={tasks} columns={columns} />
       </div>
     </>
+    </div></div>
   )
 }

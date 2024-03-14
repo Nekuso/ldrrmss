@@ -23,12 +23,12 @@ export const sideLinks = [
   },
   {
     title: "Account",
-    href: "/application/account",
+    href: "/application/tasks",
     icon: <FaUsers />,
   },
   {
     title: "Settings",
-    href: "/application/settings",
+    href: "/application/account",
     icon: <FaCog />,
   },
   {
