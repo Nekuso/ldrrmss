@@ -21,8 +21,8 @@ const Stocks: React.FC = () => {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-black font-bold ml-4 mb-2">Stocks</h1>
-      <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
+    <h1 className="text-black font-bold ml-4 mb-2 text-3">Stocks</h1>
+    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
