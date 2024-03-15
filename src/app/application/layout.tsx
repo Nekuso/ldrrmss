@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import SideBar from "@/app/components/sidebar/page";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -15,13 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+
       <body className={montserrat.className}>
-      <div className="flex place-items-center justify-center w-screen h-screen bg-gradient-to-t from-zinc-200  to-zinc-100 p-7 gap-6">
-          <SideBar />
+      <div className="flex place-items-center justify-center w-full h-screen bg-gradient-to-t from-zinc-200  to-zinc-100 p-8">
           {children}
         </div>
       </body>
-    </html>
+
   );
 }
