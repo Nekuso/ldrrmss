@@ -2,11 +2,11 @@ import React from 'react';
 
 const Announcement: React.FC = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center">
-      <h1 className="text-black font-bold ml-4 mb-2">Announcement</h1>
-      <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
+    <div className="w-full h-full">
+    <h1 className="text-black font-bold ml-4 mb-2 text-3">Announcement</h1>
+    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center flex-col">
 
-      <button type="button" className=" bg-teal-100 border-2 border-teal-500 text-teal-900 flex items-center justify-center focus:ring-1 focus:ring-primary-300 rounded-lg text-sm px-4 py-2 m-2 h-[7vh] w-[16vw]">
+      <button type="button" className=" bg-teal-100 border-2 border-teal-500 text-teal-900 flex items-center justify-center focus:ring-1 focus:ring-primary-300 rounded-lg text-sm px-4 py-2 m-2 h-[4vh] w-[15vw]">
         <svg
                       aria-hidden="true"
                       className="w-5 h-5 text-gray-500 dark:text-gray-400"
