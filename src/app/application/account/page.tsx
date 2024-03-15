@@ -1,14 +1,29 @@
 import React from 'react';
-
+import { Search } from "@/app/application/dashboard/components/search"
+import { UserNav } from "@/app/application/dashboard/components/user-nav"
+import { MainNav } from "@/app/application/dashboard/components/main-nav"
 const Account: React.FC = () => {
   return (
     <div className="w-full h-full">
-      <h1 className="text-black font-bold ml-4 mb-2">Account</h1>
-      <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white shadow-2xl p-2 flex">
+    <h1 className="text-black font-bold ml-4 mb-2 text-3">Account</h1>
+    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center flex-col">
+
+    <div className="hidden flex-col md:flex w-full">
+        <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <Search />
+              <UserNav />
+            </div>
+          </div>
+        </div>
+        </div> 
+        
 
 
-
-      <div className="w-96 px-6 py-6  text-center bg-zinc-500 rounded-lg lg:mt-0 xl:px-10 mr-4">
+ <div className="w-96 px-6 py-6  text-center bg-zinc-500 rounded-lg lg:mt-0 xl:px-10 mr-4">
     <div className="space-y-4 xl:space-y-6">
     <img className="mx-auto rounded-full h-36 w-36" src="https://i.imgflip.com/4l0t4u.png" alt="author avatar"></img>
         <div className="space-y-2">

@@ -1,10 +1,25 @@
 import React from 'react';
-
+import { Search } from "@/app/application/dashboard/components/search"
+import { UserNav } from "@/app/application/dashboard/components/user-nav"
+import { MainNav } from "@/app/application/dashboard/components/main-nav"
 const Announcement: React.FC = () => {
   return (
     <div className="w-full h-full">
     <h1 className="text-black font-bold ml-4 mb-2 text-3">Announcement</h1>
     <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center flex-col">
+
+    <div className="hidden flex-col md:flex w-full">
+        <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <Search />
+              <UserNav />
+            </div>
+          </div>
+        </div>
+        </div>
 
       <button type="button" className=" bg-teal-100 border-2 border-teal-500 text-teal-900 flex items-center justify-center focus:ring-1 focus:ring-primary-300 rounded-lg text-sm px-4 py-2 m-2 h-[4vh] w-[15vw]">
         <svg
