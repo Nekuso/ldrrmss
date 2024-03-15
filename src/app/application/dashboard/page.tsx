@@ -64,7 +64,7 @@ export default function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total Revenue
+                      Total Mobile Users
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ export default function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-2 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Subscriptions
+                      Approval Request
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ export default function DashboardPage() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                    <CardTitle className="text-sm font-medium">Request Count Today</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -174,9 +174,9 @@ export default function DashboardPage() {
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>Recent Sales</CardTitle>
+                    <CardTitle>Employee</CardTitle>
                     <CardDescription>
-                      You made 265 sales this month.
+                      People who are working
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
