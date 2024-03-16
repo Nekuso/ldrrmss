@@ -57,6 +57,7 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+        
         <div className="flex-1 space-y-1 p-2 pt-2">
           <Tabs defaultValue="overview" className="space-y-2">
             <TabsContent value="overview" className="space-y-2">

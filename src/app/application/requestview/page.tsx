@@ -1,12 +1,29 @@
 import React from 'react';
-
+import { Search } from "@/app/application/dashboard/components/search"
+import { UserNav } from "@/app/application/dashboard/components/user-nav"
+import { MainNav } from "@/app/application/dashboard/components/main-nav"
 const Requestview: React.FC = () => {
 
     
   return (
     <div className="w-full h-full">
-      <h1 className="text-black font-bold ml-4 mb-2">Request Details</h1>
-      <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white p-2 flex shadow-lg">
+<h1 className="text-black font-bold ml-4 mb-2 ">Request Detail</h1>
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
+
+
+<div className="hidden flex-col md:flex w-full">
+        <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <Search />
+              <UserNav />
+            </div>
+          </div>
+        </div>
+
+
 
 <div className="w-[30%] px-2 py-6 bg-zinc-200 rounded-lg lg:mt-0 flex flex-col border border-zinc-400 mr-1 shadow-lg">
 <img className="mx-auto rounded-full h-36 w-36" src="https://i.imgflip.com/4l0t4u.png" alt="author avatar"></img>
@@ -81,7 +98,7 @@ Thank you,</p>
 </div>
 
 
-
+</div>
 
 </div>
 </div>
