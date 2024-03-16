@@ -5,7 +5,7 @@ import tasks from "./data/tasks.json"
 
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
-import { UserNav } from "./components/user-nav"
+import { UserNav } from "@/app/application/dashboard/components/user-nav"
 import { MainNav } from "@/app/application/dashboard/components/main-nav"
 import { Search } from "@/app/application/dashboard/components/search"
 
