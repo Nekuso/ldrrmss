@@ -23,8 +23,13 @@ const Stocks = () => {
     <div>
   </div>
 
+    <div className="m-2">
       <DataTableDemo/>
-    </div>    </div>    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
   )
 }
 

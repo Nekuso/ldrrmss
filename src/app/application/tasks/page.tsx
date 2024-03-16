@@ -53,8 +53,9 @@ export default function TaskPage() {
             </div>
           </div>
         </div>
-    
+        <div className="m-2">
         <DataTable data={tasks} columns={columns} />
+      </div>
       </div>
     </>
     </div></div>
