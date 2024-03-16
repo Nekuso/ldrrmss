@@ -36,7 +36,7 @@ export function MainNav({
         Announcement
       </Link>
       <Link
-        href="/application/account"
+        href="/application/settings"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Settings

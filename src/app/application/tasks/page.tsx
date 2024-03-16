@@ -7,6 +7,7 @@ import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
 import { UserNav } from "./components/user-nav"
 import { MainNav } from "@/app/application/dashboard/components/main-nav"
+import { Search } from "@/app/application/dashboard/components/search"
 
 export const metadata: Metadata = {
   title: "Tasks",
@@ -19,8 +20,8 @@ export default function TaskPage() {
   return (
 
     <div className="w-full h-full">
-    <h1 className="text-black font-bold ml-4 mb-2 text-3">Mobile Request</h1>
-    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center">
+<h1 className="text-black font-bold ml-4 mb-2 ">Mobile Request</h1>
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
 
     <>
       <div className="md:hidden">
@@ -40,13 +41,16 @@ export default function TaskPage() {
         />
       </div>
 
-      <div className="h-full flex-1 w-full flex-col space-y-2 md:flex">
-      <div className="flex items-center justify-between space-y-2">
-      <MainNav className="mx-6" />
-      <div>
-      </div>
-      <div className="flex space-x-2">
-          <UserNav/>
+
+      <div className="hidden flex-col md:flex w-full">
+        <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <Search />
+              <UserNav />
+            </div>
           </div>
         </div>
     

@@ -50,7 +50,7 @@ export function DataTable<TData, TValue>({
     columns,
     initialState: {
       pagination:{
-        pageSize: 7
+        pageSize: 9
       }
     },
     state: {

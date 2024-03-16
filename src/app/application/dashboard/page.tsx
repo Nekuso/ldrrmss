@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <div className="w-full h-full">
-    <h1 className="text-black font-bold ml-4 mb-2 text-3">Dashboard</h1>
-    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center">
+<h1 className="text-black font-bold ml-4 mb-2 ">Dashboard</h1>
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
     <>
       <div className="md:hidden">
         <Image

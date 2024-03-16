@@ -5,8 +5,8 @@ import { MainNav } from "@/app/application/dashboard/components/main-nav"
 const Announcement: React.FC = () => {
   return (
     <div className="w-full h-full">
-    <h1 className="text-black font-bold ml-4 mb-2 text-3">Announcement</h1>
-    <div className="rounded-xl border border-white bg-white shadow-2xl p-2 flex justify-center flex-col">
+<h1 className="text-black font-bold ml-4 mb-2 ">Announcement</h1>
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
 
     <div className="hidden flex-col md:flex w-full">
         <div className="border-b">
