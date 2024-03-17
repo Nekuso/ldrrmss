@@ -13,13 +13,13 @@ export function DialogDemo() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-emerald-200 border border-gray-400" variant="outline">Accept</Button>
+        <Button className="bg-gray-600 border border-gray-400 text-white" variant="outline">Status</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Write Something!</DialogTitle>
+          <DialogTitle>Are you sure?</DialogTitle>
           <DialogDescription>
-            Please Use For Legitimate Reasons Only.
+            Make sure to review the information before choosing. This will update the information on STATUS.
           </DialogDescription>
         </DialogHeader>
 
@@ -28,9 +28,12 @@ export function DialogDemo() {
           </div>
 
         <DialogFooter>
-          <Button type="submit">Save</Button>
+        <Button type="submit">Accept</Button>
+        <Button type="submit">Reject</Button>
+          <Button type="submit">Archieve</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
+    
   )
 }

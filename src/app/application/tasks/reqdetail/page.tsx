@@ -1,13 +1,13 @@
 import React from 'react';
 import { MainNav } from "@/app/application/dashboard/components/main-nav"
-import { Button } from "@/components/ui/button"
 import { DialogDemo } from './compliances';
+import { Button } from "@/components/ui/button"
 
 const Reqdetails: React.FC = () => {
   return (
 <div className="w-full h-full">
 <h1 className="text-black font-bold ml-4 mb-2 ">Request Details</h1>
-<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white mr-7 shadow-2xl">
+<div className="w-[94%] h-[94%] rounded-xl border border-white bg-white shadow-2xl">
 
 
 <div className="border-b">
@@ -29,6 +29,8 @@ const Reqdetails: React.FC = () => {
 
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Email :</h2>
 <p className="mb-2 text-sm text-[12px]"><i>Candyisland20@gmail.com</i></p>
+<h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Phone Number:</h2>
+<p className="mb-2 text-sm text-[12px]"><i>09659764338</i></p>
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Date of birth:</h2>
 <p className="mb-2 text-sm text-[12px]"><i>March, 18th, 2002</i></p>
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Address:</h2>
@@ -42,22 +44,59 @@ const Reqdetails: React.FC = () => {
 <p className="mb-2 text-sm text-[12px]"><i>Flood</i></p>
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Request Sent:</h2>
 <p className="mb-2 text-sm text-[12px]"><i>March, 16th, 2024</i></p>
-
+<h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Status:</h2>
+<p className="mb-2 text-sm text-[12px]"><i>Undetermined</i></p>
 
 </div>
 <DialogDemo/>
 </div>
 
+<div className="h-[94%] w-[94%] m-1 rounded-xl shadow-lg border border-gray-300 justify-center">
 
+<div className="h-[49%] w-full flex justify-center">
 
+<div className="border border-gray-300 h-[98%] w-full m-1 mt-2 ml-2">
+<iframe className="top-0 left-0 w-full h-full"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=123.2024%2C9.4458%2C123.2224%2C9.4658&amp;layer=mapnik&amp;marker=9.4558%2C123.2124"
+            aria-hidden="false">
+    </iframe>
+</div> 
 
-<div className="h-[94%] w-[75%] m-1 border border-gray-300 rounded-xl shadow-lg">
-yawa
+<div className="border border-gray-300 h-[98%] w-full m-1 mt-2 ml-2">
+<img
+    src="https://media.sciencephoto.com/c0/42/67/06/c0426706-800px-wm.jpg"
+    alt="Description of the image"
+    className="w-full h-full"
+  />
 </div>
 
 </div>
 
+<div className="h-[49%] w-full flex justify-center">
 
+<div className="border border-gray-300 h-[98%] w-full m-1 mt-2 ml-2">
+
+<h1 className="text-gray-700 uppercase font-bold tracking-wider mb-3 text-center">User provided information</h1>
+<p className="text-sm text-[12px] font-bold ml-2"><i>Affected individuals: 12</i></p>
+<p className="mb-4 text-sm text-[12px] font-bold ml-2"><i>Time of incident: 3:00 AM</i></p>
+<p className="text-sm text-[12px] font-bold ml-2"><i>User Statement:</i></p>
+<p className="mb-2 text-sm text-[12px] ml-2"><i> We urgently seek assistance due to the flood, we are having a hard time taking shelter.</i></p>
+
+</div>
+
+<div className="border border-gray-300 h-[98%] w-full m-1 mt-2 ml-2 flex justify-center items-center">
+  <Button>Supply Amount</Button>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
 </div>
 </div>
 );

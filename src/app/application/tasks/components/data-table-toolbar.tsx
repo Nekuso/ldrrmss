@@ -1,5 +1,7 @@
 "use client"
 
+import { GoPlusCircle } from "react-icons/go";
+
 import { Cross2Icon } from "@radix-ui/react-icons"
 import { Table } from "@tanstack/react-table"
 
@@ -44,6 +46,11 @@ export function DataTableToolbar<TData>({
             options={priorities}
           />
         )}
+
+<Button variant="outline" className="flex items-center h-8 px-2 lg:px-3 border-dashed">
+  <GoPlusCircle className="mr-1" /> Create Request
+</Button>
+          
         {isFiltered && (
           <Button
             variant="ghost"
