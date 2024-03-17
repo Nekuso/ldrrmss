@@ -1,5 +1,8 @@
 import React from 'react';
 import { MainNav } from "@/app/application/dashboard/components/main-nav"
+import { Button } from "@/components/ui/button"
+import { DialogDemo } from './compliances';
+
 const Reqdetails: React.FC = () => {
   return (
 <div className="w-full h-full">
@@ -39,7 +42,10 @@ const Reqdetails: React.FC = () => {
 <p className="mb-2 text-sm text-[12px]"><i>Flood</i></p>
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Request Sent:</h2>
 <p className="mb-2 text-sm text-[12px]"><i>March, 16th, 2024</i></p>
+
+
 </div>
+<DialogDemo/>
 </div>
 
 
