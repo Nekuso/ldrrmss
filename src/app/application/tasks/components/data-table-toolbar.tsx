@@ -48,7 +48,7 @@ export function DataTableToolbar<TData>({
         )}
 
 <Button variant="outline" className="flex items-center h-8 px-2 lg:px-3 border-dashed">
-  <GoPlusCircle className="mr-1" /> Create Request
+  <GoPlusCircle className="mr-1" /> <a href="./tasks/createrequest">Create Request</a>
 </Button>
           
         {isFiltered && (
