@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
 
       <body className= {montserrat.className}>
-      <div className="flex place-items-center justify-center w-full h-screen bg-gradient-to-t from-zinc-200  to-zinc-100 p-8">
+      <div className="flex place-items-center justify-center w-full h-screen bg-gradient-to-br from-slate-200 to-slate-500 p-8">
           {children}
         </div>
       </body>

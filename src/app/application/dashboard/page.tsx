@@ -146,7 +146,7 @@ export default function DashboardPage() {
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>Employee</CardTitle>
+                    <CardTitle>Chat</CardTitle>
                     <CardDescription>
                       People who are working
                     </CardDescription>
