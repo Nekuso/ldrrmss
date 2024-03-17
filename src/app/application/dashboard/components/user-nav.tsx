@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import {
     Avatar,
     AvatarFallback,
@@ -36,21 +38,16 @@ import {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
+        
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              Profile
+            <Link href="./account">Profile</Link>
+        
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              Billing
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Settings
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>New Team</DropdownMenuItem>
+  
           </DropdownMenuGroup>
+          
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             Log out

@@ -80,7 +80,7 @@ export type Payment = {
   email: string
 }
 
-export const columns: ColumnDef<Payment>[] = [ //Naa diri nixo oh idk whats the deal with this
+export const columns: ColumnDef<Payment>[] = [ 
   {
     id: "select",
     header: ({ table }) => (
@@ -116,14 +116,16 @@ export const columns: ColumnDef<Payment>[] = [ //Naa diri nixo oh idk whats the 
       return (
         <Button
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    /*        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} */
         >
           Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
+  {/*     <CaretSortIcon className="ml-2 h-4 w-4" />  */}
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+   
+  /*  cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>, */
+
   },
   {
     accessorKey: "amount",
