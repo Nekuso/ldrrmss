@@ -54,9 +54,10 @@ export function Accadminreq() {
                   <SelectValue placeholder="Select request" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="next">Forgot Email</SelectItem>
-                  <SelectItem value="sveltekit">Forgot Password</SelectItem>
-                  <SelectItem value="astro">Technical Issue</SelectItem>
+                  <SelectItem value="Fmail">Forgot Email</SelectItem>
+                  <SelectItem value="Fpass">Forgot Password</SelectItem>
+                  <SelectItem value="Tissue">Technical Issue</SelectItem>
+                  <SelectItem value="Nemployee">Dont have an account (New Employee)</SelectItem>
                 </SelectContent>
               </Select>
             </div>

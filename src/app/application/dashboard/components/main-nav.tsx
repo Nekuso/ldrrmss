@@ -36,10 +36,10 @@ export function MainNav({
         Announcement
       </Link>
       <Link
-        href="/application/accounts"
+        href="/application/employeelist"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        Accounts
+        Employee Lists
       </Link>
       <Link
         href="/application/settings"
