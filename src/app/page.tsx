@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
 
           <div className="lg:w-1/3 sm:w-1/2 p-4">
           <div className="flex relative rounded">
-          <img alt="gallery" className="rounded-lg w-[40vw] h-[40vh] opacity-75" src="/images/amlaners.png" />
+
           </div>
           </div>
 

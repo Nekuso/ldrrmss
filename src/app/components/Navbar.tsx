@@ -4,7 +4,7 @@ const Navbar: React.FC = () => {
   return (
 <nav className="flex items-center justify-between flex-wrap bg-slate-800 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
-    <span className="font-semibold text-xl tracking-tight">AMLAN LDRRM</span>
+    <a href="/" className="font-semibold text-xl tracking-tight">AMLAN LDRRM</a>
   </div>
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow">
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
       </a>
     </div>
     <div>
-      <a href="../../auth/login" className="inline-block text-sm px-6 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-orange-400 hover:bg-white mt-4 lg:mt-0">Login</a>
+
     </div>
   </div>
 </nav>
