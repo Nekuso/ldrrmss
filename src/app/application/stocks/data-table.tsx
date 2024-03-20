@@ -1,4 +1,6 @@
 "use client"
+import { Stockbutton } from "./stockbutton"
+
 
 import * as React from "react"
 import {
@@ -168,6 +170,7 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+
       )
     },
   },
@@ -204,6 +207,7 @@ export function DataTableDemo() {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
+
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -212,13 +216,24 @@ export function DataTableDemo() {
           }
           className="max-w-sm"
         />
+
+<div className="flex pl-2">
+    <Stockbutton/>
+<div className="flex pl-2">
+    <Button variant="outline"> + Add Supplies</Button>
+</div>
+</div>
         <DropdownMenu>
+
+          
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
               Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
+
+
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())

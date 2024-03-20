@@ -3,6 +3,8 @@ import { DataTableDemo } from './data-table'
 import { Search } from "@/app/application/dashboard/components/search"
 import { UserNav } from "@/app/application/dashboard/components/user-nav"
 import { MainNav } from "@/app/application/dashboard/components/main-nav"
+import { Stockbutton } from './stockbutton'
+import { Button } from "@/components/ui/button"
 
 const Stocks = () => {
   return (
