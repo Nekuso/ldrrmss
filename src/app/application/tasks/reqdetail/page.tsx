@@ -34,7 +34,7 @@ const Reqdetails: React.FC = () => {
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Date of birth:</h2>
 <p className="mb-2 text-sm text-[12px]"><i>March, 18th, 2002</i></p>
 <h2 className="text-gray-700 uppercase font-bold tracking-wider text-[13px]">Address:</h2>
-<p className="mb-2 text-sm text-[12px]"><i>Candyisland20@gmail.com</i></p>
+<p className="mb-2 text-sm text-[12px]"><i>Amlan, ambot asa</i></p>
 
 <span className="border border-gray-300 w-full col-span-4 sm:col-span-3 flex flex-col mb-1"></span>
 

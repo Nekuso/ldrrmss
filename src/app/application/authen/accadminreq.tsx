@@ -48,7 +48,7 @@ export function Accadminreq() {
           </div>
 
           <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
+              <Label htmlFor="framework">Request type</Label>
               <Select>
                 <SelectTrigger id="framework">
                   <SelectValue placeholder="Select request" />
@@ -66,7 +66,7 @@ export function Accadminreq() {
 
         </div>
         <DialogFooter>
-          <Button type="submit">Submit dispute</Button>
+          <Button type="submit">Submit</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

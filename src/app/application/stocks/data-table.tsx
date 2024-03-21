@@ -1,6 +1,6 @@
 "use client"
 import { Stockbutton } from "./stockbutton"
-
+import { Addsup1 } from "./addsup"
 
 import * as React from "react"
 import {
@@ -46,45 +46,45 @@ const data: Payment[] = [
   {
     id: "m5gr84i9",
     amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
+    name: "555 Sardines",
+    category: "Foods",
   },
   {
     id: "3u1reuv4",
     amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
+    name: "Dignity kit",
+    category: "Kits",
   },
   {
     id: "derv1ws0",
     amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    name: "Parasatukmol",
+    category: "Medicines",
   },
   {
     id: "5kma53ae",
     amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
+    name: "First Aid Kit",
+    category: "Kits",
   },
   {
     id: "bhqecj4p",
     amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    name: "Stretcher",
+    category: "Tools",
   },
 ]
 
 export type Payment = {
   id: string
   amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
+  name: string
+  category: string
 }
 
 export const columns: ColumnDef<Payment>[] = [ 
-  {
-    id: "select",
+ /* {
+   id: "select",
     header: ({ table }) => (
       <Checkbox
         checked={
@@ -97,32 +97,32 @@ export const columns: ColumnDef<Payment>[] = [
     ),
     cell: ({ row }) => (
       <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+       checked={row.getIsSelected()}
+      onCheckedChange={(value) => row.toggleSelected(!!value)}
+      aria-label="Select row"
       />
     ),
     enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
+    enableHiding: false, 
+  }, */
+  { 
+    accessorKey: "name",
+    header: "Name",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("name")}</div>
     ),
   },
   {
-    accessorKey: "email",
+    accessorKey: "category",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-    /*        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} */
+        <div
+         
+    //        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} 
         >
-          Email
+          Category
   {/*     <CaretSortIcon className="ml-2 h-4 w-4" />  */}
-        </Button>
+        </div>
       )
     },
    
@@ -136,12 +136,12 @@ export const columns: ColumnDef<Payment>[] = [
       const amount = parseFloat(row.getValue("amount"))
 
       // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
+   {/*   const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(amount)
+      }).format(amount) */}
 
-      return <div className="text-right font-medium">{formatted}</div>
+      return <div className="text-right font-medium">{amount}</div>
     },
   },
   {
@@ -209,10 +209,10 @@ export function DataTableDemo() {
       <div className="flex items-center py-4">
 
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -220,7 +220,7 @@ export function DataTableDemo() {
 <div className="flex pl-2">
     <Stockbutton/>
 <div className="flex pl-2">
-    <Button variant="outline"> + Add Supplies</Button>
+    <Addsup1/>
 </div>
 </div>
         <DropdownMenu>
@@ -234,7 +234,7 @@ export function DataTableDemo() {
           <DropdownMenuContent align="end">
 
 
-            {table
+         {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
               .map((column) => {
@@ -251,6 +251,9 @@ export function DataTableDemo() {
                   </DropdownMenuCheckboxItem>
                 )
               })}
+
+    
+
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
