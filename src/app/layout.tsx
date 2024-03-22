@@ -25,7 +25,8 @@ export default function RootLayout({
         <Navbar />
 
       
-        <div id="main-container">
+        <div id="main-container " className="flex w-full h-screen bg-gray-900 ">
+          
           {children}
         </div>
       </body>
