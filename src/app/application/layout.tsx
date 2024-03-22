@@ -1,8 +1,9 @@
 import { Montserrat } from "next/font/google";
+import "../globals.css";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
-export default function DashboardLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

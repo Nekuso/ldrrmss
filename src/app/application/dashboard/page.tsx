@@ -12,11 +12,11 @@ import {
   Tabs,
   TabsContent,
 } from "@/components/ui/tabs"
-import { MainNav } from "./components/main-nav"
-import { Overview } from "./components/overview"
-import { RecentSales } from "./components/recent-sales"
-import { Search } from "./components/search"
-import { UserNav } from "./components/user-nav"
+import { MainNav } from "@/app/application/dashboard/components/main-nav"
+import { Overview } from "@/app/application/dashboard/components/overview"
+import { RecentSales } from "@/app/application/dashboard/components/recent-sales"
+import { Search } from "@/app/application/dashboard/components/search"
+import { UserNav } from "@/app/application/dashboard/components/user-nav"
 
 export const metadata: Metadata = {
   title: "Dashboard",
