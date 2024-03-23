@@ -24,16 +24,15 @@ const Announcement: React.FC = () => {
         </div>
         </div>
 
-<div className="h-full w-full m-1">
+
 <div className="m-1 space-y-2">
 <DialogDemo/>
 <AlertDemo/>
 <AlertDemo/>
 <AlertDemo/>
 <AlertDemo/>
-
 </div> 
-</div>      
+    
       
       </div>
       </div>
