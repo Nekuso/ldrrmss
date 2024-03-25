@@ -1,15 +1,13 @@
 "use client";
 
-import { GoPlusCircle } from "react-icons/go";
-
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DataTableViewOptions } from "@/app/application/tasks/components/data-table-view-options";
+import { DataTableViewOptions } from "./data-table-view-options";
 
-import { priorities, statuses } from "../data/data";
+import { calamityStatuses, calamityTypes } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
 interface DataTableToolbarProps<TData> {
@@ -23,14 +21,12 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2 mt-2">
+      <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Filter Calamity"
-          value={
-            (table.getColumn("calamity_type")?.getFilterValue() as string) ?? ""
-          }
+          placeholder="Filter Calamities..."
+          value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("calamity_type")?.setFilterValue(event.target.value)
+            table.getColumn("id")?.setFilterValue(event.target.value)
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
@@ -38,25 +34,16 @@ export function DataTableToolbar<TData>({
           <DataTableFacetedFilter
             column={table.getColumn("status")}
             title="Status"
-            options={statuses}
+            options={calamityStatuses}
           />
         )}
-        {table.getColumn("priority") && (
+        {table.getColumn("calamity_type") && (
           <DataTableFacetedFilter
-            column={table.getColumn("priority")}
-            title="Priority"
-            options={priorities}
+            column={table.getColumn("calamity_type")}
+            title="Calamity Types"
+            options={calamityTypes}
           />
         )}
-
-        <Button
-          variant="outline"
-          className="flex items-center h-8 px-2 lg:px-3 border-dashed"
-        >
-          <GoPlusCircle className="mr-1" />{" "}
-          <a href="./tasks/createrequest">Create Request</a>
-        </Button>
-
         {isFiltered && (
           <Button
             variant="ghost"

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Search } from "@/app/application/dashboard/components/search"
-import { UserNav } from "@/app/application/dashboard/components/user-nav"
-import { MainNav } from "@/app/application/dashboard/components/main-nav"
-import { TabsDemo } from './tabss';
+import React from "react";
+import { Search } from "@/components/application/search";
+import { UserNav } from "@/components/application/user-nav";
+import { MainNav } from "@/components/application/main-nav";
+import { TabsDemo } from "./tabss";
 
 const Account: React.FC = () => {
   return (
@@ -19,15 +19,14 @@ const Account: React.FC = () => {
               </div>
             </div>
           </div>
-        </div> 
-
-        <div className="flex justify-center items-center h-full">
-          <TabsDemo/>
         </div>
 
+        <div className="flex justify-center items-center h-full">
+          <TabsDemo />
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Account;
