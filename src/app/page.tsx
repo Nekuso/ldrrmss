@@ -1,6 +1,7 @@
-import React from "react";
+/* eslint-disable react/no-unescaped-entities */
 import Navbar from "../app/landpage/components/Navbar";
-const LandingPage: React.FC = () => {
+
+export default function LandingPage() {
   return (
     <div className="w-full h-screen">
       <Navbar />
@@ -168,6 +169,4 @@ const LandingPage: React.FC = () => {
       </footer>
     </div>
   );
-};
-
-export default LandingPage;
+}

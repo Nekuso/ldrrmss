@@ -3,7 +3,7 @@ import { Authform } from "./authform";
 
 const Account: React.FC = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-full">
+    <div className="flex justify-center items-center h-screen w-full bg-gray-900">
       <Authform />
     </div>
   );

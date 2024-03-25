@@ -1,6 +1,6 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function MainNav({
   className,
@@ -12,16 +12,16 @@ export function MainNav({
       {...props}
     >
       <Link
-        href="/application/dashboard"
+        href="/application"
         className="text-sm font-medium transition-colors hover:text-primary"
       >
         Dashboard
       </Link>
       <Link
-        href="/application/tasks"
+        href="/application/requests"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        Mobile Request
+        Requests
       </Link>
       <Link
         href="/application/stocks"
@@ -47,10 +47,6 @@ export function MainNav({
       >
         Settings
       </Link>
-
-
-
-
     </nav>
-  )
+  );
 }
