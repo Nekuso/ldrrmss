@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
-import Navbar from './components/Navbar';
-import "../globals.css";
+import "./globals.css";
 
 const inter = Sora({ subsets: ["latin"] });
 
@@ -17,19 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-       
-      </head>
-      <body className={inter.className}>
-     
-        <Navbar />
-
-      
-        <div id="main-container " className="flex w-full h-screen bg-gray-900 ">
-          
-          {children}
-        </div>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

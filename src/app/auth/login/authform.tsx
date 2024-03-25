@@ -1,8 +1,7 @@
-import * as React from "react"
-import { Accadminreq } from "./accadminreq"
+import * as React from "react";
+import { Accadminreq } from "./accadminreq";
 
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,9 +9,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export function Authform() {
   return (
@@ -30,16 +29,19 @@ export function Authform() {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="password">Password</Label>
-              <Input id="password"  type="password" placeholder="Enter Password" />
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter Password"
+              />
             </div>
           </div>
         </form>
-        
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Accadminreq/>
+        <Accadminreq />
         <Button>Submit</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }
