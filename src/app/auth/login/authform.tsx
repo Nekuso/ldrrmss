@@ -50,7 +50,7 @@ export function Authform() {
         <CardFooter className="flex justify-between">
           <Accadminreq />
           <Button type="submit">
-            <Link href={"/application/dashboard"} className="w-full ">
+            <Link href={"/application/"} className="w-full ">
               Submit
             </Link>
           </Button>

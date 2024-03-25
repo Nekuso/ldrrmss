@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { TextareaDemo } from "./textarea"
+} from "@/components/ui/dialog";
+import { TextareaDemo } from "./textarea";
 
-export function DialogDemo() {
+export function DialogDemoAnnoucement() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,14 +25,13 @@ export function DialogDemo() {
         </DialogHeader>
 
         <div className="grid gap-4 py-4">
-
-<TextareaDemo/>
-          </div>
+          <TextareaDemo />
+        </div>
 
         <DialogFooter>
           <Button type="submit">Save</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

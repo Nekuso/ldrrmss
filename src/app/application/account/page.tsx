@@ -1,29 +1,11 @@
 import React from "react";
-import { Search } from "@/components/application/search";
-import { UserNav } from "@/components/application/user-nav";
-import { MainNav } from "@/components/application/main-nav";
 import { TabsDemo } from "./tabss";
 
 const Account: React.FC = () => {
   return (
-    <div className="w-full h-full">
-      <h1 className="text-black font-bold ml-4 mb-2">Profile</h1>
-      <div className="w-[94%] h-[94%] rounded-xl border border-white bg-white shadow-2xl flex flex-col">
-        <div className="hidden flex-col md:flex w-full">
-          <div className="border-b">
-            <div className="flex h-16 items-center px-4">
-              <MainNav className="mx-6" />
-              <div className="ml-auto flex items-center space-x-4">
-                <Search />
-                <UserNav />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center h-full">
-          <TabsDemo />
-        </div>
+    <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
+      <div className="space-y-2 w-[90%] h-fit bg-white p-4 rounded-2xl flex flex-col justify-center items-center">
+        <TabsDemo />
       </div>
     </div>
   );
