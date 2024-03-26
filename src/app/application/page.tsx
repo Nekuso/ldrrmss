@@ -87,7 +87,7 @@ const widgetsData = [
   },
 ];
 
-export default function DashboardPage() {
+export default function Page() {
   return (
     <div className="flex flex-col justify-center place-items-center w-full h-full gap-7 p-8 bg-transparent">
       <div className="w-[90%] h-[20%] flex gap-4 ">

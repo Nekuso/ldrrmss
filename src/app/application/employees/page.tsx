@@ -1,5 +1,6 @@
 import React from "react";
-import { Addemployeebutton } from "./addemployeebutton";
+import { Addemployeebutton } from "./add-employee/add-employee-button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Employeelistpage: React.FC = () => {
   // Dummy data array
@@ -24,10 +25,12 @@ const Employeelistpage: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
-      <div className="space-y-2 w-[90%] h-fit bg-white p-4 rounded-2xl">
-        <Addemployeebutton />
-        {/* Table */}
+    <div className="flex justify-center place-items-start w-full h-full gap-7 p-8">
+      <div className="flex flex-col justify-center place-items-center space-y-2 w-[90%] h-fit bg-white p-4 rounded-2xl">
+        <div className="w-full flex justify-between place-items-center">
+          <h1>Employees</h1>
+          <Addemployeebutton />
+        </div>
         <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
           <thead className="bg-gray-50">
             <tr>
@@ -76,11 +79,12 @@ const Employeelistpage: React.FC = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={`https://i.pravatar.cc/150?img=${employee.id}`}
-                        alt="Profile Picture"
-                      />
+                      <Avatar>
+                        <AvatarImage
+                          src={`https://i.pravatar.cc/150?img=${employee.id}`}
+                        />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
                     </div>
                     <div className="ml-4">
                       <div className="text-sm font-medium text-gray-900">
