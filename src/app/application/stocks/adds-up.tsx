@@ -21,7 +21,7 @@ export function Addsup1() {
         <DialogHeader>
           <DialogTitle>Add supply</DialogTitle>
           <DialogDescription>
-            Provide the neccessary information.Press confirm whgen you're done. Also idk im still designing this part.
+            Provide the neccessary information.Press confirm whgen youre done. Also idk im still designing this part.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
