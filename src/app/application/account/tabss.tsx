@@ -13,8 +13,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function TabsDemo() {
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
+    <Tabs defaultValue="account" className="w-full">
+      <TabsList className="grid w-[20%] grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="edit">Edit</TabsTrigger>
       </TabsList>
@@ -24,7 +24,7 @@ export function TabsDemo() {
             <CardHeader>
               <img
                 src="https://i.ytimg.com/vi/cbo9kvY5InI/maxresdefault.jpg"
-                className="rounded-full h-24 w-24 mx-auto"
+                className="rounded-full h-24 w-24 border-4 border-white"
                 alt="profile picture"
               />
               <>
@@ -32,7 +32,7 @@ export function TabsDemo() {
                   Captain K'nuckles
                 </CardTitle>
               </>
-              <CardDescription className="text-white flex flex-col">
+              <CardDescription className="text-white flex flex-auto">
                 <>
                   <Label className="text-sm mt-1" htmlFor="first-name">
                     First Name: Captain
