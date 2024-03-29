@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import Image from "next/image";
 import Navbar from "../app/landpage/components/Navbar";
 
 export default function LandingPage() {
@@ -97,7 +98,7 @@ export default function LandingPage() {
             <div className="flex flex-wrap -m-4">
               <div className="lg:w-1/3 sm:w-1/2 p-4">
                 <div className="flex relative">
-                  <img
+                  <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src="/images/pic1.jpeg"
@@ -119,7 +120,7 @@ export default function LandingPage() {
 
               <div className="lg:w-1/3 sm:w-1/2 p-4">
                 <div className="flex relative">
-                  <img
+                  <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src="/images/posing.jpeg"
@@ -143,7 +144,7 @@ export default function LandingPage() {
 
               <div className="lg:w-1/3 sm:w-1/2 p-4">
                 <div className="flex relative">
-                  <img
+                  <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src="/images/practice.jpeg"

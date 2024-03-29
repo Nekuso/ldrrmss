@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -8,11 +7,6 @@ import {
 } from "@/components/ui/card";
 import { Overview } from "@/components/application/overview";
 import { RecentSales } from "@/components/application/recent-sales";
-
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
-};
 
 const widgetsData = [
   {

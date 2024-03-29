@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../landpage/components/Navbar";
+import Image from "next/image";
 const About: React.FC = () => {
   return (
     <section className="bg-gray-900 dark:bg-gray-900 w-full h-full">
@@ -11,18 +12,18 @@ const About: React.FC = () => {
           </h2>
           <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
             This page has information about the Local Disaster Risk Reduction
-            and Management Office's projects and emergency preparedness
+            and Management Offices projects and emergency preparedness
             recommendations. Please know that this page is not monitored 24/7.{" "}
           </p>
         </div>
         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
           <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-              <img
+              <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
                 alt="Bonnie Avatar"
-              ></img>
+              />
             </a>
             <div className="p-5">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -113,11 +114,11 @@ const About: React.FC = () => {
           </div>
           <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-              <img
+              <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                 alt="Jese Avatar"
-              ></img>
+              />
             </a>
             <div className="p-5">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -206,11 +207,11 @@ const About: React.FC = () => {
           </div>
           <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-              <img
+              <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Michael Avatar"
-              ></img>
+              />
             </a>
             <div className="p-5">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -301,11 +302,11 @@ const About: React.FC = () => {
           </div>
           <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-              <img
+              <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
                 alt="Sofia Avatar"
-              ></img>
+              />
             </a>
             <div className="p-5">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">

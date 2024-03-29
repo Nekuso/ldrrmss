@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 
 export function TabsDemo() {
   return (
@@ -22,14 +23,14 @@ export function TabsDemo() {
         <>
           <Card className="bg-slate-500 rounded-2xl shadow-lg">
             <CardHeader>
-              <img
+              <Image
                 src="https://i.ytimg.com/vi/cbo9kvY5InI/maxresdefault.jpg"
                 className="rounded-full h-24 w-24 border-4 border-white"
                 alt="profile picture"
               />
               <>
                 <CardTitle className="text-white font-bold text-2xl tracking-wide">
-                  Captain K'nuckles
+                  Captain Knuckles
                 </CardTitle>
               </>
               <CardDescription className="text-white flex flex-auto">
@@ -38,7 +39,7 @@ export function TabsDemo() {
                     First Name: Captain
                   </Label>
                   <Label className="text-sm mt-1" htmlFor="last-name">
-                    Last Name: K'nuckles
+                    Last Name: Knuckles
                   </Label>
                   <Label className="text-sm mt-1" htmlFor="email">
                     Email: candyisland@gmail.com

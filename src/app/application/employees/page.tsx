@@ -1,8 +1,7 @@
-import React from "react";
 import { Addemployeebutton } from "./add-employee/add-employee-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Employeelistpage: React.FC = () => {
+export default function Page() {
   // Dummy data array
   const employees = [
     {
@@ -133,5 +132,3 @@ const Employeelistpage: React.FC = () => {
     </div>
   );
 };
-
-export default Employeelistpage;
