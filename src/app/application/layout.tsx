@@ -8,7 +8,12 @@ import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-const inter = Sora({ subsets: ["latin"] });
+
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
 
 export const metadata: Metadata = {
   title: "Landing page",
@@ -28,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={cn("font-montserrat", inter.className)}>
+      <body className={cn("font-sora", sora.variable)}>
         <div className="flex place-items-center justify-center w-full h-screen from-slate-200 to-slate-500">
           <div className="w-full h-full bg-white flex flex-col shadow-2xl">
             <div className="flex flex-col w-full h-full bg-slate-200 ">
@@ -41,7 +46,6 @@ export default async function RootLayout({
                   </div>
                 </div>
               </div>
-
               {children}
             </div>
           </div>
