@@ -102,7 +102,9 @@ export default function LandingPage() {
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src={"/images/pic1.jpeg"}
+                    style={{ width: "100%" }}
                   />
+
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">
                       Amlan Information
@@ -123,7 +125,8 @@ export default function LandingPage() {
                   <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src="/images/posing.jpeg"
+                    src={"/images/posing.jpeg"}
+                    style={{ width: "100%" }}
                   />
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">
@@ -147,7 +150,8 @@ export default function LandingPage() {
                   <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src="/images/practice.jpeg"
+                    src={"/images/practice.jpeg"}
+                    style={{ width: "100%" }}
                   />
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">

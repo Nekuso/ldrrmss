@@ -36,7 +36,7 @@ export function UserNav() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href="./account">Profile</Link>
+            <Link href="../application/account">Profile</Link>
 
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>

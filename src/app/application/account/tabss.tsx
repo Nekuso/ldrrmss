@@ -23,38 +23,64 @@ export function TabsDemo() {
         <>
           <Card className="bg-slate-500 rounded-2xl shadow-lg">
             <CardHeader>
-              <Image
-                src="https://i.ytimg.com/vi/cbo9kvY5InI/maxresdefault.jpg"
+              <img
+                src={"https://i.ytimg.com/vi/cbo9kvY5InI/maxresdefault.jpg"}
+                width={"100%"}
                 className="rounded-full h-24 w-24 border-4 border-white"
                 alt="profile picture"
               />
+
               <>
                 <CardTitle className="text-white font-bold text-2xl tracking-wide">
                   Captain Knuckles
                 </CardTitle>
               </>
-              <CardDescription className="text-white flex flex-auto">
+
+              <CardDescription className="text-white flex flex-row">
                 <>
-                  <Label className="text-sm mt-1" htmlFor="first-name">
-                    First Name: Captain
+                  <div className="flex flex-col w-[20%] mt-1">
+                    <Label className="text-sm" htmlFor="first-name">
+                      <span>First Name: Captain</span>
+                    </Label>
+                    <Label className="text-sm" htmlFor="first-name">
+                      <span>Last Name: Knuckles</span>
+                    </Label>
+                  </div>
+
+                  <div className="flex flex-col w-[20%] mt-1">
+                    <Label
+                      className="text-sm mt-1flex flex-col w-[20%]"
+                      htmlFor="email"
+                    >
+                      <span>Email: candyisland@gmail.com</span>
+                    </Label>
+                  </div>
+                  <Label
+                    className="text-sm mt-1flex flex-col w-[20%]"
+                    htmlFor="phone-number"
+                  >
+                    <span>Phone Number: +1234567890</span>
                   </Label>
-                  <Label className="text-sm mt-1" htmlFor="last-name">
-                    Last Name: Knuckles
+
+                  <Label
+                    className="text-sm mt-1flex flex-col w-[20%]"
+                    htmlFor="position"
+                  >
+                    <span>Position: Staff</span>
                   </Label>
-                  <Label className="text-sm mt-1" htmlFor="email">
-                    Email: candyisland@gmail.com
+
+                  <Label
+                    className="text-sm mt-1flex flex-col w-[20%]"
+                    htmlFor="address"
+                  >
+                    <span>Address: 123 Street, Amlan</span>
                   </Label>
-                  <Label className="text-sm mt-1" htmlFor="phone-number">
-                    Phone Number: +1234567890
-                  </Label>
-                  <Label className="text-sm mt-1" htmlFor="position">
-                    Position: Staff
-                  </Label>
-                  <Label className="text-sm mt-1" htmlFor="address">
-                    Address: 123 Street, Amlan
-                  </Label>
-                  <Label className="text-sm mt-1" htmlFor="birthday">
-                    Birthday: January 1, 1990
+
+                  <Label
+                    className="text-sm mt-1flex flex-col w-[20%]"
+                    htmlFor="birthday"
+                  >
+                    <span>Birthday: January 1, 1990</span>
                   </Label>
                 </>
               </CardDescription>
