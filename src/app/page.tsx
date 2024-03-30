@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Navbar from "../app/landpage/components/Navbar";
+import Pic1 from "@/images/pic1.jpeg";
+import Posing from "@/images/posing.jpeg";
+import Practice from "@/images/practice.jpeg";
 
 export default function LandingPage() {
   return (
@@ -101,8 +104,7 @@ export default function LandingPage() {
                   <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src={"/images/pic1.jpeg"}
-                    style={{ width: "100%" }}
+                    src={Pic1}
                   />
 
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
@@ -125,8 +127,7 @@ export default function LandingPage() {
                   <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src={"/images/posing.jpeg"}
-                    style={{ width: "100%" }}
+                    src={Posing}
                   />
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">
@@ -150,8 +151,7 @@ export default function LandingPage() {
                   <Image
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src={"/images/practice.jpeg"}
-                    style={{ width: "100%" }}
+                    src={Practice}
                   />
                   <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">

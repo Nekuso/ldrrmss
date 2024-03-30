@@ -22,7 +22,7 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
+      <div className="flex flex-1 place-items-center space-x-2">
         <Input
           placeholder="Filter ID..."
           value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
@@ -45,28 +45,6 @@ export function DataTableToolbar<TData>({
             options={calamityTypes}
           />
         )}
-        <Button
-          variant="outline"
-          className="flex items-center h-8 px-2 lg:px-3 border-dashed"
-        >
-          <GoPlusCircle className="mr-1" /> Add Request
-        </Button>
-
-        <Button
-          variant="outline"
-          className="flex items-center h-8 px-2 lg:px-3 border-dashed"
-        >
-          <GoPlusCircle className="mr-1" />{" "}
-          <a href="./requests/createrequest">Create Request</a>
-        </Button>
-
-        <Button
-          variant="outline"
-          className="flex items-center h-8 px-2 lg:px-3 border-dashed"
-        >
-          <GoPlusCircle className="mr-1" />{" "}
-          <a href="./requests/reqdetail">View Request</a>
-        </Button>
 
         {isFiltered && (
           <Button

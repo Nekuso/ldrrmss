@@ -83,7 +83,7 @@ const widgetsData = [
 
 export default function Page() {
   return (
-    <div className="flex flex-col justify-center place-items-center w-full h-full gap-7 p-8 bg-transparent">
+    <div className="flex flex-col justify-center place-items-center w-full gap-7 p-8 bg-transparent">
       <div className="w-[90%] h-[20%] flex gap-4 ">
         {widgetsData.map((data, i) => (
           <Card key={i} className="w-full ">
@@ -103,16 +103,16 @@ export default function Page() {
           </Card>
         ))}
       </div>
-      <div className="w-[90%] h-full flex gap-4">
-        <Card className="w-full h-full flex flex-col">
+      <div className="w-[90%] flex gap-4">
+        <Card className="w-full h-fit flex flex-col">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className="w-full h-full flex">
+          <CardContent className="w-full min-h-[550px] h-[550px] flex">
             <Overview />
           </CardContent>
         </Card>
-        <Card className="w-[35%]">
+        <Card className="w-[35%] min-h-[550px]">
           <CardHeader>
             <CardTitle>Chat</CardTitle>
             <CardDescription>People who are working</CardDescription>
