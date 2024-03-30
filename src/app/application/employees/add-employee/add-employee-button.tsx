@@ -19,7 +19,7 @@ export function Addemployeebutton() {
       <DialogTrigger asChild>
         <Button variant="outline">+ Add Employee</Button>
       </DialogTrigger>
-      <DialogContent className="w-[1000px] max-w-none">
+      <DialogContent className="w-[500px] max-w-none">
         <DialogHeader>
           <DialogTitle>Creating account</DialogTitle>
           <DialogDescription>

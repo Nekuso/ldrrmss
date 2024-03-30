@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
 import DobInput from "./dob-input";
 import RoleInput from "./roles-input";
 import GenderInput from "./gender-input";
-import BranchInput from "./branch-input";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,7 +24,7 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@/hooks/useAuth";
+import { useEmployees } from "@/hooks/useEmployees";
 
 export const employeeSchema = z.object({
   first_name: z.string().min(1, { message: "First name is required" }),
@@ -49,7 +47,7 @@ export const employeeSchema = z.object({
 
 export default function EmployeeForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { signUpWithEmailAndPassword } = useAuth();
+  const { createEmployee } = useEmployees();
 
   const form = useForm<z.infer<typeof employeeSchema>>({
     resolver: zodResolver(employeeSchema),
@@ -57,18 +55,18 @@ export default function EmployeeForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: z.infer<typeof employeeSchema>) {
     startTransition(async () => {
-        const result = await signUpWithEmailAndPassword(data);
+      const result = await createEmployee(data);
 
-        const { error } = JSON.parse(result);
-        if (error?.message) {
-          toast({
-            variant: "destructive",
-            title: "Error",
-            description: error.message,
-          });
-          console.log(error);
-          return;
-        }
+      const { error } = JSON.parse(result);
+      if (error?.message) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: error.message,
+        });
+        console.log(error);
+        return;
+      }
 
       toast({
         description: (
@@ -86,11 +84,11 @@ export default function EmployeeForm({ setDialogOpen }: any) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-5 h-fit"
       >
-        <div className="w-full flex min-h-[300px] gap-6">
+        <div className="w-full flex flex-col gap-2">
           <div className="w-full h-full flex flex-col gap-2">
-            <FormField
+            {/* <FormField
               control={form.control}
               name="image_url"
               render={({ field }) => (
@@ -101,7 +99,7 @@ export default function EmployeeForm({ setDialogOpen }: any) {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col">
                 <FormField
@@ -189,7 +187,7 @@ export default function EmployeeForm({ setDialogOpen }: any) {
               </div>
             </div>
           </div>
-          <Separator orientation="vertical" className="bg-white/10" />
+          {/* <Separator orientation="vertical" className="bg-white/10" /> */}
           <div className="w-full h-full flex flex-col gap-2">
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col gap-2">

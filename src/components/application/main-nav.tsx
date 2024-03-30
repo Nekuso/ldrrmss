@@ -6,47 +6,47 @@ export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
+  const Links = [
+    {
+      name: "Dashboard",
+      href: "/application",
+    },
+    {
+      name: "Requests",
+      href: "/application/requests",
+    },
+    {
+      name: "Stocks",
+      href: "/application/stocks",
+    },
+    {
+      name: "Employees",
+      href: "/application/employees",
+    },
+    {
+      name: "Announcement",
+      href: "/application/announcement",
+    },
+    {
+      name: "Settings",
+      href: "/application/settings",
+    },
+  ];
+
   return (
     <nav
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      <Link
-        href="/application"
-        className="text-sm font-medium transition-colors hover:text-primary"
-      >
-        Dashboard
-      </Link>
-      <Link
-        href="/application/requests"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Requests
-      </Link>
-      <Link
-        href="/application/stocks"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Stocks
-      </Link>
-      <Link
-        href="/application/announcement"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Announcement
-      </Link>
-      <Link
-        href="/application/employees"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Employee Lists
-      </Link>
-      <Link
-        href="/application/settings"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Settings
-      </Link>
+      {Links.map((link) => (
+        <Link
+          key={link.name}
+          href={link.href}
+          className="text-sm font-medium transition-colors hover:text-primary"
+        >
+          {link.name}
+        </Link>
+      ))}
     </nav>
   );
 }
