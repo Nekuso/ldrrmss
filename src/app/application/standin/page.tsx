@@ -134,7 +134,7 @@ export default function Page() {
                     </span>
                   </span>
                 </div>
-                <div className="w-full h-full flex justify-center py-20">
+                <div className="w-full h-full flex flex-col items-center justify-center mt-20">
                   <h2 className="flex text-2xl font-bold place-items-center gap-3 text-center">
                     Terrence Dante
                     <div className="text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer text-red-500 bg-red-500 bg-opacity-20 border-red-500">
@@ -142,6 +142,9 @@ export default function Page() {
                       Unavailable
                     </div>
                   </h2>
+                  <div className="flex text-2xl font-bold place-items-center gap-2 text-center py-4">
+                    <Button>Activity Logs</Button> <Button>Message</Button>
+                  </div>
                 </div>
               </div>
               <div className="w-full h-full flex flex-col gap-2 justify-around bg-white place-items-center bg-darkComponentBg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
