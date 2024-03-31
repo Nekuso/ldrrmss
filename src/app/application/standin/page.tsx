@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 export default function Page() {
   return (
@@ -5,8 +6,9 @@ export default function Page() {
       <div className="space-y-2 w-[90%] h-fit bg-white p-4 rounded-2xl">
         <div className="w-full h-full flex max-w-[1840px] max-h-[900px] justify-center place-items-center gap-7">
           <div className="w-full h-full flex gap-7 rounded-xl">
-            <div className="w-full h-full flex flex-col gap-2 justify-around place-items-center bg-darkComponentBg rounded-xl shadow-lg border border-lightBorder overflow-hidden p-6">
+            <div className="w-full h-full flex flex-col gap-2 justify-around bg-darkComponentBg rounded-xl shadow-lg border border-lightBorder overflow-hidden p-6">
               <h1>General Information</h1>
+
               <div className="w-full flex flex-row gap-7">
                 <div className="w-full flex flex-col gap-2">
                   <span className="text-xs 2xl:text-md font-semibold text-gray-400 flex justify-center place-items-center w-fit gap-1">
@@ -109,6 +111,10 @@ export default function Page() {
                     </p>
                   </div>
                 </div>
+              </div>
+              <div className="justify-center text-center w-full space-x-1">
+                <Button>Update</Button>
+                <Button>Delete</Button>
               </div>
             </div>
             <div className="w-[35%] 2xl:w-[30%] h-full flex flex-col gap-7">
