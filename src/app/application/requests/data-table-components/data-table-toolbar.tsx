@@ -1,6 +1,6 @@
 "use client";
 
-import { Cross2Icon } from "@radix-ui/react-icons";
+import { Cross2Icon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { DataTableViewOptions } from "./data-table-view-options";
 import { calamityStatuses, calamityTypes } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { GoPlusCircle } from "react-icons/go";
+import { PopsDemo } from "../createrequest/pops";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -45,6 +46,8 @@ export function DataTableToolbar<TData>({
             options={calamityTypes}
           />
         )}
+
+        <PopsDemo />
 
         {isFiltered && (
           <Button

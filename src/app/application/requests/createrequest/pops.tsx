@@ -10,50 +10,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { PlusCircledIcon } from "@radix-ui/react-icons";
 
-export function DialogDemo1() {
+export function PopsDemo() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          className="bg-gray-900 border border-gray-400 text-white"
-          variant="outline"
-        >
-          User Provided Information
+        <Button className="h-8 border-dashed" variant="outline" size="sm">
+          <PlusCircledIcon className="mr-2 h-4 w-4" />
+          Create Request
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>User provided information</DialogTitle>
+          <DialogTitle>Creating request</DialogTitle>
           <DialogDescription>
-            <div className="text-sm text-[12px] font-bold ml-2 m-1">
-              <i>
-                Affected individuals:
-                <input
-                  placeholder="10"
-                  type="text"
-                  defaultValue={""}
-                  className="ml-1 w-16 border border-gray-300 rounded-md p-1"
-                />
-              </i>
-            </div>
-            <div className="mb-4 text-sm text-[12px] font-bold ml-2 m-2">
-              <i>
-                Time of incident:
-                <input
-                  placeholder="10:00 AM"
-                  type="text"
-                  defaultValue={""}
-                  className="ml-1 w-24 border border-gray-300 rounded-md p-1"
-                />
-              </i>
-            </div>
-
-            <div className="text-sm text-[12px] font-bold ml-2 mb-2">
-              <i>User Statement:</i>
-            </div>
-
-            <TextareaDemo1 />
+            Add request details. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
 
