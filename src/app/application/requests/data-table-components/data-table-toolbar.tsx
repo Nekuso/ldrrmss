@@ -46,9 +46,6 @@ export function DataTableToolbar<TData>({
             options={calamityTypes}
           />
         )}
-
-        <PopsDemo />
-
         {isFiltered && (
           <Button
             variant="ghost"
@@ -60,6 +57,7 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
+      <PopsDemo />
       <DataTableViewOptions table={table} />
     </div>
   );
