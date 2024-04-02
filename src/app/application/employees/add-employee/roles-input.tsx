@@ -27,7 +27,7 @@ export default function SelectDemo({ data }: { data: any }) {
       <SelectContent className="rounded-lg">
         <SelectGroup>
           {rolesData.map((role) => (
-            <SelectItem key={role.id} value={role.role}>
+            <SelectItem key={role.id} value={role.id.toString()}>
               {role.role}
             </SelectItem>
           ))}

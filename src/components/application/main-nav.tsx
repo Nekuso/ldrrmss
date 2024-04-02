@@ -16,12 +16,24 @@ export function MainNav({
       href: "/application/requests",
     },
     {
-      name: "Stocks",
-      href: "/application/stocks",
+      name: "Equipments",
+      href: "/application/equipments",
+    },
+    {
+      name: "Food Supply",
+      href: "/application/food_supply",
+    },
+    {
+      name: "Vehicles",
+      href: "/application/vehicles",
     },
     {
       name: "Employees",
       href: "/application/employees",
+    },
+    {
+      name: "Workers",
+      href: "/application/workers",
     },
     {
       name: "Announcement",
@@ -38,6 +50,7 @@ export function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
+      <h1 className="font-black text-lg text-red-600">LDRRMS</h1>
       {Links.map((link) => (
         <Link
           key={link.name}

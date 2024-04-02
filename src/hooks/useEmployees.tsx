@@ -1,25 +1,11 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { QueryData, createClient } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
+import { useState } from "react";
 
-export const useEmployees = () => {
-  const realTimeEmployees = () => {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
-    );
-
-    supabase
-      .channel("employees-db-changes")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "employees" },
-        (payload) => {
-          console.log("Change received!", payload);
-        }
-      )
-      .subscribe();
-  };
+export const useEmployees: any = () => {
+  const [allEmployeesData, setAllEmployeesData] = useState<any[]>([]);
+  const [currentEmployeeData, setCurrentEmployeeData] = useState<any>([]);
 
   const createEmployee = async (props: any) => {
     const supabase = createClient(
@@ -54,7 +40,10 @@ export const useEmployees = () => {
     return JSON.stringify(result);
   };
   const getEmployees = async () => {
-    const supabase = await createSupabaseServerClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
+    );
     const result = await supabase.from("employees").select(`
       id,
       email,
@@ -71,13 +60,18 @@ export const useEmployees = () => {
     type EmployeesWithJoin = QueryData<typeof result>;
 
     const { data, error } = result;
-    if (error) throw error;
+    if (error) {
+      return error;
+    }
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    return data as EmployeesWithJoin;
+    return setAllEmployeesData(data as EmployeesWithJoin);
   };
   const getEmployee = async (id: string, duration?: number) => {
-    const supabase = await createSupabaseServerClient();
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
+    );
     const { data, error } = await supabase
       .from("employees")
       .select(
@@ -101,7 +95,7 @@ export const useEmployees = () => {
     if (error) return redirect("/application/management");
 
     await new Promise((resolve) => setTimeout(resolve, duration));
-    return data;
+    return setCurrentEmployeeData(data);
   };
   const updateEmployee = async (props: any, duration?: number) => {
     const supabase = createClient(
@@ -168,12 +162,16 @@ export const useEmployees = () => {
   };
 
   return {
+    // data
+    allEmployeesData,
+    currentEmployeeData,
+
+    // methods
     createEmployee,
     getEmployee,
     getEmployees,
     updateEmployee,
     deleteEmployee,
     updateEmployeeStatus,
-    realTimeEmployees,
   };
 };
