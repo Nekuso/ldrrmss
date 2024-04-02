@@ -9,6 +9,7 @@ import { Search } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Navbar from "@/components/layouts/nav-bar/navbar";
+import Providers from "@/redux/Provider";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -33,13 +34,21 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={cn("font-sora", sora.variable)}>
-        <div className="flex flex-col place-items-center justify-start w-full min-h-screen bg-slate-200 relative">
-          <Navbar />
-          <div className="w-full flex justify-center py-4">{children}</div>
-        </div>
-        <Toaster />
-      </body>
+      <Providers>
+        <body className={cn("font-sora", sora.variable)}>
+          <div className="w-full min-h-screen hidden bg-red-900 max-lg:flex justify-center place-items-center">
+            <h1 className="text-2xl text-white">
+              Abrihi sa computer palihog gaw
+            </h1>
+          </div>
+
+          <div className="flex flex-col place-items-center justify-start w-full min-h-screen bg-slate-200 relative max-lg:hidden">
+            <Navbar />
+            <div className="w-full flex justify-center py-4">{children}</div>
+          </div>
+          <Toaster />
+        </body>
+      </Providers>
     </html>
   );
 }

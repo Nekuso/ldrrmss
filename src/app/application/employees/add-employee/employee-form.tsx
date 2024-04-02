@@ -42,7 +42,11 @@ export const employeeSchema = z.object({
   dob: z
     .date()
     .min(new Date(1900, 1, 1), { message: "Date of birth is required" }),
-  role: z.string().min(1, { message: "Role is required" }),
+  role: z
+    .string()
+    .min(1, { message: "Role is required" })
+    .transform((arg) => new Number(arg)),
+  status: z.string().default("Available"),
 });
 
 export default function EmployeeForm({ setDialogOpen }: any) {
@@ -65,6 +69,7 @@ export default function EmployeeForm({ setDialogOpen }: any) {
           description: error.message,
         });
         console.log(error);
+        console.log(data);
         return;
       }
 
