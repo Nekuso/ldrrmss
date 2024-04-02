@@ -23,7 +23,9 @@ export default function SelectDemo({ data }: { data: any }) {
           <SelectItem value="male">Male</SelectItem>
           <SelectItem value="female">Female</SelectItem>
           <SelectItem value="gay">Gay</SelectItem>
-          <SelectItem value="femboy">FemBoy</SelectItem>
+          <SelectItem value="tomboy">Tomboy</SelectItem>
+          <SelectItem value="trans">Trans</SelectItem>
+          <SelectItem value="Good">I hate non-straight</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
