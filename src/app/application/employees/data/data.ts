@@ -74,7 +74,7 @@ export const roles = [
     label: "Supervisor",
   },
   {
-    value: "Admin",
-    label: "Admin",
+    value: "Administrator",
+    label: "Administrator",
   },
 ];
