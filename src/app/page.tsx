@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
-import Navbar from "../app/landpage/components/Navbar";
+// import Navbar from "../app/landpage/components/Navbar";
 import Pic1 from "@/images/pic1.jpeg";
 import Posing from "@/images/posing.jpeg";
 import Practice from "@/images/practice.jpeg";
@@ -8,7 +8,7 @@ import Practice from "@/images/practice.jpeg";
 export default function LandingPage() {
   return (
     <div className="w-full h-screen">
-      <Navbar />
+      {/* <Navbar /> */}
       <section className="text-gray-400 bg-gray-900 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">

@@ -15,7 +15,7 @@ import { useState } from "react";
 export function Addemployeebutton() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">+ Add Employee</Button>
       </DialogTrigger>

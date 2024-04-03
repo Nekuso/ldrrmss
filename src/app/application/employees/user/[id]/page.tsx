@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,6 @@ export default function Page({ params }: any) {
     getEmployee(params.id, 2000);
     getRoles();
   }, []);
-  console.log(currentEmployeeData);
 
   return (
     //   <pre className="w-[400px]">
