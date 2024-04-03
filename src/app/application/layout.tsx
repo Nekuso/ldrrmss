@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { MainNav } from "@/components/application/main-nav";
 import { UserNav } from "@/components/application/user-nav";
 import { cn } from "@/lib/utils";
@@ -46,6 +47,7 @@ export default async function RootLayout({
             <Navbar />
             <div className="w-full flex justify-center py-4">{children}</div>
           </div>
+          <Sonner />
           <Toaster />
         </body>
       </Providers>

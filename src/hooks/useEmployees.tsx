@@ -124,6 +124,7 @@ export const useEmployees: any = () => {
         password: props.password,
       },
     });
+    console.log(result);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
 

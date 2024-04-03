@@ -73,4 +73,8 @@ export const roles = [
     value: "Supervisor",
     label: "Supervisor",
   },
+  {
+    value: "Admin",
+    label: "Admin",
+  },
 ];

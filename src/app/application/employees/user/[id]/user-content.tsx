@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Banner from "@/images/posing.jpeg";
+import { cn } from "@/lib/utils";
+import UpdateEmployeeButton from "../../update-employee/update-employee-dialog";
 
-export default function Page({ params, employee, role, roles }: any) {
+export default function Page({ params, employee, roles }: any) {
   return (
     <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
       <div className="space-y-2 w-[90%] h-fit rounded-2xl">
@@ -116,18 +120,18 @@ export default function Page({ params, employee, role, roles }: any) {
                 </div>
               </div>
               <div className="justify-center text-center w-full space-x-1 space-y-4">
-                <Button>Update</Button>
                 <Button>Delete</Button>
+                <UpdateEmployeeButton employee={employee} roles={roles} />
               </div>
             </div>
             <div className="w-[50%] 2xl:w-[50%] h-fit flex flex-col gap-2">
               <div className="w-full h-fit flex flex-col gap-2 justify-around bg-white place-items-center bg-darkComponentBg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
                 <div className="w-full h-[170px] 2xl:h-[210px] bg-black rounded-xl relative">
-                  <img
+                  <Image
                     alt="picture"
                     className="w-full h-full object-cover opacity-75"
-                    src="https://storage.ko-fi.com/cdn/useruploads/display/6bc95a9e-2521-4933-b482-e5574f92c833_8-final.jpg"
-                  ></img>
+                    src={Banner}
+                  ></Image>
                   <span className="flex overflow-hidden rounded-full w-40 h-40 cursor-pointer z-0 absolute -bottom-[35%] left-40 border-8 border-neutral-900 bg-slate-500 ">
                     <span className="flex h-full w-full items-center justify-center rounded-full font-bold text-2xl text-white">
                       TD
@@ -137,9 +141,27 @@ export default function Page({ params, employee, role, roles }: any) {
                 <div className="w-full h-full flex flex-col items-center justify-center mt-20">
                   <h2 className="flex text-2xl font-bold place-items-center gap-3 text-center">
                     Terrence Dante
-                    <div className="text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer text-red-500 bg-red-500 bg-opacity-20 border-red-500">
-                      <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                      Unavailable
+                    <div
+                      className={cn(
+                        "text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
+                        employee.status === "Available"
+                          ? "text-green-500 bg-green-500 bg-opacity-20 border-green-500"
+                          : employee.status === "In Progress"
+                          ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
+                          : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          "w-2 h-2 rounded-full",
+                          employee.status === "Available"
+                            ? " bg-green-500 "
+                            : employee.status === "In Progress"
+                            ? "bg-yellow-300 "
+                            : "bg-red-500"
+                        )}
+                      ></div>
+                      {employee.status}
                     </div>
                   </h2>
                   <div className="flex text-2xl font-bold place-items-center gap-2 text-center py-4">
