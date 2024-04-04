@@ -16,18 +16,6 @@ export function MainNav({
       href: "/application/requests",
     },
     {
-      name: "Equipments",
-      href: "/application/equipments",
-    },
-    {
-      name: "Food Supply",
-      href: "/application/food_supply",
-    },
-    {
-      name: "Vehicles",
-      href: "/application/vehicles",
-    },
-    {
       name: "Employees",
       href: "/application/employees",
     },
