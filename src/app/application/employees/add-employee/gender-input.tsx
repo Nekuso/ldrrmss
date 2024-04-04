@@ -8,6 +8,14 @@ import {
 } from "@/components/ui/select";
 
 export default function SelectDemo({ data }: { data: any }) {
+  const gendersData = [
+    { id: 1, gender: "Male" },
+    { id: 2, gender: "Female" },
+    { id: 3, gender: "Gay" },
+    { id: 4, gender: "Tomboy" },
+    { id: 4, gender: "Transgender" },
+  ];
+
   return (
     <Select>
       <SelectTrigger
@@ -24,8 +32,7 @@ export default function SelectDemo({ data }: { data: any }) {
           <SelectItem value="female">Female</SelectItem>
           <SelectItem value="gay">Gay</SelectItem>
           <SelectItem value="tomboy">Tomboy</SelectItem>
-          <SelectItem value="trans">Trans</SelectItem>
-          <SelectItem value="Good">I hate non-straight</SelectItem>
+          <SelectItem value="trans">Transgender</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

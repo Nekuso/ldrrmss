@@ -38,7 +38,7 @@ export const employeeSchema = z.object({
   contact_number: z.coerce
     .number()
     .min(1, { message: "Contact number is required" }),
-  gender: z.string().default("Male"),
+  gender: z.string().min(1, { message: "Gender is required" }),
   dob: z
     .date()
     .min(new Date(1900, 1, 1), { message: "Date of birth is required" }),

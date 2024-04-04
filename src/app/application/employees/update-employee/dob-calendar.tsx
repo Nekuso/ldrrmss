@@ -79,10 +79,7 @@ function Calendar({
               <SelectTrigger className="pr-1.5 h-7 border-white/30 hover:bg-white/30 text-xs">
                 <SelectValue>{selected?.props?.children}</SelectValue>
               </SelectTrigger>
-              <SelectContent
-                position="popper"
-                className="border-none "
-              >
+              <SelectContent position="popper" className="border-none ">
                 <ScrollArea className="h-80 border-none">
                   {options.map((option, id: number) => (
                     <SelectItem

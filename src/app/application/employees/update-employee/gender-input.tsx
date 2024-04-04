@@ -23,10 +23,12 @@ export default function SelectDemo({ data }: { data: any }) {
       </SelectTrigger>
       <SelectContent className="rounded-lg border-slate-600/50 text-black">
         <SelectGroup>
-          <SelectItem value="Male">Male</SelectItem>
-          <SelectItem value="Female">Female</SelectItem>
-          <SelectItem value="Gay">Gay</SelectItem>
-          <SelectItem value="Femboy">FemBoy</SelectItem>
+          <SelectItem value="male">Male</SelectItem>
+          <SelectItem value="female">Female</SelectItem>
+          <SelectItem value="gay">Gay</SelectItem>
+          <SelectItem value="tomboy">Tomboy</SelectItem>
+          <SelectItem value="trans">Trans</SelectItem>
+          <SelectItem value="Good">I hate non-straight</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
