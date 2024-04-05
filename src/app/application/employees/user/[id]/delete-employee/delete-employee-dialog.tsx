@@ -12,21 +12,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { RiDeleteBinLine } from "react-icons/ri";
-
-import { useDispatch } from "react-redux";
-import { setEmployeeData } from "@/redux/slices/employeeSlice";
 import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
 import { useEmployees } from "@/hooks/useEmployees";
 
-export default function DeleteEmployeeDialog({ employeeData }: any) {
+export default function DeleteEmployeeDialog({ employee }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const employee = employeeData;
-  const dispatch = useDispatch();
-  dispatch(setEmployeeData(employee));
   const { deleteEmployee } = useEmployees();
 
   async function onSubmit(dataProps?: any) {
@@ -39,7 +33,6 @@ export default function DeleteEmployeeDialog({ employeeData }: any) {
           title: "Error",
           description: error.message,
         });
-        console.log(error);
         return;
       }
 
@@ -54,7 +47,7 @@ export default function DeleteEmployeeDialog({ employeeData }: any) {
         ),
       });
       setDialogIsOpen(false);
-      redirect("/application/management");
+      redirect("/application/employees");
     });
   }
 
@@ -69,7 +62,7 @@ export default function DeleteEmployeeDialog({ employeeData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] shadow-2xl">
         <DialogHeader>
           <DialogTitle>Delete User</DialogTitle>
           <DialogDescription>
@@ -78,7 +71,6 @@ export default function DeleteEmployeeDialog({ employeeData }: any) {
           </DialogDescription>
         </DialogHeader>
 
-        
         <DialogFooter className="flex gap-4 justify-center place-items-center">
           <span
             className="text-xs font-bold text-muted-foreground cursor-pointer hover:underline transition-all duration-300"

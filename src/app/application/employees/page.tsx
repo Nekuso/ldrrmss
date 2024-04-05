@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import EmployeesContent from "./employees-content";
 import Loading from "./skeleton";
 import { toast } from "@/components/ui/use-toast";
-import {toast as sonner} from "sonner"
+import { toast as sonner } from "sonner";
 import { useEffect } from "react";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
 
@@ -51,11 +51,11 @@ export default function Page() {
 
   return (
     <>
-      {allEmployeesData.length === 0 ? (
+      {/* {allEmployeesData.length === 0 ? (
         <Loading />
       ) : (
-        <EmployeesContent dataEmployees={allEmployeesData} roles={allRolesData} />
-      )}
+      )} */}
+      <EmployeesContent dataEmployees={allEmployeesData} roles={allRolesData} />
     </>
   );
 }
