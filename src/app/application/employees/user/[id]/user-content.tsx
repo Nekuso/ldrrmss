@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Banner from "@/images/posing.jpeg";
 import { cn } from "@/lib/utils";
-import UpdateEmployeeButton from "../../update-employee/update-employee-dialog";
+import UpdateEmployeeButton from "./update-employee/update-employee-dialog";
+import DeleteEmployeeButton from "./delete-employee/delete-employee-dialog";
 
-export default function Page({ params, employee, roles }: any) {
+export default function Page({ employee, roles }: any) {
   return (
     <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
       <div className="space-y-2 w-[90%] h-fit rounded-2xl">
@@ -120,7 +121,7 @@ export default function Page({ params, employee, roles }: any) {
                 </div>
               </div>
               <div className="justify-center text-center w-full space-x-1 space-y-4">
-                <Button>Delete</Button>
+                <DeleteEmployeeButton employee={employee} />
                 <UpdateEmployeeButton employee={employee} roles={roles} />
               </div>
             </div>

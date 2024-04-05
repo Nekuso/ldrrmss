@@ -74,7 +74,6 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
   async function onSubmit(data: z.infer<typeof employeeSchema>) {
     startTransition(async () => {
       const result = await updateEmployee(data, 4000);
-
       const { error } = JSON.parse(result);
       if (error?.message) {
         toast({

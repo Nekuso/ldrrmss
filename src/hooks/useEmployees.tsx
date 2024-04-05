@@ -92,7 +92,7 @@ export const useEmployees: any = () => {
     `
       )
       .eq("id", id);
-    if (error) return redirect("/application/management");
+    if (error) return redirect("/application/employees");
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     return setCurrentEmployeeData(data);
@@ -124,7 +124,6 @@ export const useEmployees: any = () => {
         password: props.password,
       },
     });
-    console.log(result);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
 
@@ -156,9 +155,9 @@ export const useEmployees: any = () => {
       process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
     );
     const result = await supabase.auth.admin.deleteUser(props.id);
-
     await new Promise((resolve) => setTimeout(resolve, duration));
 
+    redirect("/application/employees");
     return JSON.stringify(result);
   };
 

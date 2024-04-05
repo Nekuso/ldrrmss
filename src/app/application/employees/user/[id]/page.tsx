@@ -7,6 +7,7 @@ import { useRoles } from "@/hooks/useRoles";
 import React, { useEffect } from "react";
 import Loading from "./skeleton";
 import UserContent from "./user-content";
+import createSupabaseBrowserClient from "@/lib/supabase/client";
 export default function Page({ params }: any) {
   const { getEmployee, currentEmployeeData } = useEmployees();
   const { getRoles, allRolesData } = useRoles();
@@ -14,6 +15,24 @@ export default function Page({ params }: any) {
   useEffect(() => {
     getEmployee(params.id, 2000);
     getRoles();
+  }, []);
+
+  useEffect(() => {
+    const supabase = createSupabaseBrowserClient();
+    const subscribedChannel = supabase
+      .channel("employee-follow-up")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "employees" },
+        (payload: any) => {
+          getEmployee(params.id, 0);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscribedChannel);
+    };
   }, []);
 
   return (
