@@ -9,14 +9,17 @@ import {
 
 export default function SelectDemo({ data }: { data: any }) {
   return (
-    <Select>
+    <Select onValueChange={data.onChange}>
       <SelectTrigger
         id="gender"
         name="gender"
         className="w-full  border-slate-600/50 rounded-lg "
         {...data}
       >
-        <SelectValue className="" placeholder="Select a Gender" />
+        <SelectValue
+          className="text-white"
+          placeholder={data ? data.value : "Select a Gender"}
+        />
       </SelectTrigger>
       <SelectContent className="rounded-lg ">
         <SelectGroup>
@@ -24,7 +27,10 @@ export default function SelectDemo({ data }: { data: any }) {
           <SelectItem value="Female">Female</SelectItem>
           <SelectItem value="Gay">Gay</SelectItem>
           <SelectItem value="Tomboy">Tomboy</SelectItem>
-          <SelectItem value="Trans">Transgender</SelectItem>
+          <SelectItem value="Transgender">Transgender</SelectItem>
+          <SelectItem value="I hate non-straight">
+            I hate non-straight
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
