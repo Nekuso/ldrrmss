@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { NavigationMenuDemo } from "../layouts/nav-bar/Navigation-menu";
 
 export function MainNav({
   className,
@@ -10,26 +11,6 @@ export function MainNav({
     {
       name: "Dashboard",
       href: "/application",
-    },
-    {
-      name: "Requests",
-      href: "/application/requests",
-    },
-    {
-      name: "Employees",
-      href: "/application/employees",
-    },
-    {
-      name: "Workers",
-      href: "/application/workers",
-    },
-    {
-      name: "Announcement",
-      href: "/application/announcement",
-    },
-    {
-      name: "Settings",
-      href: "/application/settings",
     },
   ];
 
@@ -48,6 +29,7 @@ export function MainNav({
           {link.name}
         </Link>
       ))}
+      <NavigationMenuDemo />
     </nav>
   );
 }

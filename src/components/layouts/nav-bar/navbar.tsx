@@ -9,7 +9,6 @@ export default function Navbar() {
     <div className="flex w-full h-fit justify-center place-items-center border-b items-center px-4 py-4 bg-white sticky top-0 z-[20]">
       <div className="w-[90%] flex justify-between place-items-center">
         <MainNav className="mx-6" />
-        <NavigationMenuDemo />
         <div className="flex items-center gap-4">
           <Search />
           <UserNav />

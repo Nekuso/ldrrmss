@@ -186,7 +186,7 @@ export default function Page() {
                     <ul className="flex flex-col pl-0 mb-0 rounded-lg">
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
                         <strong className="text-slate-700">Full Name:</strong>{" "}
-                        &nbsp; Alec M. Thompson
+                        &nbsp; YAWA
                       </li>
                       <li className="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit">
                         <strong className="text-slate-700">Mobile:</strong>{" "}
