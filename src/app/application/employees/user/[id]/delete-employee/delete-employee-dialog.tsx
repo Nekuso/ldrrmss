@@ -56,7 +56,7 @@ export default function DeleteEmployeeDialog({ employee }: any) {
       <DialogTrigger asChild>
         <Button
           variant="destructive"
-          className="text-xs font-bold rounded-full flex gap-2"
+          className="text-xs font-bold rounded-md flex gap-2"
         >
           <RiDeleteBinLine />
           Delete
@@ -81,7 +81,7 @@ export default function DeleteEmployeeDialog({ employee }: any) {
 
           <Button
             variant="destructive"
-            className="text-xs font-bold min-w-[100px] rounded-full flex gap-2 transition-all duration-300"
+            className="text-xs font-bold min-w-[100px] rounded-md flex gap-2 transition-all duration-300"
             onClick={() => onSubmit(employee)}
           >
             <span

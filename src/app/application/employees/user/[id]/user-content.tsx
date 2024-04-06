@@ -197,17 +197,41 @@ export default function Page({ employee, roles }: any) {
             </div>
             <div className="flex-none w-auto max-w-full px-3 my-auto">
               <div className="h-full">
-                <h5 className="mb-1">
-                  {/* {employee.first_name} {employee.last_name} */}
-                </h5>
+                <h4 className="flex text-lg font-bold place-items-center gap-3 text-center">
+                  {employee.first_name} {employee.last_name}
+                  <div
+                    className={cn(
+                      "text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
+                      employee.status === "Available"
+                        ? "text-green-500 bg-green-500 bg-opacity-20 border-green-500"
+                        : employee.status === "In Progress"
+                        ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
+                        : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "w-2 h-2 rounded-full",
+                        employee.status === "Available"
+                          ? " bg-green-500 "
+                          : employee.status === "In Progress"
+                          ? "bg-yellow-300 "
+                          : "bg-red-500"
+                      )}
+                    ></div>
+                    {employee.status}
+                  </div>
+                </h4>
                 <p className="mb-0 font-semibold leading-normal text-sm">
-                  Shadow / Jacker
+                  {employee.roles.role}
                 </p>
               </div>
-              {/* <DeleteEmployeeButton employee={employee} /> */}
-              {/* <UpdateEmployeeButton employee={employee} roles={roles} /> */}
             </div>
-            <div className="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12"></div>
+            <div className="w-full flex flex-row gap-3 px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none">
+              <DeleteEmployeeButton employee={employee} />
+              <UpdateEmployeeButton employee={employee} roles={roles} />
+              <Button>Activity Logs</Button> <Button>Message</Button>
+            </div>
           </div>
         </div>
         <div className="w-full pb-6 mx-auto removable mt-4">
