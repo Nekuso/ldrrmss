@@ -141,7 +141,7 @@ export default function Page({ employee, roles }: any) {
                 </div>
                 <div className="w-full h-full flex flex-col items-center justify-center mt-20">
                   <h2 className="flex text-2xl font-bold place-items-center gap-3 text-center">
-                    Terrence Dante
+                    {employee.first_name} {employee.last_name}
                     <div
                       className={cn(
                         "text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",

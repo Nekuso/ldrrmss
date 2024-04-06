@@ -1,3 +1,10 @@
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Banner from "@/images/posing.jpeg";
+import { cn } from "@/lib/utils";
+import UpdateEmployeeButton from "../../employees/user/[id]/update-employee/update-employee-dialog";
+import DeleteEmployeeButton from "../../employees/user/[id]/delete-employee/delete-employee-dialog";
+
 export default function Page() {
   return (
     <div className="flex flex-col justify-start place-items-center w-full h-full gap-7">
@@ -19,11 +26,15 @@ export default function Page() {
               </div>
               <div className="flex-none w-auto max-w-full px-3 my-auto">
                 <div className="h-full">
-                  <h5 className="mb-1">Bunda Rhama</h5>
+                  <h5 className="mb-1">
+                    {/* {employee.first_name} {employee.last_name} */}
+                  </h5>
                   <p className="mb-0 font-semibold leading-normal text-sm">
                     Shadow / Jacker
                   </p>
                 </div>
+                {/* <DeleteEmployeeButton employee={employee} /> */}
+                {/* <UpdateEmployeeButton employee={employee} roles={roles} /> */}
               </div>
               <div className="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12"></div>
             </div>
