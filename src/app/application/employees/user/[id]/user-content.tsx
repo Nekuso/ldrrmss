@@ -183,6 +183,151 @@ export default function Page({ employee, roles }: any) {
             </div>
           </div>
         </div>
+
+        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white bg-clip-border draggable">
+          <div className="flex flex-wrap -mx-3">
+            <div className="flex-none w-auto max-w-full px-3">
+              <div className="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+                <img
+                  src="https://static1.personality-database.com/profile_images/a245f04f64d34da29e920e0547a7d4e7.png"
+                  alt="profile_image"
+                  className="max-w-full shadow-soft-sm rounded-3xl max-h-20"
+                />
+              </div>
+            </div>
+            <div className="flex-none w-auto max-w-full px-3 my-auto">
+              <div className="h-full">
+                <h5 className="mb-1">
+                  {/* {employee.first_name} {employee.last_name} */}
+                </h5>
+                <p className="mb-0 font-semibold leading-normal text-sm">
+                  Shadow / Jacker
+                </p>
+              </div>
+              {/* <DeleteEmployeeButton employee={employee} /> */}
+              {/* <UpdateEmployeeButton employee={employee} roles={roles} /> */}
+            </div>
+            <div className="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12"></div>
+          </div>
+        </div>
+        <div className="w-full pb-6 mx-auto removable mt-4">
+          <div className="flex flex-wrap -mx-3 drop-zone">
+            <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-4 draggable">
+              <div className="relative flex flex-col h-full min-w-0 break-words bg-white rounded-2xl">
+                <div className="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                  <div className="flex flex-wrap -mx-3">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
+                      <h6>Profile Information</h6>
+                    </div>
+                  </div>
+                  <div className="flex-auto p-4">
+                    <p className="leading-normal text-sm">Hi im bunda rhama</p>
+                    <hr className="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+
+                    <ul className="flex flex-col pl-0 mb-0 rounded-lg">
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Full Name:</strong>{" "}
+                        Bunda rhana
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">
+                          Phone Number:
+                        </strong>{" "}
+                        09659074552
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Email:</strong>{" "}
+                        Bunda_rhana@gmail.com
+                      </li>
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Address:</strong>{" "}
+                        Talay, Pangasinan
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-4 draggable">
+              <div className="relative flex flex-col h-full min-w-0 break-words bg-white rounded-2xl">
+                <div className="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                  <div className="flex flex-wrap -mx-3">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
+                      <h6>Profile Information</h6>
+                    </div>
+                  </div>
+                  <div className="flex-auto p-4">
+                    <p className="leading-normal text-sm">Hi im bunda rhama</p>
+                    <hr className="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+
+                    <ul className="flex flex-col pl-0 mb-0 rounded-lg">
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Full Name:</strong>{" "}
+                        Bunda rhana
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">
+                          Phone Number:
+                        </strong>{" "}
+                        09659074552
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Email:</strong>{" "}
+                        Bunda_rhana@gmail.com
+                      </li>
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Address:</strong>{" "}
+                        Talay, Pangasinan
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-4 draggable">
+              <div className="relative flex flex-col h-full min-w-0 break-words bg-white rounded-2xl">
+                <div className="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                  <div className="flex flex-wrap -mx-3">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
+                      <h6>Profile Information</h6>
+                    </div>
+                  </div>
+                  <div className="flex-auto p-4">
+                    <p className="leading-normal text-sm">Hi im bunda rhama</p>
+                    <hr className="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+
+                    <ul className="flex flex-col pl-0 mb-0 rounded-lg">
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Full Name:</strong>{" "}
+                        Bunda rhana
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">
+                          Phone Number:
+                        </strong>{" "}
+                        09659074552
+                      </li>
+
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Email:</strong>{" "}
+                        Bunda_rhana@gmail.com
+                      </li>
+                      <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
+                        <strong className="text-slate-700">Address:</strong>{" "}
+                        Talay, Pangasinan
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
