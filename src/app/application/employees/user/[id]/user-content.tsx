@@ -392,51 +392,19 @@ export default function Page({ employee, roles }: any) {
         <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-gradient-to-r from-blue-300 via-blue-400 to-blue-100 bg-clip-border draggable shadow-lg top-2">
           <div className="flex flex-wrap -mx-3">
             <div className="flex-none w-auto max-w-full px-3">
-              <div className="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                <span className="flex rounded-3xl w-20 h-20 cursor-pointer border-4 border-neutral-900 bg-slate-500 ">
-                  <span className="flex h-full w-full items-center justify-center font-bold text-2xl text-white">
-                    TD
-                  </span>
-                </span>
-              </div>
+              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
+                Container 1
+              </h4>
             </div>
-            <div className="flex-none w-auto max-w-full px-3 my-auto">
-              <div className="h-full">
-                <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
-                  Idk the purpose of this container yet
-                  <div
-                    className={cn(
-                      "text-xs rounded-2xl py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
-                      employee.status === "Available"
-                        ? "text-white-500 bg-slate-500 bg-opacity-70 border-gray-800"
-                        : employee.status === "In Progress"
-                        ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
-                        : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        "w-2 h-2 rounded-full",
-                        employee.status === "Available"
-                          ? " bg-green-500 "
-                          : employee.status === "In Progress"
-                          ? "bg-yellow-300 "
-                          : "bg-red-500"
-                      )}
-                    ></div>
-                    {employee.status}
-                  </div>
-                </h4>
-                <p className="mb-0 font-semibold leading-normal text-md text-white">
-                  {employee.roles.role}
-                </p>
-              </div>
+            <div className="flex-none w-auto max-w-full px-3">
+              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
+                Container 2
+              </h4>
             </div>
-            <div className="w-full flex flex-row gap-3 px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none justify-end">
-              <DeleteEmployeeButton employee={employee} />
-              <UpdateEmployeeButton employee={employee} roles={roles} />
-              <Button>Activity Logs</Button>
-              <Button>Message</Button>
+            <div className="flex-none w-auto max-w-full px-3">
+              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
+                Container 3 - Idk spare containers rani
+              </h4>
             </div>
           </div>
         </div>
