@@ -228,10 +228,11 @@ export default function Page({ employee, roles }: any) {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-row gap-3 px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none">
+            <div className="w-full flex flex-row gap-3 px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none justify-end">
               <DeleteEmployeeButton employee={employee} />
               <UpdateEmployeeButton employee={employee} roles={roles} />
-              <Button>Activity Logs</Button> <Button>Message</Button>
+              <Button>Activity Logs</Button>
+              <Button>Message</Button>
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ export default function UpdateEmployeeDialog({ employee, roles }: any) {
           Update
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[800px]  shadow-2xl">
+      <DialogContent className="sm:max-w-[800px] bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 shadow-2xl">
         <DialogHeader>
           <DialogTitle>Update User</DialogTitle>
           <DialogDescription>

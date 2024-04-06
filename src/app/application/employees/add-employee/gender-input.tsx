@@ -21,7 +21,7 @@ export default function SelectDemo({ data }: { data: any }) {
           placeholder={data ? data.value : "Select a Gender"}
         />
       </SelectTrigger>
-      <SelectContent className="rounded-lg ">
+      <SelectContent className="rounded-lg">
         <SelectGroup>
           <SelectItem value="Male">Male</SelectItem>
           <SelectItem value="Female">Female</SelectItem>
