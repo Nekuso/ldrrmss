@@ -50,7 +50,7 @@ export function DataTable<TData, TValue>({
     columns,
     initialState: {
       pagination: {
-        pageSize: 13,
+        pageSize: 10,
       },
     },
     state: {
@@ -73,7 +73,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-[90%] min-h-[859.5px] max-h-[859.5px] flex flex-col justify-between bg-white gap-2 p-5 rounded-2xl">
+    <div className="w-full min-h-[700.5px] max-h-[700.5px] flex flex-col justify-between bg-white gap-2 p-3 rounded-2xl">
       <div className="w-full h-full flex flex-col gap-2 ">
         <DataTableToolbar table={table} />
         <div className="rounded-md border h-full">
