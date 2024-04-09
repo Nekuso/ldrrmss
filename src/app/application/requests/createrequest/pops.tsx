@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { Createrequestform } from "./create-request-form";
+import { Createrequestform2 } from "./create-request-form2";
 
 export function PopsDemo() {
   return (
@@ -22,7 +23,7 @@ export function PopsDemo() {
             Create Request
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[860px]">
           <DialogHeader>
             <DialogTitle>Creating request</DialogTitle>
             <DialogDescription>
@@ -30,12 +31,18 @@ export function PopsDemo() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="grid gap-4 py-4">
-            <Createrequestform />
+          <div className="flex flex-row justify-between">
+            <div className="grid gap-4 py-4">
+              <Createrequestform />
+            </div>
+            <div className="w-px bg-zinc-500"></div>
+            <div className="grid gap-4 py-4">
+              <Createrequestform2 />
+            </div>
           </div>
 
           <DialogFooter>
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Next</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
