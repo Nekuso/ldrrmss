@@ -24,7 +24,7 @@ export function MainNav({
           key={link.name}
           href={link.href}
           passHref
-          className="text-sm font-medium relative hover:text-black hover:bg-white rounded-md px-4 py-2.5"
+          className="text-sm font-medium relative hover:text-black hover:bg-white bg-opacity-90 rounded-md px-4 py-2.5"
         >
           <span className="relative">{link.name}</span>
         </Link>
