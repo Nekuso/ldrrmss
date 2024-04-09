@@ -185,10 +185,10 @@ export default function Page({ employee, roles }: any) {
         </div> */}
         {/*Bunda rhama*/}
 
-        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-gradient-to-r from-blue-300 via-blue-400 to-blue-100 bg-clip-border draggable shadow-lg mb-4">
+        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white bg-opacity-85 bg-clip-border draggable shadow-lg mb-4">
           <div className="flex flex-wrap -mx-3">
             <div className="flex-none w-auto max-w-full px-3">
-              <div className="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+              <div className="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl transition-all duration-200">
                 <span className="flex rounded-3xl w-20 h-20 cursor-pointer border-4 border-neutral-900 bg-slate-500 ">
                   <span className="flex h-full w-full items-center justify-center font-bold text-2xl text-white">
                     TD
@@ -198,13 +198,13 @@ export default function Page({ employee, roles }: any) {
             </div>
             <div className="flex-none w-auto max-w-full px-3 my-auto">
               <div className="h-full">
-                <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
+                <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-black">
                   {employee.first_name} {employee.last_name}
                   <div
                     className={cn(
                       "text-xs rounded-2xl py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
                       employee.status === "Available"
-                        ? "text-white-500 bg-slate-500 bg-opacity-70 border-gray-800"
+                        ? "text-white-500 bg-green-500 bg-opacity-40 border-green-800"
                         : employee.status === "In Progress"
                         ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
                         : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
@@ -223,7 +223,7 @@ export default function Page({ employee, roles }: any) {
                     {employee.status}
                   </div>
                 </h4>
-                <p className="mb-0 font-semibold leading-normal text-md text-white">
+                <p className="mb-0 font-semibold leading-normal text-md text-zinc-500">
                   {employee.roles.role}
                 </p>
               </div>
@@ -240,9 +240,9 @@ export default function Page({ employee, roles }: any) {
           <div className="flex flex-wrap -mx-3 drop-zone">
             <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-0 draggable">
               <div className="relative flex flex-col h-full min-w-0 break-words rounded-2xl shadow-lg">
-                <div className="p-0 pb-0 mb-0 bg-gradient-to-r from-blue-300 to-blue-400 border-b-0 rounded-2xl">
+                <div className="p-0 pb-0 mb-0 bg-white bg-opacity-85 border-b-0 rounded-2xl">
                   <div className="flex flex-wrap -mx-3 px-4 py-2">
-                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-white">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-black">
                       <h6>Location</h6>
                     </div>
                   </div>
@@ -258,10 +258,10 @@ export default function Page({ employee, roles }: any) {
               </div>
             </div>
             <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-0 draggable">
-              <div className="relative flex flex-col h-full min-w-0 break-words bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400 rounded-2xl shadow-lg">
-                <div className="p-0 pb-0 mb-0 bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400 border-b-0 rounded-2xl">
+              <div className="relative flex flex-col h-full min-w-0 break-words bg-white bg-opacity-85 rounded-2xl shadow-lg">
+                <div className="p-0 pb-0 mb-0 border-b-0 rounded-2xl">
                   <div className="flex flex-wrap -mx-3 px-4 py-2">
-                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-white">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-black">
                       <h6>General Information</h6>
                     </div>
                   </div>
@@ -269,10 +269,10 @@ export default function Page({ employee, roles }: any) {
                     <ul className="flex flex-col pl-0 mb-0 rounded-lg">
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal  border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Full Name
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.first_name} {employee.last_name}
                             </p>
@@ -282,10 +282,10 @@ export default function Page({ employee, roles }: any) {
 
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Sex
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.gender}
                             </p>
@@ -295,10 +295,10 @@ export default function Page({ employee, roles }: any) {
 
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Birthday
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.dob}
                             </p>
@@ -307,10 +307,10 @@ export default function Page({ employee, roles }: any) {
                       </li>
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Address
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.address}
                             </p>
@@ -323,10 +323,10 @@ export default function Page({ employee, roles }: any) {
               </div>
             </div>
             <div className="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12 mb-0 draggable">
-              <div className="relative flex flex-col h-full min-w-0 break-words bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400 rounded-2xl shadow-lg">
-                <div className="p-0 pb-0 mb-0 bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400 border-b-0 rounded-2xl">
+              <div className="relative flex flex-col h-full min-w-0 break-words bg-white bg-opacity-85 rounded-2xl shadow-lg">
+                <div className="p-0 pb-0 mb-0 border-b-0 rounded-2xl">
                   <div className="flex flex-wrap -mx-3 px-4 py-2">
-                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-white">
+                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none font-bold py-1 text-black">
                       <h6>Employee Information</h6>
                     </div>
                   </div>
@@ -334,10 +334,10 @@ export default function Page({ employee, roles }: any) {
                     <ul className="flex flex-col pl-0 mb-0 rounded-lg">
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal  border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Job title
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.roles.role}
                             </p>
@@ -347,10 +347,10 @@ export default function Page({ employee, roles }: any) {
 
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Email
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.email}
                             </p>
@@ -360,10 +360,10 @@ export default function Page({ employee, roles }: any) {
 
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Mobile Number
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.contact_number}
                             </p>
@@ -372,10 +372,10 @@ export default function Page({ employee, roles }: any) {
                       </li>
                       <li className="relative block px-4 py-2 pt-0 pl-0 leading-normale border-0 rounded-t-lg text-sm text-inherit">
                         <div className="w-full flex flex-col gap-2">
-                          <span className="text-xs 2xl:text-md font-semibold text-white flex justify-center place-items-center w-fit gap-1">
+                          <span className="text-xs 2xl:text-md font-semibold text-zinc-500 flex justify-center place-items-center w-fit gap-1">
                             Added at
                           </span>
-                          <div className="w-full min-w-0 bg-blue-300 rounded-lg">
+                          <div className="w-full min-w-0 bg-zinc-300 rounded-lg">
                             <p className="text-sm 2xl:text-md text-black gap-2 p-2 max-w-[260px] truncate">
                               {employee.created_at}
                             </p>
@@ -389,7 +389,7 @@ export default function Page({ employee, roles }: any) {
             </div>
           </div>
         </div>
-        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-gradient-to-r from-blue-300 via-blue-400 to-blue-100 bg-clip-border draggable shadow-lg top-2">
+        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-black bg-opacity-30 bg-clip-border draggable shadow-lg top-2">
           <div className="flex flex-wrap -mx-3">
             <div className="flex-none w-auto max-w-full px-3">
               <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">

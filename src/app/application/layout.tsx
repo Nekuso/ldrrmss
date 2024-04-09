@@ -43,7 +43,7 @@ export default async function RootLayout({
             </h1>
           </div>
 
-          <div className="flex flex-col place-items-center justify-start w-full min-h-screen bg-gradient-to-br from-blue-950 via-blue-400 to-blue-950 relative max-lg:hidden">
+          <div className="flex flex-col place-items-center justify-start w-full min-h-screen bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 bg-opacity-50 relative max-lg:hidden">
             <Navbar />
             <div className="w-full flex justify-center py-4">{children}</div>
           </div>

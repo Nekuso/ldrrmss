@@ -57,7 +57,9 @@ export function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Operations</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            Operations
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               {/* <li className="row-span-3">
@@ -90,7 +92,9 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         {/* <Dead-end>*/}
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Inventory</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            Inventory
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <ListItem href="../../application/equipments" title="Equiments">
@@ -110,7 +114,9 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         {/* <Dead-end>*/}
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            Components
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -128,15 +134,20 @@ export function NavigationMenuDemo() {
         {/* <Dead-end>*/}
         <NavigationMenuItem>
           <Link href="../../application/announcement" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink
+              className={`bg-transparent ${navigationMenuTriggerStyle()}`}
+            >
               Announcement
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+
         {/* <Dead-end>*/}
         <NavigationMenuItem>
           <Link href="../../application/settings" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink
+              className={`bg-transparent ${navigationMenuTriggerStyle()}`}
+            >
               Settings
             </NavigationMenuLink>
           </Link>
