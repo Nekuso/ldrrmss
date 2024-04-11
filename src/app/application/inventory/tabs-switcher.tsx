@@ -16,10 +16,10 @@ import VechilesPage from "./vehicles/page";
 
 export function TabsDemo() {
   return (
-    <div className="w-full min-h-[700.5px] max-h-[700.5px] flex flex-col justify-between bg-white gap-2 p-3 rounded-2xl">
+    <div className="w-full min-h-[700.5px] max-h-[700.5px] flex flex-col justify-between gap-2 p-3 rounded-2xl">
       <div className="w-full h-full flex flex-col gap-2 ">
         <Tabs defaultValue="account" className="w-full">
-          <TabsList className="gap-2">
+          <TabsList className="gap-2 bg-gray-800 text-white">
             <TabsTrigger value="equipments">Equipments</TabsTrigger>
             <TabsTrigger value="food_supply">Food-supply</TabsTrigger>
             <TabsTrigger value="vehicles">Vehicles</TabsTrigger>
@@ -62,7 +62,7 @@ export function TabsDemo() {
                 <VechilesPage />
               </CardContent>
               <CardFooter>
-                <Button>save</Button>
+                <Button>Save</Button>
               </CardFooter>
             </Card>
           </TabsContent>
