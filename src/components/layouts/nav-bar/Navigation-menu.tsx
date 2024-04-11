@@ -59,16 +59,22 @@ export function NavigationMenuDemo() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <ListItem href="../../application/equipments" title="Equiments">
+              <ListItem
+                href="../../application/inventory/equipment"
+                title="Equiments"
+              >
                 Rescue related equipments
               </ListItem>
               <ListItem
-                href="../../application/food_supply"
+                href="../../application/inventory/food_supply"
                 title="Food Supply"
               >
                 Rescue rations related to people
               </ListItem>
-              <ListItem href="../../application/vehicles" title="Vehicles">
+              <ListItem
+                href="../../application/inventory/vehicles"
+                title="Vehicles"
+              >
                 Rescue Transport Vehicles
               </ListItem>
             </ul>
