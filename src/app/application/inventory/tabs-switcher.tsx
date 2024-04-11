@@ -27,49 +27,42 @@ export function TabsDemo() {
           <TabsContent value="equipments">
             <Card>
               <CardHeader>
-                <CardTitle>Account</CardTitle>
-                <CardDescription>
-                  Make changes to your account here. Click save when you're
-                  done.
-                </CardDescription>
+                <CardTitle>Equipments</CardTitle>
+                <CardDescription>Diri ang equipments table</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <EquipmentsPage />
               </CardContent>
               <CardFooter>
-                <Button>Save changes</Button>
+                <Button>Save</Button>
               </CardFooter>
             </Card>
           </TabsContent>
           <TabsContent value="food_supply">
             <Card>
               <CardHeader>
-                <CardTitle>Password</CardTitle>
-                <CardDescription>
-                  Change your password here. After saving, you'll be logged out.
-                </CardDescription>
+                <CardTitle>Food Supply</CardTitle>
+                <CardDescription>Diri ang food-supply table</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <FoodSupplyPage />
               </CardContent>
               <CardFooter>
-                <Button>Save password</Button>
+                <Button>Save</Button>
               </CardFooter>
             </Card>
           </TabsContent>
           <TabsContent value="vehicles">
             <Card>
               <CardHeader>
-                <CardTitle>iyot</CardTitle>
-                <CardDescription>
-                  Change your iyot here. After saving, you'll be logged out.
-                </CardDescription>
+                <CardTitle>Vehicles</CardTitle>
+                <CardDescription>Diri ang vehicles table</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <VechilesPage />
               </CardContent>
               <CardFooter>
-                <Button>Save iyot</Button>
+                <Button>save</Button>
               </CardFooter>
             </Card>
           </TabsContent>
