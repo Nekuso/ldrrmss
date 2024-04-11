@@ -10,6 +10,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import EquipmentsPage from "./equipments/page";
+import FoodSupplyPage from "./food_supply/page";
+import VechilesPage from "./vehicles/page";
 
 export function TabsDemo() {
   return (
@@ -31,14 +34,7 @@ export function TabsDemo() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" defaultValue="Pedro Duarte" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" defaultValue="@peduarte" />
-                </div>
+                <EquipmentsPage />
               </CardContent>
               <CardFooter>
                 <Button>Save changes</Button>
@@ -54,14 +50,7 @@ export function TabsDemo() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="current">Current password</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
-                </div>
+                <FoodSupplyPage />
               </CardContent>
               <CardFooter>
                 <Button>Save password</Button>
@@ -77,14 +66,7 @@ export function TabsDemo() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="current">Current iyot</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">New iyot</Label>
-                  <Input id="new" type="password" />
-                </div>
+                <VechilesPage />
               </CardContent>
               <CardFooter>
                 <Button>Save iyot</Button>
