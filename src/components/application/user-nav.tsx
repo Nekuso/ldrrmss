@@ -17,7 +17,7 @@ export function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-10 w-10 text-black">
             <AvatarImage src="" alt="@shadcn" />
             <AvatarFallback>TD</AvatarFallback>
           </Avatar>
@@ -36,7 +36,7 @@ export function UserNav() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href="../application/user-profile">Profile</Link>
+            <Link href="#">Profile</Link>
 
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
