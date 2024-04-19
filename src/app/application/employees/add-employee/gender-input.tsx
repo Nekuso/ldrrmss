@@ -13,24 +13,18 @@ export default function SelectDemo({ data }: { data: any }) {
       <SelectTrigger
         id="gender"
         name="gender"
-        className="w-full  border-slate-600/50 rounded-lg "
+        className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         {...data}
       >
         <SelectValue
-          className="text-white"
-          placeholder={data ? data.value : "Select a Gender"}
+          className="text-black"
+          placeholder={data ? data.value : "Select a Sex"}
         />
       </SelectTrigger>
       <SelectContent className="rounded-lg">
         <SelectGroup>
           <SelectItem value="Male">Male</SelectItem>
           <SelectItem value="Female">Female</SelectItem>
-          <SelectItem value="Gay">Gay</SelectItem>
-          <SelectItem value="Tomboy">Tomboy</SelectItem>
-          <SelectItem value="Transgender">Transgender</SelectItem>
-          <SelectItem value="I hate non-straight">
-            I hate non-straight
-          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

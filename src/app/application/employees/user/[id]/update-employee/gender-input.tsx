@@ -17,20 +17,14 @@ export default function SelectDemo({ data }: { data: any }) {
         {...data}
       >
         <SelectValue
-          className="text-white"
-          placeholder={data ? data.value : "Select a Gender"}
+          className="text-black"
+          placeholder={data ? data.value : "Select a sex"}
         />
       </SelectTrigger>
       <SelectContent className="rounded-lg border-slate-600/50 text-black">
         <SelectGroup>
           <SelectItem value="Male">Male</SelectItem>
           <SelectItem value="Female">Female</SelectItem>
-          <SelectItem value="Gay">Gay</SelectItem>
-          <SelectItem value="Tomboy">Tomboy</SelectItem>
-          <SelectItem value="Transgender">Transgender</SelectItem>
-          <SelectItem value="I hate non-straight">
-            I hate non-straight
-          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

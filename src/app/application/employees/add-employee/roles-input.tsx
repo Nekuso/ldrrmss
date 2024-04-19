@@ -16,6 +16,7 @@ export default function SelectDemo({ data }: { data: any }) {
     { id: 2, role: "Employee" },
     { id: 3, role: "Supervisor" },
     { id: 4, role: "Administrator" },
+    { id: 5, role: "Rescuer" },
   ];
 
   return (

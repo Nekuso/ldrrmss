@@ -85,6 +85,10 @@ export const roles = [
     value: "Administrator",
     label: "Administrator",
   },
+  {
+    value: "Rescuer",
+    label: "Rescuer",
+  },
 ];
 
 export const columns: ColumnDef<EmployeesDisplay>[] = [
