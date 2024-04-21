@@ -107,6 +107,16 @@ export function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         {/* </Dead-end> */}
+
+        <NavigationMenuItem>
+          <Link href="../../application/map-testing" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`bg-transparent ${navigationMenuTriggerStyle()}`}
+            >
+              Map Testing
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
