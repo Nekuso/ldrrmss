@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 
 import { statuses } from "./columns";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import AddProductButton from "./add-product/add-product-dialog";
+import AddFood_supplyButton from "./add-product/add-product-dialog";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 
@@ -88,7 +88,7 @@ export function DataTableToolbar<TData>({
           <CiExport />
           Export
         </Button>
-        <AddProductButton />
+        <AddFood_supplyButton />
       </div>
     </div>
   );

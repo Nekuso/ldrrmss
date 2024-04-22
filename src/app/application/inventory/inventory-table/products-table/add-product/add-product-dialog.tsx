@@ -9,10 +9,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import ProductForm from "./add-product-form";
+import Food_suppliesForm from "./add-product-form";
 import { BsBoxSeam } from "react-icons/bs";
 
-export default function ProductDialog() {
+export default function Food_supplyDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export default function ProductDialog() {
             Add a new product to your inventory
           </DialogDescription>
         </DialogHeader>
-        <ProductForm setDialogOpen={setDialogIsOpen} />
+        <Food_suppliesForm setDialogOpen={setDialogIsOpen} />
       </DialogContent>
     </Dialog>
   );

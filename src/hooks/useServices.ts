@@ -1,22 +1,22 @@
 import { createClient } from "@supabase/supabase-js";
+import { create } from "domain";
+import { get } from "http";
 import { useState } from "react";
 
-export const useServices: any = () => {
+export const useVehicles: any = () => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
-  const [servicesData, setServicesData] = useState<any>([]);
-  const [currentServiceData, setCurrentServiceData] = useState<any>([]);
+  const [vehiclesData, setVehiclesData] = useState<any>([]);
+  const [currentVehicleData, setCurrentVehicleData] = useState<any>([]);
 
-  const createService = async (props: any, waitDuration?: any) => {
-    const result = await supabase.from("services").insert({
+  const createVehicle = async (props: any, waitDuration?: any) => {
+    const result = await supabase.from("vehicles").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
       duration: props.duration,
-      price: props.price,
-      inventory_id: props.inventory_id,
       status: props.status,
     });
 
@@ -24,26 +24,16 @@ export const useServices: any = () => {
 
     return result;
   };
-  const getServices = async () => {
+  const getVehicles = async () => {
     const result = await supabase
-      .from("services")
+      .from("vehicles")
       .select(
         `
         id,
         name,
         description,
         image_url,
-        price,
-        duration,
         status,
-        inventory(
-            id,
-            branches(
-                id,
-                branch_name,
-                branch_location
-            )
-        ),
         created_at
     `
       )
@@ -53,28 +43,18 @@ export const useServices: any = () => {
     if (error) {
       return error;
     }
-    return setServicesData(data);
+    return setVehiclesData(data);
   };
-  const getService = async (id: string, duration?: number) => {
+  const getVehicle = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("services")
+      .from("vehicles")
       .select(
         `
         id,
         name,
         description,
         image_url,
-        price,
-        duration,
         status,
-        inventory(
-            id,
-            branches(
-                id,
-                branch_name,
-                branch_location
-            )
-        ),
         created_at
       `
       )
@@ -82,17 +62,15 @@ export const useServices: any = () => {
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;
-    return setCurrentServiceData(data);
+    return setCurrentVehicleData(data);
   };
-  const updateService = async (props: any, waitDuration?: number) => {
+  const updateVehicle = async (props: any, waitDuration?: number) => {
     const result = await supabase
-      .from("services")
+      .from("vehicles")
       .update({
         name: props.name,
         description: props.description,
         image_url: props.image_url,
-        duration: props.duration,
-        price: props.price,
         status: props.status,
       })
       .eq("id", props.id);
@@ -100,9 +78,9 @@ export const useServices: any = () => {
     await new Promise((resolve) => setTimeout(resolve, waitDuration));
     return result;
   };
-  const updateServiceStatus = async (props: any, duration?: number) => {
+  const updateVehicleStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("services")
+      .from("vehicles")
       .update({
         status: props.status,
       })
@@ -114,8 +92,8 @@ export const useServices: any = () => {
     return JSON.stringify(result);
   };
 
-  const deleteService = async (props: any, duration: number = 2000) => {
-    const result = await supabase.from("services").delete().eq("id", props.id);
+  const deleteVehicle = async (props: any, duration: number = 2000) => {
+    const result = await supabase.from("vehicles").delete().eq("id", props.id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
@@ -123,15 +101,15 @@ export const useServices: any = () => {
 
   return {
     // states
-    servicesData,
-    currentServiceData,
+    vehiclesData,
+    currentVehicleData,
 
     // methods
-    createService,
-    getService,
-    getServices,
-    updateService,
-    updateServiceStatus,
-    deleteService,
+    createVehicle,
+    getVehicle,
+    getVehicles,
+    updateVehicle,
+    updateVehicleStatus,
+    deleteVehicle,
   };
 };

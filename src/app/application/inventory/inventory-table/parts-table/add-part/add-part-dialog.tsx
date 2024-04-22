@@ -9,10 +9,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import PartForm from "./add-part-form";
+import EquipmentForm from "./add-part-form";
 import { PiGearSixBold } from "react-icons/pi";
 
-export default function PartDialog() {
+export default function EquipmentDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export default function PartDialog() {
             Add a new part to your inventory
           </DialogDescription>
         </DialogHeader>
-        <PartForm setDialogOpen={setDialogIsOpen} />
+        <EquipmentForm setDialogOpen={setDialogIsOpen} />
       </DialogContent>
     </Dialog>
   );

@@ -27,9 +27,9 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useProducts } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useProducts";
 
-export const productSchema = z.object({
+export const Food_supplySchema = z.object({
   name: z.string().min(1, {
     message: "Product name is required",
   }),
@@ -66,11 +66,11 @@ export const productSchema = z.object({
     .default("Available"),
 });
 
-export default function ProductForm({ setDialogOpen }: any) {
+export default function Food_supplyForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createProduct } = useProducts();
-  const form = useForm<z.infer<typeof productSchema>>({
-    resolver: zodResolver(productSchema),
+  const { createFood_supply } = useFood_supplies();
+  const form = useForm<z.infer<typeof Food_supplySchema>>({
+    resolver: zodResolver(Food_supplySchema),
     defaultValues: {
       stock_quantity: 0,
       price: 0.0,
@@ -80,7 +80,7 @@ export default function ProductForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createProduct(data, 5000);
+      const result = await createFood_supply(data, 5000);
 
       const { error } = result;
       if (error?.message) {

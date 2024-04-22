@@ -17,7 +17,7 @@ import {
   CaretSortIcon,
 } from "@radix-ui/react-icons";
 import { FaEye } from "react-icons/fa";
-import { allPartsDisplay } from "@/types";
+import { allEquipmentsDisplay } from "@/types";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -39,8 +39,8 @@ export const statuses = [
   },
 ];
 
-export const initialState = (branches: any, brands: any) => {
-  const columns: ColumnDef<allPartsDisplay>[] = [
+export const initialState = () => {
+  const columns: ColumnDef<allEquipmentsDisplay>[] = [
     {
       id: "name",
       accessorKey: "name",
@@ -155,44 +155,44 @@ export const initialState = (branches: any, brands: any) => {
         );
       },
     },
-    {
-      id: "price",
-      accessorKey: "price",
-      header: "Price",
-      cell: ({ row }) => {
-        return (
-          <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-bold">
-            ₱{" "}
-            {row.original.price
-              .toFixed(2)
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </p>
-        );
-      },
-    },
-    {
-      id: "brand",
-      accessorKey: "brands",
-      accessorFn: (row) => row.brands.brand_name,
-      header: "Brand",
-      cell: ({ row }) => {
-        const item = brands?.find(
-          (item: any) => item.value === row.original.brands.brand_name
-        );
+    // {
+    //   id: "price",
+    //   accessorKey: "price",
+    //   header: "Price",
+    //   cell: ({ row }) => {
+    //     return (
+    //       <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-bold">
+    //         ₱{" "}
+    //         {row.original.price
+    //           .toFixed(2)
+    //           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+    //       </p>
+    //     );
+    //   },
+    // },
+    // {
+    //   id: "brand",
+    //   accessorKey: "brands",
+    //   accessorFn: (row) => row.brands.brand_name,
+    //   header: "Brand",
+    //   cell: ({ row }) => {
+    //     const item = brands?.find(
+    //       (item: any) => item.value === row.original.brands.brand_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return (
-          <p className="max-w-[100px] 2xl:max-w-[110px] truncate">
-            {item.label}
-          </p>
-        );
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return (
+    //       <p className="max-w-[100px] 2xl:max-w-[110px] truncate">
+    //         {item.label}
+    //       </p>
+    //     );
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       accessorKey: "description",
       header: "Description",
@@ -204,26 +204,26 @@ export const initialState = (branches: any, brands: any) => {
         );
       },
     },
-    {
-      id: "branch",
-      accessorKey: "branches",
-      accessorFn: (row) => row.inventory.branches.branch_name,
-      header: "Branch",
-      cell: ({ row }) => {
-        const item = branches?.find(
-          (item: any) =>
-            item.value === row.original.inventory.branches.branch_name
-        );
+    // {
+    //   id: "branch",
+    //   accessorKey: "branches",
+    //   accessorFn: (row) => row.inventory.branches.branch_name,
+    //   header: "Branch",
+    //   cell: ({ row }) => {
+    //     const item = branches?.find(
+    //       (item: any) =>
+    //         item.value === row.original.inventory.branches.branch_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return <p className="max-w-[85px] truncate">{item.label}</p>;
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return <p className="max-w-[85px] truncate">{item.label}</p>;
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       accessorKey: "status",
       header: ({ column }) => {

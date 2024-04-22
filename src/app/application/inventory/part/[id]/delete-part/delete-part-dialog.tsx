@@ -17,13 +17,13 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useParts";
 
 export default function DeleteParttDialog({ partData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
   const part = partData;
-  const { deletePart } = useParts();
+  const { deletePart } = useEquipments();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {

@@ -26,9 +26,9 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useParts";
 
-export const partSchema = z.object({
+export const equipmentSchema = z.object({
   id: z.number(),
   name: z.string().min(1, {
     message: "Part name is required",
@@ -60,28 +60,32 @@ export const partSchema = z.object({
     .default("Available"),
 });
 
-export default function PartForm({ setDialogOpen, part, brands }: any) {
+export default function EquipmentForm({
+  setDialogOpen,
+  equipment,
+  brands,
+}: any) {
   const [isPending, startTransition] = useTransition();
-  const { updatePart } = useParts();
+  const { updateEquipment } = useEquipments();
 
-  const form = useForm<z.infer<typeof partSchema>>({
-    resolver: zodResolver(partSchema),
+  const form = useForm<z.infer<typeof equipmentSchema>>({
+    resolver: zodResolver(equipmentSchema),
     defaultValues: {
-      id: part.id,
-      name: part.name,
-      description: part.description,
-      image_url: part.image_url,
-      barcode: part.barcode,
-      brand_id: part.brands.id.toString(),
-      stock_quantity: part.stock_quantity,
-      price: part.price,
-      status: part.status,
+      id: equipment.id,
+      name: equipment.name,
+      description: equipment.description,
+      image_url: equipment.image_url,
+      barcode: equipment.barcode,
+      brand_id: equipment.brands.id.toString(),
+      stock_quantity: equipment.stock_quantity,
+      price: equipment.price,
+      status: equipment.status,
     },
   });
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await updatePart(data, 2000);
+      const result = await updateEquipment(data, 2000);
 
       const { error } = result;
       if (error?.message) {

@@ -58,3 +58,38 @@ export type calamities = {
   calamity_type: string;
   description: string;
 };
+
+export type allEquipmentsDisplay = {
+  id: number;
+  name: string;
+  description: string;
+  image_url: string;
+  stock_quantity: number;
+  price: number;
+  barcode: string;
+  status: string;
+  created_at: string;
+};
+
+export type allFood_suppliesDisplay = {
+  barcode: string | undefined;
+  id: number;
+  name: string;
+  description: string;
+  image_url: string;
+  price: number;
+  duration: number;
+  status: string;
+  created_at: string;
+};
+
+export type allVehiclesDisplay = {
+  id: number;
+  name: string;
+  description: string;
+  image_url: string;
+  price: number;
+  duration: number;
+  status: string;
+  created_at: string;
+};

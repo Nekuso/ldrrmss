@@ -3,22 +3,22 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import PartContent from "./part-content";
+import EquipmentContent from "./part-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useParts } from "@/hooks/useParts";
-import { useBrands } from "@/hooks/useBrands";
-import PartNotFound from "./not-found";
+import { useEquipments } from "@/hooks/useParts";
+// import { useBrands } from "@/hooks/useBrands";
+import EquipmentNotFound from "./not-found";
 
 export default function Part({ params }: { params: any }) {
-  const { getPart, currentPartData } = useParts();
-  const { getBrands, allBrandsData } = useBrands();
+  const { getEquipment, currentEquipmentData } = useEquipments();
+  // const { getBrands, allBrandsData } = useBrands();
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const initialFetch = async () => {
-      const result = await getPart(params.id, 2000);
+      const result = await getEquipment(params.id, 2000);
       if (result) setError(result);
-      getBrands();
+      // getBrands();
     };
 
     initialFetch();
@@ -28,12 +28,12 @@ export default function Part({ params }: { params: any }) {
     if (!error) {
       const supabase = createSupabaseBrowserClient();
       const subscribedChannel = supabase
-        .channel("part-follow-up")
+        .channel("equipment-follow-up")
         .on(
           "postgres_changes",
-          { event: "*", schema: "public", table: "parts" },
+          { event: "*", schema: "public", table: "equipments" },
           (payload: any) => {
-            getPart(params.id, 0);
+            getEquipment(params.id, 0);
           }
         )
         .subscribe();
@@ -47,14 +47,14 @@ export default function Part({ params }: { params: any }) {
   return (
     <div className="w-full flex justify-center place-items-center">
       {error ? (
-        <PartNotFound />
-      ) : currentPartData.length === 0 ? (
+        <EquipmentNotFound />
+      ) : currentEquipmentData.length === 0 ? (
         <Loading />
       ) : (
-        <PartContent
+        <EquipmentContent
           params={params}
-          part={currentPartData}
-          brands={allBrandsData}
+          equipment={currentEquipmentData}
+          // brands={allBrandsData}
         />
       )}
     </div>

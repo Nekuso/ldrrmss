@@ -26,9 +26,9 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useServices } from "@/hooks/useServices";
+import { useVehicles } from "@/hooks/useServices";
 
-export const serviceSchema = z.object({
+export const vehicleSchema = z.object({
   name: z.string().min(1, {
     message: "Service name is required",
   }),
@@ -54,11 +54,11 @@ export const serviceSchema = z.object({
     .default("Available"),
 });
 
-export default function ServiceForm({ setDialogOpen }: any) {
+export default function VehicleForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createService } = useServices();
-  const form = useForm<z.infer<typeof serviceSchema>>({
-    resolver: zodResolver(serviceSchema),
+  const { createVehicle } = useVehicles();
+  const form = useForm<z.infer<typeof vehicleSchema>>({
+    resolver: zodResolver(vehicleSchema),
     defaultValues: {
       duration: 0,
       price: 0.0,
@@ -68,7 +68,7 @@ export default function ServiceForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createService(data, 5000);
+      const result = await createVehicle(data, 5000);
 
       const { error } = result;
       if (error?.message) {

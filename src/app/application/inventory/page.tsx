@@ -7,9 +7,9 @@ import createSupabaseBrowserClient from "@/lib/supabase/client";
 import { toast as sonner } from "sonner";
 import { FaTags } from "react-icons/fa";
 import { toast } from "@/components/ui/use-toast";
-import { useParts } from "@/hooks/useParts";
-import { useProducts } from "@/hooks/useProducts";
-import { useServices } from "@/hooks/useServices";
+import { useEquipments } from "@/hooks/useParts";
+import { useFood_supplies } from "@/hooks/useProducts";
+import { useVehicles } from "@/hooks/useServices";
 // import { useBranches } from "@/hooks/useBranches";
 import { useUOMS } from "@/hooks/useUOMS";
 import { HomeIcon } from "lucide-react";
@@ -21,12 +21,12 @@ import { useDispatch } from "react-redux";
 export default function Inventory() {
   const dispatch = useDispatch();
 
-  const { getProducts, productsData } = useProducts();
-  const { getParts, partsData } = useParts();
-  const { getServices, servicesData } = useServices();
+  const { getFood_supplies, food_suppliesData } = useFood_supplies();
+  const { getEquipments, equipmentsData } = useEquipments();
+  const { getVehicles, vehiclesData } = useVehicles();
 
   // const { getBranches, allBranchesData } = useBranches();
-  const { getUOMS, allUOMSData } = useUOMS();
+  // const { getUOMS, allUOMSData } = useUOMS();
   // const { getBrands, allBrandsData } = useBrands();
 
   // const branchesData = allBranchesData.map((branch: any) => ({
@@ -35,12 +35,12 @@ export default function Inventory() {
   //   label: branch?.branch_name,
   //   icon: HomeIcon,
   // }));
-  const uomsData = allUOMSData.map((uom: any) => ({
-    id: uom?.id,
-    value: uom?.unit_name,
-    label: uom?.unit_name,
-    icon: PiRulerBold,
-  }));
+  // const uomsData = allUOMSData.map((uom: any) => ({
+  //   id: uom?.id,
+  //   value: uom?.unit_name,
+  //   label: uom?.unit_name,
+  //   icon: PiRulerBold,
+  // }));
   // const brandsData = allBrandsData.map((brand: any) => ({
   //   id: brand?.id,
   //   value: brand?.brand_name,
@@ -54,7 +54,7 @@ export default function Inventory() {
 
   // fetch all products
   useEffect(() => {
-    const { error } = getProducts();
+    const { error } = getFood_supplies();
 
     if (error?.message) {
       toast({
@@ -64,12 +64,12 @@ export default function Inventory() {
       });
     }
     // getBranches();
-    getUOMS();
+    // getUOMS();
   }, []);
 
   // fetch all parts
   useEffect(() => {
-    const { error } = getParts();
+    const { error } = getEquipments();
 
     if (error?.message) {
       toast({
@@ -83,7 +83,7 @@ export default function Inventory() {
 
   // fetch all services
   useEffect(() => {
-    const { error } = getServices();
+    const { error } = getVehicles();
 
     if (error?.message) {
       toast({
@@ -98,32 +98,32 @@ export default function Inventory() {
   useEffect(() => {
     const supabase = createSupabaseBrowserClient();
     const subscribedChannel1 = supabase
-      .channel("products-follow-up")
+      .channel("food_supplies-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "products" },
+        { event: "*", schema: "public", table: "food_supplies" },
         (payload: any) => {
-          getProducts();
+          getFood_supplies();
         }
       )
       .subscribe();
     const subscribedChannel2 = supabase
-      .channel("parts-follow-up")
+      .channel("equipments-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "parts" },
+        { event: "*", schema: "public", table: "equipments" },
         (payload: any) => {
-          getParts();
+          getEquipments();
         }
       )
       .subscribe();
     const subscribedChannel3 = supabase
-      .channel("services-follow-up")
+      .channel("vehicles-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "services" },
+        { event: "*", schema: "public", table: "vehicles" },
         (payload: any) => {
-          getServices();
+          getVehicles();
         }
       )
       .subscribe();
@@ -136,13 +136,13 @@ export default function Inventory() {
 
   return (
     <div className="w-full flex justify-center py-3.5 no-scrollbar ">
-      {productsData.length === 0 ? (
+      {food_suppliesData.length === 0 ? (
         <Loading />
       ) : (
         <InventoryContent
-          dataProducts={productsData}
-          dataParts={partsData}
-          dataServices={servicesData}
+          dataFood_supplies={food_suppliesData}
+          dataEquipments={equipmentsData}
+          dataVehicles={vehiclesData}
         />
       )}
     </div>

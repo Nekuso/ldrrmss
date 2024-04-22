@@ -27,9 +27,9 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useParts";
 
-export const partSchema = z.object({
+export const equipmentSchema = z.object({
   name: z.string().min(1, {
     message: "Part name is required",
   }),
@@ -66,11 +66,11 @@ export const partSchema = z.object({
     .default("Available"),
 });
 
-export default function PartForm({ setDialogOpen }: any) {
+export default function EquipmentForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createPart } = useParts();
-  const form = useForm<z.infer<typeof partSchema>>({
-    resolver: zodResolver(partSchema),
+  const { createEquipment } = useEquipments();
+  const form = useForm<z.infer<typeof equipmentSchema>>({
+    resolver: zodResolver(equipmentSchema),
     defaultValues: {
       stock_quantity: 0,
       price: 0.0,
@@ -80,7 +80,7 @@ export default function PartForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createPart(data, 5000);
+      const result = await createEquipment(data, 5000);
 
       const { error } = result;
       if (error?.message) {

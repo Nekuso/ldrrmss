@@ -17,7 +17,7 @@ import {
   CaretSortIcon,
 } from "@radix-ui/react-icons";
 import { FaEye } from "react-icons/fa";
-import { allProductsDisplay } from "@/types";
+import { allFood_suppliesDisplay } from "@/types";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -39,8 +39,8 @@ export const statuses = [
   },
 ];
 
-export const initialState = (branches: any, uoms: any) => {
-  const columns: ColumnDef<allProductsDisplay>[] = [
+export const initialState = () => {
+  const columns: ColumnDef<allFood_suppliesDisplay>[] = [
     {
       id: "name",
       accessorKey: "name",
@@ -110,40 +110,40 @@ export const initialState = (branches: any, uoms: any) => {
         );
       },
     },
-    {
-      id: "price",
-      accessorKey: "price",
-      header: "Price",
-      cell: ({ row }) => {
-        return (
-          <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-bold">
-            ₱{" "}
-            {row.original.price
-              .toFixed(2)
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </p>
-        );
-      },
-    },
-    {
-      id: "uom",
-      accessorKey: "uom",
-      accessorFn: (row) => row.uoms.unit_name,
-      header: "Unit",
-      cell: ({ row }) => {
-        const item = uoms?.find(
-          (item: any) => item.value === row.original.uoms.unit_name
-        );
+    // {
+    //   id: "price",
+    //   accessorKey: "price",
+    //   header: "Price",
+    //   cell: ({ row }) => {
+    //     return (
+    //       <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-bold">
+    //         ₱{" "}
+    //         {row.original.price
+    //           .toFixed(2)
+    //           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+    //       </p>
+    //     );
+    //   },
+    // },
+    // {
+    //   id: "uom",
+    //   accessorKey: "uom",
+    //   accessorFn: (row) => row.uoms.unit_name,
+    //   header: "Unit",
+    //   cell: ({ row }) => {
+    //     const item = uoms?.find(
+    //       (item: any) => item.value === row.original.uoms.unit_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return item.label;
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return item.label;
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       id: "stock_quantity",
       accessorKey: "stock_quantity",
@@ -200,26 +200,26 @@ export const initialState = (branches: any, uoms: any) => {
         );
       },
     },
-    {
-      id: "branch",
-      accessorKey: "branches",
-      accessorFn: (row) => row.inventory.branches.branch_name,
-      header: "Branch",
-      cell: ({ row }) => {
-        const item = branches?.find(
-          (item: any) =>
-            item.value === row.original.inventory.branches.branch_name
-        );
+    // {
+    //   id: "branch",
+    //   accessorKey: "branches",
+    //   accessorFn: (row) => row.inventory.branches.branch_name,
+    //   header: "Branch",
+    //   cell: ({ row }) => {
+    //     const item = branches?.find(
+    //       (item: any) =>
+    //         item.value === row.original.inventory.branches.branch_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return <p className="max-w-[85px] truncate">{item.label}</p>;
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return <p className="max-w-[85px] truncate">{item.label}</p>;
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       accessorKey: "status",
       header: ({ column }) => {

@@ -9,10 +9,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import ServiceForm from "./add-service-form";
+import VehicleForm from "./add-service-form";
 import { BsBoxSeam } from "react-icons/bs";
 
-export default function ServiceDialog() {
+export default function VehicleDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export default function ServiceDialog() {
             Add a new service to your inventory
           </DialogDescription>
         </DialogHeader>
-        <ServiceForm setDialogOpen={setDialogIsOpen} />
+        <VehicleForm setDialogOpen={setDialogIsOpen} />
       </DialogContent>
     </Dialog>
   );
