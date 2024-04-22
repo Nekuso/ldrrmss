@@ -10,12 +10,12 @@ import { toast } from "@/components/ui/use-toast";
 import { useParts } from "@/hooks/useParts";
 import { useProducts } from "@/hooks/useProducts";
 import { useServices } from "@/hooks/useServices";
-import { useBranches } from "@/hooks/useBranches";
+// import { useBranches } from "@/hooks/useBranches";
 import { useUOMS } from "@/hooks/useUOMS";
 import { HomeIcon } from "lucide-react";
 import { PiRulerBold } from "react-icons/pi";
 import { setBranchesData } from "@/redux/slices/branchesSlice";
-import { setUOMSData } from "@/redux/slices/uomsSlice";
+// import { setUOMSData } from "@/redux/slices/uomsSlice";
 import { useDispatch } from "react-redux";
 
 export default function Inventory() {
@@ -25,32 +25,32 @@ export default function Inventory() {
   const { getParts, partsData } = useParts();
   const { getServices, servicesData } = useServices();
 
-  const { getBranches, allBranchesData } = useBranches();
+  // const { getBranches, allBranchesData } = useBranches();
   const { getUOMS, allUOMSData } = useUOMS();
-  const { getBrands, allBrandsData } = useBrands();
+  // const { getBrands, allBrandsData } = useBrands();
 
-  const branchesData = allBranchesData.map((branch: any) => ({
-    id: branch?.id,
-    value: branch?.branch_name,
-    label: branch?.branch_name,
-    icon: HomeIcon,
-  }));
+  // const branchesData = allBranchesData.map((branch: any) => ({
+  //   id: branch?.id,
+  //   value: branch?.branch_name,
+  //   label: branch?.branch_name,
+  //   icon: HomeIcon,
+  // }));
   const uomsData = allUOMSData.map((uom: any) => ({
     id: uom?.id,
     value: uom?.unit_name,
     label: uom?.unit_name,
     icon: PiRulerBold,
   }));
-  const brandsData = allBrandsData.map((brand: any) => ({
-    id: brand?.id,
-    value: brand?.brand_name,
-    label: brand?.brand_name,
-    icon: FaTags,
-  }));
+  // const brandsData = allBrandsData.map((brand: any) => ({
+  //   id: brand?.id,
+  //   value: brand?.brand_name,
+  //   label: brand?.brand_name,
+  //   icon: FaTags,
+  // }));
 
-  dispatch(setBranchesData(branchesData));
-  dispatch(setUOMSData(uomsData));
-  dispatch(setBrandsData(brandsData));
+  // dispatch(setBranchesData(branchesData));
+  // dispatch(setUOMSData(uomsData));
+  // dispatch(setBrandsData(brandsData));
 
   // fetch all products
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Inventory() {
         description: error.message,
       });
     }
-    getBranches();
+    // getBranches();
     getUOMS();
   }, []);
 
@@ -78,7 +78,7 @@ export default function Inventory() {
         description: error.message,
       });
     }
-    getBrands();
+    // getBrands();
   }, []);
 
   // fetch all services
