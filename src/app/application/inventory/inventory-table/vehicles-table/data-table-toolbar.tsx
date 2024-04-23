@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 
 import { statuses } from "./columns";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import AddVehicleButton from "./add-vehicle/add-service-dialog";
+import AddVehicleButton from "./add-vehicle/add-vehicle-dialog";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 
