@@ -15,7 +15,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PiGearSixBold } from "react-icons/pi";
 import { BsBoxSeam } from "react-icons/bs";
-import { FaHandsHelping } from "react-icons/fa";
+import {
+  FaAmbulance,
+  FaHandsHelping,
+  FaToolbox,
+  FaTools,
+} from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 export default function InventoryContent({
@@ -53,7 +58,7 @@ export default function InventoryContent({
             data-[state=inactive]:hover:text-white/80
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <PiGearSixBold />
+            <FaToolbox />
             Equipments
           </TabsTrigger>
           <TabsTrigger
@@ -62,7 +67,7 @@ export default function InventoryContent({
             data-[state=inactive]:hover:text-white/80
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <FaHandsHelping />
+            <FaAmbulance />
             Vehicles
           </TabsTrigger>
         </TabsList>
