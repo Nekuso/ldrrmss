@@ -1,9 +1,9 @@
 import { DataTable as EquipmentsDataTable } from "./inventory-table/equipments-table/data-table";
-import { DataTable as Food_suppliesDataTable } from "./inventory-table/floor-supplies-table/data-table";
+import { DataTable as Food_suppliesDataTable } from "./inventory-table/food-supplies-table/data-table";
 import { DataTable as VehiclesDataTable } from "./inventory-table/vehicles-table/data-table";
 
 import { initialState as initiateEquipmentsState } from "./inventory-table/equipments-table/columns";
-import { initialState as initiateFood_suppliesState } from "./inventory-table/floor-supplies-table/columns";
+import { initialState as initiateFood_suppliesState } from "./inventory-table/food-supplies-table/columns";
 import { initialState as initiateVehiclesState } from "./inventory-table/vehicles-table/columns";
 
 import {

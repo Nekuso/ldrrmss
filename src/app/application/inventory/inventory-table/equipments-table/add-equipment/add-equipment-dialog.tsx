@@ -9,27 +9,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import Food_suppliesForm from "./add-product-form";
-import { BsBoxSeam } from "react-icons/bs";
+import EquipmentForm from "./add-equipment-form";
+import { PiGearSixBold } from "react-icons/pi";
 
-export default function Food_supplyDialog() {
+export default function EquipmentDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
-          <BsBoxSeam /> New Product
+          <PiGearSixBold /> New Part
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Product</DialogTitle>
+          <DialogTitle>Part</DialogTitle>
           <DialogDescription>
-            Add a new product to your inventory
+            Add a new part to your inventory
           </DialogDescription>
         </DialogHeader>
-        <Food_suppliesForm setDialogOpen={setDialogIsOpen} />
+        <EquipmentForm setDialogOpen={setDialogIsOpen} />
       </DialogContent>
     </Dialog>
   );

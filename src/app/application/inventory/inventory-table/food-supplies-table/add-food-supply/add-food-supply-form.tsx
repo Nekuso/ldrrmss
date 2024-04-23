@@ -6,8 +6,8 @@ import { FiMinus } from "react-icons/fi";
 import { Textarea } from "@/components/ui/textarea";
 import { TbCurrencyPeso } from "react-icons/tb";
 
-import BranchInput from "./branch-input";
-import UomInput from "./uom-input";
+// import BranchInput from "./branch-input";
+// import UomInput from "./uom-input";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { toast as sonner } from "sonner";
-import ImageInput from "./image-input";
+// import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
@@ -121,7 +121,7 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
                 render={({ field }) => (
                   <FormItem className="h-fit">
                     <FormControl>
-                      <ImageInput data={field} />
+                      {/* <ImageInput data={field} /> */}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -159,7 +159,7 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
                             Unit Of Measure
                           </FormLabel>
                           <FormControl>
-                            <UomInput data={field} />
+                            {/* <UomInput data={field} /> */}
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -248,7 +248,7 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">Branch</FormLabel>
-                      <BranchInput data={field} />
+                      {/* <BranchInput data={field} /> */}
                       <FormMessage />
                     </FormItem>
                   )}

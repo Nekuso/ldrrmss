@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import VehicleForm from "./add-service-form";
+import VehicleForm from "./add-vehicle-form";
 import { BsBoxSeam } from "react-icons/bs";
 
 export default function VehicleDialog() {
