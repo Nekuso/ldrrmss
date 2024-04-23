@@ -21,8 +21,8 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
-  const branchesSlice = useSelector((state: any) => state.branches);
-  const uomsSlice = useSelector((state: any) => state.uoms);
+  // const branchesSlice = useSelector((state: any) => state.branches);
+  // const uomsSlice = useSelector((state: any) => state.uoms);
 
   return (
     <div className="flex w-full items-center justify-between">
@@ -44,7 +44,7 @@ export function DataTableToolbar<TData>({
           }
         />
 
-        {table.getColumn("uom") && (
+        {/* {table.getColumn("uom") && (
           <DataTableFacetedFilter
             column={table.getColumn("uom")}
             title="Unit Of Measure"
@@ -57,7 +57,7 @@ export function DataTableToolbar<TData>({
             title="Branch"
             options={branchesSlice}
           />
-        )}
+        )} */}
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
