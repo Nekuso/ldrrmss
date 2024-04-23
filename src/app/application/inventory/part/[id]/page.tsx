@@ -9,7 +9,7 @@ import { useEquipments } from "@/hooks/useParts";
 // import { useBrands } from "@/hooks/useBrands";
 import EquipmentNotFound from "./not-found";
 
-export default function Part({ params }: { params: any }) {
+export default function Equipment({ params }: { params: any }) {
   const { getEquipment, currentEquipmentData } = useEquipments();
   // const { getBrands, allBrandsData } = useBrands();
   const [error, setError] = useState(false);

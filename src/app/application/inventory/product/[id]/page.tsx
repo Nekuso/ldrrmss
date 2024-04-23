@@ -3,20 +3,20 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import ProductContent from "./product-content";
+import Food_supplyContent from "./product-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useProducts } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useProducts";
 import { useUOMS } from "@/hooks/useUOMS";
-import ProductNotFound from "./not-found";
+import Food_supplyNotFound from "./not-found";
 
-export default function Product({ params }: { params: any }) {
-  const { getProduct, currentProductData } = useProducts();
+export default function Food_supply({ params }: { params: any }) {
+  const { getFood_supply, currentFood_supplyData } = useFood_supplies();
   const { getUOMS, allUOMSData } = useUOMS();
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const initialFetch = async () => {
-      const result = await getProduct(params.id, 2000);
+      const result = await getFood_supply(params.id, 2000);
       if (result) setError(result);
       getUOMS();
     };
@@ -28,12 +28,12 @@ export default function Product({ params }: { params: any }) {
     if (!error) {
       const supabase = createSupabaseBrowserClient();
       const subscribedChannel = supabase
-        .channel("product-follow-up")
+        .channel("food_supply-follow-up")
         .on(
           "postgres_changes",
-          { event: "*", schema: "public", table: "products" },
+          { event: "*", schema: "public", table: "food_supplies" },
           (payload: any) => {
-            getProduct(params.id, 0);
+            getFood_supply(params.id, 0);
           }
         )
         .subscribe();
@@ -47,13 +47,13 @@ export default function Product({ params }: { params: any }) {
   return (
     <div className="w-full flex justify-center place-items-center">
       {error ? (
-        <ProductNotFound />
-      ) : currentProductData.length === 0 ? (
+        <Food_supplyNotFound />
+      ) : currentFood_supplyData.length === 0 ? (
         <Loading />
       ) : (
-        <ProductContent
+        <Food_supplyContent
           params={params}
-          product={currentProductData}
+          food_supply={currentFood_supplyData}
           uoms={allUOMSData}
         />
       )}
