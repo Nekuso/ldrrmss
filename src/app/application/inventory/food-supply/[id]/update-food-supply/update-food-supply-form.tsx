@@ -26,7 +26,7 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useProducts } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useProducts";
 
 export const productSchema = z.object({
   id: z.number(),
@@ -62,7 +62,7 @@ export const productSchema = z.object({
 
 export default function ProductForm({ setDialogOpen, product, uoms }: any) {
   const [isPending, startTransition] = useTransition();
-  const { updateProduct } = useProducts();
+  const { updateProduct } = useFood_supplies();
   const form = useForm<z.infer<typeof productSchema>>({
     resolver: zodResolver(productSchema),
     defaultValues: {

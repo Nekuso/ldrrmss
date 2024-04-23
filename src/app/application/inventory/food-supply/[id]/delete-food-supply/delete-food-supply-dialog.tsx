@@ -17,13 +17,13 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useProducts } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useProducts";
 
 export default function DeleteProductDialog({ productData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
   const product = productData;
-  const { deleteProduct } = useProducts();
+  const { deleteProduct } = useFood_supplies();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {

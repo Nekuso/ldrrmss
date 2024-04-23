@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import UpdateServiceButton from "./update-service/update-service-dialog";
-import UpdateServiceStatusButton from "./update-service-status/update-service-status-dialog";
-import DeleteServiceButton from "./delete-service/delete-service-dialog";
+import UpdateServiceButton from "./update-vehicle/update-vehicle-dialog";
+import UpdateServiceStatusButton from "./update-vehicle-status/update-vehicle-status-dialog";
+import DeleteServiceButton from "./delete-vehicle/delete-vehicle-dialog";
 
 import { FaRegCopy } from "react-icons/fa";
 import {

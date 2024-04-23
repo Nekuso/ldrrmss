@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import UpdateProductForm from "./update-product-form";
+import UpdateProductForm from "./update-food-supply-form";
 import { MdOutlineModeEdit } from "react-icons/md";
 
 export default function UpdateProductDialog({ productData, uomsData }: any) {

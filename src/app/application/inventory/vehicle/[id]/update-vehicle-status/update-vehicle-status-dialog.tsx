@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { cn } from "@/lib/utils";
-import UpdateServiceStatusForm from "./update-service-status-form";
+import UpdateServiceStatusForm from "./update-vehicle-status-form";
 
 export default function UpdateServiceStatusDialog({ serviceData }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);

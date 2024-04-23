@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import UpdateProductButton from "./update-product/update-product-dialog";
-import DeleteProductButton from "./delete-product/delete-product-dialog";
+import UpdateProductButton from "./update-food-supply/update-food-supply-dialog";
+import DeleteProductButton from "./delete-food-supply/delete-food-supply-dialog";
 import Barcode from "react-barcode";
 import { FaRegCopy } from "react-icons/fa";
 import {

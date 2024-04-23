@@ -11,13 +11,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import UpdateEquipmentForm from "./update-part-form";
+import UpdateVehicleForm from "./update-vehicle-form";
 import { MdOutlineModeEdit } from "react-icons/md";
 
-export default function UpdateEquipmentDialog({
-  equipmentData,
-  brandsData,
-}: any) {
+export default function UpdateVehicleDialog({ vehicleData }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -30,16 +27,15 @@ export default function UpdateEquipmentDialog({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[570] bg-darkComponentBg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Update Part</DialogTitle>
+          <DialogTitle>Update Service</DialogTitle>
           <DialogDescription>
-            Make sure to input the new correct fields of the part
+            Make sure to input the new correct fields of the service
           </DialogDescription>
         </DialogHeader>
-        <UpdateEquipmentForm
+        <UpdateVehicleForm
           setDialogOpen={setDialogIsOpen}
           dialogIsOpen={dialogIsOpen}
-          equipment={equipmentData}
-          brands={brandsData}
+          vehicle={vehicleData}
         />
       </DialogContent>
     </Dialog>
