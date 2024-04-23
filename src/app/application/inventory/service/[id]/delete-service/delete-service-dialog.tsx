@@ -17,17 +17,17 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useServices } from "@/hooks/useServices";
+import { useVehicles } from "@/hooks/useServices";
 
-export default function DeleteServiceDialog({ serviceData }: any) {
+export default function DeleteVehicleDialog({ vehicleData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const service = serviceData;
-  const { deleteService } = useServices();
+  const vehicle = vehicleData;
+  const { deleteVehicle } = useVehicles();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {
-      await deleteService(dataProps, 4000);
+      await deleteVehicle(dataProps, 4000);
       // const { error } = JSON.parse(result);
       // if (error?.message) {
       //   toast({
@@ -82,7 +82,7 @@ export default function DeleteServiceDialog({ serviceData }: any) {
           <Button
             variant="destructive"
             className="text-xs font-bold min-w-[100px] rounded-md flex gap-2 transition-all duration-300"
-            onClick={() => onSubmit(service)}
+            onClick={() => onSubmit(vehicle)}
           >
             <span
               className={cn("flex gap-2 place-items-center justify-center", {

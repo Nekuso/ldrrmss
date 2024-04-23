@@ -8,7 +8,6 @@ export function LandingNavbarContents() {
       <div className="max-w-screen-2xl mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            {/* Replace text with image */}
             <a href="/" className="hover:text-blue-600">
               <Image
                 alt="gallery"
