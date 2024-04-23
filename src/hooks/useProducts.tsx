@@ -70,7 +70,7 @@ export const useFood_supplies: any = () => {
     if (data?.length === 0) return true;
     return setCurrentFood_supplyData(data);
   };
-  const updateFood_supplly = async (props: any, duration?: number) => {
+  const updateFood_supply = async (props: any, duration?: number) => {
     const result = await supabase
       .from("food_supplies")
       .update({
@@ -117,7 +117,7 @@ export const useFood_supplies: any = () => {
     createFood_supply,
     getFood_supply,
     getFood_supplies,
-    updateFood_supplly,
+    updateFood_supply,
     updateFood_supplyStatus,
     deleteFood_supply,
   };

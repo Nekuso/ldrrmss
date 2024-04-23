@@ -1,4 +1,4 @@
-import { EmployeeDisplay } from "@/types";
+import { EmployeesDisplay } from "@/types";
 import { QueryData, createClient } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 import { useState } from "react";
