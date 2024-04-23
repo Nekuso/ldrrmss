@@ -46,55 +46,18 @@ export function NavigationMenuDemo() {
               <ListItem href="../../application/employees" title="Employees">
                 Rescue employees
               </ListItem>
-              <ListItem href="../../application/workers" title="Workers">
-                Rescue employees who handles on dispatch
-              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         {/* <Dead-end>*/}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">
-            Inventory
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <ListItem
-                href="../../application/inventory/equipments"
-                title="Equiments"
-              >
-                Rescue related equipments
-              </ListItem>
-              <ListItem
-                href="../../application/inventory/food_supply"
-                title="Food Supply"
-              >
-                Rescue rations related to people
-              </ListItem>
-              <ListItem
-                href="../../application/inventory/vehicles"
-                title="Vehicles"
-              >
-                Rescue Transport Vehicles
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        {/* <Dead-end>*/}
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">
-            Components
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <ListItem
-                href="../../application/announcement"
-                title="Announcements"
-              >
-                Rescue announcements to people
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
+          <Link href="../../application/inventory" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`bg-transparent ${navigationMenuTriggerStyle()}`}
+            >
+              Inventory
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
         {/* <Dead-end>*/}
         <NavigationMenuItem>
@@ -103,6 +66,16 @@ export function NavigationMenuDemo() {
               className={`bg-transparent ${navigationMenuTriggerStyle()}`}
             >
               Settings
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        {/* </Dead-end> */}
+        <NavigationMenuItem>
+          <Link href="../../application/announcement" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`bg-transparent ${navigationMenuTriggerStyle()}`}
+            >
+              Announcements
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

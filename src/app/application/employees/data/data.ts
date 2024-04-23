@@ -62,16 +62,12 @@ export const calamityStatuses = [
 
 export const roles = [
   {
-    value: "Manager",
-    label: "Manager",
+    value: "Residence",
+    label: "Residence",
   },
   {
-    value: "Employee",
-    label: "Employee",
-  },
-  {
-    value: "Supervisor",
-    label: "Supervisor",
+    value: "Staff",
+    label: "Staff",
   },
   {
     value: "Administrator",

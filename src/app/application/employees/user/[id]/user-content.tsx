@@ -232,7 +232,6 @@ export default function Page({ employee, roles }: any) {
               <DeleteEmployeeButton employee={employee} />
               <UpdateEmployeeButton employee={employee} roles={roles} />
               <Button>Activity Logs</Button>
-              <Button>Message</Button>
             </div>
           </div>
         </div>

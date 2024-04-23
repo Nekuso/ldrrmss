@@ -227,7 +227,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                   name="gender"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs">Gender</FormLabel>
+                      <FormLabel className="text-xs">Sex</FormLabel>
                       <FormControl>
                         <GenderInput data={field} />
                       </FormControl>
