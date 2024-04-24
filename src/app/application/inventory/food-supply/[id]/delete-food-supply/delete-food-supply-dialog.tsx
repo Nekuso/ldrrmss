@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useFood_supplies } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useFoodSupplies";
 
 export default function DeleteProductDialog({ productData }: any) {
   const [isPending, startTransition] = useTransition();
@@ -62,7 +62,7 @@ export default function DeleteProductDialog({ productData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>Delete Product</DialogTitle>
           <DialogDescription>

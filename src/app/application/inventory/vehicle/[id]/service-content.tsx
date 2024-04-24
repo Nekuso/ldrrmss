@@ -17,7 +17,7 @@ import { toast as sonner } from "sonner";
 export default function VehicleContent({ vehicle }: any) {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
-      <div className="w-[800px] 2xl:w-[900px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl shadow-lg bg-darkComponentBg border border-lightBorder">
+      <div className="w-[800px] 2xl:w-[900px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl shadow-lg Bg border border-lightBorder">
         <div className="w-full h-full p-8 flex flex-col gap-4">
           <div className="w-full flex gap-4">
             <Avatar className="w-[30%] h-full z-0 rounded-md">
@@ -30,7 +30,7 @@ export default function VehicleContent({ vehicle }: any) {
                 }
                 alt={vehicle[0].name}
               />
-              <AvatarFallback className="bg-darkBg rounded-md">
+              <AvatarFallback className="bg-slate-500 rounded-md text-white">
                 No image
               </AvatarFallback>
             </Avatar>
@@ -66,7 +66,7 @@ export default function VehicleContent({ vehicle }: any) {
                             });
                           }}
                         >
-                          <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                          <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                             <FaRegCopy className="group-hover:text-black" />
                           </div>
                         </TooltipTrigger>
@@ -95,7 +95,7 @@ export default function VehicleContent({ vehicle }: any) {
                             });
                           }}
                         >
-                          <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                          <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                             <FaRegCopy className="group-hover:text-black" />
                           </div>
                         </TooltipTrigger>
@@ -128,7 +128,7 @@ export default function VehicleContent({ vehicle }: any) {
                             });
                           }}
                         >
-                          <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                          <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                             <FaRegCopy className="group-hover:text-black" />
                           </div>
                         </TooltipTrigger>
@@ -159,7 +159,7 @@ export default function VehicleContent({ vehicle }: any) {
                             });
                           }}
                         >
-                          <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                          <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                             <FaRegCopy className="group-hover:text-black" />
                           </div>
                         </TooltipTrigger>
@@ -194,7 +194,7 @@ export default function VehicleContent({ vehicle }: any) {
                         });
                       }}
                     >
-                      <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                      <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                         <FaRegCopy className="group-hover:text-black" />
                       </div>
                     </TooltipTrigger>

@@ -12,7 +12,7 @@ export function Createrequestform2() {
           <div className="form-item">
             <label className="form-label text-xs font-medium">First Name</label>
             <input
-              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg bg-lightComponentBg border-slate-600/50"
+              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg  border-slate-600/50"
               placeholder="Enter First Name"
             ></input>
             <div className="form-message"></div>
@@ -22,7 +22,7 @@ export function Createrequestform2() {
           <div className="form-item">
             <label className="form-label text-xs font-medium">Last Name</label>
             <input
-              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg bg-lightComponentBg border-slate-600/50"
+              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg  border-slate-600/50"
               placeholder="Enter Last Name"
             ></input>
           </div>
@@ -35,7 +35,7 @@ export function Createrequestform2() {
               Mobile number
             </label>
             <input
-              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg bg-lightComponentBg border-slate-600/50"
+              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg  border-slate-600/50"
               placeholder="Enter Last Name"
             ></input>
           </div>
@@ -54,7 +54,7 @@ export function Createrequestform2() {
           <div className="form-item">
             <label className="form-label text-xs font-medium">Address</label>
             <input
-              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg bg-lightComponentBg border-slate-600/50"
+              className="flex h-10 w-full border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg  border-slate-600/50"
               placeholder="Enter First Name"
             ></input>
             <div className="form-message"></div>

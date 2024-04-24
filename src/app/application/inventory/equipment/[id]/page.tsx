@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import EquipmentContent from "./part-content";
+import EquipmentContent from "./equipment-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useEquipments } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 // import { useBrands } from "@/hooks/useBrands";
 import EquipmentNotFound from "./not-found";
 

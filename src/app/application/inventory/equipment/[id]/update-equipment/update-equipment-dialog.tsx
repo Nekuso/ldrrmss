@@ -16,19 +16,18 @@ import { MdOutlineModeEdit } from "react-icons/md";
 
 export default function UpdateEquipmentDialog({
   equipmentData,
-  brandsData,
 }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-lg flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary">
+        <Button className="text-xs font-bold rounded-lg flex gap-2 ">
           <MdOutlineModeEdit />
           Update
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[570] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>Update Part</DialogTitle>
           <DialogDescription>
@@ -39,7 +38,6 @@ export default function UpdateEquipmentDialog({
           setDialogOpen={setDialogIsOpen}
           dialogIsOpen={dialogIsOpen}
           equipment={equipmentData}
-          brands={brandsData}
         />
       </DialogContent>
     </Dialog>

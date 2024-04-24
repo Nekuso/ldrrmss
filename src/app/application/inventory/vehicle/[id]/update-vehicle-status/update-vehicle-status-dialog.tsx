@@ -42,7 +42,7 @@ export default function UpdateServiceStatusDialog({ serviceData }: any) {
           {serviceData.status}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>Update service status</DialogTitle>
           <DialogDescription>

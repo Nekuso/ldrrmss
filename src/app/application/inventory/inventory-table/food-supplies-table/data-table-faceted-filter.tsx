@@ -44,7 +44,7 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Button
           variant="outline"
           size="sm"
-          className="h-9 border-dashed border-slate-600 bg-transparent hover:bg-applicationPrimary hover:text-white rounded-xl"
+          className="h-9 border-dashed border-slate-600 bg-transparent text-black rounded-xl"
         >
           <PlusCircledIcon className="mr-2 h-4 w-4" />
           {title}
@@ -61,7 +61,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                 {selectedValues.size > 2 ? (
                   <Badge
                     variant="secondary"
-                    className="rounded-sm px-1 font-normal bg-applicationPrimary text-white"
+                    className="rounded-sm px-1 font-normal text-black"
                   >
                     {selectedValues.size} selected
                   </Badge>
@@ -72,7 +72,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                       <Badge
                         variant="secondary"
                         key={option.value}
-                        className="rounded-sm px-1 font-normal bg-applicationPrimary text-white hover:bg-white hover:text-black"
+                        className="rounded-sm px-1 font-normal text-black hover:text-black"
                       >
                         {option.label}
                       </Badge>
@@ -87,9 +87,9 @@ export function DataTableFacetedFilter<TData, TValue>({
         className="w-[200px] p-0 border-none rounded-xl"
         align="start"
       >
-        <Command className="bg-darkComponentBg shadow-2xl">
-          <CommandInput placeholder={title} className="text-white" />
-          <CommandList>
+        <Command className="shadow-2xl">
+          <CommandInput placeholder={title} className="text-black" />
+          <CommandList className="no-scrollbar">
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
@@ -112,20 +112,20 @@ export function DataTableFacetedFilter<TData, TValue>({
                   >
                     <div
                       className={cn(
-                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-white cursor-pointer",
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-black cursor-pointer",
                         isSelected
-                          ? "bg-applicationPrimary text-primary-foreground border-none"
+                          ? "text-white bg-primary border-none "
                           : "opacity-50 [&_svg]:invisible"
                       )}
                     >
                       <CheckIcon className={cn("h-4 w-4 ")} />
                     </div>
                     {option.icon && (
-                      <option.icon className="mr-2 h-4 w-4 text-white" />
+                      <option.icon className="mr-2 h-4 w-4 text-black" />
                     )}
-                    <span className="text-sm text-white">{option.label}</span>
+                    <span className="text-sm text-black">{option.label}</span>
                     {facets?.get(option.value) && (
-                      <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs text-white">
+                      <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs text-black">
                         {facets.get(option.value)}
                       </span>
                     )}
@@ -138,7 +138,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                 <CommandGroup>
                   <CommandItem
                     onSelect={() => column?.setFilterValue(undefined)}
-                    className="justify-center text-center text-white cursor-pointer"
+                    className="justify-center text-center text-black cursor-pointer"
                   >
                     Clear filters
                   </CommandItem>

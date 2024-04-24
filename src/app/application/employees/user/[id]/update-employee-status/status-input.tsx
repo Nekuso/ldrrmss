@@ -13,7 +13,7 @@ export default function SelectDemo({ data }: { data: any }) {
       <SelectTrigger
         id="status"
         name="status"
-        className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
+        className="w-full  border-slate-600/50 rounded-lg "
         {...data}
       >
         <SelectValue
@@ -21,7 +21,7 @@ export default function SelectDemo({ data }: { data: any }) {
           placeholder={data ? data.value : "Select Status"}
         />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg  border-slate-600/50 text-white">
         <SelectGroup>
           <SelectItem value="Available">Available</SelectItem>
           <SelectItem value="In Progress">In Progress</SelectItem>

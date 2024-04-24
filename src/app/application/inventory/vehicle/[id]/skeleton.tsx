@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function ServiceSkeleton() {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
-      <div className="w-[800px] 2xl:w-[900px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl shadow-lg bg-darkComponentBg border border-lightBorder">
+      <div className="w-[800px] 2xl:w-[900px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl shadow-lg Bg border border-lightBorder">
         <div className="w-full h-full p-8 flex flex-col gap-4">
           <div className="w-full flex gap-4">
             <Skeleton className="w-[45%] h-full z-0 rounded-xl bg-lightBorder"></Skeleton>

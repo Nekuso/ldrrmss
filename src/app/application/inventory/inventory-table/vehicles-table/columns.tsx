@@ -46,9 +46,9 @@ export const initialState = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-primary data-[state=open]:text-white hover:bg-slate-50/40"
               >
-                <span>Vehicle</span>
+                <span>Name</span>
                 {column.getIsSorted() === "desc" ? (
                   <ArrowDownIcon className="ml-2 h-4 w-4" />
                 ) : column.getIsSorted() === "asc" ? (
@@ -60,20 +60,20 @@ export const initialState = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="bg-darkComponentBg shadow-2xl border-darkGray border-none"
+              className="bg-white shadow-2xl border-darkGray border-none"
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-primary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-primary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -88,7 +88,7 @@ export const initialState = () => {
                 src={row.original.image_url}
                 alt={row.original.image_url}
               />
-              <AvatarFallback className="bg-darkBg rounded-md">
+              <AvatarFallback className="bg-slate-500 rounded-md text-white">
                 {row.original.name[0]}
               </AvatarFallback>
             </Avatar>
@@ -97,29 +97,11 @@ export const initialState = () => {
               <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.name}
               </p>
-              <p className="max-w-[181px] truncate text-white/50">
-                Plate-number: {row.original.duration}
-              </p>
             </div>
           </div>
         );
       },
     },
-    // {
-    //   id: "price",
-    //   accessorKey: "price",
-    //   header: "Price",
-    //   cell: ({ row }) => {
-    //     return (
-    //       <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-bold">
-    //         ₱{" "}
-    //         {row.original.price
-    //           .toFixed(2)
-    //           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-    //       </p>
-    //     );
-    //   },
-    // },
     {
       accessorKey: "description",
       header: "Description",
@@ -131,26 +113,6 @@ export const initialState = () => {
         );
       },
     },
-    // {
-    //   id: "branch",
-    //   accessorKey: "branches",
-    //   accessorFn: (row) => row.inventory.branches.branch_name,
-    //   header: "Branch",
-    //   cell: ({ row }) => {
-    //     const item = branches?.find(
-    //       (item: any) =>
-    //         item.value === row.original.inventory.branches.branch_name
-    //     );
-
-    //     if (!item) {
-    //       return null;
-    //     }
-    //     return <p className="max-w-[85px] truncate">{item.label}</p>;
-    //   },
-    //   filterFn: (row, id, value) => {
-    //     return value.includes(row.getValue(id));
-    //   },
-    // },
     {
       accessorKey: "status",
       header: ({ column }) => {
@@ -160,7 +122,7 @@ export const initialState = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-primary data-[state=open]:text-white hover:bg-slate-50/40"
               >
                 <span>Status</span>
                 {column.getIsSorted() === "desc" ? (
@@ -174,20 +136,20 @@ export const initialState = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="bg-darkComponentBg shadow-2xl border-darkGray border-none"
+              className="bg-white shadow-2xl border-darkGray border-none"
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-primary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-primary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -207,7 +169,7 @@ export const initialState = () => {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-green-300 bg-green-300 bg-opacity-20 px-2 py-1 rounded-3xl border border-green-600"
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-green-600 px-2 py-1 rounded-3xl border border-green-600"
               }
             >
               {item.value}
@@ -217,7 +179,7 @@ export const initialState = () => {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-yellow-300 bg-yellow-300 bg-opacity-20 px-2 py-1 rounded-3xl border border-yellow-600"
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-yellow-600 px-2 py-1 rounded-3xl border border-yellow-600"
               }
             >
               {item.value}
@@ -227,7 +189,7 @@ export const initialState = () => {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-red-300 bg-red-300 bg-opacity-20 px-2 py-1 rounded-3xl border border-red-600"
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-red-600 px-2 py-1 rounded-3xl border border-red-600"
               }
             >
               {item.value}
@@ -246,10 +208,9 @@ export const initialState = () => {
         const id = row.original.id;
         return (
           <Link
-            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
+            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4  hover:text-black hover:border- transition-all duration-300 primary-glow"
             href={`/application/inventory/vehicle/${id}`}
           >
-            <FaEye className="mr-2 " />
             View
           </Link>
         );

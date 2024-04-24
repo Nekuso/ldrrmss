@@ -26,7 +26,7 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useFood_supplies } from "@/hooks/useProducts";
+import { useFood_supplies } from "@/hooks/useFoodSupplies";
 
 export const productSchema = z.object({
   id: z.number(),
@@ -130,7 +130,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                         <FormLabel className="text-xs">Product Name</FormLabel>
                         <FormControl>
                           <Input
-                            className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                            className="rounded-lg  border-slate-600/50"
                             {...field}
                             type="text"
                             placeholder="Product name"
@@ -168,7 +168,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                           <FormLabel className="text-xs">Quantity</FormLabel>
                           <div className="w-full flex justify-between place-items-center gap-2">
                             <div
-                              className="bg-lightComponentBg p-3 rounded-lg cursor-pointer hover:bg-applicationPrimary transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer hover:bg- transition-all duration-300 text-center select-none"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -180,14 +180,14 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                             </div>
                             <FormControl>
                               <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50 text-center"
+                                className="rounded-lg  border-slate-600/50 text-center"
                                 {...field}
                                 type="number"
                                 placeholder="0"
                               />
                             </FormControl>
                             <div
-                              className="bg-lightComponentBg p-3 rounded-lg cursor-pointer hover:bg-applicationPrimary transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer hover:bg- transition-all duration-300 text-center select-none"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -215,7 +215,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">Price</FormLabel>
-                      <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg border border-slate-600/50 ">
+                      <div className="w-full flex place-items-center rounded-lg  border border-slate-600/50 ">
                         <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
                           <TbCurrencyPeso className="h-full w-5 text-center" />
                         </div>
@@ -244,7 +244,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                     <FormLabel className="text-xs">Barcode</FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                        className="rounded-lg  border-slate-600/50"
                         {...field}
                         type="text"
                         placeholder="Enter Barcode"
@@ -263,7 +263,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
                   <FormItem>
                     <FormLabel className="text-xs">Description</FormLabel>
                     <Textarea
-                      className="bg-lightComponentBg border-slate-600/50 w-full h-full resize-none"
+                      className=" border-slate-600/50 w-full h-full resize-none"
                       placeholder="Description"
                       {...field}
                     />
@@ -277,7 +277,7 @@ export default function ProductForm({ setDialogOpen, product, uoms }: any) {
 
         <DialogFooter>
           <Button
-            className="text-xs font-bold rounded-md min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            className="text-xs font-bold rounded-md min-w-[105px] flex justify-center place-items-center gap-2 bg-/90 hover:bg- primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>Update Product</span>

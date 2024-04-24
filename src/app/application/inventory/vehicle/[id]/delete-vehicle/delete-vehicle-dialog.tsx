@@ -62,7 +62,7 @@ export default function DeleteVehicleDialog({ vehicleData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>Delete Service</DialogTitle>
           <DialogDescription>

@@ -114,7 +114,7 @@ export default function VehicleForm({ setDialogOpen, vehicle }: any) {
                         <FormLabel className="text-xs">Service Name</FormLabel>
                         <FormControl>
                           <Input
-                            className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                            className="rounded-lg  border-slate-600/50"
                             {...field}
                             type="text"
                             placeholder="Service name"
@@ -133,7 +133,7 @@ export default function VehicleForm({ setDialogOpen, vehicle }: any) {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-xs">Price</FormLabel>
-                          <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg border border-slate-600/50 ">
+                          <div className="w-full flex place-items-center rounded-lg  border border-slate-600/50 ">
                             <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
                               <TbCurrencyPeso className="h-full w-5 text-center" />
                             </div>
@@ -163,7 +163,7 @@ export default function VehicleForm({ setDialogOpen, vehicle }: any) {
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                              className="rounded-lg  border-slate-600/50"
                               {...field}
                               type="number"
                               placeholder="Duration"
@@ -185,7 +185,7 @@ export default function VehicleForm({ setDialogOpen, vehicle }: any) {
                   <FormItem>
                     <FormLabel className="text-xs">Description</FormLabel>
                     <Textarea
-                      className="bg-lightComponentBg border-slate-600/50 w-full h-full resize-none no-scrollbar"
+                      className=" border-slate-600/50 w-full h-full resize-none no-scrollbar"
                       placeholder="Description"
                       {...field}
                     />
@@ -199,7 +199,7 @@ export default function VehicleForm({ setDialogOpen, vehicle }: any) {
 
         <DialogFooter>
           <Button
-            className="text-xs font-bold rounded-md min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            className="text-xs font-bold rounded-md min-w-[105px] flex justify-center place-items-center gap-2 bg-/90 hover:bg- primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>Update Service</span>

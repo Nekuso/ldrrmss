@@ -19,15 +19,15 @@ export default function EquipmentDialog() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
+        <Button className="text-xs font-bold rounded-md flex gap-2  transition-all duration-300">
           <FaToolbox /> New Equipment
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
+      <DialogContent className="sm:max-w-[560px] Bg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
-          <DialogTitle>Part</DialogTitle>
+          <DialogTitle>Equipment</DialogTitle>
           <DialogDescription>
-            Add a new part to your inventory
+            Add a new equipment to your inventory
           </DialogDescription>
         </DialogHeader>
         <EquipmentForm setDialogOpen={setDialogIsOpen} />

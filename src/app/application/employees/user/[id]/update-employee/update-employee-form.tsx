@@ -120,7 +120,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                       <FormLabel className="text-xs">First Name</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                          className="rounded-lg  border-slate-600/50"
                           {...field}
                           type="text"
                           placeholder="Enter First Name"
@@ -140,7 +140,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                       <FormLabel className="text-xs">Last Name</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                          className="rounded-lg  border-slate-600/50"
                           {...field}
                           type="text"
                           placeholder="Enter Last Name"
@@ -162,7 +162,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                       <FormLabel className="text-xs">Email</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                          className="rounded-lg  border-slate-600/50"
                           {...field}
                           type="text"
                           placeholder="example@gmail.com"
@@ -184,7 +184,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                       <FormLabel className="text-xs">Password</FormLabel>
                       <FormControl className="h-full">
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none h-9"
+                          className="rounded-lg  border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none h-9"
                           type="text"
                           {...field}
                           placeholder="Password"
@@ -209,7 +209,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                       <FormLabel className="text-xs">Contact Number</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          className="rounded-lg  border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                           {...field}
                           accept="number"
                           type="number"

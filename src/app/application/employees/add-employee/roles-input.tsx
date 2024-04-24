@@ -21,7 +21,7 @@ export default function SelectDemo({ data }: { data: any }) {
   return (
     <Select onValueChange={data.onChange}>
       <FormControl>
-        <SelectTrigger className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg ">
+        <SelectTrigger className="w-full  border-slate-600/50 rounded-lg ">
           <SelectValue placeholder="Select a role" />
         </SelectTrigger>
       </FormControl>

@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import Loading from "./skeleton";
 import Food_supplyContent from "./product-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useFood_supplies } from "@/hooks/useProducts";
+import { useFoodSupplies } from "@/hooks/useFoodSupplies";
 import { useUOMS } from "@/hooks/useUOMS";
-import Food_supplyNotFound from "./not-found";
+import FoodSupplyNotFound from "./not-found";
 
 export default function Food_supply({ params }: { params: any }) {
-  const { getFood_supply, currentFood_supplyData } = useFood_supplies();
+  const { getFood_supply, currentFood_supplyData } = useFoodSupplies();
   const { getUOMS, allUOMSData } = useUOMS();
   const [error, setError] = useState(false);
 
@@ -47,7 +47,7 @@ export default function Food_supply({ params }: { params: any }) {
   return (
     <div className="w-full flex justify-center place-items-center">
       {error ? (
-        <Food_supplyNotFound />
+        <FoodSupplyNotFound />
       ) : currentFood_supplyData.length === 0 ? (
         <Loading />
       ) : (

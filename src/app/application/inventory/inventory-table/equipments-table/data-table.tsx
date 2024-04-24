@@ -39,7 +39,6 @@ export function DataTable<TData, TValue>({
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     barcode: false,
-    created_at: false,
   });
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -65,14 +64,14 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-full min-h-[715px] 2xl:min-h-[792px] flex flex-col justify-between gap-3 bg-darkComponentBg border border-lightBorder p-4 rounded-2xl bg-gray-800">
+    <div className="w-full min-h-[715px] 2xl:min-h-[792px] flex flex-col justify-between gap-3 border border-lightBorder p-4 rounded-xl bg-white">
       <div className="w-full flex justify-between ">
         <DataTableToolbar table={table} />
       </div>
       <div className="w-full h-full overflow-scroll-y">
         <ScrollArea className="w-full h-[580px] 2xl:h-[650px] rounded-2xl relative">
           <Table>
-            <TableHeader className="bg-darkComponentBg border-none sticky top-0 z-[5]">
+            <TableHeader className="Bg border-none sticky top-0 z-[5]">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   key={headerGroup.id}

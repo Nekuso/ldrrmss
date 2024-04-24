@@ -19,12 +19,12 @@ export default function SelectDemo({ data }: { data: any }) {
           id="branch"
           name="branch"
           value={data.value}
-          className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
+          className="w-full  border-slate-600/50 rounded-lg "
         >
           <SelectValue className="text-white" placeholder="Select a branch" />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg  border-slate-600/50 text-white">
         <SelectGroup>
           {branchesData.map((branch: any) => (
             <SelectItem key={branch.id} value={branch.id.toString()}>

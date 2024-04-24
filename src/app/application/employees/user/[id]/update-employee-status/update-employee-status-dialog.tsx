@@ -50,7 +50,7 @@ export default function UpdateEmployeeStatusDialog({ employeeData }: any) {
           {employee.status}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>Update user status</DialogTitle>
           <DialogDescription>

@@ -19,11 +19,11 @@ export default function VehicleDialog() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
+        <Button className="text-xs font-bold rounded-md flex gap-2  transition-all duration-300">
           <FaAmbulance /> New Vehicle
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
+      <DialogContent className="sm:max-w-[570px] Bg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Service</DialogTitle>
           <DialogDescription>

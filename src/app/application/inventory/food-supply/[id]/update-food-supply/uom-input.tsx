@@ -28,7 +28,7 @@ export default function SelectDemo({ data, uomsData }: any) {
           id="branch"
           name="branch"
           value={data.value}
-          className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
+          className="w-full  border-slate-600/50 rounded-lg "
         >
           <SelectValue
             className="text-white"
@@ -36,7 +36,7 @@ export default function SelectDemo({ data, uomsData }: any) {
           />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg  border-slate-600/50 text-white">
         <SelectGroup>
           {uomsData.map((uom: any) => (
             <SelectItem key={uom.id} value={uom.id.toString()}>

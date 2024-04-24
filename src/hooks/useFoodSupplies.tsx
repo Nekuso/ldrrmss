@@ -1,21 +1,23 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 
-export const useEquipments: any = () => {
+export const useFoodSupplies: any = () => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
-  const [equipmentsData, setEquipmentsData] = useState<any>([]);
-  const [currentEquipmentData, setCurrentEquipmentData] = useState<any>([]);
+  const [allFoodSupplies, setAllFoodSupplies] = useState<any>([]);
+  const [currentFoodSupplyData, setCurrentFoodSupplyData] = useState<any>([]);
 
-  const createEquipment = async (props: any, duration?: any) => {
-    const result = await supabase.from("equipments").insert({
+  const createFoodSupply = async (props: any, duration?: any) => {
+    const result = await supabase.from("food_supplies").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
       stock_quantity: props.stock_quantity,
-      brand_id: props.brand_id,
+      uom_id: props.uom_id,
+      price: props.price,
+      inventory_id: props.inventory_id,
       barcode: props.barcode,
       status: props.status,
     });
@@ -24,32 +26,9 @@ export const useEquipments: any = () => {
 
     return result;
   };
-  const getEquipments = async () => {
+  const getFoodSupplies = async () => {
     const result = await supabase
-      .from("equipments")
-      .select(
-        `
-        id,
-        name,
-        description,
-        image_url,
-        stock_quantity,
-        barcode,
-        status,
-        created_at
-      `
-      )
-      .order("created_at", { ascending: false });
-
-    const { data, error } = result;
-    if (error) {
-      return error;
-    }
-    return setEquipmentsData(data);
-  };
-  const getEquipment = async (id: string, duration?: number) => {
-    const { data, error } = await supabase
-      .from("equipments")
+      .from("food_supplies")
       .select(
         `
           id,
@@ -62,15 +41,38 @@ export const useEquipments: any = () => {
           created_at
         `
       )
+      .order("created_at", { ascending: false });
+
+    const { data, error } = result;
+    if (error) {
+      return error;
+    }
+    return setAllFoodSupplies(data);
+  };
+  const getFoodSupply = async (id: string, duration?: number) => {
+    const { data, error } = await supabase
+      .from("food_supplies")
+      .select(
+        `
+        id,
+        name,
+        description,
+        image_url,
+        stock_quantity,
+        barcode,
+        status,
+        created_at
+      `
+      )
       .eq("id", id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;
-    return setCurrentEquipmentData(data);
+    return setCurrentFoodSupplyData(data);
   };
-  const updateEquipment = async (props: any, duration?: number) => {
+  const updateFoodSupply = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("equipments")
+      .from("food_supplies")
       .update({
         name: props.name,
         description: props.description,
@@ -84,9 +86,9 @@ export const useEquipments: any = () => {
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
   };
-  const updateEquipmentStatus = async (props: any, duration?: number) => {
+  const updateFoodSupplyStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("equipments")
+      .from("food_supplies")
       .update({
         status: props.status,
       })
@@ -96,9 +98,9 @@ export const useEquipments: any = () => {
 
     return JSON.stringify(result);
   };
-  const deleteEquipment = async (props: any, duration: number = 2000) => {
+  const deleteFood_supply = async (props: any, duration: number = 2000) => {
     const result = await supabase
-      .from("equipments")
+      .from("food_supplies")
       .delete()
       .eq("id", props.id);
 
@@ -108,15 +110,15 @@ export const useEquipments: any = () => {
 
   return {
     // states
-    equipmentsData,
-    currentEquipmentData,
+    allFoodSupplies,
+    currentFoodSupplyData,
 
     // methods
-    createEquipment,
-    getEquipment,
-    getEquipments,
-    updateEquipment,
-    updateEquipmentStatus,
-    deleteEquipment,
+    createFoodSupply,
+    getFoodSupply,
+    getFoodSupplies,
+    updateFoodSupply,
+    updateFoodSupplyStatus,
+    deleteFood_supply,
   };
 };

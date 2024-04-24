@@ -17,35 +17,22 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useEquipments } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 
-export default function DeleteParttDialog({ partData }: any) {
+export default function DeleteEquipmentDialog({ equipmentData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const part = partData;
-  const { deletePart } = useEquipments();
+  const equipment = equipmentData;
+  const { deleteEquipment } = useEquipments();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {
-      await deletePart(dataProps, 4000);
-      // const { error } = JSON.parse(result);
-      // if (error?.message) {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "Error",
-      //     description: error.message,
-      //   });
-      //   console.log(error);
-      //   return;
-      // }
+      await deleteEquipment(dataProps, 4000);
 
       toast({
         description: (
           <pre className="mt-2 min-w-[340px] max-width-[840px] rounded-md border border-lightBorder bg-slate-950 p-4">
             <code className="text-white">Successfuly! Deleted</code>
-            {/* <code className="text-white">
-              {JSON.stringify(result, null, 2)}
-            </code> */}
           </pre>
         ),
       });
@@ -62,12 +49,12 @@ export default function DeleteParttDialog({ partData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Delete Part</DialogTitle>
+          <DialogTitle>Delete Equipment</DialogTitle>
           <DialogDescription>
             This operation is destructive. You wont be able to revert this
-            action. Are you sure you want to delete this part?
+            action. Are you sure you want to delete this Equipment?
           </DialogDescription>
         </DialogHeader>
 
@@ -82,7 +69,7 @@ export default function DeleteParttDialog({ partData }: any) {
           <Button
             variant="destructive"
             className="text-xs font-bold min-w-[100px] rounded-md flex gap-2 transition-all duration-300"
-            onClick={() => onSubmit(part)}
+            onClick={() => onSubmit(equipment)}
           >
             <span
               className={cn("flex gap-2 place-items-center justify-center", {

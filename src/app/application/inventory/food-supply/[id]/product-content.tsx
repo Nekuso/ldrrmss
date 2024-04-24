@@ -17,7 +17,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
       <div className="w-[1000px] 2xl:w-[1200px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl gap-4">
-        <div className="w-[750px] 2xl:w-[950px] h-full p-6 bg-darkComponentBg flex flex-col justify-between gap-2 2xl:gap-4 rounded-xl shadow-lg border border-lightBorder relative">
+        <div className="w-[750px] 2xl:w-[950px] h-full p-6 Bg flex flex-col justify-between gap-2 2xl:gap-4 rounded-xl shadow-lg border border-lightBorder relative">
           <Avatar className="w-full h-[80%] z-0 rounded-md">
             <AvatarImage
               className="object-cover bg-center bg-cover rounded-xl"
@@ -28,7 +28,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
               }
               alt={food_supply[0].name}
             />
-            <AvatarFallback className="bg-darkBg rounded-md">
+            <AvatarFallback className="bg-slate-500 rounded-md text-white">
               No image
             </AvatarFallback>
           </Avatar>
@@ -78,7 +78,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
             </Tooltip>
           </TooltipProvider>
         </div>
-        <div className="w-full h-full p-8 bg-darkComponentBg flex flex-col gap-5 2xl:gap-7 rounded-xl shadow-lg border border-lightBorder">
+        <div className="w-full h-full p-8 Bg flex flex-col gap-5 2xl:gap-7 rounded-xl shadow-lg border border-lightBorder">
           <div className="w-ful flex flex-col">
             <h2 className="flex text-lg 2xl:text-2xl font-bold place-items-center gap-3">
               {food_supply[0].name}
@@ -119,7 +119,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
@@ -150,7 +150,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
@@ -183,7 +183,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
@@ -214,7 +214,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
@@ -247,7 +247,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
@@ -278,7 +278,7 @@ export default function Food_supplyContent({ food_supply, uoms }: any) {
                           });
                         }}
                       >
-                        <div className="p-3 bg-darkComponentBg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
+                        <div className="p-3 Bg rounded-md mr-2 select-none hover:bg-white group transition-all duration-500 cursor-pointer">
                           <FaRegCopy className="group-hover:text-black" />
                         </div>
                       </TooltipTrigger>
