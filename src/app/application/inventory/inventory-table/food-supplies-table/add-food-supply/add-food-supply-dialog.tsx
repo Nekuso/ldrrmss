@@ -18,15 +18,15 @@ export default function Food_supplyDialog() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
-          <BsBoxSeam /> New Product
+        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300 ">
+          <BsBoxSeam /> New Food-supply
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
-          <DialogTitle>Product</DialogTitle>
+          <DialogTitle>Food supply</DialogTitle>
           <DialogDescription>
-            Add a new product to your inventory
+            Add a new food supply to your inventory
           </DialogDescription>
         </DialogHeader>
         <Food_suppliesForm setDialogOpen={setDialogIsOpen} />

@@ -11,6 +11,7 @@ import {
 
 import VehicleForm from "./add-vehicle-form";
 import { BsBoxSeam } from "react-icons/bs";
+import { FaAmbulance } from "react-icons/fa";
 
 export default function VehicleDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -19,10 +20,10 @@ export default function VehicleDialog() {
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
-          <BsBoxSeam /> New Service
+          <FaAmbulance /> New Vehicle
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Service</DialogTitle>
           <DialogDescription>

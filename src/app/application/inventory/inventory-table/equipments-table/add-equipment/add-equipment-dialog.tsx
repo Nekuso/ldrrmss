@@ -11,6 +11,7 @@ import {
 
 import EquipmentForm from "./add-equipment-form";
 import { PiGearSixBold } from "react-icons/pi";
+import { FaToolbox } from "react-icons/fa";
 
 export default function EquipmentDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -19,10 +20,10 @@ export default function EquipmentDialog() {
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
-          <PiGearSixBold /> New Part
+          <FaToolbox /> New Equipment
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[570px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Part</DialogTitle>
           <DialogDescription>

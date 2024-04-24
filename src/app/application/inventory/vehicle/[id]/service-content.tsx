@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 import { toast as sonner } from "sonner";
 
-export default function VehicleContent({ service }: any) {
+export default function VehicleContent({ vehicle }: any) {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
       <div className="w-[800px] 2xl:w-[900px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl shadow-lg bg-darkComponentBg border border-lightBorder">
@@ -24,11 +24,11 @@ export default function VehicleContent({ service }: any) {
               <AvatarImage
                 className="object-cover bg-center bg-cover rounded-xl"
                 src={
-                  service[0].image_url
-                    ? service[0].image_url
+                  vehicle[0].image_url
+                    ? vehicle[0].image_url
                     : "https://via.placeholder.com/150"
                 }
-                alt={service[0].name}
+                alt={vehicle[0].name}
               />
               <AvatarFallback className="bg-darkBg rounded-md">
                 No image
@@ -37,8 +37,8 @@ export default function VehicleContent({ service }: any) {
             <div className="w-full flex flex-col gap-4">
               <div className="w-full flex flex-col">
                 <h2 className="flex text-lg 2xl:text-2xl font-bold place-items-center gap-3">
-                  {service[0].name}
-                  <UpdateServiceStatusButton serviceData={service[0]} />
+                  {vehicle[0].name}
+                  <UpdateServiceStatusButton serviceData={vehicle[0]} />
                 </h2>
                 <p className="text-sm 2xl:text-md text-slate-400 font-bold">
                   Type: Service
@@ -51,16 +51,16 @@ export default function VehicleContent({ service }: any) {
                   </span>
                   <div className="w-full flex justify-between place-items-center min-w-0  bg-lightBorder rounded-lg">
                     <p className="text-md 2xl:text-lg text-white gap-2 max-w-[260px] p-3 truncate">
-                      ₱{" "}
-                      {service[0].price
+                      {/* ₱{" "}
+                      {vehicle[0].price
                         .toFixed(2)
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} */}
                     </p>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger
                           onClick={() => {
-                            navigator.clipboard.writeText(service[0].price);
+                            navigator.clipboard.writeText(vehicle[0].price);
                             sonner("✨Success", {
                               description: "Price Copied!",
                             });
@@ -83,13 +83,13 @@ export default function VehicleContent({ service }: any) {
                   </span>
                   <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                     <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[260px] truncate">
-                      {service[0].duration} mins
+                      {vehicle[0].duration} mins
                     </p>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger
                           onClick={() => {
-                            navigator.clipboard.writeText(service[0].duration);
+                            navigator.clipboard.writeText(vehicle[0].duration);
                             sonner("✨Success", {
                               description: "Duration Copied!",
                             });
@@ -114,14 +114,14 @@ export default function VehicleContent({ service }: any) {
                   </span>
                   <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                     <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[210px] 2xl:max-w-[260px] truncate">
-                      {service[0].inventory.branches.branch_name}
+                      {/* {vehicle[0].inventory.branches.branch_name} */}
                     </p>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger
                           onClick={() => {
                             navigator.clipboard.writeText(
-                              service[0].inventory.branches.branch_name
+                              vehicle[0].inventory.branches.branch_name
                             );
                             sonner("✨Success", {
                               description: "Branch Name Copied!",
@@ -145,14 +145,14 @@ export default function VehicleContent({ service }: any) {
                   </span>
                   <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                     <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[260px] truncate">
-                      {format(service[0].created_at, "PPP")}
+                      {format(vehicle[0].created_at, "PPP")}
                     </p>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger
                           onClick={() => {
                             navigator.clipboard.writeText(
-                              format(service[0].created_at, "PPP")
+                              format(vehicle[0].created_at, "PPP")
                             );
                             sonner("✨Success", {
                               description: "Created Date Copied!",
@@ -180,14 +180,14 @@ export default function VehicleContent({ service }: any) {
               </span>
               <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                 <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[590px] 2xl:max-w-[800px] truncate">
-                  {service[0].inventory.branches.branch_location}
+                  {/* {vehicle[0].inventory.branches.branch_location} */}
                 </p>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger
                       onClick={() => {
                         navigator.clipboard.writeText(
-                          service[0].inventory.branches.branch_location
+                          vehicle[0].inventory.branches.branch_location
                         );
                         sonner("✨Success", {
                           description: "Branch Location Copied!",
@@ -213,14 +213,14 @@ export default function VehicleContent({ service }: any) {
               </span>
               <div className="w-full h-full min-w-0 bg-lightBorder rounded-lg p-3">
                 <p className="text-md 2xl:text-lg text-white line-clamp-4">
-                  {service[0].description}
+                  {vehicle[0].description}
                 </p>
               </div>
             </div>
           </div>
           <div className="w-full flex gap-4 justify-end">
-            <DeleteServiceButton serviceData={service[0]} />
-            <UpdateServiceButton serviceData={service[0]} />
+            <DeleteServiceButton serviceData={vehicle[0]} />
+            <UpdateServiceButton serviceData={vehicle[0]} />
           </div>
         </div>
       </div>

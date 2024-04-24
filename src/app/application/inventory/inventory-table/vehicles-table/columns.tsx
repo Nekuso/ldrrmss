@@ -48,7 +48,7 @@ export const initialState = () => {
                 size="sm"
                 className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
               >
-                <span>Service</span>
+                <span>Vehicle</span>
                 {column.getIsSorted() === "desc" ? (
                   <ArrowDownIcon className="ml-2 h-4 w-4" />
                 ) : column.getIsSorted() === "asc" ? (
@@ -98,7 +98,7 @@ export const initialState = () => {
                 {row.original.name}
               </p>
               <p className="max-w-[181px] truncate text-white/50">
-                Duration: {row.original.duration}
+                Plate-number: {row.original.duration}
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ export const initialState = () => {
         return (
           <Link
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
-            href={`/application/inventory/service/${id}`}
+            href={`/application/inventory/vehicle/${id}`}
           >
             <FaEye className="mr-2 " />
             View

@@ -28,15 +28,15 @@ export function DataTableToolbar<TData>({
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-white placeholder:text-white/40"
-          placeholder="Find a Product"
+          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-black"
+          placeholder="Find supply name"
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
         />
         <Input
-          className="w-[180px] 2xl:w-[200px] h-10 border-none bg-lightComponentBg rounded-lg text-white placeholder:text-white/40"
+          className="w-[180px] 2xl:w-[200px] h-10 border-none bg-lightComponentBg rounded-lg text-black"
           placeholder="Find Barcode"
           value={(table.getColumn("barcode")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
@@ -77,7 +77,7 @@ export function DataTableToolbar<TData>({
         )}
       </div>
       <div className="flex gap-4">
-        <Button
+        {/* <Button
           className="text-xs text-black font-bold rounded-md flex gap-2 bg-white/90 hover:bg-white transition-all duration-300"
           onClick={() =>
             toast("🔔 Notification", {
@@ -87,7 +87,7 @@ export function DataTableToolbar<TData>({
         >
           <CiExport />
           Export
-        </Button>
+        </Button> */}
         <AddFood_supplyButton />
       </div>
     </div>

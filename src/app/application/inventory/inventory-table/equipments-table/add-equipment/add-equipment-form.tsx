@@ -91,14 +91,14 @@ export default function EquipmentForm({ setDialogOpen }: any) {
         });
         return;
       }
-      // toast({
-      //   description: (
-      //     <pre className="mt-2 w-[340px] rounded-md border border-lightBorder bg-slate-950 p-4">
-      //       {/* <code className="text-white">Successfully Registered!</code> */}
-      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-      //     </pre>
-      //   ),
-      // });
+      toast({
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md border border-lightBorder bg-slate-950 p-4">
+            {/* <code className="text-white">Successfully Registered!</code> */}
+            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          </pre>
+        ),
+      });
       sonner("✨Success", {
         description: `Part Added!`,
       });

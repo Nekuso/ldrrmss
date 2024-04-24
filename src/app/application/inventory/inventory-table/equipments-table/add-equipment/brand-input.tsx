@@ -26,11 +26,11 @@ export default function SelectDemo({ data }: { data: any }) {
       </FormControl>
       <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
         <SelectGroup>
-          {brandsData.map((brand: any) => (
+          {/* {brandsData.map((brand: any) => (
             <SelectItem key={brand.id} value={brand.id.toString()}>
               {brand.value}
             </SelectItem>
-          ))}
+          ))} */}
         </SelectGroup>
       </SelectContent>
     </Select>

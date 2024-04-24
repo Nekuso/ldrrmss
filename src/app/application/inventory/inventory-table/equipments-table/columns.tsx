@@ -53,7 +53,7 @@ export const initialState = () => {
                 size="sm"
                 className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
               >
-                <span>Part</span>
+                <span>Equipment</span>
                 {column.getIsSorted() === "desc" ? (
                   <ArrowDownIcon className="ml-2 h-4 w-4" />
                 ) : column.getIsSorted() === "asc" ? (
@@ -122,7 +122,7 @@ export const initialState = () => {
                 size="sm"
                 className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
               >
-                <span>Stock</span>
+                <span>Quantity</span>
                 {column.getIsSorted() === "desc" ? (
                   <ArrowDownIcon className="ml-2 h-4 w-4" />
                 ) : column.getIsSorted() === "asc" ? (
@@ -320,7 +320,7 @@ export const initialState = () => {
         return (
           <Link
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
-            href={`/application/inventory/part/${id}`}
+            href={`/application/inventory/equipment/${id}`}
           >
             <FaEye className="mr-2 " />
             View

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/tooltip";
 import { toast as sonner } from "sonner";
 
-export default function Food_supplyContent({ product, uoms }: any) {
+export default function Food_supplyContent({ food_supply, uoms }: any) {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
       <div className="w-[1000px] 2xl:w-[1200px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl gap-4">
@@ -22,11 +22,11 @@ export default function Food_supplyContent({ product, uoms }: any) {
             <AvatarImage
               className="object-cover bg-center bg-cover rounded-xl"
               src={
-                product[0].image_url
-                  ? product[0].image_url
+                food_supply[0].image_url
+                  ? food_supply[0].image_url
                   : "https://via.placeholder.com/150"
               }
-              alt={product[0].name}
+              alt={food_supply[0].name}
             />
             <AvatarFallback className="bg-darkBg rounded-md">
               No image
@@ -36,7 +36,7 @@ export default function Food_supplyContent({ product, uoms }: any) {
             <Tooltip>
               <TooltipTrigger
                 onClick={() => {
-                  navigator.clipboard.writeText(product[0].barcode);
+                  navigator.clipboard.writeText(food_supply[0].barcode);
                   sonner("✨Success", {
                     description: "Barcode Copied!",
                   });
@@ -45,9 +45,11 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 <div className="w-full max-w-full flex flex-col place-items-center gap-4">
                   <Barcode
                     value={
-                      product[0].barcode ? product[0].barcode : "No Barcode"
+                      food_supply[0].barcode
+                        ? food_supply[0].barcode
+                        : "No Barcode"
                     }
-                    displayValue={product[0].barcode ? false : true}
+                    displayValue={food_supply[0].barcode ? false : true}
                     background="transparent"
                     lineColor="white"
                     width={2.8}
@@ -55,13 +57,18 @@ export default function Food_supplyContent({ product, uoms }: any) {
                     margin={0}
                   />
                   <div className="w-full flex justify-between">
-                    {product[0].barcode.split("").map((item: any, i: any) => {
-                      return (
-                        <h2 key={i} className="text-lg 2xl:text-2xl font-bold">
-                          {item}
-                        </h2>
-                      );
-                    })}
+                    {food_supply[0].barcode
+                      .split("")
+                      .map((item: any, i: any) => {
+                        return (
+                          <h2
+                            key={i}
+                            className="text-lg 2xl:text-2xl font-bold"
+                          >
+                            {item}
+                          </h2>
+                        );
+                      })}
                   </div>
                 </div>
               </TooltipTrigger>
@@ -74,18 +81,18 @@ export default function Food_supplyContent({ product, uoms }: any) {
         <div className="w-full h-full p-8 bg-darkComponentBg flex flex-col gap-5 2xl:gap-7 rounded-xl shadow-lg border border-lightBorder">
           <div className="w-ful flex flex-col">
             <h2 className="flex text-lg 2xl:text-2xl font-bold place-items-center gap-3">
-              {product[0].name}
+              {food_supply[0].name}
               <div
                 className={cn(
                   "text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
-                  product[0].status === "Available"
+                  food_supply[0].status === "Available"
                     ? "text-green-500 bg-green-500 bg-opacity-20 border-green-500"
-                    : product[0].status === "Low Stock"
+                    : food_supply[0].status === "Low Stock"
                     ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
                     : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
                 )}
               >
-                {product[0].status}
+                {food_supply[0].status}
               </div>
             </h2>
             <p className="text-sm 2xl:text-md text-slate-400 font-bold">
@@ -100,13 +107,13 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0  bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 max-w-[260px] p-3 truncate">
-                    ₱ {product[0].price}
+                    ₱ {food_supply[0].price}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
-                          navigator.clipboard.writeText(product[0].price);
+                          navigator.clipboard.writeText(food_supply[0].price);
                           sonner("✨Success", {
                             description: "Price Copied!",
                           });
@@ -129,14 +136,14 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[260px] truncate">
-                    {product[0].uoms.unit_name}
+                    {/* {food_supply[0].uoms.unit_name} */}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            product[0].uoms.unit_name
+                            food_supply[0].uoms.unit_name
                           );
                           sonner("✨Success", {
                             description: "Unit of measure Copied!",
@@ -162,14 +169,14 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[260px] truncate">
-                    {product[0].stock_quantity}
+                    {food_supply[0].stock_quantity}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            product[0].stock_quantity
+                            food_supply[0].stock_quantity
                           );
                           sonner("✨Success", {
                             description: "Stock Quantity Copied!",
@@ -193,14 +200,14 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[260px] truncate">
-                    {format(product[0].created_at, "PPP")}
+                    {format(food_supply[0].created_at, "PPP")}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            format(product[0].created_at, "PPP")
+                            format(food_supply[0].created_at, "PPP")
                           );
                           sonner("✨Success", {
                             description: "Created Date Copied!",
@@ -226,14 +233,14 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[210px] 2xl:max-w-[260px] truncate">
-                    {product[0].inventory.branches.branch_name}
+                    {/* {food_supply[0].inventory.branches.branch_name} */}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            product[0].inventory.branches.branch_name
+                            food_supply[0].inventory.branches.branch_name
                           );
                           sonner("✨Success", {
                             description: "Branch Name Copied!",
@@ -257,14 +264,14 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0 bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 p-3 max-w-[190px] 2xl:max-w-[240px] truncate">
-                    {product[0].inventory.branches.branch_location}
+                    {/* {food_supply[0].inventory.branches.branch_location} */}
                   </p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            product[0].inventory.branches.branch_location
+                            food_supply[0].inventory.branches.branch_location
                           );
                           sonner("✨Success", {
                             description: "Branch Location Copied!",
@@ -290,15 +297,15 @@ export default function Food_supplyContent({ product, uoms }: any) {
                 </span>
                 <div className="w-full h-full min-w-0 bg-lightBorder rounded-lg p-3">
                   <p className="text-md 2xl:text-lg text-white line-clamp-4">
-                    {product[0].description}
+                    {food_supply[0].description}
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="w-full flex gap-4 justify-end">
-            <DeleteProductButton productData={product[0]} />
-            <UpdateProductButton productData={product[0]} uomsData={uoms} />
+            <DeleteProductButton productData={food_supply[0]} />
+            <UpdateProductButton productData={food_supply[0]} uomsData={uoms} />
           </div>
         </div>
       </div>

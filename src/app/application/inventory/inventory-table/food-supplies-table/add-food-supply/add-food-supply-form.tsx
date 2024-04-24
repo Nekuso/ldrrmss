@@ -51,12 +51,12 @@ export const Food_supplySchema = z.object({
     .min(1, {
       message: "Product inventory id is required",
     })
-    .transform((arg) => new Number(arg)),
-  uom_id: z
-    .string()
-    .min(1, {
-      message: "Product uom id is required",
-    })
+    //   .transform((arg) => new Number(arg)),
+    // uom_id: z
+    //   .string()
+    //   .min(1, {
+    //     message: "Product uom id is required",
+    //   })
     .transform((arg) => new Number(arg)),
   status: z
     .string()
@@ -91,14 +91,14 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
         });
         return;
       }
-      // toast({
-      //   description: (
-      //     <pre className="mt-2 w-[340px] rounded-md border border-lightBorder bg-slate-950 p-4">
-      //       {/* <code className="text-white">Successfully Registered!</code> */}
-      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-      //     </pre>
-      //   ),
-      // });
+      toast({
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md border border-lightBorder bg-slate-950 p-4">
+            {/* <code className="text-white">Successfully Registered!</code> */}
+            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          </pre>
+        ),
+      });
       sonner("✨Success", {
         description: `Product Added!`,
       });
@@ -149,23 +149,7 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
                   />
                 </div>
                 <div className="w-full flex gap-4">
-                  <div className="w-full flex flex-col ">
-                    <FormField
-                      control={form.control}
-                      name="uom_id"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs">
-                            Unit Of Measure
-                          </FormLabel>
-                          <FormControl>
-                            {/* <UomInput data={field} /> */}
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  <div className="w-full flex flex-col "></div>
                   <div className="w-full flex flex-col">
                     <FormField
                       control={form.control}
@@ -217,7 +201,7 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
             <div className="w-full flex gap-4">
               <div className="w-[70%] flex flex-col">
                 <FormField
-                  control={form.control}
+                  // control={form.control}
                   name="price"
                   render={({ field }) => (
                     <FormItem>
@@ -226,14 +210,14 @@ export default function Food_supplyForm({ setDialogOpen }: any) {
                         <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
                           <TbCurrencyPeso className="h-full w-5 text-center" />
                         </div>
-                        <FormControl>
-                          <Input
-                            className="w-full text-start bg-transparent border-none rounded-tr-lg rounded-br-lg"
-                            {...field}
-                            type="number"
-                            placeholder="0.00"
-                          />
-                        </FormControl>
+                        {/* <FormControl> */}
+                        <Input
+                          className="w-full text-start bg-transparent border-none rounded-tr-lg rounded-br-lg"
+                          {...field}
+                          type="number"
+                          placeholder="0.00"
+                        />
+                        {/* </FormControl> */}
                       </div>
 
                       <FormMessage />

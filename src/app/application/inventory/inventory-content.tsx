@@ -39,15 +39,15 @@ export default function InventoryContent({
   return (
     <Tabs
       defaultValue="food_supplies"
-      className="w-full flex max-w-[1840px] flex-col justify-center place-items-center gap-4"
+      className="w-full flex max-w-[1840px] flex-col justify-center place-items-center gap-4 "
     >
       <div className="w-full">
-        <TabsList className="h-fit bg-darkComponentBg border border-lightBorder rounded-lg gap-2">
+        <TabsList className="h-fit bg-darkComponentBg border border-gray-800 rounded-lg gap-2 bg-white">
           <TabsTrigger
             value="food_supplies"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/60
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <BsBoxSeam />
             Food_supplies
@@ -56,7 +56,7 @@ export default function InventoryContent({
             value="equipments"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <FaToolbox />
             Equipments
@@ -65,28 +65,28 @@ export default function InventoryContent({
             value="vehicles"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <FaAmbulance />
             Vehicles
           </TabsTrigger>
         </TabsList>
       </div>
-      <TabsContent value="Food_supplies" className="w-full h-full ">
+      <TabsContent value="food_supplies" className="w-full h-full ">
         {/* Products Tab */}
         <Food_suppliesDataTable
           columns={initiateFood_suppliesState()}
           data={dataFood_supplies}
         />
       </TabsContent>
-      <TabsContent value="Equipments" className="w-full h-full ">
+      <TabsContent value="equipments" className="w-full h-full ">
         {/* Parts Tab */}
         <EquipmentsDataTable
           columns={initiateEquipmentsState()}
           data={dataEquipments}
         />
       </TabsContent>
-      <TabsContent value="Vehicles" className="w-full h-full">
+      <TabsContent value="vehicles" className="w-full h-full">
         <VehiclesDataTable
           columns={initiateVehiclesState()}
           data={dataVehicles}
