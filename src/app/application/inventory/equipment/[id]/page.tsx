@@ -51,11 +51,7 @@ export default function Equipment({ params }: { params: any }) {
       ) : currentEquipmentData.length === 0 ? (
         <Loading />
       ) : (
-        <EquipmentContent
-          params={params}
-          equipment={currentEquipmentData}
-          // brands={allBrandsData}
-        />
+        <EquipmentContent params={params} equipment={currentEquipmentData} />
       )}
     </div>
   );

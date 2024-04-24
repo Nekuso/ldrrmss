@@ -14,9 +14,7 @@ import {
 import UpdateEquipmentForm from "./update-equipment-form";
 import { MdOutlineModeEdit } from "react-icons/md";
 
-export default function UpdateEquipmentDialog({
-  equipmentData,
-}: any) {
+export default function UpdateEquipmentDialog({ equipmentData }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -29,9 +27,9 @@ export default function UpdateEquipmentDialog({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[570] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Update Part</DialogTitle>
+          <DialogTitle>Update Equipment</DialogTitle>
           <DialogDescription>
-            Make sure to input the new correct fields of the part
+            Make sure to input the new correct fields of the Equipment
           </DialogDescription>
         </DialogHeader>
         <UpdateEquipmentForm

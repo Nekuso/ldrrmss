@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import VehicleContent from "./service-content";
+import VehicleContent from "./vehicle-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useVehicles } from "@/hooks/useServices";
+import { useVehicles } from "@/hooks/useVehicles";
 import VehicleNotFound from "./not-found";
 
 export default function Vehicle({ params }: { params: any }) {

@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 import VehicleForm from "./add-vehicle-form";
-import { BsBoxSeam } from "react-icons/bs";
-import { FaAmbulance } from "react-icons/fa";
+import { FaToolbox } from "react-icons/fa";
 
 export default function VehicleDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -20,14 +19,14 @@ export default function VehicleDialog() {
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <Button className="text-xs font-bold rounded-md flex gap-2  transition-all duration-300">
-          <FaAmbulance /> New Vehicle
+          <FaToolbox /> New Vehicle
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570px] Bg border border-lightBorder shadow-2xl bg-white">
+      <DialogContent className="sm:max-w-[560px] Bg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
-          <DialogTitle>Service</DialogTitle>
+          <DialogTitle>Vehicle</DialogTitle>
           <DialogDescription>
-            Add a new service to your inventory
+            Add a new Vehicle to your inventory
           </DialogDescription>
         </DialogHeader>
         <VehicleForm setDialogOpen={setDialogIsOpen} />

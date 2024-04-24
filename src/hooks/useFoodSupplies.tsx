@@ -15,9 +15,7 @@ export const useFoodSupplies: any = () => {
       description: props.description,
       image_url: props.image_url,
       stock_quantity: props.stock_quantity,
-      uom_id: props.uom_id,
       price: props.price,
-      inventory_id: props.inventory_id,
       barcode: props.barcode,
       status: props.status,
     });
@@ -98,7 +96,7 @@ export const useFoodSupplies: any = () => {
 
     return JSON.stringify(result);
   };
-  const deleteFood_supply = async (props: any, duration: number = 2000) => {
+  const deleteFoodSupply = async (props: any, duration: number = 2000) => {
     const result = await supabase
       .from("food_supplies")
       .delete()
@@ -119,6 +117,6 @@ export const useFoodSupplies: any = () => {
     getFoodSupplies,
     updateFoodSupply,
     updateFoodSupplyStatus,
-    deleteFood_supply,
+    deleteFoodSupply,
   };
 };

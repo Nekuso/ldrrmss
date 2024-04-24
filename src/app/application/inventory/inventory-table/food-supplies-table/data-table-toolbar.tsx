@@ -21,9 +21,6 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
-  // const branchesSlice = useSelector((state: any) => state.branches);
-  // const uomsSlice = useSelector((state: any) => state.uoms);
-
   return (
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">

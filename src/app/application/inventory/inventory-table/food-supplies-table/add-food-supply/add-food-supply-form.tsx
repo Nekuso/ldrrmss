@@ -4,10 +4,6 @@ import { Input } from "@/components/ui/input";
 import { IoMdAdd } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
 import { Textarea } from "@/components/ui/textarea";
-import { TbCurrencyPeso } from "react-icons/tb";
-
-// import BranchInput from "./branch-input";
-// import UomInput from "./uom-input";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,13 +19,13 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { toast as sonner } from "sonner";
-// import ImageInput from "./image-input";
+import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import { useFoodSupplies } from "@/hooks/useFoodSupplies";
 
-export const foodSupplyScheema = z.object({
+export const foodSuplyScheema = z.object({
   name: z.string().min(1, {
     message: "Food Supply name is required",
   }),
@@ -43,21 +39,6 @@ export const foodSupplyScheema = z.object({
   stock_quantity: z.coerce.number().min(1, {
     message: "Food Supply quantity must be at least 1",
   }),
-  price: z.coerce.number().min(1, {
-    message: "Food Supply price is required",
-  }),
-  inventory_id: z
-    .string()
-    .min(1, {
-      message: "Food Supply inventory id is required",
-    })
-    //   .transform((arg) => new Number(arg)),
-    // uom_id: z
-    //   .string()
-    //   .min(1, {
-    //     message: "Food Supply uom id is required",
-    //   })
-    .transform((arg) => new Number(arg)),
   status: z
     .string()
     .min(1, {
@@ -68,19 +49,18 @@ export const foodSupplyScheema = z.object({
 
 export default function FoodSupplyForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createFood_supply } = useFoodSupplies();
-  const form = useForm<z.infer<typeof foodSupplyScheema>>({
-    resolver: zodResolver(foodSupplyScheema),
+  const { createFoodSupply } = useFoodSupplies();
+  const form = useForm<z.infer<typeof foodSuplyScheema>>({
+    resolver: zodResolver(foodSuplyScheema),
     defaultValues: {
       stock_quantity: 0,
-      price: 0.0,
       status: "Available",
     },
   });
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createFood_supply(data, 5000);
+      const result = await createFoodSupply(data, 1000);
 
       const { error } = result;
       if (error?.message) {
@@ -91,15 +71,8 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
         });
         return;
       }
-      toast({
-        description: (
-          <pre className="mt-2 w-[340px] rounded-md border border-lightBorder bg-slate-950 p-4">
-            {/* <code className="text-white">Successfully Registered!</code> */}
-            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-          </pre>
-        ),
-      });
-      sonner("✨Success", {
+
+      sonner("ADDED", {
         description: `Food Supply Added!`,
       });
       setDialogOpen(false);
@@ -112,8 +85,8 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-5"
       >
-        <div className="w-full flex flex-col min-h-[300px]">
-          <div className="w-full h-full flex flex-col gap-4">
+        <div className="w-full flex flex-col">
+          <div className="w-full h-full flex flex-col gap-2">
             <div className="w-full flex justify-center place-items-center gap-4">
               <FormField
                 control={form.control}
@@ -121,13 +94,13 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                 render={({ field }) => (
                   <FormItem className="h-fit">
                     <FormControl>
-                      {/* <ImageInput data={field} /> */}
+                      <ImageInput data={field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <div className="w-full flex flex-col gap-4">
+              <div className="w-full flex flex-col gap-2">
                 <div className="w-full flex flex-col">
                   <FormField
                     control={form.control}
@@ -140,7 +113,7 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                             className="rounded-lg  border-slate-600/50"
                             {...field}
                             type="text"
-                            placeholder="Food Supply name"
+                            placeholder="Food Supply Name"
                           />
                         </FormControl>
                         <FormMessage />
@@ -149,7 +122,26 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                   />
                 </div>
                 <div className="w-full flex gap-4">
-                  <div className="w-full flex flex-col "></div>
+                  <div className="w-full ">
+                    <FormField
+                      control={form.control}
+                      name="barcode"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs">Barcode</FormLabel>
+                          <FormControl>
+                            <Input
+                              className="rounded-lg  border-slate-600/50"
+                              {...field}
+                              type="text"
+                              placeholder="Enter Barcode"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   <div className="w-full flex flex-col">
                     <FormField
                       control={form.control}
@@ -159,7 +151,7 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                           <FormLabel className="text-xs">Quantity</FormLabel>
                           <div className="w-full flex justify-between place-items-center gap-2">
                             <div
-                              className=" p-3 rounded-lg cursor-pointer hover:bg- transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -167,18 +159,18 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                                 );
                               }}
                             >
-                              <FiMinus />
+                              <FiMinus className="group-hover:text-white" />
                             </div>
                             <FormControl>
                               <Input
-                                className="rounded-lg  border-slate-600/50 text-center"
+                                className="rounded-lg w-12 border-slate-600/50 text-center text-sm"
                                 {...field}
                                 type="number"
                                 placeholder="0"
                               />
                             </FormControl>
                             <div
-                              className=" p-3 rounded-lg cursor-pointer hover:bg- transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -186,7 +178,7 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                                 );
                               }}
                             >
-                              <IoMdAdd />
+                              <IoMdAdd className="group-hover:text-white" />
                             </div>
                           </div>
                           <FormMessage />
@@ -198,67 +190,6 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
               </div>
             </div>
 
-            <div className="w-full flex gap-4">
-              <div className="w-[70%] flex flex-col">
-                <FormField
-                  // control={form.control}
-                  name="price"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Price</FormLabel>
-                      <div className="w-full flex place-items-center rounded-lg  border border-slate-600/50 ">
-                        <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
-                          <TbCurrencyPeso className="h-full w-5 text-center" />
-                        </div>
-                        {/* <FormControl> */}
-                        <Input
-                          className="w-full text-start bg-transparent border-none rounded-tr-lg rounded-br-lg"
-                          {...field}
-                          type="number"
-                          placeholder="0.00"
-                        />
-                        {/* </FormControl> */}
-                      </div>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="inventory_id"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Branch</FormLabel>
-                      {/* <BranchInput data={field} /> */}
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="w-full ">
-              <FormField
-                control={form.control}
-                name="barcode"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-xs">Barcode</FormLabel>
-                    <FormControl>
-                      <Input
-                        className="rounded-lg  border-slate-600/50"
-                        {...field}
-                        type="text"
-                        placeholder="Enter Barcode"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
             <div className="w-full">
               <FormField
                 control={form.control}
@@ -281,7 +212,7 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
 
         <DialogFooter>
           <Button
-            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-/90 hover:bg- primary-glow transition-all duration-300"
+            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>

@@ -221,7 +221,7 @@ export default function EquipmentForm({ setDialogOpen, equipment }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
           >
-            <span className={cn({ hidden: isPending })}>Update Equipment</span>
+            <span className={cn({ hidden: isPending })}>Create Equipment</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />

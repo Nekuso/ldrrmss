@@ -1,6 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
-import { create } from "domain";
-import { get } from "http";
 import { useState } from "react";
 
 export const useVehicles: any = () => {
@@ -9,18 +7,18 @@ export const useVehicles: any = () => {
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
   const [vehiclesData, setVehiclesData] = useState<any>([]);
-  const [currentVehicleData, setCurrentVehicleData] = useState<any>([]);
+  const [currentVehicleData, setCurrentVehiclesData] = useState<any>([]);
 
-  const createVehicle = async (props: any, waitDuration?: any) => {
+  const createVehicle = async (props: any, duration?: any) => {
     const result = await supabase.from("vehicles").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
-      duration: props.duration,
+      plate_number: props.plate_number,
       status: props.status,
     });
 
-    await new Promise((resolve) => setTimeout(resolve, waitDuration));
+    await new Promise((resolve) => setTimeout(resolve, duration));
 
     return result;
   };
@@ -29,13 +27,14 @@ export const useVehicles: any = () => {
       .from("vehicles")
       .select(
         `
-        id,
-        name,
-        description,
-        image_url,
-        status,
-        created_at
-    `
+          id,
+          name,
+          description,
+          image_url,
+          plate_number,
+          status,
+          created_at
+        `
       )
       .order("created_at", { ascending: false });
 
@@ -51,31 +50,33 @@ export const useVehicles: any = () => {
       .select(
         `
         id,
-        name,
-        description,
-        image_url,
-        status,
-        created_at
+          name,
+          description,
+          image_url,
+          plate_number,
+          status,
+          created_at
       `
       )
       .eq("id", id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;
-    return setCurrentVehicleData(data);
+    return setCurrentVehiclesData(data);
   };
-  const updateVehicle = async (props: any, waitDuration?: number) => {
+  const updateVehicle = async (props: any, duration?: number) => {
     const result = await supabase
       .from("vehicles")
       .update({
         name: props.name,
         description: props.description,
         image_url: props.image_url,
+        plate_number: props.plate_number,
         status: props.status,
       })
       .eq("id", props.id);
 
-    await new Promise((resolve) => setTimeout(resolve, waitDuration));
+    await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
   };
   const updateVehicleStatus = async (props: any, duration?: number) => {
@@ -85,13 +86,11 @@ export const useVehicles: any = () => {
         status: props.status,
       })
       .eq("id", props.id);
-    console.log(result);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
 
     return JSON.stringify(result);
   };
-
   const deleteVehicle = async (props: any, duration: number = 2000) => {
     const result = await supabase.from("vehicles").delete().eq("id", props.id);
 
