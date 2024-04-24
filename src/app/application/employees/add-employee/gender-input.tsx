@@ -13,7 +13,7 @@ export default function SelectDemo({ data }: { data: any }) {
       <SelectTrigger
         id="gender"
         name="gender"
-        className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
+        className="w-full  border-slate-600/50 rounded-lg "
         {...data}
       >
         <SelectValue

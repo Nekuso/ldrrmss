@@ -11,7 +11,7 @@
 //       <div className="space-y-2 w-[90%] h-fit rounded-2xl">
 //         <div className="w-full h-full flex max-w-[1840px] max-h-[900px] justify-center place-items-center gap-7">
 //           <div className="w-full h-full flex gap-7 rounded-xl">
-//             <div className="w-full h-full flex flex-col gap-2 justify-around bg-white bg-darkComponentBg rounded-2xl shadow-lg border border-lightBorder overflow-hidden p-7 space-y-7">
+//             <div className="w-full h-full flex flex-col gap-2 justify-around bg-white Bg rounded-2xl shadow-lg border border-lightBorder overflow-hidden p-7 space-y-7">
 //               <div className="font-bold py-1">
 //                 <h1>General Information</h1>
 //               </div>
@@ -126,7 +126,7 @@
 //               </div>
 //             </div>
 //             <div className="w-[50%] 2xl:w-[50%] h-fit flex flex-col gap-2">
-//               <div className="w-full h-fit flex flex-col gap-2 justify-around bg-white place-items-center bg-darkComponentBg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
+//               <div className="w-full h-fit flex flex-col gap-2 justify-around bg-white place-items-center Bg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
 //                 <div className="w-full h-[170px] 2xl:h-[210px] bg-black rounded-xl relative">
 //                   <Image
 //                     alt="picture"
@@ -170,7 +170,7 @@
 //                   </div>
 //                 </div>
 //               </div>
-//               <div className="w-full h-full flex flex-col gap-2 justify-around bg-white place-items-center bg-darkComponentBg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
+//               <div className="w-full h-full flex flex-col gap-2 justify-around bg-white place-items-center Bg rounded-2xl shadow-lg border border-lightBorder overflow-hidden">
 //                 <div className="w-full h-full">
 //                   <iframe
 //                     className="w-full h-full"

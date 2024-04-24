@@ -4,9 +4,6 @@ import { Input } from "@/components/ui/input";
 import { IoMdAdd } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
 import { Textarea } from "@/components/ui/textarea";
-import { TbCurrencyPeso } from "react-icons/tb";
-
-import BrandInput from "./brand-input";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,48 +23,34 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useEquipments } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 
 export const equipmentSchema = z.object({
   id: z.number(),
   name: z.string().min(1, {
-    message: "Part name is required",
+    message: "Equipment name is required",
   }),
   description: z.string().min(1, {
-    message: "Part description is required",
+    message: "Equipment description is required",
   }),
   image_url: z.string().default("something"),
   barcode: z.string().min(1, {
-    message: "Part barcode is required",
+    message: "Equipment barcode is required",
   }),
   stock_quantity: z.coerce.number().min(1, {
-    message: "Part quantity must be at least 1",
+    message: "Equipment quantity must be at least 1",
   }),
-  price: z.coerce.number().min(1, {
-    message: "Part price is required",
-  }),
-  brand_id: z
-    .string()
-    .min(1, {
-      message: "Part uom id is required",
-    })
-    .transform((arg) => new Number(arg)),
   status: z
     .string()
     .min(1, {
-      message: "Part status is required",
+      message: "Equipment status is required",
     })
     .default("Available"),
 });
 
-export default function EquipmentForm({
-  setDialogOpen,
-  equipment,
-  brands,
-}: any) {
+export default function EquipmentForm({ setDialogOpen, equipment }: any) {
   const [isPending, startTransition] = useTransition();
   const { updateEquipment } = useEquipments();
-
   const form = useForm<z.infer<typeof equipmentSchema>>({
     resolver: zodResolver(equipmentSchema),
     defaultValues: {
@@ -76,16 +59,14 @@ export default function EquipmentForm({
       description: equipment.description,
       image_url: equipment.image_url,
       barcode: equipment.barcode,
-      brand_id: equipment.brands.id.toString(),
       stock_quantity: equipment.stock_quantity,
-      price: equipment.price,
       status: equipment.status,
     },
   });
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await updateEquipment(data, 2000);
+      const result = await updateEquipment(data, 3000);
 
       const { error } = result;
       if (error?.message) {
@@ -97,8 +78,8 @@ export default function EquipmentForm({
         return;
       }
 
-      sonner("✨Success", {
-        description: `Part Updated!`,
+      sonner("UPDATED", {
+        description: `equipment Updated!`,
       });
       setDialogOpen(false);
     });
@@ -110,8 +91,8 @@ export default function EquipmentForm({
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-5"
       >
-        <div className="w-full flex flex-col min-h-[300px]">
-          <div className="w-full h-full flex flex-col gap-4">
+        <div className="w-full flex flex-col">
+          <div className="w-full h-full flex flex-col gap-2">
             <div className="w-full flex justify-center place-items-center gap-4">
               <FormField
                 control={form.control}
@@ -125,20 +106,20 @@ export default function EquipmentForm({
                   </FormItem>
                 )}
               />
-              <div className="w-full flex flex-col gap-4">
+              <div className="w-full flex flex-col gap-2">
                 <div className="w-full flex flex-col">
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-xs">Part Name</FormLabel>
+                        <FormLabel className="text-xs">Name</FormLabel>
                         <FormControl>
                           <Input
-                            className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                            className="rounded-lg  border-slate-600/50"
                             {...field}
                             type="text"
-                            placeholder="Part name"
+                            placeholder="Equipment name"
                           />
                         </FormControl>
                         <FormMessage />
@@ -147,15 +128,20 @@ export default function EquipmentForm({
                   />
                 </div>
                 <div className="w-full flex gap-4">
-                  <div className="w-full flex flex-col ">
+                  <div className="w-full ">
                     <FormField
                       control={form.control}
-                      name="brand_id"
+                      name="barcode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-xs">Brands</FormLabel>
+                          <FormLabel className="text-xs">Barcode</FormLabel>
                           <FormControl>
-                            <BrandInput data={field} brandsData={brands} />
+                            <Input
+                              className="rounded-lg  border-slate-600/50"
+                              {...field}
+                              type="text"
+                              placeholder="Enter Barcode"
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -171,7 +157,7 @@ export default function EquipmentForm({
                           <FormLabel className="text-xs">Quantity</FormLabel>
                           <div className="w-full flex justify-between place-items-center gap-2">
                             <div
-                              className="bg-lightComponentBg p-3 rounded-lg cursor-pointer hover:bg-applicationPrimary transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -179,18 +165,18 @@ export default function EquipmentForm({
                                 );
                               }}
                             >
-                              <FiMinus />
+                              <FiMinus className="group-hover:text-white" />
                             </div>
                             <FormControl>
                               <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50 text-center"
+                                className="rounded-lg w-12 border-slate-600/50 text-center text-sm"
                                 {...field}
                                 type="number"
                                 placeholder="0"
                               />
                             </FormControl>
                             <div
-                              className="bg-lightComponentBg p-3 rounded-lg cursor-pointer hover:bg-applicationPrimary transition-all duration-300 text-center select-none"
+                              className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
                                 form.setValue(
                                   "stock_quantity",
@@ -198,7 +184,7 @@ export default function EquipmentForm({
                                 );
                               }}
                             >
-                              <IoMdAdd />
+                              <IoMdAdd className="group-hover:text-white" />
                             </div>
                           </div>
                           <FormMessage />
@@ -210,54 +196,6 @@ export default function EquipmentForm({
               </div>
             </div>
 
-            <div className="w-full flex gap-4">
-              <div className="w-full flex flex-col">
-                <FormField
-                  control={form.control}
-                  name="price"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Price</FormLabel>
-                      <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg border border-slate-600/50 ">
-                        <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
-                          <TbCurrencyPeso className="h-full w-5 text-center" />
-                        </div>
-                        <FormControl>
-                          <Input
-                            className="w-full text-start bg-transparent border-none rounded-tr-lg rounded-br-lg"
-                            {...field}
-                            type="number"
-                            placeholder="0.00"
-                          />
-                        </FormControl>
-                      </div>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="w-full ">
-              <FormField
-                control={form.control}
-                name="barcode"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-xs">Barcode</FormLabel>
-                    <FormControl>
-                      <Input
-                        className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                        {...field}
-                        type="text"
-                        placeholder="Enter Barcode"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
             <div className="w-full">
               <FormField
                 control={form.control}
@@ -266,7 +204,7 @@ export default function EquipmentForm({
                   <FormItem>
                     <FormLabel className="text-xs">Description</FormLabel>
                     <Textarea
-                      className="bg-lightComponentBg border-slate-600/50 w-full h-full resize-none"
+                      className=" border-slate-600/50 w-full h-full resize-none"
                       placeholder="Description"
                       {...field}
                     />
@@ -280,10 +218,10 @@ export default function EquipmentForm({
 
         <DialogFooter>
           <Button
-            className="text-xs font-bold rounded-md min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
           >
-            <span className={cn({ hidden: isPending })}>Update Part</span>
+            <span className={cn({ hidden: isPending })}>Create Equipment</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />

@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,32 +9,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import UpdateVehicleForm from "./update-vehicle-form";
-import { MdOutlineModeEdit } from "react-icons/md";
+import VehicleForm from "./update-vehicle-form";
+import { FaToolbox } from "react-icons/fa";
 
-export default function UpdateVehicleDialog({ vehicleData }: any) {
+export default function VehicleDialog({ vehicleData }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-lg flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary">
-          <MdOutlineModeEdit />
-          Update
+        <Button className="text-xs font-bold rounded-md flex gap-2  transition-all duration-300">
+          <FaToolbox /> Update Vehicle
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[570] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[560px] Bg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
-          <DialogTitle>Update Service</DialogTitle>
+          <DialogTitle>Vehicle</DialogTitle>
           <DialogDescription>
-            Make sure to input the new correct fields of the service
+            Add a new Vehicle to your inventory
           </DialogDescription>
         </DialogHeader>
-        <UpdateVehicleForm
-          setDialogOpen={setDialogIsOpen}
-          dialogIsOpen={dialogIsOpen}
-          vehicle={vehicleData}
-        />
+        <VehicleForm setDialogOpen={setDialogIsOpen} vehicle={vehicleData} />
       </DialogContent>
     </Dialog>
   );

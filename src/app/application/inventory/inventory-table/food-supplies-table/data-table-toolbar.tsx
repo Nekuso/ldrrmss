@@ -21,14 +21,11 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
-  // const branchesSlice = useSelector((state: any) => state.branches);
-  // const uomsSlice = useSelector((state: any) => state.uoms);
-
   return (
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-black"
+          className="w-[200px] 2xl:w-[250px] h-10 border border-slate-400 rounded-lg text-black"
           placeholder="Find supply name"
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
@@ -36,28 +33,13 @@ export function DataTableToolbar<TData>({
           }
         />
         <Input
-          className="w-[180px] 2xl:w-[200px] h-10 border-none bg-lightComponentBg rounded-lg text-black"
+          className="w-[200px] 2xl:w-[250px] h-10 border border-slate-400 rounded-lg text-black"
           placeholder="Find Barcode"
           value={(table.getColumn("barcode")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("barcode")?.setFilterValue(event.target.value)
           }
         />
-
-        {/* {table.getColumn("uom") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("uom")}
-            title="Unit Of Measure"
-            options={uomsSlice}
-          />
-        )}
-        {table.getColumn("branch") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("branch")}
-            title="Branch"
-            options={branchesSlice}
-          />
-        )} */}
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
@@ -69,7 +51,7 @@ export function DataTableToolbar<TData>({
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3 hover:bg-applicationPrimary hover:text-white"
+            className="h-8 px-2 lg:px-3 hover:bg- hover:text-white"
           >
             Reset
             <Cross2Icon className="ml-2 h-4 w-4" />

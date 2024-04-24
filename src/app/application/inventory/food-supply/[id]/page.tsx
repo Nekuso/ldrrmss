@@ -3,22 +3,20 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import Food_supplyContent from "./product-content";
+import FoodSupplyContent from "./food-supply-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useFood_supplies } from "@/hooks/useProducts";
-import { useUOMS } from "@/hooks/useUOMS";
-import Food_supplyNotFound from "./not-found";
+import { useFoodSupplies } from "@/hooks/useFoodSupplies";
+import FoodSuppliesNotFound from "./not-found";
 
-export default function Food_supply({ params }: { params: any }) {
-  const { getFood_supply, currentFood_supplyData } = useFood_supplies();
-  const { getUOMS, allUOMSData } = useUOMS();
+export default function FoodSupplies({ params }: { params: any }) {
+  const { getFoodSupply, currentFoodSupplyData } = useFoodSupplies();
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const initialFetch = async () => {
-      const result = await getFood_supply(params.id, 2000);
+      const result = await getFoodSupply(params.id, 2000);
       if (result) setError(result);
-      getUOMS();
+      // getBrands();
     };
 
     initialFetch();
@@ -28,12 +26,12 @@ export default function Food_supply({ params }: { params: any }) {
     if (!error) {
       const supabase = createSupabaseBrowserClient();
       const subscribedChannel = supabase
-        .channel("food_supply-follow-up")
+        .channel("food-supply-follow-up")
         .on(
           "postgres_changes",
           { event: "*", schema: "public", table: "food_supplies" },
           (payload: any) => {
-            getFood_supply(params.id, 0);
+            getFoodSupply(params.id, 0);
           }
         )
         .subscribe();
@@ -47,15 +45,11 @@ export default function Food_supply({ params }: { params: any }) {
   return (
     <div className="w-full flex justify-center place-items-center">
       {error ? (
-        <Food_supplyNotFound />
-      ) : currentFood_supplyData.length === 0 ? (
+        <FoodSuppliesNotFound />
+      ) : currentFoodSupplyData.length === 0 ? (
         <Loading />
       ) : (
-        <Food_supplyContent
-          params={params}
-          food_supply={currentFood_supplyData}
-          uoms={allUOMSData}
-        />
+        <FoodSupplyContent params={params} foodSupply={currentFoodSupplyData} />
       )}
     </div>
   );

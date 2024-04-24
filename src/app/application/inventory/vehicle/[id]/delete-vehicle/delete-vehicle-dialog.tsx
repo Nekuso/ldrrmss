@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useVehicles } from "@/hooks/useServices";
+import { useVehicles } from "@/hooks/useVehicles";
 
 export default function DeleteVehicleDialog({ vehicleData }: any) {
   const [isPending, startTransition] = useTransition();
@@ -28,16 +28,6 @@ export default function DeleteVehicleDialog({ vehicleData }: any) {
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {
       await deleteVehicle(dataProps, 4000);
-      // const { error } = JSON.parse(result);
-      // if (error?.message) {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "Error",
-      //     description: error.message,
-      //   });
-      //   console.log(error);
-      //   return;
-      // }
 
       toast({
         description: (
@@ -62,12 +52,12 @@ export default function DeleteVehicleDialog({ vehicleData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Delete Service</DialogTitle>
+          <DialogTitle>Delete Vehicle</DialogTitle>
           <DialogDescription>
             This operation is destructive. You wont be able to revert this
-            action. Are you sure you want to delete this service?
+            action. Are you sure you want to delete this Vehicle?
           </DialogDescription>
         </DialogHeader>
 

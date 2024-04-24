@@ -17,35 +17,22 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useFood_supplies } from "@/hooks/useProducts";
+import { useFoodSupplies } from "@/hooks/useFoodSupplies";
 
-export default function DeleteProductDialog({ productData }: any) {
+export default function DeleteFoodSupplyDialog({ foodSupplyData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const product = productData;
-  const { deleteProduct } = useFood_supplies();
+  const foodSupply = foodSupplyData;
+  const { deleteFoodSupply } = useFoodSupplies();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {
-      await deleteProduct(dataProps, 4000);
-      // const { error } = JSON.parse(result);
-      // if (error?.message) {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "Error",
-      //     description: error.message,
-      //   });
-      //   console.log(error);
-      //   return;
-      // }
+      await deleteFoodSupply(dataProps, 2000);
 
       toast({
         description: (
           <pre className="mt-2 min-w-[340px] max-width-[840px] rounded-md border border-lightBorder bg-slate-950 p-4">
             <code className="text-white">Successfuly! Deleted</code>
-            {/* <code className="text-white">
-              {JSON.stringify(result, null, 2)}
-            </code> */}
           </pre>
         ),
       });
@@ -62,12 +49,12 @@ export default function DeleteProductDialog({ productData }: any) {
           Delete
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] Bg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Delete Product</DialogTitle>
+          <DialogTitle>Delete Food Supply</DialogTitle>
           <DialogDescription>
             This operation is destructive. You wont be able to revert this
-            action. Are you sure you want to delete this product?
+            action. Are you sure you want to delete this Food Supply?
           </DialogDescription>
         </DialogHeader>
 
@@ -82,7 +69,7 @@ export default function DeleteProductDialog({ productData }: any) {
           <Button
             variant="destructive"
             className="text-xs font-bold min-w-[100px] rounded-md flex gap-2 transition-all duration-300"
-            onClick={() => onSubmit(product)}
+            onClick={() => onSubmit(foodSupply)}
           >
             <span
               className={cn("flex gap-2 place-items-center justify-center", {

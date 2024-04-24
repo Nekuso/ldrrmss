@@ -91,7 +91,7 @@ export default function ServiceForm({ setDialogIsOpen, service }: any) {
         </div>
         <DialogFooter>
           <Button
-            className="text-xs font-bold min-w-[120px] rounded-full flex gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            className="text-xs font-bold min-w-[120px] rounded-full flex gap-2 bg-/90 hover:bg- primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>Update</span>

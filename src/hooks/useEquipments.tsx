@@ -15,7 +15,6 @@ export const useEquipments: any = () => {
       description: props.description,
       image_url: props.image_url,
       stock_quantity: props.stock_quantity,
-      brand_id: props.brand_id,
       barcode: props.barcode,
       status: props.status,
     });

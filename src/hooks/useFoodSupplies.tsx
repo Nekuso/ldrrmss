@@ -1,23 +1,21 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 
-export const useFood_supplies: any = () => {
+export const useFoodSupplies: any = () => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
-  const [food_suppliesData, setFood_suppliesData] = useState<any>([]);
-  const [currentFood_supplyData, setCurrentFood_supplyData] = useState<any>([]);
+  const [allFoodSupplies, setAllFoodSupplies] = useState<any>([]);
+  const [currentFoodSupplyData, setCurrentFoodSupplyData] = useState<any>([]);
 
-  const createFood_supply = async (props: any, duration?: any) => {
+  const createFoodSupply = async (props: any, duration?: any) => {
     const result = await supabase.from("food_supplies").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
       stock_quantity: props.stock_quantity,
-      uom_id: props.uom_id,
       price: props.price,
-      inventory_id: props.inventory_id,
       barcode: props.barcode,
       status: props.status,
     });
@@ -26,7 +24,7 @@ export const useFood_supplies: any = () => {
 
     return result;
   };
-  const getFood_supplies = async () => {
+  const getFoodSupplies = async () => {
     const result = await supabase
       .from("food_supplies")
       .select(
@@ -47,9 +45,9 @@ export const useFood_supplies: any = () => {
     if (error) {
       return error;
     }
-    return setFood_suppliesData(data);
+    return setAllFoodSupplies(data);
   };
-  const getFood_supply = async (id: string, duration?: number) => {
+  const getFoodSupply = async (id: string, duration?: number) => {
     const { data, error } = await supabase
       .from("food_supplies")
       .select(
@@ -68,9 +66,9 @@ export const useFood_supplies: any = () => {
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;
-    return setCurrentFood_supplyData(data);
+    return setCurrentFoodSupplyData(data);
   };
-  const updateFood_supply = async (props: any, duration?: number) => {
+  const updateFoodSupply = async (props: any, duration?: number) => {
     const result = await supabase
       .from("food_supplies")
       .update({
@@ -86,7 +84,7 @@ export const useFood_supplies: any = () => {
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
   };
-  const updateFood_supplyStatus = async (props: any, duration?: number) => {
+  const updateFoodSupplyStatus = async (props: any, duration?: number) => {
     const result = await supabase
       .from("food_supplies")
       .update({
@@ -98,7 +96,7 @@ export const useFood_supplies: any = () => {
 
     return JSON.stringify(result);
   };
-  const deleteFood_supply = async (props: any, duration: number = 2000) => {
+  const deleteFoodSupply = async (props: any, duration: number = 2000) => {
     const result = await supabase
       .from("food_supplies")
       .delete()
@@ -110,15 +108,15 @@ export const useFood_supplies: any = () => {
 
   return {
     // states
-    food_suppliesData,
-    currentFood_supplyData,
+    allFoodSupplies,
+    currentFoodSupplyData,
 
     // methods
-    createFood_supply,
-    getFood_supply,
-    getFood_supplies,
-    updateFood_supply,
-    updateFood_supplyStatus,
-    deleteFood_supply,
+    createFoodSupply,
+    getFoodSupply,
+    getFoodSupplies,
+    updateFoodSupply,
+    updateFoodSupplyStatus,
+    deleteFoodSupply,
   };
 };
