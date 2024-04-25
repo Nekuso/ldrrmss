@@ -388,25 +388,6 @@ export default function Page({ employee, roles }: any) {
             </div>
           </div>
         </div>
-        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-black bg-opacity-30 bg-clip-border draggable shadow-lg top-2">
-          <div className="flex flex-wrap -mx-3">
-            <div className="flex-none w-auto max-w-full px-3">
-              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
-                Container 1
-              </h4>
-            </div>
-            <div className="flex-none w-auto max-w-full px-3">
-              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
-                Container 2
-              </h4>
-            </div>
-            <div className="flex-none w-auto max-w-full px-3">
-              <h4 className="flex text-3xl font-bold place-items-center gap-5 text-center text-white">
-                Container 3 - Idk spare containers rani
-              </h4>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
