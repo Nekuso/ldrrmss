@@ -128,7 +128,7 @@ export default function EquipmentForm({ setDialogOpen, equipment }: any) {
                   />
                 </div>
                 <div className="w-full flex gap-4">
-                  <div className="w-full ">
+                  {/* <div className="w-full ">
                     <FormField
                       control={form.control}
                       name="barcode"
@@ -147,7 +147,7 @@ export default function EquipmentForm({ setDialogOpen, equipment }: any) {
                         </FormItem>
                       )}
                     />
-                  </div>
+                  </div> */}
                   <div className="w-full flex flex-col">
                     <FormField
                       control={form.control}

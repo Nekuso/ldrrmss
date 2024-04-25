@@ -102,7 +102,7 @@ export const initialState = () => {
                 {row.original.name}
               </p>
               <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold text-slate-500 ">
-                {`barcode: ${row.original.barcode}`}
+                {/* {`barcode: ${row.original.barcode}`} */}
               </p>
             </div>
           </div>
