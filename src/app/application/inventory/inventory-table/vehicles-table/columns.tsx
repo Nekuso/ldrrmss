@@ -97,6 +97,9 @@ export const initialState = () => {
               <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.name}
               </p>
+              <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold text-slate-500 ">
+                {`Plate No: ${row.original.plate_number}`}
+              </p>
             </div>
           </div>
         );

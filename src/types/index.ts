@@ -84,6 +84,7 @@ export type allFood_suppliesDisplay = {
 };
 
 export type allVehiclesDisplay = {
+  [x: string]: any;
   id: number;
   name: string;
   description: string;
