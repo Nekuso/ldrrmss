@@ -3,7 +3,7 @@ import UpdateEquipmentButton from "./update-equipment/update-equipment-dialog";
 import DeleteEquipmentButton from "./delete-equipment/delete-equipment-dialog";
 import { cn } from "@/lib/utils";
 
-export default function EquipmentContent({ equipment, brands }: any) {
+export default function EquipmentContent({ equipment }: any) {
   return (
     <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-center">
       <div className="w-[1000px] 2xl:w-[1200px] h-[600px] 2xl:h-[680px] flex justify-center rounded-xl gap-4">
@@ -68,8 +68,8 @@ export default function EquipmentContent({ equipment, brands }: any) {
           </div>
 
           <div className="flex w-full gap-4 justify-end">
-            <DeleteEquipmentButton foodSupplyData={equipment[0]} />
-            <UpdateEquipmentButton foodSupplyData={equipment[0]} />
+            <DeleteEquipmentButton equipmentData={equipment[0]} />
+            <UpdateEquipmentButton equipmentData={equipment[0]} />
           </div>
         </div>
       </div>

@@ -33,9 +33,9 @@ export const equipmentSchema = z.object({
     message: "Equipment description is required",
   }),
   image_url: z.string().default("something"),
-  barcode: z.string().min(1, {
-    message: "Equipment barcode is required",
-  }),
+  // barcode: z.string().min(1, {
+  //   message: "Equipment barcode is required",
+  // }),
   stock_quantity: z.coerce.number().min(1, {
     message: "Equipment quantity must be at least 1",
   }),

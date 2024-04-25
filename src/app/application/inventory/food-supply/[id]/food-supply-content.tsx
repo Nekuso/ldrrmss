@@ -24,7 +24,7 @@ export default function FoodSupplyContent({ foodSupply }: any) {
               </div>
             </h2>
             <p className="text-sm 2xl:text-md text-slate-400 font-bold">
-              Type: Product
+              Type: Food supply
             </p>
           </div>
           {/* <code>{JSON.stringify(foodSupply, null, 2)}</code> */}
