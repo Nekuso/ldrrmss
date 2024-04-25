@@ -32,14 +32,14 @@ export function DataTableToolbar<TData>({
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
         />
-        <Input
+        {/* <Input
           className="w-[200px] 2xl:w-[250px] h-10 border border-slate-400 rounded-lg text-black"
           placeholder="Find Barcode"
           value={(table.getColumn("barcode")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("barcode")?.setFilterValue(event.target.value)
           }
-        />
+        /> */}
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}

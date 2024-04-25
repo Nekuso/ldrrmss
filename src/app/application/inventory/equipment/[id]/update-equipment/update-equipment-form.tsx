@@ -155,7 +155,7 @@ export default function EquipmentForm({ setDialogOpen, equipment }: any) {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-xs">Quantity</FormLabel>
-                          <div className="w-full flex justify-between place-items-center gap-2">
+                          <div className="w-full flex place-items-center gap-2">
                             <div
                               className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
@@ -221,7 +221,7 @@ export default function EquipmentForm({ setDialogOpen, equipment }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
           >
-            <span className={cn({ hidden: isPending })}>Create Equipment</span>
+            <span className={cn({ hidden: isPending })}>Update Equipment</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />

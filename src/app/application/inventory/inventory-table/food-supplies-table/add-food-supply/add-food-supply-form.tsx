@@ -149,7 +149,7 @@ export default function FoodSupplyForm({ setDialogOpen }: any) {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-xs">Quantity</FormLabel>
-                          <div className="w-full flex justify-between place-items-center gap-2">
+                          <div className="w-full flex place-items-center gap-2">
                             <div
                               className=" p-3 rounded-lg cursor-pointer group hover:bg-primary transition-all duration-300 text-center select-none border border-slate-600/50"
                               onClick={() => {
