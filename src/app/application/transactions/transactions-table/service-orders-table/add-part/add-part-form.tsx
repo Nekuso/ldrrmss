@@ -27,7 +27,7 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 
 export const partSchema = z.object({
   name: z.string().min(1, {
@@ -68,7 +68,7 @@ export const partSchema = z.object({
 
 export default function PartForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createPart } = useParts();
+  const { createEquipment } = useEquipments();
   const form = useForm<z.infer<typeof partSchema>>({
     resolver: zodResolver(partSchema),
     defaultValues: {
@@ -80,7 +80,7 @@ export default function PartForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createPart(data, 5000);
+      const result = await createEquipment(data, 5000);
 
       const { error } = result;
       if (error?.message) {
