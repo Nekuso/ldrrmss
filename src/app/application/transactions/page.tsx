@@ -6,7 +6,7 @@ import TransactionsContent from "./transactions-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
 import { toast as sonner } from "sonner";
 import { toast } from "@/components/ui/use-toast";
-import { useOrders } from "@/hooks/useOrders";
+import { useRequests } from "@/hooks/useOrders";
 import { HomeIcon } from "lucide-react";
 import { setBranchesData } from "@/redux/slices/branchesSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +20,7 @@ import {
 export default function Transactions() {
   const dispatch = useDispatch();
 
-  const { getOrders, ordersData } = useOrders();
+  const { getRequests, requestsData } = useRequests();
   // const { getBranches, allBranchesData } = useBranches();
   // const { getProducts, productsData } = useProducts();
   const { getEquipments, equipmentsData } = useEquipments();
@@ -33,10 +33,10 @@ export default function Transactions() {
   // }));
 
   const foodsuppliesCart = useSelector(
-    (state: any) => state.orderCart.foodsuppliesCart
+    (state: any) => state.requestCart.foodsuppliesCart
   );
   const equipmentsCart = useSelector(
-    (state: any) => state.orderCart.equipmentsCart
+    (state: any) => state.requestCart.equipmentsCart
   );
 
   // dispatch(setBranchesData(branchesData));
@@ -46,7 +46,7 @@ export default function Transactions() {
 
   // fetch all products
   useEffect(() => {
-    const { error } = getOrders();
+    const { error } = getRequests();
 
     if (error?.message) {
       toast({
@@ -67,9 +67,9 @@ export default function Transactions() {
       .channel("orders-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "orders" },
+        { event: "*", schema: "public", table: "requests" },
         (payload: any) => {
-          getOrders();
+          getRequests();
         }
       )
       .subscribe();
@@ -77,10 +77,10 @@ export default function Transactions() {
       .channel("products-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "products" },
+        { event: "*", schema: "public", table: "food_supplies" },
         (payload: any) => {
           getFoodSupplies();
-          getOrders();
+          getRequests();
         }
       )
       .subscribe();
@@ -88,10 +88,10 @@ export default function Transactions() {
       .channel("parts-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "parts" },
+        { event: "*", schema: "public", table: "equipments" },
         (payload: any) => {
           getEquipments();
-          getOrders();
+          getRequests();
         }
       )
       .subscribe();
@@ -104,10 +104,10 @@ export default function Transactions() {
 
   return (
     <div className="w-full flex justify-center py-3.5 no-scrollbar ">
-      {ordersData.length === 0 ? (
+      {requestsData.length === 0 ? (
         <Loading />
       ) : (
-        <TransactionsContent dataOrders={ordersData} />
+        <TransactionsContent dataOrders={requestsData} />
       )}
     </div>
   );

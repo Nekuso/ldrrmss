@@ -1,17 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 
-export const useOrders: any = () => {
+export const useRequests: any = () => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
-  const [ordersData, setOrdersData] = useState<any>([]);
-  const [currentOrderData, setCurrentOrderData] = useState<any>([]);
+  const [requestsData, setRequestsData] = useState<any>([]);
+  const [currentRequestData, setCurrentRequestData] = useState<any>([]);
 
-  const createOrder = async (props: any, duration?: any) => {
+  const createRequest = async (props: any, duration?: any) => {
     const result: any = await supabase
-      .from("orders")
+      .from("requests")
       .insert({
         customer_first_name: props.customer_first_name,
         customer_last_name: props.customer_last_name,
@@ -32,8 +32,8 @@ export const useOrders: any = () => {
       return result.error;
     }
 
-    const productResult = await supabase
-      .from("purchase_products")
+    const foodsupplyResult = await supabase
+      .from("use_food_supplies")
       .insert(
         props.purchase_products.map((product: any) => ({
           order_id: result.data[0].id,
@@ -50,8 +50,8 @@ export const useOrders: any = () => {
       )
       .select();
 
-    const partResult = await supabase
-      .from("purchase_parts")
+    const EquipmentResult = await supabase
+      .from("use_equipments")
       .insert(
         props.purchase_parts.map((part: any) => ({
           order_id: result.data[0].id,
@@ -72,9 +72,9 @@ export const useOrders: any = () => {
 
     return result;
   };
-  const getOrders = async () => {
+  const getRequests = async () => {
     const result = await supabase
-      .from("orders")
+      .from("requests")
       .select(
         `
         id,
@@ -138,11 +138,11 @@ export const useOrders: any = () => {
     if (error) {
       return error;
     }
-    return setOrdersData(data);
+    return setRequestsData(data);
   };
-  const getOrder = async (id: string, duration?: number) => {
+  const getRequest = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("orders")
+      .from("requests")
       .select(
         `
         id,
@@ -205,12 +205,12 @@ export const useOrders: any = () => {
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;
-    setCurrentOrderData(data);
+    setCurrentRequestData(data);
     return error;
   };
-  const updateOrder = async (props: any, duration?: number) => {
+  const updateRequest = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("orders")
+      .from("requests")
       .update({
         name: props.name,
         description: props.description,
@@ -226,9 +226,9 @@ export const useOrders: any = () => {
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
   };
-  const updateOrderStatus = async (props: any, duration?: number) => {
+  const updateRequestStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("orders")
+      .from("requests")
       .update({
         status: props.status,
       })
@@ -238,8 +238,8 @@ export const useOrders: any = () => {
 
     return JSON.stringify(result);
   };
-  const deleteOrder = async (props: any, duration: number = 2000) => {
-    const result = await supabase.from("orders").delete().eq("id", props.id);
+  const deleteRequest = async (props: any, duration: number = 2000) => {
+    const result = await supabase.from("requests").delete().eq("id", props.id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;
@@ -247,15 +247,15 @@ export const useOrders: any = () => {
 
   return {
     // states
-    ordersData,
-    currentOrderData,
+    requestsData,
+    currentRequestData,
 
     // methods
-    createOrder,
-    getOrder,
-    getOrders,
-    updateOrder,
-    updateOrderStatus,
-    deleteOrder,
+    createRequest,
+    getRequest,
+    getRequests,
+    updateRequest,
+    updateRequestStatus,
+    deleteRequest,
   };
 };
