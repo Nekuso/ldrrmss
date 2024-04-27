@@ -43,7 +43,7 @@ export default function LandingPage() {
             <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
               Well respond as soon as possible
             </p>
-            <div className="flex lg:flex-row md:flex-col text-gray-300">
+            {/* <div className="flex lg:flex-row md:flex-col text-gray-300">
               <button className="bg-gray-800 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-700 hover:text-white focus:outline-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function LandingPage() {
                   <span className="title-font font-medium">App Store</span>
                 </span>
               </button>
-            </div>
+            </div> */}
           </div>
 
           <div className="lg:w-1/3 sm:w-1/2 p-4">
