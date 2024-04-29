@@ -5,8 +5,8 @@ const initialState: any = {
   equipmentsCart: [],
 };
 
-const orderCart = createSlice({
-  name: "orderCart",
+const requestCart = createSlice({
+  name: "requestCart",
   initialState: initialState,
   reducers: {
     addFoodSupplyToCart: (state, action: PayloadAction<any>) => {
@@ -89,5 +89,5 @@ export const {
   incrementEquipmentQuantity,
   decrementEquipmentQuantity,
   resetCart,
-} = orderCart.actions;
-export default orderCart.reducer;
+} = requestCart.actions;
+export default requestCart.reducer;

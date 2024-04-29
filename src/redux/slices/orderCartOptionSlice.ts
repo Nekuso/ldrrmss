@@ -5,8 +5,8 @@ const initialState: any = {
   equipmentsData: [],
 };
 
-const orderCartOptions = createSlice({
-  name: "orderOptions",
+const requestCartOptions = createSlice({
+  name: "requestOptions",
   initialState: initialState,
   reducers: {
     setFoodSuppliesData: (state, action: PayloadAction<any>) => {
@@ -59,5 +59,5 @@ const orderCartOptions = createSlice({
 });
 
 export const { setFoodSuppliesData, setEquipmentsData } =
-  orderCartOptions.actions;
-export default orderCartOptions.reducer;
+  requestCartOptions.actions;
+export default requestCartOptions.reducer;

@@ -5,17 +5,13 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type cartItem = {
-  part_id: number;
+  equipment_id: number;
   name: string;
   description: string;
   image_url: string;
   quantity: number;
-  price: number;
-  barcode: string;
-  brand: string;
   status: string;
   created_at: string;
-  uoms: any;
   inventory: any;
 };
 
@@ -24,7 +20,7 @@ export const initiateColumns = () => {
     {
       id: "name",
       accessorKey: "name",
-      header: "Part",
+      header: "Equipment",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">
@@ -43,10 +39,10 @@ export const initiateColumns = () => {
                 {row.original.name}
               </p>{" "}
               <p className="text-sm max-w-[120px] 2xl:max-w-[140px] truncate text-slate-400">
-                {`Barcode: ${row.original.barcode}`}
+                {`Status: ${row.original.status}`}
               </p>
               <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
-                {`BRAND: • ${row.original.brand}`}
+                {`Quantity: • ${row.original.quantity}`}
               </p>
             </div>
           </div>
@@ -66,21 +62,21 @@ export const initiateColumns = () => {
         );
       },
     },
-    {
-      id: "price",
-      header: () => {
-        return <div className="w-full text-center">Price</div>;
-      },
-      cell: ({ row }) => {
-        return (
-          <div className="w-full flex gap-4 justify-center place-items-center">
-            <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-semibold">
-              {`₱ ${row.original.price}`}
-            </p>
-          </div>
-        );
-      },
-    },
+    // {
+    //   id: "price",
+    //   header: () => {
+    //     return <div className="w-full text-center">Price</div>;
+    //   },
+    //   cell: ({ row }) => {
+    //     return (
+    //       <div className="w-full flex gap-4 justify-center place-items-center">
+    //         <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-semibold">
+    //           {`₱ ${row.original.price}`}
+    //         </p>
+    //       </div>
+    //     );
+    //   },
+    // },
   ];
   return columns;
 };

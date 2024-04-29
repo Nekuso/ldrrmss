@@ -1,10 +1,10 @@
-import { DataTable as OrderServicesDataTable } from "./transactions-table/service-orders-table/data-table";
-import { DataTable as OrdersDataTable } from "./transactions-table/orders-table/data-table";
+import { DataTable as RequestVehiclesDataTable } from "./transactions-table/service-orders-table/data-table";
+import { DataTable as RequestsDataTable } from "./transactions-table/orders-table/data-table";
 
-import { initialState as initiateOrdersState } from "./transactions-table/orders-table/columns";
-import { initialState as initiatePartsState } from "./transactions-table/service-orders-table/columns";
+import { initialState as initiateRequestsState } from "./transactions-table/orders-table/columns";
+import { initialState as initiateEquipmentsState } from "./transactions-table/service-orders-table/columns";
 
-import { allPurchaseOrdersDisplay } from "@/types";
+import { allPurchaseRequestsDisplay } from "@/types";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PiGearSixBold } from "react-icons/pi";
@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 export default function InventoryContent({
   dataOrders,
 }: {
-  dataOrders: allPurchaseOrdersDisplay[];
+  dataOrders: allPurchaseRequestsDisplay[];
 }) {
   const branchesSlice = useSelector((state: any) => state.branches);
 
@@ -45,17 +45,17 @@ export default function InventoryContent({
           </TabsTrigger>
         </TabsList>
       </div>
-      <TabsContent value="orders" className="w-full h-full ">
+      <TabsContent value="requests" className="w-full h-full ">
         {/* Regular Orders Tab */}
-        <OrdersDataTable
-          columns={initiateOrdersState(branchesSlice)}
+        <RequestsDataTable
+          columns={initiateRequestsState(branchesSlice)}
           data={dataOrders}
         />
       </TabsContent>
-      <TabsContent value="parts" className="w-full h-full ">
+      <TabsContent value="equipments" className="w-full h-full ">
         {/* Service Order Tab */}
-        <OrderServicesDataTable
-          columns={initiatePartsState(branchesSlice)}
+        <RequestVehiclesDataTable
+          columns={initiateEquipmentsState(branchesSlice)}
           data={[]}
         />
       </TabsContent>

@@ -29,51 +29,51 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import { useEquipments } from "@/hooks/useEquipments";
 
-export const partSchema = z.object({
+export const equipmentSchema = z.object({
   name: z.string().min(1, {
-    message: "Part name is required",
+    message: "Equipment name is required",
   }),
   description: z.string().min(1, {
-    message: "Part description is required",
+    message: "Equipment description is required",
   }),
   image_url: z.string().default("something"),
   barcode: z.string().min(1, {
-    message: "Part barcode is required",
+    message: "Equipment barcode is required",
   }),
   stock_quantity: z.coerce.number().min(1, {
-    message: "Part quantity must be at least 1",
+    message: "Equipment quantity must be at least 1",
   }),
   price: z.coerce.number().min(1, {
-    message: "Part price is required",
+    message: "Equipment price is required",
   }),
   inventory_id: z
     .string()
     .min(1, {
-      message: "Part inventory id is required",
+      message: "Equipment inventory id is required",
     })
     .transform((arg) => new Number(arg)),
   brand_id: z
     .string()
     .min(1, {
-      message: "Part uom id is required",
+      message: "Equipment uom id is required",
     })
     .transform((arg) => new Number(arg)),
   status: z
     .string()
     .min(1, {
-      message: "Part status is required",
+      message: "Equipment status is required",
     })
     .default("Available"),
 });
 
-export default function PartForm({ setDialogOpen }: any) {
+export default function EquipmentForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
   const { createEquipment } = useEquipments();
-  const form = useForm<z.infer<typeof partSchema>>({
-    resolver: zodResolver(partSchema),
+  const form = useForm<z.infer<typeof equipmentSchema>>({
+    resolver: zodResolver(equipmentSchema),
     defaultValues: {
       stock_quantity: 0,
-      price: 0.0,
+      // price: 0.0,
       status: "Available",
     },
   });
@@ -100,7 +100,7 @@ export default function PartForm({ setDialogOpen }: any) {
       //   ),
       // });
       sonner("✨Success", {
-        description: `Part Added!`,
+        description: `Equipment Added!`,
       });
       setDialogOpen(false);
     });
@@ -134,13 +134,15 @@ export default function PartForm({ setDialogOpen }: any) {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-xs">Part Name</FormLabel>
+                        <FormLabel className="text-xs">
+                          Equipment Name
+                        </FormLabel>
                         <FormControl>
                           <Input
                             className="rounded-lg bg-lightComponentBg border-slate-600/50"
                             {...field}
                             type="text"
-                            placeholder="Part name"
+                            placeholder="Equipment name"
                           />
                         </FormControl>
                         <FormMessage />
@@ -298,7 +300,7 @@ export default function PartForm({ setDialogOpen }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
           >
-            <span className={cn({ hidden: isPending })}>Create Part</span>
+            <span className={cn({ hidden: isPending })}>Create Equipment</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />

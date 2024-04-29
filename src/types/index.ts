@@ -1,3 +1,19 @@
+export type Employee = {
+  id: number;
+  email: string;
+  name: string;
+  img_url: string;
+  contact_number: string;
+  branch_name: string;
+  role: string;
+  status: string;
+  dob: string;
+};
+
+export type roles = {
+  id: number;
+  role: string;
+};
 export type EmployeesDisplay = {
   id: string;
   email: string;
@@ -59,20 +75,30 @@ export type calamities = {
   description: string;
 };
 
+export type allInventoryDisplay = {
+  id: number;
+  food_supplies: {
+    id: number;
+    name: string;
+    description: string;
+    image_url: string;
+    quantity: number;
+    status: string;
+    created_at: string;
+  }[];
+};
+
 export type allEquipmentsDisplay = {
   id: number;
   name: string;
   description: string;
   image_url: string;
   stock_quantity: number;
-  price: number;
-  barcode: string;
   status: string;
   created_at: string;
 };
 
 export type allFood_suppliesDisplay = {
-  barcode: string | undefined;
   id: number;
   name: string;
   description: string;
@@ -89,8 +115,59 @@ export type allVehiclesDisplay = {
   name: string;
   description: string;
   image_url: string;
-  price: number;
-  duration: number;
   status: string;
+  created_at: string;
+};
+
+export type allPurchaseRequestsDisplay = {
+  id: string;
+  customer_first_name: string;
+  customer_last_name: string;
+  customer_contact_number: string;
+  customer_email: string;
+  inventory: {
+    id: number;
+  };
+  employees: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    image_url: string;
+    contact_number: string;
+    email: string;
+    roles: { role: string };
+  };
+  purchase_food_supplies: {}[];
+  purchase_equipments: {}[];
+  total_price: number;
+  payment_method: string;
+  status: string;
+  created_at: string;
+};
+
+export type allPurchaseVehiclesDisplay = {
+  id: number;
+  customer_first_name: string;
+  customer_last_name: string;
+  customer_contact_number: string;
+  customer_email: string;
+  inventory: {
+    id: number;
+  };
+  employees: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    image_url: string;
+    contact_number: string;
+    email: string;
+    roles: { role: string };
+  };
+  purchase_food_supplies: {}[];
+  purchase_equipments: {}[];
+  purchase_vehicles: {}[];
+  progress_collection: {}[];
+  total_price: number;
+  payment_method: string;
   created_at: string;
 };
