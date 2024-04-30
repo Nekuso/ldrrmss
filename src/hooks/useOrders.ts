@@ -35,17 +35,14 @@ export const useRequests: any = () => {
     const foodsupplyResult = await supabase
       .from("use_food_supplies")
       .insert(
-        props.purchase_products.map((product: any) => ({
-          order_id: result.data[0].id,
-          product_id: product.product_id,
-          name: product.name,
-          description: product.description,
-          inventory_id: product.inventory_id,
-          image_url: product.image,
-          barcode: product.barcode,
-          price: product.price,
-          quantity: product.quantity,
-          uom_name: product.uom_name,
+        props.purchase_foodsupply.map((foodsupply: any) => ({
+          request_id: result.data[0].id,
+          foodsupply_id: foodsupply.foodsupply_id,
+          name: foodsupply.name,
+          description: foodsupply.description,
+          inventory_id: foodsupply.inventory_id,
+          image_url: foodsupply.image,
+          quantity: foodsupply.quantity,
         }))
       )
       .select();
@@ -53,17 +50,14 @@ export const useRequests: any = () => {
     const EquipmentResult = await supabase
       .from("use_equipments")
       .insert(
-        props.purchase_parts.map((part: any) => ({
-          order_id: result.data[0].id,
-          part_id: part.part_id,
-          name: part.name,
-          description: part.description,
-          inventory_id: part.inventory_id,
-          image_url: part.image,
-          barcode: part.barcode,
-          price: part.price,
-          quantity: part.quantity,
-          brand: part.brand_name,
+        props.purchase_equipments.map((equipment: any) => ({
+          request_id: result.data[0].id,
+          equipment_id: equipment.equipment_id,
+          name: equipment.name,
+          description: equipment.description,
+          inventory_id: equipment.inventory_id,
+          image_url: equipment.image,
+          quantity: equipment.quantity,
         }))
       )
       .select();

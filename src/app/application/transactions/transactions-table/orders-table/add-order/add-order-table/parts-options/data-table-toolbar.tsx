@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
-  partsData?: any[];
-  productsData?: any[];
+  equipmentsData?: any[];
+  foodsuppliesData?: any[];
 }
 
 export function DataTableToolbar<TData>({
