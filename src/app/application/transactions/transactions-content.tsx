@@ -12,21 +12,21 @@ import { BsBoxSeam } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 export default function InventoryContent({
-  dataOrders,
+  dataRequests,
 }: {
-  dataOrders: allPurchaseRequestsDisplay[];
+  dataRequests: allPurchaseRequestsDisplay[];
 }) {
   const branchesSlice = useSelector((state: any) => state.branches);
 
   return (
     <Tabs
-      defaultValue="orders"
+      defaultValue="requests"
       className="w-full flex max-w-[1840px] flex-col justify-center place-items-center gap-4"
     >
       <div className="w-full flex justify-between">
         <TabsList className="h-fit bg-darkComponentBg border border-lightBorder rounded-lg gap-2">
           <TabsTrigger
-            value="orders"
+            value="requests"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/60
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
@@ -35,7 +35,7 @@ export default function InventoryContent({
             Purchase Orders
           </TabsTrigger>
           <TabsTrigger
-            value="service_orders"
+            value="vehicle_requests"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/80
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
@@ -49,7 +49,7 @@ export default function InventoryContent({
         {/* Regular Orders Tab */}
         <RequestsDataTable
           columns={initiateRequestsState(branchesSlice)}
-          data={dataOrders}
+          data={dataRequests}
         />
       </TabsContent>
       <TabsContent value="equipments" className="w-full h-full ">

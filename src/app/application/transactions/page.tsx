@@ -107,7 +107,7 @@ export default function Transactions() {
       {requestsData.length === 0 ? (
         <Loading />
       ) : (
-        <TransactionsContent dataOrders={requestsData} />
+        <TransactionsContent dataRequests={requestsData} />
       )}
     </div>
   );
