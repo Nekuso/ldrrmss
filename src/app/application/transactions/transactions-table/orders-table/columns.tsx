@@ -22,7 +22,7 @@ import {
   CaretSortIcon,
 } from "@radix-ui/react-icons";
 import { FaEye } from "react-icons/fa";
-import { allPurchaseOrdersDisplay } from "@/types";
+import { allPurchaseRequestsDisplay } from "@/types";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format } from "date-fns";
@@ -46,7 +46,7 @@ export const statuses = [
 ];
 
 export const initialState = (branches: any) => {
-  const columns: ColumnDef<allPurchaseOrdersDisplay>[] = [
+  const columns: ColumnDef<allPurchaseRequestsDisplay>[] = [
     {
       id: "id",
       accessorKey: "id",
@@ -147,34 +147,34 @@ export const initialState = (branches: any) => {
         );
       },
     },
-    {
-      id: "branch",
-      accessorKey: "branches",
-      accessorFn: (row) => row.inventory.branches.branch_name,
-      header: "Branch",
-      cell: ({ row }) => {
-        const item = branches?.find(
-          (item: any) =>
-            item.value === row.original.inventory.branches.branch_name
-        );
+    // {
+    //   id: "branch",
+    //   accessorKey: "branches",
+    //   accessorFn: (row) => row.inventory.branches.branch_name,
+    //   header: "Branch",
+    //   cell: ({ row }) => {
+    //     const item = branches?.find(
+    //       (item: any) =>
+    //         item.value === row.original.inventory.branches.branch_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return <p className="max-w-[85px] truncate">{item.label}</p>;
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return <p className="max-w-[85px] truncate">{item.label}</p>;
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       id: "purchased",
       accessorKey: "branches",
       header: "Purchased",
       cell: ({ row }) => {
         if (
-          row.original.purchase_products.length > 0 &&
-          row.original.purchase_parts.length > 0
+          row.original.purchase_food_supplies.length > 0 &&
+          row.original.purchase_equipments.length > 0
         ) {
           return (
             <div className="flex place-items-center gap-1">
@@ -185,7 +185,7 @@ export const initialState = (branches: any) => {
               >
                 Products
                 <span className="rounded-full bg-white text-black p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
-                  {row.original.purchase_products.length}
+                  {row.original.purchase_food_supplies.length}
                 </span>
               </p>
               <TooltipProvider delayDuration={0} skipDelayDuration={1000}>
@@ -203,7 +203,7 @@ export const initialState = (branches: any) => {
                     >
                       Parts
                       <span className="rounded-full bg-white text-black p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
-                        {row.original.purchase_parts.length}
+                        {row.original.purchase_equipments.length}
                       </span>
                     </p>
                   </TooltipContent>
@@ -211,7 +211,7 @@ export const initialState = (branches: any) => {
               </TooltipProvider>
             </div>
           );
-        } else if (row.original.purchase_products.length > 0) {
+        } else if (row.original.purchase_equipments.length > 0) {
           return (
             <p
               className={
@@ -220,11 +220,11 @@ export const initialState = (branches: any) => {
             >
               Products
               <span className="rounded-full bg-white text-black p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
-                {row.original.purchase_products.length}
+                {row.original.purchase_food_supplies.length}
               </span>
             </p>
           );
-        } else if (row.original.purchase_parts.length > 0) {
+        } else if (row.original.purchase_equipments.length > 0) {
           return (
             <p
               className={
@@ -233,7 +233,7 @@ export const initialState = (branches: any) => {
             >
               Parts
               <span className="rounded-full bg-white text-black p-1 px-2 text-center flex justify-center place-items-center line-clamp-none">
-                {row.original.purchase_parts.length}
+                {row.original.purchase_equipments.length}
               </span>
             </p>
           );
