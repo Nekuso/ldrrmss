@@ -137,37 +137,16 @@ export type allPurchaseRequestsDisplay = {
     email: string;
     roles: { role: string };
   };
-  purchase_food_supplies: {}[];
-  purchase_equipments: {}[];
-  total_price: number;
-  payment_method: string;
-  status: string;
-  created_at: string;
-};
-
-export type allPurchaseVehiclesDisplay = {
-  id: number;
-  requester_first_name: string;
-  requester_last_name: string;
-  requester_contact_number: string;
-  requester_email: string;
-  inventory: {
+  calamity_types: {
     id: number;
-  };
-  employees: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    image_url: string;
-    contact_number: string;
-    email: string;
-    roles: { role: string };
+    name: string;
+    description: string;
   };
   purchase_food_supplies: {}[];
   purchase_equipments: {}[];
   purchase_vehicles: {}[];
-  progress_collection: {}[];
   total_price: number;
   payment_method: string;
+  status: string;
   created_at: string;
 };

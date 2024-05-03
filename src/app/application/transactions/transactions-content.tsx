@@ -27,15 +27,15 @@ export default function InventoryContent({
   return (
     <Tabs
       defaultValue="requests"
-      className="w-full flex max-w-[1840px] flex-col justify-center place-items-center gap-4"
+      className="w-full flex max-w-[1580px] flex-col justify-center place-items-center"
     >
-      <div className="w-full flex justify-between">
-        <TabsList className="h-fit bg-darkComponentBg border border-lightBorder rounded-lg gap-2">
+      <div className="w-full">
+        <TabsList className="h-fit rounded-lg gap-2 bg-white">
           <TabsTrigger
             value="requests"
-            className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/60
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
+            data-[state=inactive]:hover:text-slate-500
+            data-[state=active]:text-slate-500 rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <BsBoxSeam />
             Requests
@@ -43,7 +43,6 @@ export default function InventoryContent({
         </TabsList>
       </div>
       <TabsContent value="requests" className="w-full h-full ">
-        {/* Regular Orders Tab */}
         <RequestsDataTable
           columns={initiateRequestsState(branchesSlice)}
           data={dataRequests}

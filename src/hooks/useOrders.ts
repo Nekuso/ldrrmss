@@ -70,39 +70,68 @@ export const useRequests: any = () => {
     const result = await supabase
       .from("requests")
       .select(
-        `
-        *
-        `
+        `            
+        id,
+        created_at,
+        status,
+        requester_first_name,
+        requester_last_name,
+
+        employees(
+        id,
+        first_name,
+        last_name,
+        image_url,
+        contact_number,
+        email,
+        roles(role)),
+        
+        calamity_types(
+        id,
+        name,
+        description)
+
+      `
         // id,
         // requester_first_name,
         // requester_last_name,
         // requester_contact_number,
         // requester_email,
         // created_at
-        // employees(
+
+        // requesters(
         //   id,
         //   first_name,
         //   last_name,
         //   image_url,
         //   contact_number,
         //   email,
-        //   roles(
-        //     role
-        //   )
         // ),
-        // inventory(
-        //   id,
-        //   branches(
+
+        // employees(
         //     id,
+        //     first_name,
+        //     last_name,
+        //     image_url,
+        //     contact_number,
+        //     email,
+        //     roles(
+        //         role
+        //       )
+        //     ),
+        //     inventory(
+        //         id,
+        //         branches(
+        //             id,
         //     branch_name,
         //     branch_location
         //   )
         // ),
         // purchase_products(
-        //   id,
-        //   product_id,
-        //   name,
-        //   description,
+        //     id,
+        //     product_id,
+        //     name,
+        //     description,
         //   image_url,
         //   barcode,
         //   price,
@@ -110,7 +139,7 @@ export const useRequests: any = () => {
         //   uom_name
         // ),
         // purchase_parts(
-        //   id,
+        //     id,
         //   part_id,
         //   name,
         //   description,

@@ -33,8 +33,8 @@ export function DataTableToolbar<TData>({
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-white placeholder:text-white/40"
-          placeholder="Find an Order ID"
+          className="w-[200px] 2xl:w-[250px] h-10 border border-slate-400 rounded-lg text-black"
+          placeholder="Find Request ID"
           value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("id")?.setFilterValue(event.target.value)

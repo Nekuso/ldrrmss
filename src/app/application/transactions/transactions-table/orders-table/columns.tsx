@@ -59,7 +59,7 @@ export const initialState = (branches: any) => {
                 size="sm"
                 className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
               >
-                <span>Order ID</span>
+                <span>Request ID</span>
                 {column.getIsSorted() === "desc" ? (
                   <ArrowDownIcon className="ml-2 h-4 w-4" />
                 ) : column.getIsSorted() === "asc" ? (
@@ -109,7 +109,7 @@ export const initialState = (branches: any) => {
     {
       id: "requester_first_name",
       accessorKey: "requester_first_name",
-      header: "requester",
+      header: "Requester",
       cell: ({ row }) => {
         return (
           <p className="max-w-[110px] 2xl:max-w-[220px] truncate">
@@ -136,13 +136,13 @@ export const initialState = (branches: any) => {
             </Avatar> */}
 
             <div className="flex flex-col">
-              {/* <p className="max-w-[100px] 2xl:max-w-[220px] truncate font-semibold">
+              <p className="max-w-[100px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.employees.first_name}{" "}
                 {row.original.employees.last_name}
               </p>
               <p className="max-w-[181px] truncate text-white/50">
                 {row.original.employees.roles.role}
-              </p> */}
+              </p>
             </div>
           </div>
         );
@@ -306,6 +306,20 @@ export const initialState = (branches: any) => {
     //     );
     //   },
     // },
+
+    {
+      id: "id",
+      accessorKey: "calamity_types",
+      header: "Calamity Type",
+      cell: ({ row }) => {
+        return (
+          <p className="max-w-[110px] 2xl:max-w-[220px] truncate">
+            {row.original.calamity_types.name}
+          </p>
+        );
+      },
+    },
+
     {
       accessorKey: "status",
       header: ({ column }) => {
