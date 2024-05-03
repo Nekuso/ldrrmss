@@ -8,11 +8,11 @@ import BranchInput from "./branch-input";
 import PaymentInput from "./payment-input";
 import StatusInput from "./status-input";
 
-import { DataTable as ProductsCart } from "./add-order-cart/products-cart/data-table";
-import { DataTable as PartsCart } from "./add-order-cart/parts-cart/data-table";
+import { DataTable as FoodSuppliesCart } from "./add-order-cart/products-cart/data-table";
+import { DataTable as EquipmentsCart } from "./add-order-cart/parts-cart/data-table";
 
-import { initiateColumns as initiateProductsCartColumns } from "./add-order-cart/products-cart/columns";
-import { initiateColumns as initiatePartsCartColumns } from "./add-order-cart/parts-cart/columns";
+import { initiateColumns as initiateFoodSupplyCartColumns } from "./add-order-cart/products-cart/columns";
+import { initiateColumns as initiateEquipmentsCartColumns } from "./add-order-cart/parts-cart/columns";
 
 import {
   Form,
@@ -29,7 +29,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import { useRequests } from "@/hooks/useOrders";
 import { useSelector } from "react-redux";
-import OrderCartOptions from "./add-order-table/lists";
+import RequestCartOptions from "./add-order-table/lists";
 import { useDispatch } from "react-redux";
 import { resetCart } from "@/redux/slices/orderCartSlice";
 import {
@@ -44,20 +44,20 @@ import DiscountInput from "./discount-input";
 import { TbCurrencyPeso } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 
-export default function OrderForm({ setDialogOpen }: any) {
+export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createOrder } = useRequests();
+  const { createRequest } = useRequests();
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const orderCart = useSelector((state: any) => state.orderCart);
-  const orderCartOptions = useSelector(
-    (state: any) => state.orderCartOptionSlice
+  const RequestCart = useSelector((state: any) => state.RequestCart);
+  const RequestCartOptions = useSelector(
+    (state: any) => state.RequestCartOptionSlice
   );
 
   const [minTotalPrice, setMinTotalPrice] = useState(0);
 
-  const orderSchema: any = z.object({
+  const RequestSchema: any = z.object({
     customer_first_name: z.string().nullable(),
     customer_last_name: z.string().nullable(),
     customer_email: z.string().nullable(),
@@ -79,9 +79,9 @@ export default function OrderForm({ setDialogOpen }: any) {
       message: "Amount paid should be equal or greater than total price",
     }),
 
-    purchase_products: z.array(
+    purchase_food_supplies: z.array(
       z.object({
-        product_id: z.coerce.number(),
+        foodsupplie_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
@@ -92,9 +92,9 @@ export default function OrderForm({ setDialogOpen }: any) {
         price: z.coerce.number(),
       })
     ),
-    purchase_parts: z.array(
+    purchase_equipments: z.array(
       z.object({
-        part_id: z.coerce.number(),
+        equipment_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
@@ -106,8 +106,8 @@ export default function OrderForm({ setDialogOpen }: any) {
       })
     ),
   });
-  const form = useForm<z.infer<typeof orderSchema>>({
-    resolver: zodResolver(orderSchema),
+  const form = useForm<z.infer<typeof RequestSchema>>({
+    resolver: zodResolver(RequestSchema),
     defaultValues: {
       customer_first_name: "",
       customer_last_name: "",
@@ -122,17 +122,19 @@ export default function OrderForm({ setDialogOpen }: any) {
     },
   });
 
-  form.setValue("purchase_products", orderCart.productsCart);
-  form.setValue("purchase_parts", orderCart.partsCart);
+  form.setValue("purchase_food_supplies", RequestCart.foodsuppliesCart);
+  form.setValue("purchase_equipments", RequestCart.equipmentsCart);
   form.setValue(
     "subtotal",
     (
-      orderCart.productsCart.reduce(
-        (acc: any, product: any) => acc + product.price * product.quantity,
+      RequestCart.foodsuppliesCart.reduce(
+        (acc: any, foodsupply: any) =>
+          acc + foodsupply.price * foodsupply.quantity,
         0
       ) +
-      orderCart.partsCart.reduce(
-        (acc: any, part: any) => acc + part.price * part.quantity,
+      RequestCart.equipmentsCart.reduce(
+        (acc: any, equipment: any) =>
+          acc + equipment.price * equipment.quantity,
         0
       )
     ).toFixed(2)
@@ -141,12 +143,14 @@ export default function OrderForm({ setDialogOpen }: any) {
     "total_price",
     Number(
       (
-        (orderCart.productsCart.reduce(
-          (acc: any, product: any) => acc + product.price * product.quantity,
+        (RequestCart.foodsuppliesCart.reduce(
+          (acc: any, foodsupplie: any) =>
+            acc + foodsupplie.price * foodsupplie.quantity,
           0
         ) +
-          orderCart.partsCart.reduce(
-            (acc: any, part: any) => acc + part.price * part.quantity,
+          RequestCart.equipmentsCart.reduce(
+            (acc: any, equipment: any) =>
+              acc + equipment.price * equipment.quantity,
             0
           )) *
         ((100 - Number(form.getValues("discount"))) / 100)
@@ -162,12 +166,14 @@ export default function OrderForm({ setDialogOpen }: any) {
     setMinTotalPrice(
       Number(
         (
-          (orderCart.productsCart.reduce(
-            (acc: any, product: any) => acc + product.price * product.quantity,
+          (RequestCart.foodsuppliesCart.reduce(
+            (acc: any, foodsupplie: any) =>
+              acc + foodsupplie.price * foodsupplie.quantity,
             0
           ) +
-            orderCart.partsCart.reduce(
-              (acc: any, part: any) => acc + part.price * part.quantity,
+            RequestCart.equipmentsCart.reduce(
+              (acc: any, equipment: any) =>
+                acc + equipment.price * equipment.quantity,
               0
             )) *
           ((100 - Number(form.getValues("discount"))) / 100)
@@ -175,8 +181,8 @@ export default function OrderForm({ setDialogOpen }: any) {
       )
     );
   }, [
-    orderCart.productsCart,
-    orderCart.partsCart,
+    RequestCart.foodsuppliesCart,
+    RequestCart.equipmentsCart,
     discountData,
     minTotalPrice,
     form,
@@ -184,7 +190,7 @@ export default function OrderForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createOrder(data, 500);
+      const result = await createRequest(data, 500);
 
       const { error } = result;
       if (error?.message) {
@@ -198,11 +204,13 @@ export default function OrderForm({ setDialogOpen }: any) {
 
       setDialogOpen(false);
       sonner("✨Success", {
-        description: `Order Successful!`,
+        description: `Request Successful!`,
         action: {
           label: "Print",
           onClick: () =>
-            router.push(`/application/transactions/order/${result.data[0].id}`),
+            router.push(
+              `/application/transactions/Request/${result.data[0].id}`
+            ),
         },
       });
       new Promise((resolve) => setTimeout(resolve, 500)).then(() => {
@@ -219,7 +227,7 @@ export default function OrderForm({ setDialogOpen }: any) {
       >
         <div className="w-full flex justify-between gap-4">
           <div className="w-[60%] 2xl:w-[50%] h-full rounded-lg overflow-hidden">
-            <OrderCartOptions />
+            <RequestCartOptions />
           </div>
           <ScrollArea className="w-full h-[553px] 2xl:h-[657px] flex flex-col justify-between bg-darkBg rounded-lg border border-lightBorder p-0 px-4 gap-0 relative">
             <div className="w-full h-full flex flex-col gap-6 justify-between relative">
@@ -424,29 +432,29 @@ export default function OrderForm({ setDialogOpen }: any) {
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Products Summary
+                    Food Supply Summary
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <ProductsCart
-                      columns={initiateProductsCartColumns(
+                    <FoodSuppliesCart
+                      columns={initiateFoodSupplyCartColumns(
                         dispatch,
-                        orderCartOptions.productsData
+                        RequestCartOptions.foodsuppliesData
                       )}
-                      data={orderCart.productsCart}
+                      data={RequestCart.equipmentsCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Parts Summary
+                    Equipments Summary
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <PartsCart
-                      columns={initiatePartsCartColumns(
+                    <EquipmentsCart
+                      columns={initiateEquipmentsCartColumns(
                         dispatch,
-                        orderCartOptions.partsData
+                        RequestCartOptions.EquipmentsData
                       )}
-                      data={orderCart.partsCart}
+                      data={RequestCart.equipmentsCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
@@ -457,18 +465,19 @@ export default function OrderForm({ setDialogOpen }: any) {
                     Subtotal
                   </span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    orderCart.productsCart.reduce(
-                      (acc: any, product: any) =>
-                        acc + product.price * product.quantity,
+                    RequestCart.foodsuppliesCart.reduce(
+                      (acc: any, foodsupply: any) =>
+                        acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
-                    orderCart.partsCart.reduce(
-                      (acc: any, part: any) => acc + part.price * part.quantity,
+                    RequestCart.equipmentsCart.reduce(
+                      (acc: any, equipment: any) =>
+                        acc + equipment.price * equipment.quantity,
                       0
                     )
                   )
                     .toFixed(
-                      // sum all the products and parts
+                      // sum all the food_supplies and equipments
                       2
                     )
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
@@ -490,14 +499,14 @@ export default function OrderForm({ setDialogOpen }: any) {
                   </span>
                   <span className="w-[20%] text-end">
                     {`- ₱ ${(
-                      (orderCart.productsCart.reduce(
-                        (acc: any, product: any) =>
-                          acc + product.price * product.quantity,
+                      (RequestCart.foodsuppliesCart.reduce(
+                        (acc: any, foodsupply: any) =>
+                          acc + foodsupply.price * foodsupply.quantity,
                         0
                       ) +
-                        orderCart.partsCart.reduce(
-                          (acc: any, part: any) =>
-                            acc + part.price * part.quantity,
+                        RequestCart.equipmentsCart.reduce(
+                          (acc: any, equipment: any) =>
+                            acc + equipment.price * equipment.quantity,
                           0
                         )) *
                       (Number(form.getValues("discount")) / 100)
@@ -509,14 +518,14 @@ export default function OrderForm({ setDialogOpen }: any) {
                 <div className="w-full py-6 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-lg font-bold">
                   <span className="w-full text-end">Total</span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    (orderCart.productsCart.reduce(
-                      (acc: any, product: any) =>
-                        acc + product.price * product.quantity,
+                    (RequestCart.foodsuppliesCart.reduce(
+                      (acc: any, foodsupply: any) =>
+                        acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
-                      orderCart.partsCart.reduce(
-                        (acc: any, part: any) =>
-                          acc + part.price * part.quantity,
+                      RequestCart.equipmentsCart.reduce(
+                        (acc: any, equipment: any) =>
+                          acc + equipment.price * equipment.quantity,
                         0
                       )) *
                     ((100 - Number(form.getValues("discount"))) / 100)
@@ -534,8 +543,8 @@ export default function OrderForm({ setDialogOpen }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
             disabled={
-              orderCart.partsCart.length === 0 &&
-              orderCart.productsCart.length === 0
+              RequestCart.equipmentsCart.length === 0 &&
+              RequestCart.foodsuppliesCart.length === 0
                 ? true
                 : false
             }

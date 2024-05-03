@@ -9,10 +9,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import OrderForm from "./add-order-form";
+import RequestForm from "./add-order-form";
 import { BsFillEnvelopeArrowUpFill } from "react-icons/bs";
 
-export default function OrderDialog() {
+export default function RequestDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -24,12 +24,10 @@ export default function OrderDialog() {
       </DialogTrigger>
       <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
         <DialogHeader>
-          <DialogTitle>New Order</DialogTitle>
-          <DialogDescription>
-            Add a new regular transaction order
-          </DialogDescription>
+          <DialogTitle>New Request</DialogTitle>
+          <DialogDescription>Add a new request</DialogDescription>
         </DialogHeader>
-        <OrderForm setDialogOpen={setDialogIsOpen} />
+        <RequestForm setDialogOpen={setDialogIsOpen} />
       </DialogContent>
     </Dialog>
   );
