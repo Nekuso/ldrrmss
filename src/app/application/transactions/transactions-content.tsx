@@ -11,7 +11,7 @@ import { PiGearSixBold } from "react-icons/pi";
 import { BsBoxSeam } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
-export default function TransactionsContent({
+export default function InventoryContent({
   dataRequests,
 }: {
   dataRequests: allPurchaseRequestsDisplay[];

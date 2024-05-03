@@ -13,10 +13,10 @@ export const useRequests: any = () => {
     const result: any = await supabase
       .from("requests")
       .insert({
-        customer_first_name: props.customer_first_name,
-        customer_last_name: props.customer_last_name,
-        customer_contact_number: props.customer_contact_number,
-        customer_email: props.customer_email,
+        requester_first_name: props.requester_first_name,
+        requester_last_name: props.requester_last_name,
+        requester_contact_number: props.requester_contact_number,
+        requester_email: props.requester_email,
         employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
         inventory_id: props.inventory_id,
         subtotal: props.subtotal,
@@ -71,62 +71,64 @@ export const useRequests: any = () => {
       .from("requests")
       .select(
         `
-        id,
-        customer_first_name,
-        customer_last_name,
-        customer_contact_number,
-        customer_email,
-        employees(
-          id,
-          first_name,
-          last_name,
-          image_url,
-          contact_number,
-          email,
-          roles(
-            role
-          )
-        ),
-        inventory(
-          id,
-          branches(
-            id,
-            branch_name,
-            branch_location
-          )
-        ),
-        purchase_products(
-          id,
-          product_id,
-          name,
-          description,
-          image_url,
-          barcode,
-          price,
-          quantity,
-          uom_name
-        ),
-        purchase_parts(
-          id,
-          part_id,
-          name,
-          description,
-          image_url,
-          barcode,
-          price,
-          quantity,
-          brand
-        ),
-        subtotal,
-        total_price,
-        amount_paid,
-        status,
-        discount,
-        payment_method,
-        created_at
-    `
+        *
+        `
+        // id,
+        // requester_first_name,
+        // requester_last_name,
+        // requester_contact_number,
+        // requester_email,
+        // created_at
+        // employees(
+        //   id,
+        //   first_name,
+        //   last_name,
+        //   image_url,
+        //   contact_number,
+        //   email,
+        //   roles(
+        //     role
+        //   )
+        // ),
+        // inventory(
+        //   id,
+        //   branches(
+        //     id,
+        //     branch_name,
+        //     branch_location
+        //   )
+        // ),
+        // purchase_products(
+        //   id,
+        //   product_id,
+        //   name,
+        //   description,
+        //   image_url,
+        //   barcode,
+        //   price,
+        //   quantity,
+        //   uom_name
+        // ),
+        // purchase_parts(
+        //   id,
+        //   part_id,
+        //   name,
+        //   description,
+        //   image_url,
+        //   barcode,
+        //   price,
+        //   quantity,
+        //   brand
+        // ),
+        // subtotal,
+        // total_price,
+        // amount_paid,
+        // status,
+        // discount,
+        // payment_method,
       )
       .order("created_at", { ascending: false });
+    console.log(result);
 
     const { data, error } = result;
     if (error) {
@@ -140,10 +142,10 @@ export const useRequests: any = () => {
       .select(
         `
         id,
-        customer_first_name,
-        customer_last_name,
-        customer_contact_number,
-        customer_email,
+        requester_first_name,
+        requester_last_name,
+        requester_contact_number,
+        requester_email,
         employees(
           id,
           first_name,
