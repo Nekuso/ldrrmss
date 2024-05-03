@@ -39,8 +39,8 @@ export const statuses = [
     icon: CircleIcon,
   },
   {
-    value: "Undertermined",
-    label: "Undertermined",
+    value: "Undetermined",
+    label: "Undetermined",
     icon: CircleIcon,
   },
 ];
@@ -98,7 +98,7 @@ export const initialState = (branches: any) => {
               <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.id}
               </p>
-              <p className="max-w-[181px] truncate text-white/50">
+              <p className="max-w-[181px] truncate text-slate-500">
                 {format(row.original.created_at, "PPPP")}
               </p>
             </div>
@@ -125,22 +125,22 @@ export const initialState = (branches: any) => {
       cell: ({ row }) => {
         return (
           <div className="flex place-items-center gap-2">
-            {/* <Avatar className="w-10 h-10 cursor-pointer z-0 rounded-md">
+            <Avatar className="w-10 h-10 cursor-pointer z-0 rounded-md">
               <AvatarImage
                 src={row.original.employees.image_url}
                 alt={row.original.employees.first_name}
               />
-              <AvatarFallback className="bg-darkBg rounded-md">
+              <AvatarFallback className="bg-slate-500 rounded-md text-white">
                 {row.original.employees.first_name[0]}
               </AvatarFallback>
-            </Avatar> */}
+            </Avatar>
 
             <div className="flex flex-col">
               <p className="max-w-[100px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.employees.first_name}{" "}
                 {row.original.employees.last_name}
               </p>
-              <p className="max-w-[181px] truncate text-white/50">
+              <p className="max-w-[181px] truncate text-slate-500">
                 {row.original.employees.roles.role}
               </p>
             </div>
@@ -372,31 +372,32 @@ export const initialState = (branches: any) => {
         if (!item) {
           return null;
         }
-        if (item.value === "Paid") {
+        if (item.value === "Completed") {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-green-300 bg-green-300 bg-opacity-20 px-6 py-1 rounded-3xl border border-green-600"
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-green-600 px-2 py-1 rounded-3xl border border-green-600"
               }
             >
               {item.value}
             </p>
           );
-        } else if (item.value === "Pending") {
+        } else if (item.value === "Ongoing") {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-yellow-300 bg-yellow-300 bg-opacity-20 px-3 py-1 rounded-3xl border border-yellow-600"
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-yellow-600 px-2 py-1 rounded-3xl border border-yellow-600"
               }
             >
               {item.value}
             </p>
           );
-        } else {
+        } else item.value === "Undetermined";
+        {
           return (
             <p
               className={
-                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-slate-300 bg-slate-200 bg-opacity-20 px-4 py-1 rounded-3xl "
+                "w-fit text-xs font-normal flex place-items-center gap-2 truncate text-white bg-red-600 px-2 py-1 rounded-3xl border border-red-600"
               }
             >
               {item.value}
@@ -418,7 +419,7 @@ export const initialState = (branches: any) => {
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
             href={`/application/transactions/order/${id}`}
           >
-            <FaEye className="mr-2 " />
+            {/* <FaEye className="mr-2 " /> */}
             View
           </Link>
         );

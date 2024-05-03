@@ -8,7 +8,7 @@ import { allPurchaseRequestsDisplay } from "@/types";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PiGearSixBold } from "react-icons/pi";
-import { BsBoxSeam } from "react-icons/bs";
+import { BsFillEnvelopeArrowUpFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 export default function InventoryContent({
@@ -37,7 +37,7 @@ export default function InventoryContent({
             data-[state=inactive]:hover:text-slate-500
             data-[state=active]:text-slate-500 rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
+            <BsFillEnvelopeArrowUpFill />
             Requests
           </TabsTrigger>
         </TabsList>

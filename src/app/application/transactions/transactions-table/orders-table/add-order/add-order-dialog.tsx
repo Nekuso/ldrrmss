@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 import OrderForm from "./add-order-form";
-import { BsBoxSeam } from "react-icons/bs";
+import { BsFillEnvelopeArrowUpFill } from "react-icons/bs";
 
 export default function OrderDialog() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -18,8 +18,8 @@ export default function OrderDialog() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
-          <BsBoxSeam /> Purchase Order
+        <Button className="text-xs font-bold rounded-md flex gap-2  transition-all duration-300">
+          <BsFillEnvelopeArrowUpFill /> Create Request
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
