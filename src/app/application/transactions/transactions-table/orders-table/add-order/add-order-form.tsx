@@ -81,7 +81,7 @@ export default function RequestForm({ setDialogOpen }: any) {
 
     purchase_food_supplies: z.array(
       z.object({
-        foodsupplie_id: z.coerce.number(),
+        foodsupplies_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
@@ -144,8 +144,8 @@ export default function RequestForm({ setDialogOpen }: any) {
     Number(
       (
         (RequestCart.foodsuppliesCart.reduce(
-          (acc: any, foodsupplie: any) =>
-            acc + foodsupplie.price * foodsupplie.quantity,
+          (acc: any, foodsupplies: any) =>
+            acc + foodsupplies.price * foodsupplies.quantity,
           0
         ) +
           RequestCart.equipmentsCart.reduce(
@@ -167,8 +167,8 @@ export default function RequestForm({ setDialogOpen }: any) {
       Number(
         (
           (RequestCart.foodsuppliesCart.reduce(
-            (acc: any, foodsupplie: any) =>
-              acc + foodsupplie.price * foodsupplie.quantity,
+            (acc: any, foodsupplies: any) =>
+              acc + foodsupplies.price * foodsupplies.quantity,
             0
           ) +
             RequestCart.equipmentsCart.reduce(
