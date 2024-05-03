@@ -11,12 +11,18 @@ import { PiGearSixBold } from "react-icons/pi";
 import { BsBoxSeam } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
-export default function InventoryContent({
+export default function TransactionsContent({
   dataRequests,
 }: {
   dataRequests: allPurchaseRequestsDisplay[];
 }) {
   const branchesSlice = useSelector((state: any) => state.branches);
+
+  function initiateVehiclesState(
+    branchesSlice: any
+  ): import("@tanstack/table-core").ColumnDef<never, unknown>[] {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <Tabs
@@ -32,16 +38,7 @@ export default function InventoryContent({
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <BsBoxSeam />
-            Purchase Orders
-          </TabsTrigger>
-          <TabsTrigger
-            value="vehicle_requests"
-            className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
-          >
-            <PiGearSixBold />
-            Purchase Services
+            Requests
           </TabsTrigger>
         </TabsList>
       </div>
@@ -50,13 +47,6 @@ export default function InventoryContent({
         <RequestsDataTable
           columns={initiateRequestsState(branchesSlice)}
           data={dataRequests}
-        />
-      </TabsContent>
-      <TabsContent value="equipments" className="w-full h-full ">
-        {/* Service Order Tab */}
-        <RequestVehiclesDataTable
-          columns={initiateEquipmentsState(branchesSlice)}
-          data={[]}
         />
       </TabsContent>
     </Tabs>

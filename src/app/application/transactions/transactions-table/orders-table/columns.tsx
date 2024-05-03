@@ -107,13 +107,14 @@ export const initialState = (branches: any) => {
       },
     },
     {
-      id: "customer_first_name",
-      accessorKey: "customer_first_name",
-      header: "Customer",
+      id: "requester_first_name",
+      accessorKey: "requester_first_name",
+      header: "requester",
       cell: ({ row }) => {
         return (
           <p className="max-w-[110px] 2xl:max-w-[220px] truncate">
-            {row.original.customer_first_name} {row.original.customer_last_name}
+            {row.original.requester_first_name}{" "}
+            {row.original.requester_last_name}
           </p>
         );
       },

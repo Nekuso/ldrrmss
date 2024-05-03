@@ -121,10 +121,10 @@ export type allVehiclesDisplay = {
 
 export type allPurchaseRequestsDisplay = {
   id: string;
-  customer_first_name: string;
-  customer_last_name: string;
-  customer_contact_number: string;
-  customer_email: string;
+  requester_first_name: string;
+  requester_last_name: string;
+  requester_contact_number: string;
+  requester_email: string;
   inventory: {
     id: number;
   };
@@ -147,10 +147,10 @@ export type allPurchaseRequestsDisplay = {
 
 export type allPurchaseVehiclesDisplay = {
   id: number;
-  customer_first_name: string;
-  customer_last_name: string;
-  customer_contact_number: string;
-  customer_email: string;
+  requester_first_name: string;
+  requester_last_name: string;
+  requester_contact_number: string;
+  requester_email: string;
   inventory: {
     id: number;
   };

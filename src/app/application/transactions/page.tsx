@@ -25,6 +25,7 @@ export default function Transactions() {
   // const { getProducts, productsData } = useProducts();
   const { getEquipments, equipmentsData } = useEquipments();
   const { getFoodSupplies, foodsuppliesData } = useFoodSupplies();
+
   // const branchesData = allBranchesData.map((branch: any) => ({
   //   id: branch?.id,
   //   value: branch?.branch_name,

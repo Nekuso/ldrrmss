@@ -4,8 +4,8 @@ const initialState: any = {
   VehiclesCart: [],
 };
 
-const ordervehicleCart = createSlice({
-  name: "ordervehicleCart",
+const requestvehicleCart = createSlice({
+  name: "requestvehicleCart",
   initialState: initialState,
   reducers: {
     addvehicleToCart: (state, action: PayloadAction<any>) => {
@@ -24,7 +24,7 @@ const ordervehicleCart = createSlice({
         return vehicle;
       });
     },
-    resetOrdervehicleCart: (state) => {
+    resetRequestvehicleCart: (state) => {
       state.VehiclesCart = [];
     },
   },
@@ -34,6 +34,6 @@ export const {
   addvehicleToCart,
   removevehicleFromCart,
   updatevehiclePriceFromCart,
-  resetOrdervehicleCart,
-} = ordervehicleCart.actions;
-export default ordervehicleCart.reducer;
+  resetRequestvehicleCart,
+} = requestvehicleCart.actions;
+export default requestvehicleCart.reducer;
