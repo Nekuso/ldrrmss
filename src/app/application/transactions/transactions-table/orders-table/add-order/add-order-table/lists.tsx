@@ -37,7 +37,7 @@ export default function RequestCartOptions({}: {}) {
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <BsBoxSeam />
-            Products
+            FoodSupply
           </TabsTrigger>
           <TabsTrigger
             value="equipments"
@@ -46,7 +46,7 @@ export default function RequestCartOptions({}: {}) {
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <PiGearSixBold />
-            Parts
+            Equipment
           </TabsTrigger>
         </TabsList>
       </div>
