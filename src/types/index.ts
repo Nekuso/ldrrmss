@@ -142,7 +142,7 @@ export type allPurchaseRequestsDisplay = {
     name: string;
     description: string;
   };
-  purchase_food_supplies: {}[];
+  purchase_foodsupplies: {}[];
   purchase_equipments: {}[];
   purchase_vehicles: {}[];
   total_price: number;

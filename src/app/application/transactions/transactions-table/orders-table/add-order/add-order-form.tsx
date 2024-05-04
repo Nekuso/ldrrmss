@@ -43,6 +43,7 @@ import { Input } from "@/components/ui/input";
 import DiscountInput from "./discount-input";
 import { TbCurrencyPeso } from "react-icons/tb";
 import { useRouter } from "next/navigation";
+import result from "postcss/lib/result";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -58,10 +59,10 @@ export default function RequestForm({ setDialogOpen }: any) {
   const [minTotalPrice, setMinTotalPrice] = useState(0);
 
   const RequestSchema: any = z.object({
-    customer_first_name: z.string().nullable(),
-    customer_last_name: z.string().nullable(),
-    customer_email: z.string().nullable(),
-    customer_contact_number: z.coerce.number().nullable(),
+    requester_first_name: z.string().nullable(),
+    requester_last_name: z.string().nullable(),
+    requester_email: z.string().nullable(),
+    requester_contact_number: z.coerce.number().nullable(),
     status: z.string(),
     payment_method: z
       .string()
@@ -79,7 +80,7 @@ export default function RequestForm({ setDialogOpen }: any) {
       message: "Amount paid should be equal or greater than total price",
     }),
 
-    purchase_food_supplies: z.array(
+    purchase_foodsupplies: z.array(
       z.object({
         foodsupplies_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
@@ -109,10 +110,10 @@ export default function RequestForm({ setDialogOpen }: any) {
   const form = useForm<z.infer<typeof RequestSchema>>({
     resolver: zodResolver(RequestSchema),
     defaultValues: {
-      customer_first_name: "",
-      customer_last_name: "",
-      customer_email: "",
-      customer_contact_number: 0,
+      requester_first_name: "",
+      requester_last_name: "",
+      requester_email: "",
+      requester_contact_number: 0,
       employee_id: "",
       payment_method: "",
       subtotal: 0,
@@ -122,7 +123,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     },
   });
 
-  form.setValue("purchase_food_supplies", RequestCart.foodsuppliesCart);
+  form.setValue("purchase_foodsupplies", RequestCart.foodsuppliesCart);
   form.setValue("purchase_equipments", RequestCart.equipmentsCart);
   form.setValue(
     "subtotal",
@@ -238,7 +239,7 @@ export default function RequestForm({ setDialogOpen }: any) {
               >
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Customer
+                    requester
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
                     <div className="w-full flex flex-col gap-4 px-2">
@@ -246,7 +247,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-[75%] flex flex-col">
                           <FormField
                             control={form.control}
-                            name="customer_first_name"
+                            name="requester_first_name"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
@@ -269,7 +270,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-[75%] flex flex-col">
                           <FormField
                             control={form.control}
-                            name="customer_last_name"
+                            name="requester_last_name"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
@@ -292,7 +293,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-full flex flex-col">
                           <FormField
                             control={form.control}
-                            name="customer_contact_number"
+                            name="requester_contact_number"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
@@ -365,7 +366,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-[75%] flex flex-col">
                           <FormField
                             control={form.control}
-                            name="customer_email"
+                            name="requester_email"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">Email</FormLabel>
