@@ -53,7 +53,7 @@ export default function RequestForm({ setDialogOpen }: any) {
 
   const RequestCart = useSelector((state: any) => state.RequestCart);
   const RequestCartOptions = useSelector(
-    (state: any) => state.RequestCartOptionSlice
+    (state: any) => state.RequestCartOptionslice
   );
 
   const [minTotalPrice, setMinTotalPrice] = useState(0);
@@ -168,8 +168,8 @@ export default function RequestForm({ setDialogOpen }: any) {
       Number(
         (
           (RequestCart.foodsuppliesCart.reduce(
-            (acc: any, foodsupplies: any) =>
-              acc + foodsupplies.price * foodsupplies.quantity,
+            (acc: any, foodsupply: any) =>
+              acc + foodsupply.price * foodsupply.quantity,
             0
           ) +
             RequestCart.equipmentsCart.reduce(
