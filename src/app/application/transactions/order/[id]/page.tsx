@@ -3,18 +3,18 @@
 
 import { useEffect, useState } from "react";
 import Loading from "./skeleton";
-import OrderContent from "./order-content";
+import RequestContent from "./order-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-import { useOrders } from "@/hooks/useOrders";
-import OrderNotFound from "./not-found";
+import { useRequests } from "@/hooks/useOrders";
+import RequestNotFound from "./not-found";
 
-export default function Order({ params }: { params: any }) {
-  const { getOrder, currentOrderData } = useOrders();
+export default function Request({ params }: { params: any }) {
+  const { getRequest, currentRequestData } = useRequests();
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const initialFetch = async () => {
-      const result = await getOrder(params.id, 500);
+      const result = await getRequest(params.id, 500);
       if (result) setError(result);
     };
 
@@ -28,9 +28,9 @@ export default function Order({ params }: { params: any }) {
         .channel("order-follow-up")
         .on(
           "postgres_changes",
-          { event: "*", schema: "public", table: "orders" },
+          { event: "*", schema: "public", table: "requests" },
           (payload: any) => {
-            getOrder(params.id, 0);
+            getRequest(params.id, 0);
           }
         )
         .subscribe();
@@ -43,13 +43,13 @@ export default function Order({ params }: { params: any }) {
 
   return (
     <div className="w-full flex justify-center place-items-center">
-      {error ? (
-        <OrderNotFound />
+      {/* {error ? (
       ) : currentOrderData.length === 0 ? (
         <Loading />
       ) : (
-        <OrderContent params={params} order={currentOrderData} />
-      )}
+      )} */}
+      <RequestNotFound />
+      <RequestContent params={params} order={currentRequestData} />
     </div>
   );
 }

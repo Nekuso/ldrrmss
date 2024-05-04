@@ -23,7 +23,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useRef } from "react";
 // import { useReactToPrint } from "react-to-print";
-import recieptLogo from "@/images/receipt-logo.svg";
+// import recieptLogo from "@/images/receipt-logo.svg";
 import { FiBox } from "react-icons/fi";
 import { SiTemporal } from "react-icons/si";
 import { BsBoxes } from "react-icons/bs";
@@ -245,7 +245,7 @@ export default function RequestContent({ request }: any) {
           className="w-full min-h-[600px] 2xl:min-h-[680px] flex flex-col place-items-center"
           ref={contentToPrint}
         >
-          <div className="w-full flex flex-col gap-0.5 justify-center place-items-center py-2">
+          {/* <div className="w-full flex flex-col gap-0.5 justify-center place-items-center py-2">
             <img src={recieptLogo.src} alt="logo" className="mb-2" />
             <p className="w-full text-center text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
               {`${request[0].inventory.branches.branch_location}`}
@@ -253,7 +253,7 @@ export default function RequestContent({ request }: any) {
             <p className="w-full text-center text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
               {`${request[0].inventory.branches.contact_number}`}
             </p>
-          </div>
+          </div> */}
 
           <div className="w-full flex flex-col gap-1">
             <div className="flex flex-col justify-between gap-1">
