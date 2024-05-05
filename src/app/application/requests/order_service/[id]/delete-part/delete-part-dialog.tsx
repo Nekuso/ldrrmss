@@ -17,17 +17,17 @@ import { cn } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 
-export default function DeleteParttDialog({ partData }: any) {
+export default function DeleteEquipmentDialog({ equipmentData }: any) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const part = partData;
-  const { deletePart } = useParts();
+  const equipment = equipmentData;
+  const { deleteEquipment } = useEquipments();
 
   async function onSubmit(dataProps?: any) {
     startTransition(async () => {
-      await deletePart(dataProps, 4000);
+      await deleteEquipment(dataProps, 4000);
       // const { error } = JSON.parse(result);
       // if (error?.message) {
       //   toast({
@@ -82,7 +82,7 @@ export default function DeleteParttDialog({ partData }: any) {
           <Button
             variant="destructive"
             className="text-xs font-bold min-w-[100px] rounded-md flex gap-2 transition-all duration-300"
-            onClick={() => onSubmit(part)}
+            onClick={() => onSubmit(equipment)}
           >
             <span
               className={cn("flex gap-2 place-items-center justify-center", {

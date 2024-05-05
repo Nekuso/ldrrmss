@@ -26,56 +26,60 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useParts } from "@/hooks/useParts";
+import { useEquipments } from "@/hooks/useEquipments";
 
-export const partSchema = z.object({
+export const equipmentSchema = z.object({
   id: z.number(),
   name: z.string().min(1, {
-    message: "Part name is required",
+    message: "Equipment name is required",
   }),
   description: z.string().min(1, {
-    message: "Part description is required",
+    message: "Equipment description is required",
   }),
   image_url: z.string().default("something"),
   barcode: z.string().min(1, {
-    message: "Part barcode is required",
+    message: "Equipment barcode is required",
   }),
   stock_quantity: z.coerce.number().min(1, {
-    message: "Part quantity must be at least 1",
+    message: "Equipment quantity must be at least 1",
   }),
   price: z.coerce.number().min(1, {
-    message: "Part price is required",
+    message: "Equipment price is required",
   }),
   brand_id: z
     .string()
     .min(1, {
-      message: "Part uom id is required",
+      message: "Equipment uom id is required",
     })
     .transform((arg) => new Number(arg)),
   status: z
     .string()
     .min(1, {
-      message: "Part status is required",
+      message: "Equipment status is required",
     })
     .default("Available"),
 });
 
-export default function PartForm({ setDialogOpen, part, brands }: any) {
+export default function EquipmentForm({
+  setDialogOpen,
+  equipment,
+  brands,
+}: any) {
   const [isPending, startTransition] = useTransition();
-  const { updatePart } = useParts();
+  const { updatePart } = useEquipments();
 
-  const form = useForm<z.infer<typeof partSchema>>({
-    resolver: zodResolver(partSchema),
+  const form = useForm<z.infer<typeof equipmentSchema>>({
+    resolver: zodResolver(equipmentSchema),
     defaultValues: {
-      id: part.id,
-      name: part.name,
-      description: part.description,
-      image_url: part.image_url,
-      barcode: part.barcode,
-      brand_id: part.brands.id.toString(),
-      stock_quantity: part.stock_quantity,
-      price: part.price,
-      status: part.status,
+      id: equipment.id,
+      name: equipment.name,
+      description: equipment.description,
+      image_url: equipment.image_url,
+      barcode: equipment.barcode,
+      brand_id: equipment.brands.id.toString(),
+      stock_quantity: equipment.stock_quantity,
+      price: equipment.price,
+      status: equipment.status,
     },
   });
 
