@@ -86,7 +86,7 @@ export const initialState = () => {
             <Avatar className="w-10 h-10 cursor-pointer z-0 rounded-md">
               <AvatarImage
                 src={row.original.image_url}
-                alt={row.original.barcode}
+                // alt={row.original.barcode}
               />
               <AvatarFallback className="bg-slate-500 rounded-md text-white">
                 {row.original.name[0]}
