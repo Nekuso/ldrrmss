@@ -17,7 +17,7 @@ import {
   CaretSortIcon,
 } from "@radix-ui/react-icons";
 import { FaEye } from "react-icons/fa";
-import { allPurchaseServicesDisplay } from "@/types";
+import { allPurchaseRequestsDisplay } from "@/types";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -40,7 +40,7 @@ export const statuses = [
 ];
 
 export const initialState = (branches: any) => {
-  const columns: ColumnDef<allPurchaseServicesDisplay>[] = [
+  const columns: ColumnDef<allPurchaseRequestsDisplay>[] = [
     // {
     //   id: "name",
     //   accessorKey: "name",
@@ -166,26 +166,26 @@ export const initialState = (branches: any) => {
         );
       },
     },
-    {
-      id: "branch",
-      accessorKey: "branches",
-      accessorFn: (row) => row.inventory.branches.branch_name,
-      header: "Branch",
-      cell: ({ row }) => {
-        const item = branches?.find(
-          (item: any) =>
-            item.value === row.original.inventory.branches.branch_name
-        );
+    // {
+    //   id: "branch",
+    //   accessorKey: "branches",
+    //   accessorFn: (row) => row.inventory.branches.branch_name,
+    //   header: "Branch",
+    //   cell: ({ row }) => {
+    //     const item = branches?.find(
+    //       (item: any) =>
+    //         item.value === row.original.inventory.branches.branch_name
+    //     );
 
-        if (!item) {
-          return null;
-        }
-        return <p className="max-w-[85px] truncate">{item.label}</p>;
-      },
-      filterFn: (row, id, value) => {
-        return value.includes(row.getValue(id));
-      },
-    },
+    //     if (!item) {
+    //       return null;
+    //     }
+    //     return <p className="max-w-[85px] truncate">{item.label}</p>;
+    //   },
+    //   filterFn: (row, id, value) => {
+    //     return value.includes(row.getValue(id));
+    //   },
+    // },
     {
       accessorKey: "status",
       header: ({ column }) => {
