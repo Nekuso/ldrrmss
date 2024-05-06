@@ -21,6 +21,7 @@ export default function RequestCartOptions({}: {}) {
   const equipmentsCart = useSelector(
     (state: any) => state.requestCart.equipmentsCart
   );
+
   const dispatch = useDispatch();
 
   return (

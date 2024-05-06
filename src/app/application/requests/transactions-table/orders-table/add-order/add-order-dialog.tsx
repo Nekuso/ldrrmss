@@ -22,7 +22,7 @@ export default function RequestDialog() {
           <BsFillEnvelopeArrowUpFill /> Create Request
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] border border-lightBorder shadow-2xl bg-gray-700">
         <DialogHeader>
           <DialogTitle>New Request</DialogTitle>
           <DialogDescription>Add a new request</DialogDescription>

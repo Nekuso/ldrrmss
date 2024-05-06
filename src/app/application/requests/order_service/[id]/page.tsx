@@ -31,7 +31,7 @@ export default function Equipment({ params }: { params: any }) {
         .channel("part-follow-up")
         .on(
           "postgres_changes",
-          { event: "*", schema: "public", table: "parts" },
+          { event: "*", schema: "public", table: "equipments" },
           (payload: any) => {
             getEquipment(params.id, 0);
           }

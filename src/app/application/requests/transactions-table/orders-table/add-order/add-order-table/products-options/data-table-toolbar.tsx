@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
-  partsData?: any[];
-  productsData?: any[];
+  equipmentsData?: any[];
+  foodsuppliesData?: any[];
 }
 
 export function DataTableToolbar<TData>({
@@ -21,8 +21,8 @@ export function DataTableToolbar<TData>({
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[150px] 2xl:w-[200px] h-10 bg-darkBg rounded-lg text-white border border-lightBorder placeholder:text-white/40 m-3"
-          placeholder="Find Product"
+          className="w-[150px] 2xl:w-[200px] h-10 bg-darkBg rounded-lg text-black border border-lightBorder placeholder:text-white/40 m-3"
+          placeholder="Find FoodSupply"
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)

@@ -51,8 +51,8 @@ export default function RequestForm({ setDialogOpen }: any) {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const RequestCart = useSelector((state: any) => state.RequestCart);
-  const RequestCartOptions = useSelector(
+  const requestCart = useSelector((state: any) => state.requestCart);
+  const requestCartOptions = useSelector(
     (state: any) => state.RequestCartOptionslice
   );
 
@@ -123,17 +123,17 @@ export default function RequestForm({ setDialogOpen }: any) {
     },
   });
 
-  form.setValue("purchase_foodsupplies", RequestCart.foodsuppliesCart);
-  form.setValue("purchase_equipments", RequestCart.equipmentsCart);
+  form.setValue("purchase_foodsupplies", requestCart.foodsuppliesCart);
+  form.setValue("purchase_equipments", requestCart.equipmentsCart);
   form.setValue(
     "subtotal",
     (
-      RequestCart.foodsuppliesCart.reduce(
+      requestCart.foodsuppliesCart.reduce(
         (acc: any, foodsupply: any) =>
           acc + foodsupply.price * foodsupply.quantity,
         0
       ) +
-      RequestCart.equipmentsCart.reduce(
+      requestCart.equipmentsCart.reduce(
         (acc: any, equipment: any) =>
           acc + equipment.price * equipment.quantity,
         0
@@ -144,12 +144,12 @@ export default function RequestForm({ setDialogOpen }: any) {
     "total_price",
     Number(
       (
-        (RequestCart.foodsuppliesCart.reduce(
+        (requestCart.foodsuppliesCart.reduce(
           (acc: any, foodsupplies: any) =>
             acc + foodsupplies.price * foodsupplies.quantity,
           0
         ) +
-          RequestCart.equipmentsCart.reduce(
+          requestCart.equipmentsCart.reduce(
             (acc: any, equipment: any) =>
               acc + equipment.price * equipment.quantity,
             0
@@ -167,12 +167,12 @@ export default function RequestForm({ setDialogOpen }: any) {
     setMinTotalPrice(
       Number(
         (
-          (RequestCart.foodsuppliesCart.reduce(
+          (requestCart.foodsuppliesCart.reduce(
             (acc: any, foodsupply: any) =>
               acc + foodsupply.price * foodsupply.quantity,
             0
           ) +
-            RequestCart.equipmentsCart.reduce(
+            requestCart.equipmentsCart.reduce(
               (acc: any, equipment: any) =>
                 acc + equipment.price * equipment.quantity,
               0
@@ -182,8 +182,8 @@ export default function RequestForm({ setDialogOpen }: any) {
       )
     );
   }, [
-    RequestCart.foodsuppliesCart,
-    RequestCart.equipmentsCart,
+    requestCart.foodsuppliesCart,
+    requestCart.equipmentsCart,
     discountData,
     minTotalPrice,
     form,
@@ -210,7 +210,7 @@ export default function RequestForm({ setDialogOpen }: any) {
           label: "Print",
           onClick: () =>
             router.push(
-              `/application/transactions/Request/${result.data[0].id}`
+              `/application/transactions/request/${result.data[0].id}`
             ),
         },
       });
@@ -437,11 +437,16 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
                     <FoodSuppliesCart
-                      columns={initiateFoodSupplyCartColumns(
-                        dispatch,
-                        RequestCartOptions.foodsuppliesData
-                      )}
-                      data={RequestCart.equipmentsCart}
+                      columns={
+                        requestCartOptions &&
+                        requestCartOptions.foodsuppliesData
+                          ? initiateFoodSupplyCartColumns(
+                              dispatch,
+                              requestCartOptions.foodsuppliesData
+                            )
+                          : []
+                      }
+                      data={requestCart.foodsuppliesCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
@@ -451,11 +456,15 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
                     <EquipmentsCart
-                      columns={initiateEquipmentsCartColumns(
-                        dispatch,
-                        RequestCartOptions.EquipmentsData
-                      )}
-                      data={RequestCart.equipmentsCart}
+                      columns={
+                        requestCartOptions && requestCartOptions.equipmentsData
+                          ? initiateEquipmentsCartColumns(
+                              dispatch,
+                              requestCartOptions.equipmentsData
+                            )
+                          : []
+                      }
+                      data={requestCart.equipmentsCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
@@ -466,12 +475,12 @@ export default function RequestForm({ setDialogOpen }: any) {
                     Subtotal
                   </span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    RequestCart.foodsuppliesCart.reduce(
+                    requestCart.foodsuppliesCart.reduce(
                       (acc: any, foodsupply: any) =>
                         acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
-                    RequestCart.equipmentsCart.reduce(
+                    requestCart.equipmentsCart.reduce(
                       (acc: any, equipment: any) =>
                         acc + equipment.price * equipment.quantity,
                       0
@@ -500,12 +509,12 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </span>
                   <span className="w-[20%] text-end">
                     {`- ₱ ${(
-                      (RequestCart.foodsuppliesCart.reduce(
+                      (requestCart.foodsuppliesCart.reduce(
                         (acc: any, foodsupply: any) =>
                           acc + foodsupply.price * foodsupply.quantity,
                         0
                       ) +
-                        RequestCart.equipmentsCart.reduce(
+                        requestCart.equipmentsCart.reduce(
                           (acc: any, equipment: any) =>
                             acc + equipment.price * equipment.quantity,
                           0
@@ -519,12 +528,12 @@ export default function RequestForm({ setDialogOpen }: any) {
                 <div className="w-full py-6 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-lg font-bold">
                   <span className="w-full text-end">Total</span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    (RequestCart.foodsuppliesCart.reduce(
+                    (requestCart.foodsuppliesCart.reduce(
                       (acc: any, foodsupply: any) =>
                         acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
-                      RequestCart.equipmentsCart.reduce(
+                      requestCart.equipmentsCart.reduce(
                         (acc: any, equipment: any) =>
                           acc + equipment.price * equipment.quantity,
                         0
@@ -544,8 +553,8 @@ export default function RequestForm({ setDialogOpen }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
             disabled={
-              RequestCart.equipmentsCart.length === 0 &&
-              RequestCart.foodsuppliesCart.length === 0
+              requestCart.equipmentsCart.length === 0 &&
+              requestCart.foodsuppliesCart.length === 0
                 ? true
                 : false
             }

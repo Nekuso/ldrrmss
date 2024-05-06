@@ -50,7 +50,7 @@ export default function DeleteEquipmentDialog({ equipmentData }: any) {
         ),
       });
       setDialogIsOpen(false);
-      redirect("/application/inventory");
+      redirect("/application/requests");
     });
   }
 

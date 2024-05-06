@@ -15,10 +15,8 @@ type cartItem = {
   description: string;
   image_url: string;
   quantity: number;
-
   status: string;
   created_at: string;
-
   inventory: any;
 };
 

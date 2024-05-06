@@ -10,21 +10,19 @@ import {
 } from "@/redux/slices/orderCartSlice";
 
 type cartItem = {
-  food_supply_id: number;
+  foodsupply_id: number;
   name: string;
   description: string;
   image: string;
   quantity: number;
-
   status: string;
   created_at: string;
-
   inventory: any;
 };
 
 export const initiateColumns = (
   dispatch: any,
-  food_suppliesDataOptions: any
+  foodsuppliesDataOptions: any
 ) => {
   const columns: ColumnDef<cartItem>[] = [
     {
@@ -69,7 +67,7 @@ export const initiateColumns = (
               type="button"
               onClick={() => {
                 dispatch(
-                  decrementFoodSupplyQuantity(row.original.food_supply_id)
+                  decrementFoodSupplyQuantity(row.original.foodsupply_id)
                 );
               }}
             >
@@ -80,13 +78,14 @@ export const initiateColumns = (
               className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
               type="button"
               disabled={
-                food_suppliesDataOptions.find(
-                  (product: any) => product.id === row.original.food_supply_id
+                foodsuppliesDataOptions.find(
+                  (foodsupply: any) =>
+                    foodsupply.id === row.original.foodsupply_id
                 ).stock_quantity === 0
               }
               onClick={() => {
                 dispatch(
-                  incrementFoodSupplyQuantity(row.original.food_supply_id)
+                  incrementFoodSupplyQuantity(row.original.foodsupply_id)
                 );
               }}
             >

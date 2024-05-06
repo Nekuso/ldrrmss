@@ -103,8 +103,7 @@ export type allFood_suppliesDisplay = {
   name: string;
   description: string;
   image_url: string;
-  price: number;
-  duration: number;
+  stock_quantity: number;
   status: string;
   created_at: string;
 };

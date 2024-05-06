@@ -68,7 +68,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-full flex flex-col justify-between gap-1 ">
+    <div className="w-full flex flex-col justify-between gap-1">
       <div className="w-full h-full overflow-hidden">
         <ScrollArea className="w-full relative">
           <Table>
