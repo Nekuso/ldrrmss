@@ -32,31 +32,47 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
           <div className="flex place-items-between gap-4">
             <Avatar className="w-14 h-14 2xl:w-20 2xl:h-20 cursor-pointer z-0 rounded-md">
               <AvatarImage
-                src={row.original.image_url}
-                alt={row.original.image_url}
+                src={
+                  row && row.original && row.original.image_url
+                    ? row.original.image_url
+                    : ""
+                }
+                alt={
+                  row && row.original && row.original.image_url
+                    ? row.original.image_url
+                    : ""
+                }
               />
               <AvatarFallback className="bg-lightBorder rounded-md">
-                {row.original.name[0]}
+                {row && row.original && row.original.name
+                  ? row.original.name[0]
+                  : ""}
               </AvatarFallback>
             </Avatar>
 
             <div className="flex flex-col justify-between 2xl:py-2">
               <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold">
-                {row.original.name}
+                {row && row.original && row.original.name
+                  ? row.original.name
+                  : ""}
               </p>
               {/* <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
-                {`₱ ${row.original.price} • ${row.original.brands.brand_name}`}
-              </p> */}
+    {`₱ ${row.original.price} • ${row.original.brands.brand_name}`}
+  </p> */}
               <p className="text-xs max-w-[181px] truncate text-white/50">
                 Stock:
                 <span
                   className={cn(
                     "",
-                    row.original.stock_quantity === 0 ? "text-red-500" : ""
+                    row && row.original && row.original.stock_quantity === 0
+                      ? "text-red-500"
+                      : ""
                   )}
                 >
                   {" "}
-                  {row.original.stock_quantity}
+                  {row && row.original && row.original.stock_quantity
+                    ? row.original.stock_quantity
+                    : ""}
                 </span>
               </p>
             </div>
