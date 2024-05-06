@@ -15,7 +15,6 @@ export const useFoodSupplies: any = () => {
       description: props.description,
       image_url: props.image_url,
       stock_quantity: props.stock_quantity,
-      price: props.price,
       barcode: props.barcode,
       status: props.status,
     });

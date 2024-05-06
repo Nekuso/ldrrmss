@@ -30,24 +30,24 @@ export const initiateColumns = (dispatch: any, equipmentsCart: any) => {
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">
-            <Avatar className="w-14 h-14 2xl:w-20 2xl:h-20 cursor-pointer z-0 rounded-md">
+            <Avatar className="w-10 h-10 cursor-pointer z-0 rounded-md">
               <AvatarImage
                 src={row.original.image_url}
                 alt={row.original.image_url}
               />
-              <AvatarFallback className="bg-lightBorder rounded-md">
+              <AvatarFallback className="bg-slate-500 rounded-md text-white">
                 {row.original.name[0]}
               </AvatarFallback>
             </Avatar>
 
             <div className="flex flex-col justify-between 2xl:py-2">
-              <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold">
+              <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold ">
                 {row.original.name}
               </p>
               {/* <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
                 {`₱ ${row.original.price} • ${row.original.brands.brand_name}`}
               </p> */}
-              <p className="text-xs max-w-[181px] truncate text-white/50">
+              <p className="text-xs max-w-[181px] truncate text-slate-500">
                 Stock:
                 <span
                   className={cn(
@@ -98,13 +98,27 @@ export const initiateColumns = (dispatch: any, equipmentsCart: any) => {
                 );
               }}
             >
-              {equipmentsCart.some(
-                (equipment: any) => equipment.equipment_id === row.original.id
-              )
-                ? "Added"
-                : row.original.stock_quantity === 0
-                ? "Out of Stock"
-                : "Add"}
+              <div
+                className={cn(
+                  "rounded-md text-white bg-blue-600 px-4 py-2 text-base",
+                  equipmentsCart.some(
+                    (equipment: any) =>
+                      equipment.equipment_id === row.original.id
+                  )
+                    ? "Added"
+                    : row.original.stock_quantity === 0
+                    ? "Out of Stock"
+                    : "Add"
+                )}
+              >
+                {equipmentsCart.some(
+                  (equipment: any) => equipment.equipment_id === row.original.id
+                )
+                  ? "Added"
+                  : row.original.stock_quantity === 0
+                  ? "Out of Stock"
+                  : "Add"}
+              </div>
             </Button>
             {equipmentsCart.some(
               (equipment: any) => equipment.equipment_id === row.original.id

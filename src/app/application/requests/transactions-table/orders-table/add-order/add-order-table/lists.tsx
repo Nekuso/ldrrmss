@@ -6,6 +6,7 @@ import { DataTable as EquipmentsOptionsDataTable } from "./parts-options/data-ta
 import { initiateColumns as initiateFoodSuppliesColumns } from "./products-options/columns";
 import { initiateColumns as initiateEquipmentsColumns } from "./parts-options/columns";
 import { useSelector, useDispatch } from "react-redux";
+import { FaToolbox } from "react-icons/fa";
 
 export default function RequestCartOptions({}: {}) {
   const foodsuppliesOption = useSelector(
@@ -26,33 +27,33 @@ export default function RequestCartOptions({}: {}) {
 
   return (
     <Tabs
-      defaultValue="foodsupplies"
+      defaultValue="equipments"
       className="w-full h-full flex max-w-[1840px] flex-col justify-center place-items-center gap-2"
     >
       <div className="w-full flex justify-between">
         <TabsList className="h-fit bg-darkBg border border-lightBorder rounded-lg gap-2">
           <TabsTrigger
-            value="foodsupplies"
-            className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/60
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            value="equipments"
+            className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
+            data-[state=inactive]:hover:text-slate-500
+            data-[state=active]:text-white data-[state=active]:bg-primary rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
-            FoodSupply
+            <FaToolbox />
+            Equipments
           </TabsTrigger>
           <TabsTrigger
-            value="equipments"
-            className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            value="food_supplies"
+            className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
+            data-[state=inactive]:hover:text-slate-500
+            data-[state=active]:text-white data-[state=active]:bg-primary rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <PiGearSixBold />
-            Equipment
+            <BsBoxSeam />
+            Food Supply
           </TabsTrigger>
         </TabsList>
       </div>
       <TabsContent
-        value="foodsupplies"
+        value="food_supplies"
         className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
       >
         <FoodSuppliesOptionsDataTable

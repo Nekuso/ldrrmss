@@ -47,8 +47,8 @@ export default function RequestContent({ request }: any) {
   // }, []);
 
   return (
-    <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-start gap-4">
-      <ScrollArea className="w-[650px] 2xl:w-[55%] h-[720px] 2xl:h-[838px] px-8 pt-4 pb-8  bg-darkComponentBg rounded-xl border border-lightBorder shadow-lg gap-0 relative">
+    <div className="w-full h-[805px] 2xl:h-[882px] flex max-w-[1840px] justify-center place-items-start gap-4 ">
+      <ScrollArea className="w-[650px] 2xl:w-[55%] h-[720px] 2xl:h-[838px] px-8 pt-4 pb-8  bg-darkComponentBg rounded-xl border border-lightBorder shadow-lg gap-0 relative bg-white">
         <Accordion
           type="multiple"
           className="w-full rounded-none relative"
@@ -59,10 +59,12 @@ export default function RequestContent({ request }: any) {
               Use FoodSupply
             </AccordionTrigger>
             <AccordionContent className="rounded-xl">
-              <FoodSupplyRequests
-                columns={initiateFoodSupplyRequestsColumns()}
-                data={request[0].purchase_foodsupplies}
-              />
+              {request && request.length > 0 && (
+                <FoodSupplyRequests
+                  columns={initiateFoodSupplyRequestsColumns()}
+                  data={request[0].purchase_foodsupplies}
+                />
+              )}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
@@ -70,164 +72,214 @@ export default function RequestContent({ request }: any) {
               Use Equipment
             </AccordionTrigger>
             <AccordionContent className="bg-darkComponentBg rounded-xl">
-              <EquipmentRequest
-                columns={initiateEquipmentRequestsColumns()}
-                data={request[0].purchase_equipments}
-              />
+              {request && request.length > 0 && (
+                <EquipmentRequest
+                  columns={initiateEquipmentRequestsColumns()}
+                  data={request[0].purchase_equipments}
+                />
+              )}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </ScrollArea>
-      <div className="w-[30%] 2xl:w-[25%] min-h-[600px] 2xl:min-h-[680px] flex flex-col gap-4">
-        <div className="w-full h-full 2xl:min-h-[680px] p-8 bg-darkComponentBg flex flex-col gap-5 2xl:gap-7 rounded-xl shadow-lg border border-lightBorder">
+      <div className="w-[30%] 2xl:w-[25%] min-h-[600px] 2xl:min-h-[680px] flex flex-col gap-4 ">
+        <div className="w-full h-full 2xl:min-h-[680px] p-8 bg-darkComponentBg flex flex-col gap-5 2xl:gap-7 rounded-xl shadow-lg border border-lightBorder bg-white">
           <div className="flex flex-col justify-between gap-2">
             <div className="w-full flex justify-between">
               <h2 className="text-xl font-bold">Request Details</h2>
-              <UpdateRequestStatusButton requestData={request[0]} />
+              {request && request.length > 0 && (
+                <UpdateRequestStatusButton requestData={request[0]} />
+              )}
             </div>
-            <p className="text-xs 2xl:text-sm text-slate-400">
-              Request ID: {request[0].id}
-            </p>
+            {request && request.length > 0 && (
+              <p className="text-xs 2xl:text-sm text-slate-400">
+                Request ID: {request[0].id}
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex justify-between">
               <p className="text-xs 2xl:text-sm text-slate-400">
                 requester Name
               </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].requester_first_name}{" "}
-                {request[0].requester_last_name}
-              </p>
+              {request && request.length > 0 && (
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].requester_first_name}{" "}
+                  {request[0].requester_last_name}
+                </p>
+              )}
             </div>
             <div className="flex justify-between">
               <p className="text-xs 2xl:text-sm text-slate-400">
                 Contact Number
               </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].requester_contact_number}
-              </p>
+              {request && request.length > 0 && (
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].requester_contact_number}
+                </p>
+              )}
             </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Email</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].requester_email}
-              </p>
-            </div>
+            {request && request.length > 0 && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">Email</p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].requester_email}
+                </p>
+              </div>
+            )}
 
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">
-                Payment Method
-              </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].payment_method}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Status</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].status}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Cashier</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {request[0].employees.first_name}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Created At</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                {format(new Date(request[0].created_at), "PPPP")}
-              </p>
-            </div>
+            {request && request.length > 0 && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">
+                  Payment Method
+                </p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].payment_method}
+                </p>
+              </div>
+            )}
+
+            {request && request.length > 0 && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">Status</p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].status}
+                </p>
+              </div>
+            )}
+
+            {request && request.length > 0 && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">Cashier</p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {request[0].employees.first_name}
+                </p>
+              </div>
+            )}
+
+            {request && request.length > 0 && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">Created At</p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  {format(new Date(request[0].created_at), "PPPP")}
+                </p>
+              </div>
+            )}
           </div>
           <Separator className="bg-slate-400" />
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">
-                foodsupplies Total
-              </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                ₱{" "}
-                {request[0].purchase_foodsupplies
-                  .reduce(
-                    (acc: any, item: any) => acc + item.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">
-                equipments Total
-              </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                ₱{" "}
-                {request[0].purchase_equipments
-                  .reduce(
-                    (acc: any, item: any) => acc + item.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
-              </p>
-            </div>
+            {request &&
+              request.length > 0 &&
+              request[0].purchase_foodsupplies && (
+                <div className="flex justify-between">
+                  <p className="text-xs 2xl:text-sm text-slate-400">
+                    foodsupplies Total
+                  </p>
+                  <p className="text-xs 2xl:text-sm text-slate-50">
+                    ₱{" "}
+                    {request[0].purchase_foodsupplies
+                      .reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      )
+                      .toFixed(2)}
+                  </p>
+                </div>
+              )}
+
+            {request &&
+              request.length > 0 &&
+              request[0].purchase_equipments && (
+                <div className="flex justify-between">
+                  <p className="text-xs 2xl:text-sm text-slate-400">
+                    equipments Total
+                  </p>
+                  <p className="text-xs 2xl:text-sm text-slate-50">
+                    ₱{" "}
+                    {request[0].purchase_equipments
+                      .reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      )
+                      .toFixed(2)}
+                  </p>
+                </div>
+              )}
+
             <div className="flex justify-between">
               <p className="text-xs 2xl:text-sm text-slate-400">Tax</p>
               <p className="text-xs 2xl:text-sm text-slate-50">₱ 0</p>
             </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">
-                Discount ({request[0].discount}%)
-              </p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                - ₱{" "}
-                {(
-                  (request[0].purchase_foodsupplies.reduce(
-                    (acc: any, item: any) => acc + item.price * item.quantity,
-                    0
-                  ) +
-                    request[0].purchase_equipments.reduce(
+
+            {request && request.length > 0 && request[0].discount && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">
+                  Discount ({request[0].discount}%)
+                </p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  - ₱{" "}
+                  {(
+                    (request[0].purchase_foodsupplies.reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
                       0
-                    )) *
-                  (request[0].discount / 100)
-                ).toFixed(2)}
-              </p>
-            </div>
+                    ) +
+                      request[0].purchase_equipments.reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      )) *
+                    (request[0].discount / 100)
+                  ).toFixed(2)}
+                </p>
+              </div>
+            )}
           </div>
 
-          <Separator className="bg-slate-400" />
+          <Separator className="bg-slate-400 " />
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Total</p>
-              <p className="text-md 2xl:text-lg text-slate-50 font-bold">
-                ₱ {request[0].total_price.toFixed(2)}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Amount Paid</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                - ₱ {request[0].amount_paid.toFixed(2)}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xs 2xl:text-sm text-slate-400">Change</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">
-                ₱ {(request[0].amount_paid - request[0].total_price).toFixed(2)}
-              </p>
-            </div>
+            {request && request[0] && (
+              <>
+                <div className="flex justify-between">
+                  <p className="text-xs 2xl:text-sm text-slate-400">Total</p>
+                  <p className="text-md 2xl:text-lg text-slate-50 font-bold">
+                    ₱ {request[0].total_price.toFixed(2)}
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="text-xs 2xl:text-sm text-slate-400">
+                    Amount Paid
+                  </p>
+                  <p className="text-xs 2xl:text-sm text-slate-50">
+                    - ₱ {request[0].amount_paid.toFixed(2)}
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="text-xs 2xl:text-sm text-slate-400">Change</p>
+                  <p className="text-xs 2xl:text-sm text-slate-50">
+                    ₱{" "}
+                    {(request[0].amount_paid - request[0].total_price).toFixed(
+                      2
+                    )}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
           <div className="w-full max-w-full flex flex-col place-items-center gap-4">
-            <Barcode
-              value={request[0].id ? request[0].id : "No Barcode"}
-              displayValue={false}
-              background="transparent"
-              lineColor="white"
-              width={1}
-              height={70}
-              margin={0}
-              renderer="img"
-            />
+            {request && request[0] && (
+              <Barcode
+                value={request[0].id ? request[0].id : "No Barcode"}
+                displayValue={false}
+                background="transparent"
+                lineColor="white"
+                width={1}
+                height={70}
+                margin={0}
+                renderer="img"
+              />
+            )}
           </div>
         </div>
         {/* <Button
@@ -256,132 +308,101 @@ export default function RequestContent({ request }: any) {
           </div> */}
 
           <div className="w-full flex flex-col gap-1">
-            <div className="flex flex-col justify-between gap-1">
-              <h2 className="flex gap-1 place-items-center text-sm font-bold text-black space-mono-regular tracking-tighter">
-                {/* <FiBox /> */}
-                request Details
-              </h2>
-              <p className="text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
-                {`ID: ${request[0].id}`}
-              </p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  requester Name
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].requester_first_name}{" "}
-                  {request[0].requester_last_name}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Contact Number
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].requester_contact_number}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Email
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].requester_email}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Branch
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].inventory.branches.branch_name}
-                </p>
-              </div>
+            <div className="w-full flex flex-col gap-1">
+              {request && request[0] && (
+                <>
+                  <div className="flex flex-col justify-between gap-1">
+                    <h2 className="flex gap-1 place-items-center text-sm font-bold text-black space-mono-regular tracking-tighter">
+                      {/* <FiBox /> */}
+                      request Details
+                    </h2>
+                    <p className="text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
+                      {`ID: ${request[0].id}`}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        requester Name
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].requester_first_name}{" "}
+                        {request[0].requester_last_name}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Contact Number
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].requester_contact_number}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Email
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].requester_email}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Branch
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].inventory.branches.branch_name}
+                      </p>
+                    </div>
 
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Payment Method
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].payment_method}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Status
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].status}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Cashier
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {request[0].employees.first_name}
-                </p>
-              </div>
-              <div className="flex justify-between">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Created At
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {format(new Date(request[0].created_at), "P")}
-                </p>
-              </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Payment Method
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].payment_method}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Status
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].status}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Cashier
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {request[0].employees.first_name}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        Created At
+                      </p>
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {format(new Date(request[0].created_at), "P")}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
             <Separator className="bg-slate-400" />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 ">
               <div className="flex justify-between">
                 <p className="flex gap-1 place-items-center text-[13px] font-semibold text-black space-mono-regular tracking-tighter">
                   {/* <BsBoxes /> */}
                   Purchased foodsupplies
                 </p>
               </div>
-              {request[0].purchase_foodsupplies.map(
-                (item: any, index: number) => (
-                  <div key={index} className="flex justify-between">
-                    <div className="flex gap-1">
-                      <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                        {item.name}
-                      </p>
-                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                        {` x ${item.quantity}`}
-                      </p>
-                    </div>
-                    <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                      ₱ {(item.price * item.quantity).toFixed(2)}
-                    </p>
-                  </div>
-                )
-              )}
-              <Separator className="bg-slate-400" />
-              <div className="flex justify-between mb-3">
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Total
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱{" "}
-                  {request[0].purchase_foodsupplies
-                    .reduce(
-                      (acc: any, item: any) => acc + item.price * item.quantity,
-                      0
-                    )
-                    .toFixed(2)}
-                </p>
-              </div>
-              <Separator className="bg-slate-400" />
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between">
-                  <p className="flex gap-1 place-items-center text-[13px] font-semibold text-black space-mono-regular tracking-tighter">
-                    {/* <SiTemporal /> */}
-                    Purchased equipments
-                  </p>
-                </div>
-                {request[0].purchase_equipments.map(
+              {request &&
+                request[0] &&
+                request[0].purchase_foodsupplies &&
+                request[0].purchase_foodsupplies.map(
                   (item: any, index: number) => (
                     <div key={index} className="flex justify-between">
                       <div className="flex gap-1">
@@ -398,6 +419,53 @@ export default function RequestContent({ request }: any) {
                     </div>
                   )
                 )}
+              <Separator className="bg-slate-400" />
+              <div className="flex justify-between mb-3">
+                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                  Total
+                </p>
+                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                  ₱{" "}
+                  {request &&
+                    request[0] &&
+                    request[0].purchase_foodsupplies &&
+                    request[0].purchase_foodsupplies
+                      .reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      )
+                      .toFixed(2)}
+                </p>
+              </div>
+              <Separator className="bg-slate-400" />
+              <div className="flex flex-col gap-1">
+                <div className="flex justify-between">
+                  <p className="flex gap-1 place-items-center text-[13px] font-semibold text-black space-mono-regular tracking-tighter">
+                    {/* <SiTemporal /> */}
+                    Purchased equipments
+                  </p>
+                </div>
+                {request &&
+                  request[0] &&
+                  request[0].purchase_equipments &&
+                  request[0].purchase_equipments.map(
+                    (item: any, index: number) => (
+                      <div key={index} className="flex justify-between">
+                        <div className="flex gap-1">
+                          <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                            {item.name}
+                          </p>
+                          <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                            {` x ${item.quantity}`}
+                          </p>
+                        </div>
+                        <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                          ₱ {(item.price * item.quantity).toFixed(2)}
+                        </p>
+                      </div>
+                    )
+                  )}
                 <Separator className="bg-slate-400" />
 
                 <div className="flex justify-between mb-3">
@@ -406,13 +474,16 @@ export default function RequestContent({ request }: any) {
                   </p>
                   <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
                     ₱{" "}
-                    {request[0].purchase_equipments
-                      .reduce(
-                        (acc: any, item: any) =>
-                          acc + item.price * item.quantity,
-                        0
-                      )
-                      .toFixed(2)}
+                    {request &&
+                      request[0] &&
+                      request[0].purchase_equipments &&
+                      request[0].purchase_equipments
+                        .reduce(
+                          (acc: any, item: any) =>
+                            acc + item.price * item.quantity,
+                          0
+                        )
+                        .toFixed(2)}
                   </p>
                 </div>
               </div>
@@ -425,16 +496,22 @@ export default function RequestContent({ request }: any) {
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
                   ₱{" "}
-                  {(
-                    request[0].purchase_foodsupplies.reduce(
-                      (acc: any, item: any) => acc + item.price * item.quantity,
-                      0
-                    ) +
-                    request[0].purchase_equipments.reduce(
-                      (acc: any, item: any) => acc + item.price * item.quantity,
-                      0
-                    )
-                  ).toFixed(2)}
+                  {request &&
+                    request[0] &&
+                    request[0].purchase_foodsupplies &&
+                    request[0].purchase_equipments &&
+                    (
+                      request[0].purchase_foodsupplies.reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      ) +
+                      request[0].purchase_equipments.reduce(
+                        (acc: any, item: any) =>
+                          acc + item.price * item.quantity,
+                        0
+                      )
+                    ).toFixed(2)}
                 </p>
               </div>
               <div className="flex justify-between">
@@ -455,22 +532,31 @@ export default function RequestContent({ request }: any) {
               </div>
               <div className="flex justify-between">
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  Discount ({request[0].discount}%)
+                  Discount{" "}
+                  {request && request[0] && request[0].discount
+                    ? `(${request[0].discount}%)`
+                    : ""}
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
                   - ₱{" "}
-                  {(
-                    (request[0].purchase_foodsupplies.reduce(
-                      (acc: any, item: any) => acc + item.price * item.quantity,
-                      0
-                    ) +
-                      request[0].purchase_equipments.reduce(
+                  {request &&
+                    request[0] &&
+                    request[0].purchase_foodsupplies &&
+                    request[0].purchase_equipments &&
+                    request[0].discount &&
+                    (
+                      (request[0].purchase_foodsupplies.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
-                      )) *
-                    (request[0].discount / 100)
-                  ).toFixed(2)}
+                      ) +
+                        request[0].purchase_equipments.reduce(
+                          (acc: any, item: any) =>
+                            acc + item.price * item.quantity,
+                          0
+                        )) *
+                      (request[0].discount / 100)
+                    ).toFixed(2)}
                 </p>
               </div>
             </div>
@@ -482,7 +568,10 @@ export default function RequestContent({ request }: any) {
                   Total
                 </p>
                 <p className="text-md 2xl:text-lg text-black space-mono-regular tracking-tighter font-bold">
-                  ₱ {request[0].total_price.toFixed(2)}
+                  ₱{" "}
+                  {request && request[0] && request[0].total_price
+                    ? request[0].total_price.toFixed(2)
+                    : "0.00"}
                 </p>
               </div>
               <div className="flex justify-between">
@@ -490,7 +579,10 @@ export default function RequestContent({ request }: any) {
                   Amount Paid
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  - ₱ {request[0].amount_paid.toFixed(2)}
+                  - ₱{" "}
+                  {request && request[0] && request[0].amount_paid
+                    ? request[0].amount_paid.toFixed(2)
+                    : "0.00"}
                 </p>
               </div>
               <div className="flex justify-between">
@@ -499,13 +591,24 @@ export default function RequestContent({ request }: any) {
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
                   ₱{" "}
-                  {(request[0].amount_paid - request[0].total_price).toFixed(2)}
+                  {request &&
+                  request[0] &&
+                  request[0].amount_paid &&
+                  request[0].total_price
+                    ? (request[0].amount_paid - request[0].total_price).toFixed(
+                        2
+                      )
+                    : "0.00"}
                 </p>
               </div>
             </div>
             <div className="w-full max-w-full flex flex-col place-items-center gap-4">
               <Barcode
-                value={request[0].id ? request[0].id : "No Barcode"}
+                value={
+                  request && request[0] && request[0].id
+                    ? request[0].id
+                    : "No Barcode"
+                }
                 displayValue={false}
                 background="transparent"
                 lineColor="black"

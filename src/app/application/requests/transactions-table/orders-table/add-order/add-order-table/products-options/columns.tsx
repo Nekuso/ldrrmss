@@ -26,7 +26,7 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
     {
       id: "name",
       accessorKey: "name",
-      header: "FoodSupply",
+      header: "Food Supply",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">
@@ -99,14 +99,28 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
                 );
               }}
             >
-              {foodsuppliesCart.some(
-                (foodsupplies: any) =>
-                  foodsupplies.foodsupplies_id === row.original.id
-              )
-                ? "Added"
-                : row.original.stock_quantity === 0
-                ? "Out of Stock"
-                : "Add"}
+              <div
+                className={cn(
+                  "rounded-md text-white bg-blue-600 px-4 py-2 text-base",
+                  foodsuppliesCart.some(
+                    (foodsupplies: any) =>
+                      foodsupplies.foodsupplies_id === row.original.id
+                  )
+                    ? "Added"
+                    : row.original.stock_quantity === 0
+                    ? "Out of Stock"
+                    : "Add"
+                )}
+              >
+                {foodsuppliesCart.some(
+                  (foodsupplies: any) =>
+                    foodsupplies.foodsupplies_id === row.original.id
+                )
+                  ? "Added"
+                  : row.original.stock_quantity === 0
+                  ? "Out of Stock"
+                  : "Add"}
+              </div>
             </Button>
             {foodsuppliesCart.some(
               (foodsupplies: any) =>

@@ -4,10 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import {
-  decrementFoodSupplyQuantity,
-  incrementFoodSupplyQuantity,
-} from "@/redux/slices/orderCartSlice";
 
 type cartItem = {
   foodsupply_id: number;
