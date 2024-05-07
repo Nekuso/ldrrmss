@@ -319,35 +319,37 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-[75%] flex flex-col ">
                           <FormField
                             control={form.control}
-                            name="inventory_id"
+                            name="requester_email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-xs">
-                                  Branch
-                                </FormLabel>
+                                <FormLabel className="text-xs">Email</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                                    {...field}
+                                    type="text"
+                                    placeholder="example@gmail.com"
+                                    value={field.value || ""}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          {/* <FormField
+                            control={form.control}
+                            name="requester_email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-xs">Email</FormLabel>
                                 <BranchInput data={field} />
                                 <FormMessage />
                               </FormItem>
                             )}
-                          />
-                        </div>
-                        <div className="w-[75%] flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="payment_method"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Payment
-                                </FormLabel>
-                                <PaymentInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
+                          /> */}
                         </div>
                         <div className="w-full flex flex-col ">
-                          <FormField
+                          {/* <FormField
                             control={form.control}
                             name="status"
                             render={({ field }) => (
@@ -359,10 +361,25 @@ export default function RequestForm({ setDialogOpen }: any) {
                                 <FormMessage />
                               </FormItem>
                             )}
-                          />
+                          /> */}
+                        </div>
+                        <div className="w-[75%] flex flex-col ">
+                          {/* <FormField
+                            control={form.control}
+                            name="payment_method"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-xs">
+                                  Payment
+                                </FormLabel>
+                                <PaymentInput data={field} />
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          /> */}
                         </div>
                       </div>
-                      <div className="w-full flex gap-4">
+                      {/* <div className="w-full flex gap-4">
                         <div className="w-[75%] flex flex-col">
                           <FormField
                             control={form.control}
@@ -427,7 +444,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                             )}
                           />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
