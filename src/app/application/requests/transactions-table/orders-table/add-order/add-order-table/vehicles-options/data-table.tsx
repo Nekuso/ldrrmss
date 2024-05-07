@@ -99,7 +99,7 @@ export function DataTable<TData, TValue>({
               ))}
             </TableHeader>
             <TableBody className="border-none">
-              {table.getRowModel().rows && table.getRowModel().rows.length ? (
+              {table.getRowModel()?.rows?.length ? ( // Use optional chaining here
                 table.getRowModel().rows.map((row) => (
                   <TableRow
                     key={row.id}

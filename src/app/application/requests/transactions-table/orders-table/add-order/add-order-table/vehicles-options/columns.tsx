@@ -18,6 +18,7 @@ type option = {
   image_url: string;
   plate_number: string;
   created_at: string;
+  stock_quantity: number;
 };
 
 export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
@@ -74,7 +75,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
       cell: ({ row }) => {
         return (
           <div className="w-full flex gap-2 justify-end">
-            {/* <Button
+            <Button
               className={cn(
                 "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.stock_quantity === 0
@@ -91,7 +92,6 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
                 dispatch(
                   addVehicleToCart({
                     vehicle_id: row.original.id,
-                    inventory_id: row.original.inventory.id,
                     name: row.original.name,
                     description: row.original.description,
                     image: row.original.image_url,
@@ -99,8 +99,8 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
                   })
                 );
               }}
-            > */}
-            {/* <div
+            >
+              <div
                 className={cn(
                   "rounded-md text-white bg-blue-600 px-4 py-2 text-base",
                   vehiclesCart.some(
@@ -120,7 +120,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
                   ? "Out of Stock"
                   : "Add"}
               </div>
-            </Button> */}
+            </Button>
             {vehiclesCart.some(
               (vehicle: any) => vehicle.vehicle_id === row.original.id
             ) && (
