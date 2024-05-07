@@ -3,10 +3,13 @@ import { PiGearSixBold } from "react-icons/pi";
 import { BsBoxSeam } from "react-icons/bs";
 import { DataTable as FoodSuppliesOptionsDataTable } from "./products-options/data-table";
 import { DataTable as EquipmentsOptionsDataTable } from "./parts-options/data-table";
+import { DataTable as VehiclesOptionsDataTable } from "./vehicles-options/data-table";
 import { initiateColumns as initiateFoodSuppliesColumns } from "./products-options/columns";
 import { initiateColumns as initiateEquipmentsColumns } from "./parts-options/columns";
+import { initiateColumns as initiateVehiclesColumns } from "./vehicles-options/columns";
 import { useSelector, useDispatch } from "react-redux";
 import { FaToolbox } from "react-icons/fa";
+import { Dispatch, UnknownAction } from "redux";
 
 export default function RequestCartOptions({}: {}) {
   const foodsuppliesOption = useSelector(
@@ -15,12 +18,18 @@ export default function RequestCartOptions({}: {}) {
   const equipmentsOption = useSelector(
     (state: any) => state.requestCartOptionSlice.equipmentsData
   );
+  const vehiclesOption = useSelector(
+    (state: any) => state.requestCartOptionSlice.vehiclesData
+  );
 
   const foodsuppliesCart = useSelector(
     (state: any) => state.requestCart.foodsuppliesCart
   );
   const equipmentsCart = useSelector(
     (state: any) => state.requestCart.equipmentsCart
+  );
+  const vehiclesCart = useSelector(
+    (state: any) => state.requestCart.vehiclesCart
   );
 
   const dispatch = useDispatch();
@@ -41,6 +50,7 @@ export default function RequestCartOptions({}: {}) {
             <FaToolbox />
             Equipments
           </TabsTrigger>
+
           <TabsTrigger
             value="food_supplies"
             className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
@@ -50,8 +60,29 @@ export default function RequestCartOptions({}: {}) {
             <BsBoxSeam />
             Food Supply
           </TabsTrigger>
+
+          <TabsTrigger
+            value="vehicles"
+            className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
+            data-[state=inactive]:hover:text-slate-500
+            data-[state=active]:text-white data-[state=active]:bg-primary rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+          >
+            <BsBoxSeam />
+            Vehicles
+          </TabsTrigger>
         </TabsList>
       </div>
+
+      <TabsContent
+        value="equipments"
+        className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
+      >
+        <EquipmentsOptionsDataTable
+          columns={initiateEquipmentsColumns(dispatch, equipmentsCart)}
+          data={equipmentsOption}
+        />
+      </TabsContent>
+
       <TabsContent
         value="food_supplies"
         className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
@@ -61,13 +92,14 @@ export default function RequestCartOptions({}: {}) {
           data={foodsuppliesOption}
         />
       </TabsContent>
+
       <TabsContent
-        value="equipments"
+        value="vehicles"
         className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
       >
-        <EquipmentsOptionsDataTable
-          columns={initiateEquipmentsColumns(dispatch, equipmentsCart)}
-          data={equipmentsOption}
+        <VehiclesOptionsDataTable
+          columns={initiateVehiclesColumns(dispatch, vehiclesCart)}
+          data={vehiclesOption}
         />
       </TabsContent>
     </Tabs>

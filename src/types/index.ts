@@ -53,8 +53,8 @@ export type vehicles = {
   name: string;
   description: string;
   status: string;
-  stock_quantity: number;
   image_url: string;
+  plate_number: string;
 };
 
 export type workers = {

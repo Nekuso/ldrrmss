@@ -3,6 +3,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 const initialState: any = {
   foodsuppliesCart: [],
   equipmentsCart: [],
+  vehiclesCart: [],
 };
 
 const requestCart = createSlice({
@@ -15,6 +16,10 @@ const requestCart = createSlice({
     addEquipmentToCart: (state, action: PayloadAction<any>) => {
       state.equipmentsCart.push(action.payload);
     },
+    addVehicleToCart: (state, action: PayloadAction<any>) => {
+      state.vehiclesCartsCart.push(action.payload);
+    },
+
     removeFoodSupplyFromCart: (state, action: PayloadAction<any>) => {
       state.foodsuppliesCart = state.foodsuppliesCart.filter(
         (foodsupply: any) => foodsupply.foodsupply_id !== action.payload
@@ -23,6 +28,11 @@ const requestCart = createSlice({
     removeEquipmentFromCart: (state, action: PayloadAction<any>) => {
       state.equipmentsCart = state.equipmentsCart.filter(
         (equipment: any) => equipment.equipment_id !== action.payload
+      );
+    },
+    removeVehicleFromCart: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart.filter(
+        (vehicle: any) => vehicle.vehicle_id !== action.payload
       );
     },
 
@@ -70,11 +80,35 @@ const requestCart = createSlice({
         })
         .filter((equipment: any) => equipment !== null);
     },
+    incrementVehicleQuantity: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart.map((vehicle: any) => {
+        if (vehicle.vehicle_id === action.payload) {
+          return { ...vehicle, quantity: vehicle.quantity + 1 };
+        }
+        return vehicle;
+      });
+    },
+    decrementVehicleQuantity: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart
+        .map((vehicle: any) => {
+          if (vehicle.vehicle_id === action.payload) {
+            if (vehicle.quantity === 1) {
+              return null; // Remove the part from cart
+            } else {
+              return { ...vehicle, quantity: vehicle.quantity - 1 };
+            }
+          }
+          return vehicle;
+        })
+        .filter((vehicle: any) => vehicle !== null);
+    },
     resetCart: (state) => {
       state.foodsuppliesCart = [];
       state.equipmentsCart = [];
+      state.vehiclesCart = [];
       state.foodsuppliesTotalPrice = 0;
       state.equipmentsTotalPrice = 0;
+      state.vehiclesTotalPrice = 0;
     },
   },
 });
@@ -82,12 +116,16 @@ const requestCart = createSlice({
 export const {
   addFoodSupplyToCart,
   addEquipmentToCart,
+  addVehicleToCart,
   removeEquipmentFromCart,
   removeFoodSupplyFromCart,
+  removeVehicleFromCart,
   incrementFoodSupplyQuantity,
   decrementFoodSupplyQuantity,
   incrementEquipmentQuantity,
   decrementEquipmentQuantity,
+  incrementVehicleQuantity,
+  decrementVehicleQuantity,
   resetCart,
 } = requestCart.actions;
 export default requestCart.reducer;

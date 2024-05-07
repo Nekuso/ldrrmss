@@ -10,6 +10,7 @@ interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   equipmentsData?: any[];
   foodsuppliesData?: any[];
+  vehiclesData?: any[];
 }
 
 export function DataTableToolbar<TData>({
