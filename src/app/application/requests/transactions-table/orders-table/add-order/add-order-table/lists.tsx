@@ -8,7 +8,7 @@ import { initiateColumns as initiateFoodSuppliesColumns } from "./products-optio
 import { initiateColumns as initiateEquipmentsColumns } from "./parts-options/columns";
 import { initiateColumns as initiateVehiclesColumns } from "./vehicles-options/columns";
 import { useSelector, useDispatch } from "react-redux";
-import { FaToolbox } from "react-icons/fa";
+import { FaAmbulance, FaToolbox } from "react-icons/fa";
 import { Dispatch, UnknownAction } from "redux";
 
 export default function RequestCartOptions({}: {}) {
@@ -52,7 +52,7 @@ export default function RequestCartOptions({}: {}) {
           </TabsTrigger>
 
           <TabsTrigger
-            value="food_supplies"
+            value="foodsupplies"
             className="data-[state=active]:bg- data-[state=inactive]:hover:bg-/80
             data-[state=inactive]:hover:text-slate-500
             data-[state=active]:text-white data-[state=active]:bg-primary rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
@@ -67,7 +67,7 @@ export default function RequestCartOptions({}: {}) {
             data-[state=inactive]:hover:text-slate-500
             data-[state=active]:text-white data-[state=active]:bg-primary rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
+            <FaAmbulance />
             Vehicles
           </TabsTrigger>
         </TabsList>
@@ -84,7 +84,7 @@ export default function RequestCartOptions({}: {}) {
       </TabsContent>
 
       <TabsContent
-        value="food_supplies"
+        value="foodsupplies"
         className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
       >
         <FoodSuppliesOptionsDataTable

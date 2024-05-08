@@ -27,17 +27,12 @@ export const useVehicles: any = () => {
       .from("vehicles")
       .select(
         `
-          id,
-          name,
-          description,
-          image_url,
-          plate_number,
-          status,
-          created_at
+          *
         `
       )
       .order("created_at", { ascending: false });
 
+    console.log(result);
     const { data, error } = result;
     if (error) {
       return error;
@@ -49,16 +44,11 @@ export const useVehicles: any = () => {
       .from("vehicles")
       .select(
         `
-        id,
-          name,
-          description,
-          image_url,
-          plate_number,
-          status,
-          created_at
+        *
       `
       )
       .eq("id", id);
+    console.log(data);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     if (data?.length === 0) return true;

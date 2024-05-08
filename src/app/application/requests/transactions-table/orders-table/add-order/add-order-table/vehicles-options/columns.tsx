@@ -44,23 +44,20 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
               <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold ">
                 {row.original.name}
               </p>
-              <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
-                {`Plate Number: ${row.original.plate_number}`}
-              </p>
+              {/* <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
+                {`₱ ${row.original.price} • ${row.original.brands.brand_name}`}
+              </p> */}
               <p className="text-xs max-w-[181px] truncate text-slate-500">
-                Status:
-                <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
-                  {`Status: ${row.original.status}`}
-                </p>
-                {/* <span
+                Plate Number: {row.original.plate_number}
+                <span
                   className={cn(
                     "",
-                    row.original.status === 0 ? "text-red-500" : ""
+                    row.original.stock_quantity === 0 ? "text-red-500" : ""
                   )}
                 >
                   {" "}
                   {row.original.stock_quantity}
-                </span> */}
+                </span>
               </p>
             </div>
           </div>
@@ -79,7 +76,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
               className={cn(
                 "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.stock_quantity === 0
-                  ? "bg-red-500"
+                  ? "bg-blue-600"
                   : "bg-applicationPrimary hover:bg-applicationPrimary/70"
               )}
               type="button"
@@ -125,7 +122,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
               (vehicle: any) => vehicle.vehicle_id === row.original.id
             ) && (
               <Button
-                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer"
                 type="button"
                 onClick={() => {
                   dispatch(removeVehicleFromCart(row.original.id));

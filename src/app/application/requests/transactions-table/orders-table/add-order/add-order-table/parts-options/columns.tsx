@@ -76,7 +76,7 @@ export const initiateColumns = (dispatch: any, equipmentsCart: any) => {
               className={cn(
                 "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.stock_quantity === 0
-                  ? "bg-red-500"
+                  ? "bg-blue-600"
                   : "bg-applicationPrimary hover:bg-applicationPrimary/70"
               )}
               type="button"
@@ -89,7 +89,7 @@ export const initiateColumns = (dispatch: any, equipmentsCart: any) => {
                 dispatch(
                   addEquipmentToCart({
                     equipment_id: row.original.id,
-                    inventory_id: row.original.inventory.id,
+                    // inventory_id: row.original.inventory.id,
                     name: row.original.name,
                     description: row.original.description,
                     image: row.original.image_url,
@@ -124,7 +124,7 @@ export const initiateColumns = (dispatch: any, equipmentsCart: any) => {
               (equipment: any) => equipment.equipment_id === row.original.id
             ) && (
               <Button
-                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer"
                 type="button"
                 onClick={() => {
                   dispatch(removeEquipmentFromCart(row.original.id));

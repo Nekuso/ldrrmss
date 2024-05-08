@@ -23,6 +23,6 @@ export async function signInWithEmailAndPassword(data: {
 }) {
   const supabase = await createSupabaseServerClient();
   const result = await supabase.auth.signInWithPassword(data);
-  console.log(result)
+  console.log(result);
   return JSON.stringify(result);
 }
