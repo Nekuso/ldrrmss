@@ -15,7 +15,9 @@ import { useFoodSupplies } from "@/hooks/useFoodSupplies";
 import {
   setEquipmentsData,
   setFoodSuppliesData,
+  setVehiclesData,
 } from "@/redux/slices/orderCartOptionSlice";
+import { useVehicles } from "@/hooks/useVehicles";
 
 export default function Transactions() {
   const dispatch = useDispatch();
@@ -24,7 +26,8 @@ export default function Transactions() {
   // const { getBranches, allBranchesData } = useBranches();
   // const { getProducts, productsData } = useProducts();
   const { getEquipments, equipmentsData } = useEquipments();
-  const { getFoodSupplies, foodsuppliesData } = useFoodSupplies();
+  const { getFoodSupplies, allFoodSupplies } = useFoodSupplies();
+  const { getVehicles, vehiclesData } = useVehicles();
 
   // const branchesData = allBranchesData.map((branch: any) => ({
   //   id: branch?.id,
@@ -39,11 +42,16 @@ export default function Transactions() {
   const equipmentsCart = useSelector(
     (state: any) => state.requestCart.equipmentsCart
   );
+  const vehiclesCart = useSelector(
+    (state: any) => state.requestCart.vehiclesCart
+  );
+  console.log(allFoodSupplies);
 
   // dispatch(setBranchesData(branchesData));
 
-  dispatch(setFoodSuppliesData({ foodsuppliesData, foodsuppliesCart }));
+  dispatch(setFoodSuppliesData({ allFoodSupplies, foodsuppliesCart }));
   dispatch(setEquipmentsData({ equipmentsData, equipmentsCart }));
+  dispatch(setVehiclesData({ vehiclesData }));
 
   // fetch all products
   useEffect(() => {
@@ -59,6 +67,7 @@ export default function Transactions() {
     // getBranches();
     getFoodSupplies();
     getEquipments();
+    getVehicles();
   }, []);
 
   // listen for changes in the database
