@@ -51,7 +51,7 @@ export default function Transactions() {
 
   dispatch(setFoodSuppliesData({ allFoodSupplies, foodsuppliesCart }));
   dispatch(setEquipmentsData({ equipmentsData, equipmentsCart }));
-  dispatch(setVehiclesData({ vehiclesData }));
+  dispatch(setVehiclesData({ vehiclesData, vehiclesCart }));
 
   // fetch all products
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function Transactions() {
       )
       .subscribe();
     const subscribedChannel3 = supabase
-      .channel("parts-follow-up")
+      .channel("equipments-follow-up")
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "equipments" },
@@ -105,10 +105,22 @@ export default function Transactions() {
         }
       )
       .subscribe();
+    const subscribedChannel4 = supabase
+      .channel("vehicles-follow-up")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "vehicles" },
+        (payload: any) => {
+          getVehicles();
+          getRequests();
+        }
+      )
+      .subscribe();
     return () => {
       supabase.removeChannel(subscribedChannel1);
       supabase.removeChannel(subscribedChannel2);
       supabase.removeChannel(subscribedChannel3);
+      supabase.removeChannel(subscribedChannel4);
     };
   }, []);
 

@@ -10,9 +10,11 @@ import StatusInput from "./status-input";
 
 import { DataTable as FoodSuppliesCart } from "./add-order-cart/products-cart/data-table";
 import { DataTable as EquipmentsCart } from "./add-order-cart/parts-cart/data-table";
+import { DataTable as VehiclesCart } from "./add-order-cart/vehicles-cart/data-table";
 
 import { initiateColumns as initiateFoodSupplyCartColumns } from "./add-order-cart/products-cart/columns";
 import { initiateColumns as initiateEquipmentsCartColumns } from "./add-order-cart/parts-cart/columns";
+import { initiateColumns as initiateVehiclesCartColumns } from "./add-order-cart/vehicles-cart/columns";
 
 import {
   Form,
@@ -80,6 +82,19 @@ export default function RequestForm({ setDialogOpen }: any) {
       message: "Amount paid should be equal or greater than total price",
     }),
 
+    purchase_equipments: z.array(
+      z.object({
+        equipment_id: z.coerce.number(),
+        inventory_id: z.coerce.number(),
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        barcode: z.string(),
+        brand_name: z.string(),
+        quantity: z.coerce.number(),
+        price: z.coerce.number(),
+      })
+    ),
     purchase_foodsupplies: z.array(
       z.object({
         foodsupplies_id: z.coerce.number(),
@@ -93,15 +108,15 @@ export default function RequestForm({ setDialogOpen }: any) {
         price: z.coerce.number(),
       })
     ),
-    purchase_equipments: z.array(
+    purchase_vehicles: z.array(
       z.object({
-        equipment_id: z.coerce.number(),
+        vehicles_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
         barcode: z.string(),
-        brand_name: z.string(),
+        uom_name: z.string(),
         quantity: z.coerce.number(),
         price: z.coerce.number(),
       })
@@ -123,42 +138,49 @@ export default function RequestForm({ setDialogOpen }: any) {
     },
   });
 
-  form.setValue("purchase_foodsupplies", requestCart.foodsuppliesCart);
   form.setValue("purchase_equipments", requestCart.equipmentsCart);
+  form.setValue("purchase_foodsupplies", requestCart.foodsuppliesCart);
+  form.setValue("purchase_vehicles", requestCart.vehiclesCart);
   form.setValue(
     "subtotal",
     (
+      requestCart.equipmentsCart.reduce(
+        (acc: any, equipment: any) =>
+          acc + equipment.price * equipment.quantity,
+        0
+      ) +
       requestCart.foodsuppliesCart.reduce(
         (acc: any, foodsupply: any) =>
           acc + foodsupply.price * foodsupply.quantity,
         0
       ) +
-      requestCart.equipmentsCart.reduce(
-        (acc: any, equipment: any) =>
-          acc + equipment.price * equipment.quantity,
+      requestCart.vehiclesCart.reduce(
+        (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
         0
       )
-    ).toFixed(2)
+    ).toFixed(3)
   );
   form.setValue(
     "total_price",
-    Number(
-      (
-        (requestCart.foodsuppliesCart.reduce(
+    (
+      (requestCart.vehiclesCart.reduce(
+        (acc: any, vehicles: any) => acc + vehicles.price * vehicles.quantity,
+        0
+      ) +
+        requestCart.foodsuppliesCart.reduce(
           (acc: any, foodsupplies: any) =>
             acc + foodsupplies.price * foodsupplies.quantity,
           0
         ) +
-          requestCart.equipmentsCart.reduce(
-            (acc: any, equipment: any) =>
-              acc + equipment.price * equipment.quantity,
-            0
-          )) *
-        ((100 - Number(form.getValues("discount"))) / 100)
-      )
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        requestCart.equipmentsCart.reduce(
+          (acc: any, equipment: any) =>
+            acc + equipment.price * equipment.quantity,
+          0
+        )) *
+      ((100 - Number(form.getValues("discount"))) / 100)
     )
+      .toFixed(3)
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   );
 
   const discountData = form.getValues("discount");
@@ -167,6 +189,10 @@ export default function RequestForm({ setDialogOpen }: any) {
     setMinTotalPrice(
       Number(
         (
+          requestCart.vehiclesCart.reduce(
+            (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
+            0
+          ) +
           (requestCart.foodsuppliesCart.reduce(
             (acc: any, foodsupply: any) =>
               acc + foodsupply.price * foodsupply.quantity,
@@ -177,13 +203,14 @@ export default function RequestForm({ setDialogOpen }: any) {
                 acc + equipment.price * equipment.quantity,
               0
             )) *
-          ((100 - Number(form.getValues("discount"))) / 100)
-        ).toFixed(2)
+            ((100 - Number(form.getValues("discount"))) / 100)
+        ).toFixed(3)
       )
     );
   }, [
     requestCart.foodsuppliesCart,
     requestCart.equipmentsCart,
+    requestCart.vehiclesCart,
     discountData,
     minTotalPrice,
     form,
@@ -235,9 +262,9 @@ export default function RequestForm({ setDialogOpen }: any) {
               <Accordion
                 type="multiple"
                 className="w-full rounded-none relative"
-                defaultValue={["item-1", "item-2", "item-3"]}
+                defaultValue={["item-0", "item-1", "item-2", "item-3"]}
               >
-                <AccordionItem value="item-1">
+                <AccordionItem value="item-0">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     requester
                   </AccordionTrigger>
@@ -448,6 +475,24 @@ export default function RequestForm({ setDialogOpen }: any) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
+                    Equipments Summary
+                  </AccordionTrigger>
+                  <AccordionContent className="bg-darkComponentBg rounded-xl">
+                    <EquipmentsCart
+                      columns={
+                        requestCartOptions && requestCartOptions.equipmentsData
+                          ? initiateEquipmentsCartColumns(
+                              dispatch,
+                              requestCartOptions.equipmentsData
+                            )
+                          : []
+                      }
+                      data={requestCart.equipmentsCart}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Food Supply Summary
@@ -469,19 +514,19 @@ export default function RequestForm({ setDialogOpen }: any) {
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Equipments Summary
+                    Vehicles Summary
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <EquipmentsCart
+                    <VehiclesCart
                       columns={
-                        requestCartOptions && requestCartOptions.equipmentsData
-                          ? initiateEquipmentsCartColumns(
+                        requestCartOptions && requestCartOptions.vehiclesData
+                          ? initiateVehiclesCartColumns(
                               dispatch,
-                              requestCartOptions.equipmentsData
+                              requestCartOptions.vehiclesData
                             )
                           : []
                       }
-                      data={requestCart.equipmentsCart}
+                      data={requestCart.vehiclesCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
@@ -497,6 +542,11 @@ export default function RequestForm({ setDialogOpen }: any) {
                         acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
+                    requestCart.vehiclesCart.reduce(
+                      (acc: any, vehicle: any) =>
+                        acc + vehicle.price * vehicle.quantity,
+                      0
+                    ) +
                     requestCart.equipmentsCart.reduce(
                       (acc: any, equipment: any) =>
                         acc + equipment.price * equipment.quantity,
@@ -505,7 +555,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                   )
                     .toFixed(
                       // sum all the food_supplies and equipments
-                      2
+                      3
                     )
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
                 </div>
@@ -526,9 +576,14 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </span>
                   <span className="w-[20%] text-end">
                     {`- ₱ ${(
-                      (requestCart.foodsuppliesCart.reduce(
+                      requestCart.foodsuppliesCart.reduce(
                         (acc: any, foodsupply: any) =>
                           acc + foodsupply.price * foodsupply.quantity,
+                        0
+                      ) +
+                      (requestCart.vehiclesCart.reduce(
+                        (acc: any, vehicle: any) =>
+                          acc + vehicle.price * vehicle.quantity,
                         0
                       ) +
                         requestCart.equipmentsCart.reduce(
@@ -536,28 +591,35 @@ export default function RequestForm({ setDialogOpen }: any) {
                             acc + equipment.price * equipment.quantity,
                           0
                         )) *
-                      (Number(form.getValues("discount")) / 100)
+                        (Number(form.getValues("discount")) / 100)
                     )
-                      .toFixed(2)
+                      .toFixed(3)
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                   </span>
                 </div>
                 <div className="w-full py-6 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-lg font-bold">
                   <span className="w-full text-end">Total</span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    (requestCart.foodsuppliesCart.reduce(
+                    requestCart.foodsuppliesCart.reduce(
                       (acc: any, foodsupply: any) =>
                         acc + foodsupply.price * foodsupply.quantity,
                       0
                     ) +
-                      requestCart.equipmentsCart.reduce(
-                        (acc: any, equipment: any) =>
-                          acc + equipment.price * equipment.quantity,
-                        0
-                      )) *
-                    ((100 - Number(form.getValues("discount"))) / 100)
+                    requestCart.vehiclesCart.reduce(
+                      (acc: any, vehicle: any) =>
+                        acc + vehicle.price * vehicle.quantity,
+                      0
+                    ) +
+                    requestCart.equipmentsCart.reduce(
+                      (acc: any, equipment: any) =>
+                        acc + equipment.price * equipment.quantity,
+                      0
+                    )
                   )
-                    .toFixed(2)
+                    .toFixed(
+                      // sum all the food_supplies and equipments
+                      3
+                    )
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
                 </div>
               </div>
@@ -570,6 +632,7 @@ export default function RequestForm({ setDialogOpen }: any) {
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
             disabled={
+              requestCart.vehiclesCart.length === 0 &&
               requestCart.equipmentsCart.length === 0 &&
               requestCart.foodsuppliesCart.length === 0
                 ? true
