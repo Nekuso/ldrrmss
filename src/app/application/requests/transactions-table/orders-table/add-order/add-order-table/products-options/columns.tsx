@@ -123,7 +123,7 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
               </div>
             </Button>
             {foodsuppliesCart.some(
-              (equipment: any) => equipment.equipment_id === row.original.id
+              (foodsupply: any) => foodsupply.foodsupply_id === row.original.id
             ) && (
               <Button
                 className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer"

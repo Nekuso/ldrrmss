@@ -17,7 +17,7 @@ const requestCart = createSlice({
       state.equipmentsCart.push(action.payload);
     },
     addVehicleToCart: (state, action: PayloadAction<any>) => {
-      state.vehiclesCartsCart.push(action.payload);
+      state.vehiclesCart.push(action.payload);
     },
 
     removeFoodSupplyFromCart: (state, action: PayloadAction<any>) => {
