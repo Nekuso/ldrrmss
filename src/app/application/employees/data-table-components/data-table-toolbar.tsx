@@ -22,46 +22,44 @@ export function DataTableToolbar<TData>({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="flex items-center justify-between gap-4">
-      <div className="w-full flex justify-between place-items-center">
-        <div className="flex flex-1 place-items-center space-x-2">
-          <Input
-            placeholder="Find Employee"
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
-            }
-            className="h-8 w-[150px] lg:w-[250px]"
+    <div className="flex w-full items-center justify-between">
+      <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
+        <Input
+          placeholder="Find Employee"
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("name")?.setFilterValue(event.target.value)
+          }
+          className="w-[200px] 2xl:w-[250px] h-10 border border-slate-400 rounded-lg text-black"
+        />
+        {table.getColumn("status") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("status")}
+            title="Status"
+            options={calamityStatuses}
           />
-          {table.getColumn("status") && (
-            <DataTableFacetedFilter
-              column={table.getColumn("status")}
-              title="Status"
-              options={calamityStatuses}
-            />
-          )}
-          {table.getColumn("role") && (
-            <DataTableFacetedFilter
-              column={table.getColumn("role")}
-              title="Roles"
-              options={roles}
-            />
-          )}
+        )}
+        {table.getColumn("role") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("role")}
+            title="Roles"
+            options={roles}
+          />
+        )}
 
-          {isFiltered && (
-            <Button
-              variant="ghost"
-              onClick={() => table.resetColumnFilters()}
-              className="h-8 px-2 lg:px-3"
-            >
-              Reset
-              <Cross2Icon className="ml-2 h-4 w-4" />
-            </Button>
-          )}
-        </div>
-
-        <Addemployeebutton />
+        {isFiltered && (
+          <Button
+            variant="ghost"
+            onClick={() => table.resetColumnFilters()}
+            className="h-8 px-2 lg:px-3"
+          >
+            Reset
+            <Cross2Icon className="ml-2 h-4 w-4" />
+          </Button>
+        )}
       </div>
+
+      <Addemployeebutton />
     </div>
   );
 }

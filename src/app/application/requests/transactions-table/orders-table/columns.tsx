@@ -31,7 +31,7 @@ export const statuses = [
   {
     value: "Completed",
     label: "Completed",
-    icon: QuestionMarkCircledIcon,
+    icon: CircleIcon,
   },
   {
     value: "Ongoing",
@@ -57,7 +57,7 @@ export const initialState = (branches: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/70 hover:text-black"
               >
                 <span>Request ID</span>
                 {column.getIsSorted() === "desc" ? (
@@ -71,20 +71,20 @@ export const initialState = (branches: any) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="bg-darkComponentBg shadow-2xl border-darkGray border-none"
+              className="bg-white shadow-2xl border-darkGray border-none"
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-applicationPrimary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-applicationPrimary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -329,7 +329,7 @@ export const initialState = (branches: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/70 hover:text-black"
               >
                 <span>Status</span>
                 {column.getIsSorted() === "desc" ? (
@@ -343,20 +343,20 @@ export const initialState = (branches: any) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="bg-darkComponentBg shadow-2xl border-darkGray border-none"
+              className="bg-white shadow-2xl border-darkGray border-none"
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-applicationPrimary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-applicationPrimary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -416,7 +416,7 @@ export const initialState = (branches: any) => {
         const id = row.original.id;
         return (
           <Link
-            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
+            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 primary-glow"
             href={`/application/requests/order/${id}`}
           >
             {/* <FaEye className="mr-2 " /> */}

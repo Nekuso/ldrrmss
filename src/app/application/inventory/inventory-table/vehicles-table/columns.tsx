@@ -83,7 +83,7 @@ export const initialState = () => {
       cell: ({ row }) => {
         return (
           <div className="flex place-items-center gap-2">
-            <Avatar className="w-10 h-10 cursor-pointer z-0 rounded-md">
+            <Avatar className="relative flex shrink-0 overflow-hidden w-10 h-10 cursor-pointer z-0 rounded-md">
               <AvatarImage
                 src={row.original.image_url}
                 alt={row.original.image_url}

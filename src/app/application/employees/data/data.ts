@@ -48,7 +48,7 @@ export const calamityTypes = [
 export const calamityStatuses = [
   {
     value: "Available",
-    label: "Ongoing",
+    label: "Available",
   },
   {
     value: "In Progress",

@@ -19,7 +19,7 @@ export type EmployeesDisplay = {
   email: string;
   first_name: string;
   last_name: string;
-  img_url: string;
+  image_url: string;
   address: string;
   contact_number: number;
   status: string;
