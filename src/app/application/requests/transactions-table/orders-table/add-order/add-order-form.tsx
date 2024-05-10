@@ -629,7 +629,7 @@ export default function RequestForm({ setDialogOpen }: any) {
 
         <DialogFooter>
           <Button
-            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
             disabled={
               requestCart.vehiclesCart.length === 0 &&
