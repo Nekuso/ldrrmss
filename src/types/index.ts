@@ -156,12 +156,7 @@ export type allPurchaseRequestsVehicleDisplay = {
   total_price: number | any;
   amount_paid: number | any;
   status: string | any;
-  discount: number | any;
-  payment_method: string | any;
   created_at: string | any;
-  redeemed: boolean | any;
-  redeem_code: string | any;
-  remarks: string | any;
   employee:
     | {
         id: string | any;
@@ -185,36 +180,18 @@ export type allPurchaseRequestsVehicleDisplay = {
         created_at: string | any;
       }
     | any;
-  inventory:
-    | {
-        id: number | any;
-        branches:
-          | {
-              id: number | any;
-              created_at: string | any;
-              branch_name: string | any;
-              branch_manager: null | any;
-              contact_number: string | any;
-              branch_location: string | any;
-            }
-          | any;
-      }
-    | any;
   use_foodsupplies:
     | {
         id: number | any;
         name: string | any;
         price: number | any;
-        barcode: string | any;
-        order_id: null | any;
+        request_id: null | any;
         quantity: number | any;
-        uom_name: string | any;
         image_url: string | any;
         created_at: string | any;
         foodsupply_id: number | any;
         description: string | any;
-        inventory_id: number | any;
-        order_vehicle_id: string | any;
+        request_vehicle_id: string | any;
       }[]
     | any;
   use_equipments:
@@ -223,50 +200,49 @@ export type allPurchaseRequestsVehicleDisplay = {
         name: string | any;
         brand: string | any;
         price: number | any;
-        barcode: string | any;
         equipment_id: number | any;
         request_id: null | any;
         quantity: number | any;
         image_url: string | any;
         created_at: string | any;
         description: string | any;
-        inventory_id: number | any;
-        order_vehicle_id: string | any;
+        request_vehicle_id: string | any;
       }[]
     | any;
   use_vehicles:
     | {
         id: number | any;
         name: string | any;
-        price: number | any;
+        brand: string | any;
+        plate_number: string | any;
+        vehicle_id: number | any;
+        request_id: null | any;
+        quantity: number | any;
         image_url: string | any;
         created_at: string | any;
-        service_id: number | any;
         description: string | any;
-        inventory_id: number | any;
-        order_vehicle_id: string | any;
+        request_vehicle_id: string | any;
       }[]
     | any;
   mobile_user:
     | {
         id: string | any;
-        dob: null | any;
+        first_name: string | any;
+        last_name: string | any;
         email: string | any;
-        gender: string | any;
-        points: number | any;
+        sex: string | any;
         address: string | any;
         password: string | any;
-        image_url: string | any;
-        last_name: string | any;
         created_at: string | any;
-        first_name: string | any;
         contact_number: string | any;
+        dob: null | any;
+        image_url: string | any;
       }
     | any;
-  mechanic_entries:
+  rescuer_entries:
     | {
         id: number | any;
-        mechanic:
+        rescuer:
           | {
               id: string | any;
               email: string | any;
@@ -285,15 +261,8 @@ export type allPurchaseRequestsVehicleDisplay = {
   vehicle_entries:
     | {
         id: number | any;
-        type: string | any;
-        color: string | any;
-        car_brand: string | any;
-        car_model: string | any;
         created_at: string | any;
-        odo_reading: number | any;
         plate_number: string | any;
-        engine_number: string | any;
-        chassis_number: string | any;
         request_vehicle_id: string | any;
       }[]
     | any;
@@ -303,7 +272,7 @@ export type allPurchaseRequestsVehicleDisplay = {
         created_at: string | any;
         progress_name: string | any;
         description: string | any;
-        order_service_id: string | any;
+        request_vehicle_id: string | any;
       }[]
     | any;
 };

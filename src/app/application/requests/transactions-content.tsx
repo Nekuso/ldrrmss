@@ -18,11 +18,11 @@ export default function InventoryContent({
 }) {
   const branchesSlice = useSelector((state: any) => state.branches);
 
-  function initiateVehiclesState(
-    branchesSlice: any
-  ): import("@tanstack/table-core").ColumnDef<never, unknown>[] {
-    throw new Error("Function not implemented.");
-  }
+  // function initiateVehiclesState(
+  //   branchesSlice: any
+  // ): import("@tanstack/table-core").ColumnDef<never, unknown>[] {
+  //   throw new Error("Function not implemented.");
+  // }
 
   return (
     <Tabs

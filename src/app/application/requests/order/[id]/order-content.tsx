@@ -10,8 +10,11 @@ import { MdOutlineReceiptLong } from "react-icons/md";
 
 import { DataTable as FoodSupplyRequests } from "./order-tables/product-orders/data-table";
 import { DataTable as EquipmentRequest } from "./order-tables/part-orders/data-table";
+import { DataTable as VehicleRequest } from "./order-tables/vehicle-orders/data-table";
 import { initiateColumns as initiateFoodSupplyRequestsColumns } from "./order-tables/product-orders/columns";
 import { initiateColumns as initiateEquipmentRequestsColumns } from "./order-tables/part-orders/columns";
+import { initiateColumns as initiateVehiclesRequestsColumns } from "./order-tables/vehicle-orders/columns";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Accordion,
@@ -30,7 +33,7 @@ import { BsBoxes } from "react-icons/bs";
 import { cn } from "@/lib/utils";
 
 export default function RequestContent({ request }: any) {
-  const contentToPrint = useRef(null);
+  // const contentToPrint = useRef(null);
   // const handlePrint = useReactToPrint({
   //   documentTitle: "Print This Document",
   //   onBeforePrint: () => {
@@ -52,7 +55,7 @@ export default function RequestContent({ request }: any) {
         <Accordion
           type="multiple"
           className="w-full rounded-none relative"
-          defaultValue={["item-2", "item-3"]}
+          defaultValue={["item-2", "item-3", "item-4"]}
         >
           <AccordionItem value="item-2">
             <AccordionTrigger className="font-bold sticky top-0">
@@ -76,6 +79,19 @@ export default function RequestContent({ request }: any) {
                 <EquipmentRequest
                   columns={initiateEquipmentRequestsColumns()}
                   data={request[0].use_equipments}
+                />
+              )}
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-4">
+            <AccordionTrigger className="font-bold sticky top-0">
+              Use Vehicles
+            </AccordionTrigger>
+            <AccordionContent className="bg-darkComponentBg rounded-xl">
+              {request && request.length > 0 && (
+                <VehicleRequest
+                  columns={initiateVehiclesRequestsColumns()}
+                  data={request[0].use_vehicles}
                 />
               )}
             </AccordionContent>
@@ -289,7 +305,7 @@ export default function RequestContent({ request }: any) {
       <div style={{ display: "none" }}>
         <div
           className="w-full min-h-[600px] 2xl:min-h-[680px] flex flex-col place-items-center"
-          ref={contentToPrint}
+          // ref={contentToPrint}
         >
           {/* <div className="w-full flex flex-col gap-0.5 justify-center place-items-center py-2">
             <img src={recieptLogo.src} alt="logo" className="mb-2" />
@@ -608,13 +624,6 @@ export default function RequestContent({ request }: any) {
                 renderer="img"
               />
             </div>
-            <p className="w-full text-center text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
-              Visit us at
-              <br />{" "}
-              <span className="underline">
-                https://trackxp-sapsc.vercel.app/
-              </span>
-            </p>
           </div>
         </div>
       </div>
