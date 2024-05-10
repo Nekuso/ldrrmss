@@ -35,7 +35,7 @@ export const useRequests: any = () => {
     const foodsupplyResult = await supabase
       .from("use_food_supplies")
       .insert(
-        props.purchase_foodsupply.map((foodsupply: any) => ({
+        props.use_foodsupply.map((foodsupply: any) => ({
           request_id: result.data[0].id,
           foodsupply_id: foodsupply.foodsupply_id,
           name: foodsupply.name,
@@ -50,7 +50,7 @@ export const useRequests: any = () => {
     const EquipmentResult = await supabase
       .from("use_equipments")
       .insert(
-        props.purchase_equipments.map((equipment: any) => ({
+        props.use_equipments.map((equipment: any) => ({
           request_id: result.data[0].id,
           equipment_id: equipment.equipment_id,
           name: equipment.name,
@@ -127,7 +127,7 @@ export const useRequests: any = () => {
         //     branch_location
         //   )
         // ),
-        // purchase_products(
+        // use_products(
         //     id,
         //     product_id,
         //     name,
@@ -138,7 +138,7 @@ export const useRequests: any = () => {
         //   quantity,
         //   uom_name
         // ),
-        // purchase_parts(
+        // use_parts(
         //     id,
         //   part_id,
         //   name,
@@ -195,7 +195,7 @@ export const useRequests: any = () => {
             contact_number
           )
         ),
-        purchase_products(
+        use_products(
           id,
           product_id,
           name,
@@ -206,7 +206,7 @@ export const useRequests: any = () => {
           quantity,
           uom_name
         ),
-        purchase_parts(
+        use_parts(
           id,
           part_id,
           name,

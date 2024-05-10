@@ -62,7 +62,7 @@ export default function RequestContent({ request }: any) {
               {request && request.length > 0 && (
                 <FoodSupplyRequests
                   columns={initiateFoodSupplyRequestsColumns()}
-                  data={request[0].purchase_foodsupplies}
+                  data={request[0].use_foodsupplies}
                 />
               )}
             </AccordionContent>
@@ -75,7 +75,7 @@ export default function RequestContent({ request }: any) {
               {request && request.length > 0 && (
                 <EquipmentRequest
                   columns={initiateEquipmentRequestsColumns()}
-                  data={request[0].purchase_equipments}
+                  data={request[0].use_equipments}
                 />
               )}
             </AccordionContent>
@@ -168,45 +168,39 @@ export default function RequestContent({ request }: any) {
           </div>
           <Separator className="bg-slate-400" />
           <div className="flex flex-col gap-3">
-            {request &&
-              request.length > 0 &&
-              request[0].purchase_foodsupplies && (
-                <div className="flex justify-between">
-                  <p className="text-xs 2xl:text-sm text-slate-400">
-                    foodsupplies Total
-                  </p>
-                  <p className="text-xs 2xl:text-sm text-slate-50">
-                    ₱{" "}
-                    {request[0].purchase_foodsupplies
-                      .reduce(
-                        (acc: any, item: any) =>
-                          acc + item.price * item.quantity,
-                        0
-                      )
-                      .toFixed(2)}
-                  </p>
-                </div>
-              )}
+            {request && request.length > 0 && request[0].use_foodsupplies && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">
+                  foodsupplies Total
+                </p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  ₱{" "}
+                  {request[0].use_foodsupplies
+                    .reduce(
+                      (acc: any, item: any) => acc + item.price * item.quantity,
+                      0
+                    )
+                    .toFixed(2)}
+                </p>
+              </div>
+            )}
 
-            {request &&
-              request.length > 0 &&
-              request[0].purchase_equipments && (
-                <div className="flex justify-between">
-                  <p className="text-xs 2xl:text-sm text-slate-400">
-                    equipments Total
-                  </p>
-                  <p className="text-xs 2xl:text-sm text-slate-50">
-                    ₱{" "}
-                    {request[0].purchase_equipments
-                      .reduce(
-                        (acc: any, item: any) =>
-                          acc + item.price * item.quantity,
-                        0
-                      )
-                      .toFixed(2)}
-                  </p>
-                </div>
-              )}
+            {request && request.length > 0 && request[0].use_equipments && (
+              <div className="flex justify-between">
+                <p className="text-xs 2xl:text-sm text-slate-400">
+                  equipments Total
+                </p>
+                <p className="text-xs 2xl:text-sm text-slate-50">
+                  ₱{" "}
+                  {request[0].use_equipments
+                    .reduce(
+                      (acc: any, item: any) => acc + item.price * item.quantity,
+                      0
+                    )
+                    .toFixed(2)}
+                </p>
+              </div>
+            )}
 
             <div className="flex justify-between">
               <p className="text-xs 2xl:text-sm text-slate-400">Tax</p>
@@ -221,11 +215,11 @@ export default function RequestContent({ request }: any) {
                 <p className="text-xs 2xl:text-sm text-slate-50">
                   - ₱{" "}
                   {(
-                    (request[0].purchase_foodsupplies.reduce(
+                    (request[0].use_foodsupplies.reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
                       0
                     ) +
-                      request[0].purchase_equipments.reduce(
+                      request[0].use_equipments.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
@@ -396,29 +390,27 @@ export default function RequestContent({ request }: any) {
               <div className="flex justify-between">
                 <p className="flex gap-1 place-items-center text-[13px] font-semibold text-black space-mono-regular tracking-tighter">
                   {/* <BsBoxes /> */}
-                  Purchased foodsupplies
+                  used foodsupplies
                 </p>
               </div>
               {request &&
                 request[0] &&
-                request[0].purchase_foodsupplies &&
-                request[0].purchase_foodsupplies.map(
-                  (item: any, index: number) => (
-                    <div key={index} className="flex justify-between">
-                      <div className="flex gap-1">
-                        <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                          {item.name}
-                        </p>
-                        <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                          {` x ${item.quantity}`}
-                        </p>
-                      </div>
+                request[0].use_foodsupplies &&
+                request[0].use_foodsupplies.map((item: any, index: number) => (
+                  <div key={index} className="flex justify-between">
+                    <div className="flex gap-1">
+                      <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        {item.name}
+                      </p>
                       <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                        ₱ {(item.price * item.quantity).toFixed(2)}
+                        {` x ${item.quantity}`}
                       </p>
                     </div>
-                  )
-                )}
+                    <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                      ₱ {(item.price * item.quantity).toFixed(2)}
+                    </p>
+                  </div>
+                ))}
               <Separator className="bg-slate-400" />
               <div className="flex justify-between mb-3">
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
@@ -428,8 +420,8 @@ export default function RequestContent({ request }: any) {
                   ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].purchase_foodsupplies &&
-                    request[0].purchase_foodsupplies
+                    request[0].use_foodsupplies &&
+                    request[0].use_foodsupplies
                       .reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
@@ -443,29 +435,27 @@ export default function RequestContent({ request }: any) {
                 <div className="flex justify-between">
                   <p className="flex gap-1 place-items-center text-[13px] font-semibold text-black space-mono-regular tracking-tighter">
                     {/* <SiTemporal /> */}
-                    Purchased equipments
+                    used equipments
                   </p>
                 </div>
                 {request &&
                   request[0] &&
-                  request[0].purchase_equipments &&
-                  request[0].purchase_equipments.map(
-                    (item: any, index: number) => (
-                      <div key={index} className="flex justify-between">
-                        <div className="flex gap-1">
-                          <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                            {item.name}
-                          </p>
-                          <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                            {` x ${item.quantity}`}
-                          </p>
-                        </div>
+                  request[0].use_equipments &&
+                  request[0].use_equipments.map((item: any, index: number) => (
+                    <div key={index} className="flex justify-between">
+                      <div className="flex gap-1">
+                        <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                          {item.name}
+                        </p>
                         <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                          ₱ {(item.price * item.quantity).toFixed(2)}
+                          {` x ${item.quantity}`}
                         </p>
                       </div>
-                    )
-                  )}
+                      <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
+                        ₱ {(item.price * item.quantity).toFixed(2)}
+                      </p>
+                    </div>
+                  ))}
                 <Separator className="bg-slate-400" />
 
                 <div className="flex justify-between mb-3">
@@ -476,8 +466,8 @@ export default function RequestContent({ request }: any) {
                     ₱{" "}
                     {request &&
                       request[0] &&
-                      request[0].purchase_equipments &&
-                      request[0].purchase_equipments
+                      request[0].use_equipments &&
+                      request[0].use_equipments
                         .reduce(
                           (acc: any, item: any) =>
                             acc + item.price * item.quantity,
@@ -498,15 +488,15 @@ export default function RequestContent({ request }: any) {
                   ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].purchase_foodsupplies &&
-                    request[0].purchase_equipments &&
+                    request[0].use_foodsupplies &&
+                    request[0].use_equipments &&
                     (
-                      request[0].purchase_foodsupplies.reduce(
+                      request[0].use_foodsupplies.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
                       ) +
-                      request[0].purchase_equipments.reduce(
+                      request[0].use_equipments.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
@@ -541,16 +531,16 @@ export default function RequestContent({ request }: any) {
                   - ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].purchase_foodsupplies &&
-                    request[0].purchase_equipments &&
+                    request[0].use_foodsupplies &&
+                    request[0].use_equipments &&
                     request[0].discount &&
                     (
-                      (request[0].purchase_foodsupplies.reduce(
+                      (request[0].use_foodsupplies.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
                       ) +
-                        request[0].purchase_equipments.reduce(
+                        request[0].use_equipments.reduce(
                           (acc: any, item: any) =>
                             acc + item.price * item.quantity,
                           0

@@ -25,7 +25,7 @@ export const statuses = [
   {
     value: "Available",
     label: "Available",
-    icon: QuestionMarkCircledIcon,
+    icon: CheckCircledIcon,
   },
   {
     value: "Low Stock",
@@ -35,7 +35,7 @@ export const statuses = [
   {
     value: "Out Of Stock",
     label: "Out Of Stock",
-    icon: CheckCircledIcon,
+    icon: CircleIcon,
   },
 ];
 

@@ -82,7 +82,7 @@ export default function RequestForm({ setDialogOpen }: any) {
       message: "Amount paid should be equal or greater than total price",
     }),
 
-    purchase_equipments: z.array(
+    use_equipments: z.array(
       z.object({
         equipment_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
@@ -95,7 +95,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         price: z.coerce.number(),
       })
     ),
-    purchase_foodsupplies: z.array(
+    use_foodsupplies: z.array(
       z.object({
         foodsupplies_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
@@ -108,7 +108,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         price: z.coerce.number(),
       })
     ),
-    purchase_vehicles: z.array(
+    use_vehicles: z.array(
       z.object({
         vehicles_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
@@ -138,9 +138,9 @@ export default function RequestForm({ setDialogOpen }: any) {
     },
   });
 
-  form.setValue("purchase_equipments", requestCart.equipmentsCart);
-  form.setValue("purchase_foodsupplies", requestCart.foodsuppliesCart);
-  form.setValue("purchase_vehicles", requestCart.vehiclesCart);
+  form.setValue("use_equipments", requestCart.equipmentsCart);
+  form.setValue("use_foodsupplies", requestCart.foodsuppliesCart);
+  form.setValue("use_vehicles", requestCart.vehiclesCart);
   form.setValue(
     "subtotal",
     (

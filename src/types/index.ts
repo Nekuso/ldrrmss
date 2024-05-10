@@ -124,9 +124,6 @@ export type allPurchaseRequestsDisplay = {
   requester_last_name: string;
   requester_contact_number: string;
   requester_email: string;
-  inventory: {
-    id: number;
-  };
   employees: {
     id: number;
     first_name: string;
@@ -141,9 +138,9 @@ export type allPurchaseRequestsDisplay = {
     name: string;
     description: string;
   };
-  purchase_foodsupplies: {}[];
-  purchase_equipments: {}[];
-  purchase_vehicles: {}[];
+  use_foodsupplies: {}[];
+  use_equipments: {}[];
+  use_vehicles: {}[];
   total_price: number;
   payment_method: string;
   status: string;
