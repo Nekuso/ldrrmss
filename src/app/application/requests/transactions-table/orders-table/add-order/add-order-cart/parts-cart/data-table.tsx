@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
             </TableBody>
             <TableFooter className="bg-transparent border-lightBorder">
               <TableRow className="h-20">
-                <TableCell colSpan={2}>Total</TableCell>
+                <TableCell colSpan={1}>Total</TableCell>
                 <TableCell className="text-right text-md font-bold text-white">
                   {`₱ ${data
                     .reduce((acc, item: any) => {
