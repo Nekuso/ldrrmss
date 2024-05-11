@@ -4,10 +4,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import BranchInput from "./branch-input";
-import PaymentInput from "./payment-input";
-import StatusInput from "./status-input";
-
 import { DataTable as FoodSuppliesCart } from "./add-order-cart/products-cart/data-table";
 import { DataTable as EquipmentsCart } from "./add-order-cart/parts-cart/data-table";
 import { DataTable as VehiclesCart } from "./add-order-cart/vehicles-cart/data-table";
@@ -26,7 +22,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { toast as sonner } from "sonner";
-import { use, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import { useRequests } from "@/hooks/useOrders";
@@ -42,10 +38,7 @@ import {
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import DiscountInput from "./discount-input";
-import { TbCurrencyPeso } from "react-icons/tb";
 import { useRouter } from "next/navigation";
-import result from "postcss/lib/result";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -55,7 +48,7 @@ export default function RequestForm({ setDialogOpen }: any) {
 
   const requestCart = useSelector((state: any) => state.requestCart);
   const requestCartOptions = useSelector(
-    (state: any) => state.RequestCartOptionslice
+    (state: any) => state.requestCartOptionSlice
   );
 
   const [minTotalPrice, setMinTotalPrice] = useState(0);
@@ -65,34 +58,15 @@ export default function RequestForm({ setDialogOpen }: any) {
     requester_last_name: z.string().nullable(),
     requester_email: z.string().nullable(),
     requester_contact_number: z.coerce.number().nullable(),
-    status: z.string(),
-    payment_method: z
-      .string()
-      .min(1, { message: "Payment method is required" }),
-    inventory_id: z
-      .string()
-      .min(1, { message: "Branch is required" })
-      .transform((arg) => new Number(arg)),
     employee_id: z.string(),
-    discount: z.string().transform((arg) => new Number(arg)),
-    tax: z.coerce.number(),
-    subtotal: z.coerce.number(),
-    total_price: z.coerce.number(),
-    amount_paid: z.coerce.number().min(minTotalPrice, {
-      message: "Amount paid should be equal or greater than total price",
-    }),
 
     use_equipments: z.array(
       z.object({
         equipment_id: z.coerce.number(),
-        inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
-        barcode: z.string(),
-        brand_name: z.string(),
         quantity: z.coerce.number(),
-        price: z.coerce.number(),
       })
     ),
     use_foodsupplies: z.array(
@@ -138,104 +112,40 @@ export default function RequestForm({ setDialogOpen }: any) {
     },
   });
 
+  useEffect(
+    () => {
+      // if form has error then console.log
+      console.log(form.formState.errors);
+      console.log(requestCart);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [form.formState.errors, requestCart]
+  );
+
   form.setValue("use_equipments", requestCart.equipmentsCart);
   form.setValue("use_foodsupplies", requestCart.foodsuppliesCart);
   form.setValue("use_vehicles", requestCart.vehiclesCart);
-  form.setValue(
-    "subtotal",
-    (
-      requestCart.equipmentsCart.reduce(
-        (acc: any, equipment: any) => acc + equipment.quantity,
-        0
-      ) +
-      requestCart.foodsuppliesCart.reduce(
-        (acc: any, foodsupply: any) => acc + foodsupply.quantity,
-        0
-      ) +
-      requestCart.vehiclesCart.reduce(
-        (acc: any, vehicle: any) => acc + vehicle.quantity,
-        0
-      )
-    ).toFixed(3)
-  );
-  form.setValue(
-    "total_price",
-    (
-      requestCart.vehiclesCart.reduce(
-        (acc: any, vehicles: any) => acc + vehicles.quantity,
-        0
-      ) +
-      requestCart.foodsuppliesCart.reduce(
-        (acc: any, foodsupplies: any) => acc + foodsupplies.quantity,
-        0
-      ) +
-      requestCart.equipmentsCart.reduce(
-        (acc: any, equipment: any) => acc + equipment.quantity,
-        0
-      )
-    )
-      //   *
-      // ((100 - Number(form.getValues("discount"))) / 100)
-      .toFixed(3)
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  );
-
-  // const discountData = form.getValues("discount");
-
-  useEffect(() => {
-    setMinTotalPrice(
-      Number(
-        (
-          requestCart.vehiclesCart.reduce(
-            (acc: any, vehicle: any) => acc + vehicle.quantity,
-            0
-          ) +
-          (requestCart.foodsuppliesCart.reduce(
-            (acc: any, foodsupply: any) => acc + foodsupply.quantity,
-            0
-          ) +
-            requestCart.equipmentsCart.reduce(
-              (acc: any, equipment: any) => acc + equipment.quantity,
-              0
-            )) *
-            ((100 - Number(form.getValues("discount"))) / 100)
-        ).toFixed(3)
-      )
-    );
-  }, [
-    requestCart.foodsuppliesCart,
-    requestCart.equipmentsCart,
-    requestCart.vehiclesCart,
-    // discountData,
-    minTotalPrice,
-    form,
-  ]);
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createRequest(data, 500);
+      // const result = await createRequest(data, 500);
 
-      const { error } = result;
-      if (error?.message) {
-        toast({
-          variant: "destructive",
-          title: "⚠️Error",
-          description: error.message,
-        });
-        return;
-      }
+      // const { error } = result;
+      // if (error?.message) {
+      //   toast({
+      //     variant: "destructive",
+      //     title: "⚠️Error",
+      //     description: error.message,
+      //   });
+      //   return;
+      // }
 
-      // setDialogOpen(false);
-      // sonner("✨Success", {
-      //   description: `Request Successful!`,
-      //   action: {
-      //     label: "Print",
-      //     onClick: () =>
-      //       router.push(
-      //         `/application/transactions/request/${result.data[0].id}`
-      //       ),
-      //   },
-      // });
+      setDialogOpen(false);
+      sonner("✨Success", {
+        description: `Request Successful!`,
+      });
+      console.log(data);
+      alert("Request Successful!");
       new Promise((resolve) => setTimeout(resolve, 500)).then(() => {
         dispatch(resetCart());
       });
@@ -476,14 +386,10 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
                     <EquipmentsCart
-                      columns={
-                        requestCartOptions && requestCartOptions.equipmentsData
-                          ? initiateEquipmentsCartColumns(
-                              dispatch,
-                              requestCartOptions.equipmentsData
-                            )
-                          : []
-                      }
+                      columns={initiateEquipmentsCartColumns(
+                        dispatch,
+                        requestCartOptions.equipmentsData
+                      )}
                       data={requestCart.equipmentsCart}
                     />
                   </AccordionContent>
