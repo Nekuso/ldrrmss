@@ -3,6 +3,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import { DataTable as FoodSuppliesCart } from "./add-order-cart/products-cart/data-table";
 import { DataTable as EquipmentsCart } from "./add-order-cart/parts-cart/data-table";
@@ -72,14 +73,10 @@ export default function RequestForm({ setDialogOpen }: any) {
     use_foodsupplies: z.array(
       z.object({
         foodsupplies_id: z.coerce.number(),
-        inventory_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
-        barcode: z.string(),
-        uom_name: z.string(),
         quantity: z.coerce.number(),
-        price: z.coerce.number(),
       })
     ),
     use_vehicles: z.array(
@@ -89,10 +86,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         name: z.string(),
         description: z.string(),
         image: z.string(),
-        barcode: z.string(),
-        uom_name: z.string(),
         quantity: z.coerce.number(),
-        price: z.coerce.number(),
       })
     ),
   });
@@ -107,8 +101,6 @@ export default function RequestForm({ setDialogOpen }: any) {
       payment_method: "",
       subtotal: 0,
       total_price: 0,
-      discount: "0",
-      tax: 0,
     },
   });
 
@@ -125,6 +117,50 @@ export default function RequestForm({ setDialogOpen }: any) {
   form.setValue("use_equipments", requestCart.equipmentsCart);
   form.setValue("use_foodsupplies", requestCart.foodsuppliesCart);
   form.setValue("use_vehicles", requestCart.vehiclesCart);
+  // form.setValue(
+  //   "subtotal",
+  //   (
+  //     requestCart.equipmentsCart.reduce(
+  //       (acc: any, equipment: any) =>
+  //         acc + equipment.price * equipment.quantity,
+  //       0
+  //     ) +
+  //     requestCart.foodsuppliesCart.reduce(
+  //       (acc: any, foodsupply: any) =>
+  //         acc + foodsupply.price * foodsupply.quantity,
+  //       0
+  //     ) +
+  //     requestCart.vehiclesCart.reduce(
+  //       (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
+  //       0
+  //     )
+  //   ).toFixed(3)
+  // );
+  // form.setValue(
+  //   "total_price",
+  //   Number(
+  //     (
+  //       requestCart.equipmentsCart.reduce(
+  //         (acc: any, equipment: any) =>
+  //           acc + equipment.price * equipment.quantity,
+  //         0
+  //       ) +
+  //       (
+  //         requestCart.foodsuppliesCart.reduce(
+  //           (acc: any, foodsupply: any) =>
+  //             acc + foodsupply.price * foodsupply.quantity,
+  //           0
+  //         ) +
+  //         requestCart.vehiclesCart.reduce(
+  //           (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
+  //           0
+  //         )
+  //       )()
+  //     )
+  //       .toFixed(3)
+  //       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  //   )
+  // );
 
   async function onSubmit(data: any) {
     startTransition(async () => {
