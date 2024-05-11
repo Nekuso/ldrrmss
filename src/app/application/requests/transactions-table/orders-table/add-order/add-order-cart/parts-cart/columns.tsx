@@ -60,7 +60,7 @@ export const initiateColumns = (dispatch: any, equipmentsDataOptions: any) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
             <Button
-              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
+              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
               type="button"
               onClick={() => {
                 dispatch(decrementEquipmentQuantity(row.original.equipment_id));
@@ -70,7 +70,7 @@ export const initiateColumns = (dispatch: any, equipmentsDataOptions: any) => {
             </Button>
             <p className="text-black font-bold">{row.original.quantity}</p>
             <Button
-              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
+              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
               type="button"
               disabled={
                 equipmentsDataOptions.find(
