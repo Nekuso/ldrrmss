@@ -40,6 +40,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import StatusInput from "./status-input";
+import { calamityTypes } from "@/app/application/employees/data/data";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -60,6 +62,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     requester_email: z.string().nullable(),
     requester_contact_number: z.coerce.number().nullable(),
     employee_id: z.string(),
+    calamity_type: z.string(),
 
     use_equipments: z.array(
       z.object({
@@ -317,19 +320,19 @@ export default function RequestForm({ setDialogOpen }: any) {
                           /> */}
                         </div>
                         <div className="w-full flex flex-col ">
-                          {/* <FormField
+                          <FormField
                             control={form.control}
-                            name="status"
+                            name="calamity_types"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
-                                  Status
+                                  Calamity Types
                                 </FormLabel>
                                 <StatusInput data={field} />
                                 <FormMessage />
                               </FormItem>
                             )}
-                          /> */}
+                          />
                         </div>
                         <div className="w-[75%] flex flex-col ">
                           {/* <FormField
