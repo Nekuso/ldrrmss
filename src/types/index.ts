@@ -168,7 +168,12 @@ export type allPurchaseRequestsVehicleDisplay = {
         contact_number: number | any;
       }
     | any;
-  supervisor:
+  calamity_types: {
+    id: number;
+    name: string;
+    description: string;
+  };
+  rescuer:
     | {
         id: string | any;
         email: string | any;

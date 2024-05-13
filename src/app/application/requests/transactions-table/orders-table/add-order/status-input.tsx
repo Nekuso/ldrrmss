@@ -13,7 +13,7 @@ export default function SelectDemo({ data }: { data: any }) {
       <SelectTrigger
         id="calamityTypes"
         name="Calamity Type"
-        className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
+        className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg"
         {...data}
       >
         <SelectValue
@@ -21,7 +21,7 @@ export default function SelectDemo({ data }: { data: any }) {
           placeholder="Select calamity types"
         />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black bg-white">
         <SelectGroup>
           <SelectItem value="Earthquake">Earthquake</SelectItem>
           <SelectItem value="Flood">Flood</SelectItem>

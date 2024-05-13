@@ -43,7 +43,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import StatusInput from "./status-input";
-import { calamityTypes } from "@/app/application/employees/data/data";
+import RescuerInput from "./rescuer-input";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -64,7 +64,8 @@ export default function RequestForm({ setDialogOpen }: any) {
     requester_email: z.string().nullable(),
     requester_contact_number: z.coerce.number().nullable(),
     employee_id: z.string(),
-    calamity_type: z.string(),
+    rescuer_id: z.string(),
+    calamity_types_id: z.string(),
 
     use_equipments: z.array(
       z.object({
@@ -103,9 +104,11 @@ export default function RequestForm({ setDialogOpen }: any) {
       requester_email: "",
       requester_contact_number: 0,
       employee_id: "",
-      payment_method: "",
-      subtotal: 0,
-      total_price: 0,
+      rescuer_id: "",
+      calamity_types_id: "",
+      use_equipments: [],
+      use_foodsupplies: [],
+      use_vehicles: [],
     },
   });
 
@@ -327,10 +330,10 @@ export default function RequestForm({ setDialogOpen }: any) {
                             )}
                           /> */}
                         </div>
-                        <div className="w-full flex flex-col ">
+                        <div className="w-[75%] flex flex-col">
                           <FormField
                             control={form.control}
-                            name="calamityTypes"
+                            name="calamity_Types"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
@@ -342,20 +345,20 @@ export default function RequestForm({ setDialogOpen }: any) {
                             )}
                           />
                         </div>
-                        <div className="w-[75%] flex flex-col ">
-                          {/* <FormField
+                        <div className="w-full flex flex-col ">
+                          <FormField
                             control={form.control}
-                            name="payment_method"
+                            name="rescuer"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
-                                  Payment
+                                  Rescuer
                                 </FormLabel>
-                                <PaymentInput data={field} />
+                                <RescuerInput data={field} />
                                 <FormMessage />
                               </FormItem>
                             )}
-                          /> */}
+                          />
                         </div>
                       </div>
                       {/* <div className="w-full flex gap-4">
