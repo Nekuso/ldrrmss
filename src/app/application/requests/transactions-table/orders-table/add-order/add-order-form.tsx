@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+import React from "react";
+
 import { DataTable as FoodSuppliesCart } from "./add-order-cart/products-cart/data-table";
 import { DataTable as EquipmentsCart } from "./add-order-cart/parts-cart/data-table";
 import { DataTable as VehiclesCart } from "./add-order-cart/vehicles-cart/data-table";
@@ -206,7 +208,13 @@ export default function RequestForm({ setDialogOpen }: any) {
               <Accordion
                 type="multiple"
                 className="w-full rounded-none relative"
-                defaultValue={["item-0", "item-1", "item-2", "item-3"]}
+                defaultValue={[
+                  "item-0",
+                  "item-1",
+                  "item-2",
+                  "item-3",
+                  "item-4",
+                ]}
               >
                 <AccordionItem value="item-0">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
@@ -322,7 +330,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         <div className="w-full flex flex-col ">
                           <FormField
                             control={form.control}
-                            name="calamity_types"
+                            name="calamityTypes"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">

@@ -11,7 +11,7 @@ export default function SelectDemo({ data }: { data: any }) {
   return (
     <Select onValueChange={data.onChange} value={data.value || ""}>
       <SelectTrigger
-        id="id"
+        id="calamityTypes"
         name="Calamity Type"
         className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         {...data}

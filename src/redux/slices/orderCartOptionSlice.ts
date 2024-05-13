@@ -12,6 +12,8 @@ const requestCartOptions = createSlice({
   reducers: {
     setFoodSuppliesData: (state, action: PayloadAction<any>) => {
       const foodsuppliesStock = action.payload.allFoodSupplies;
+      state.foodsuppliesData = foodsuppliesStock;
+      console.log(state.foodsuppliesData);
       // const foodsuppliesCart = action.payload.foodsuppliesCart;
       // // Update each stock_quantity of productsData on from productsCart
 
@@ -31,9 +33,6 @@ const requestCartOptions = createSlice({
       //       return stockFoodSupply;
       //     })
       //   : [];
-
-      state.foodsuppliesData = foodsuppliesStock;
-      console.log(state.foodsuppliesData);
     },
     setEquipmentsData: (state, action: PayloadAction<any>) => {
       const equipmentsStock = action.payload.equipmentsData;
