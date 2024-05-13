@@ -19,6 +19,8 @@ export const useRequests: any = () => {
         requester_email: props.requester_email,
         employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
         inventory_id: props.inventory_id,
+        description: props.description,
+        image_url: props.image_url,
         subtotal: props.subtotal,
         total_price: props.total_price,
         status: props.status,
