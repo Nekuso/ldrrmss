@@ -3,7 +3,6 @@ import { DialogFooter } from "@/components/ui/dialog";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 import React from "react";
 
@@ -78,7 +77,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     ),
     use_foodsupplies: z.array(
       z.object({
-        foodsupplies_id: z.coerce.number(),
+        foodsupply_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
@@ -87,8 +86,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     ),
     use_vehicles: z.array(
       z.object({
-        vehicles_id: z.coerce.number(),
-        inventory_id: z.coerce.number(),
+        vehicle_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
@@ -106,9 +104,6 @@ export default function RequestForm({ setDialogOpen }: any) {
       employee_id: "",
       rescuer_id: "",
       calamity_types_id: "",
-      use_equipments: [],
-      use_foodsupplies: [],
-      use_vehicles: [],
     },
   });
 
@@ -172,17 +167,17 @@ export default function RequestForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      // const result = await createRequest(data, 500);
+      const result = await createRequest(data, 500);
 
-      // const { error } = result;
-      // if (error?.message) {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "⚠️Error",
-      //     description: error.message,
-      //   });
-      //   return;
-      // }
+      const { error } = result;
+      if (error?.message) {
+        toast({
+          variant: "destructive",
+          title: "⚠️Error",
+          description: error.message,
+        });
+        return;
+      }
 
       setDialogOpen(false);
       sonner("✨Success", {
@@ -590,7 +585,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                 : false
             }
           >
-            <span className={cn({ hidden: isPending })}>Create Order</span>
+            <span className={cn({ hidden: isPending })}>Create Request</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />
