@@ -18,14 +18,25 @@ import { useTransition } from "react";
 import { toast as sonner } from "sonner";
 import { signOut } from "@/lib/actions/index";
 import { User } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "@/redux/slices/userSessionSlice";
+import { useRouter } from "next/navigation";
 
 export function UserNav({ data }: any) {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  dispatch(setCurrentUser(data));
+
   const [isPending, startTransition] = useTransition();
   const onSignOut = async () => {
     sonner("Loggin out...", {});
     startTransition(async () => {
       await signOut();
     });
+  };
+
+  const viewProfile = () => {
+    router.push(`/application/profile/${data.id}`);
   };
 
   return (
@@ -39,18 +50,21 @@ export function UserNav({ data }: any) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Dante</p>
-            <p className="text-xs leading-none text-muted-foreground">
-              bayag@gmail.com
-            </p>
-          </div>
-        </DropdownMenuLabel>
+        {data && (
+          <DropdownMenuLabel className="font-normal flex flex-col gap-1">
+            <span>{`${data.first_name} ${data.last_name}`}</span>
+            <span className="text-xs text-gray-300">{data.roles.role}</span>
+          </DropdownMenuLabel>
+        )}
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
-          <DropdownMenuItem className="rounded-lg cursor-pointer">
+          <DropdownMenuItem
+            className="rounded-lg cursor-pointer"
+            onClick={() => {
+              viewProfile();
+            }}
+          >
             <User className="mr-2 h-7 w-4" />
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
