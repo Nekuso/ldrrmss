@@ -442,6 +442,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                       )}
                       data={requestCart.equipmentsCart}
                     />
+                        <div className="w-[75%] flex flex-col"></div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
