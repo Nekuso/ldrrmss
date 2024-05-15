@@ -18,15 +18,11 @@ export const useRequests: any = () => {
         requester_contact_number: props.requester_contact_number,
         requester_email: props.requester_email,
         employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
-        inventory_id: props.inventory_id,
+        calamity_type_id: props.calamity_type_id,
         description: props.description,
         image_url: props.image_url,
-        subtotal: props.subtotal,
-        total_price: props.total_price,
         status: props.status,
-        discount: props.discount,
-        payment_method: props.payment_method,
-        amount_paid: props.amount_paid,
+        total_stocks_used: 0,
       })
       .select();
 

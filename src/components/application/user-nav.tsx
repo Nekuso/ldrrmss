@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -57,7 +58,6 @@ export function UserNav({ data }: any) {
           </DropdownMenuLabel>
         )}
         <DropdownMenuSeparator />
-
         <DropdownMenuGroup>
           <DropdownMenuItem
             className="rounded-lg cursor-pointer"
@@ -70,7 +70,6 @@ export function UserNav({ data }: any) {
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="rounded-lg cursor-pointer hover:bg-red-500 hover:text-white"

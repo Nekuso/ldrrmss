@@ -9,22 +9,24 @@ import {
 
 export default function SelectDemo({ data }: { data: any }) {
   return (
-    <Select onValueChange={data.onChange} value={data.value || ""}>
+    <Select onValueChange={data.onChange}>
       <SelectTrigger
-        id="payment"
-        name="payment"
+        id="status"
+        name="status"
         className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         {...data}
       >
         <SelectValue
           className="text-white"
-          placeholder="Select a Payment Method"
+          placeholder={data ? data.value : "Select Status"}
         />
       </SelectTrigger>
       <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
         <SelectGroup>
-          <SelectItem value="Cash">Cash</SelectItem>
-          <SelectItem value="Card (Online)">Card (Online)</SelectItem>
+          <SelectItem value="Available">Available</SelectItem>
+          <SelectItem value="In Progress">In Progress</SelectItem>
+          <SelectItem value="Unavailable">Unavailable</SelectItem>
+          <SelectItem value="Inactive">Inactive</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

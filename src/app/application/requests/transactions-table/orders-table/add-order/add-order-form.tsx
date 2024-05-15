@@ -62,6 +62,8 @@ export default function RequestForm({ setDialogOpen }: any) {
     requester_last_name: z.string().nullable(),
     requester_email: z.string().nullable(),
     requester_contact_number: z.coerce.number().nullable(),
+    status: z.string(),
+    total_stocks_used: z.coerce.number().nullable(),
     employee_id: z.string(),
     rescuer_id: z.string(),
     calamity_types_id: z.string(),
@@ -104,6 +106,11 @@ export default function RequestForm({ setDialogOpen }: any) {
       employee_id: "",
       rescuer_id: "",
       calamity_types_id: "",
+      total_stocks_used: 0,
+      use_equipments: [],
+      use_foodsupplies: [],
+      use_vehicles: [],
+      status: "Completed",
     },
   });
 
@@ -120,50 +127,44 @@ export default function RequestForm({ setDialogOpen }: any) {
   form.setValue("use_equipments", requestCart.equipmentsCart);
   form.setValue("use_foodsupplies", requestCart.foodsuppliesCart);
   form.setValue("use_vehicles", requestCart.vehiclesCart);
-  // form.setValue(
-  //   "subtotal",
-  //   (
-  //     requestCart.equipmentsCart.reduce(
-  //       (acc: any, equipment: any) =>
-  //         acc + equipment.price * equipment.quantity,
-  //       0
-  //     ) +
-  //     requestCart.foodsuppliesCart.reduce(
-  //       (acc: any, foodsupply: any) =>
-  //         acc + foodsupply.price * foodsupply.quantity,
-  //       0
-  //     ) +
-  //     requestCart.vehiclesCart.reduce(
-  //       (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
-  //       0
-  //     )
-  //   ).toFixed(3)
-  // );
-  // form.setValue(
-  //   "total_price",
-  //   Number(
-  //     (
-  //       requestCart.equipmentsCart.reduce(
-  //         (acc: any, equipment: any) =>
-  //           acc + equipment.price * equipment.quantity,
-  //         0
-  //       ) +
-  //       (
-  //         requestCart.foodsuppliesCart.reduce(
-  //           (acc: any, foodsupply: any) =>
-  //             acc + foodsupply.price * foodsupply.quantity,
-  //           0
-  //         ) +
-  //         requestCart.vehiclesCart.reduce(
-  //           (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
-  //           0
-  //         )
-  //       )()
-  //     )
-  //       .toFixed(3)
-  //       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  //   )
-  // );
+  form.setValue(
+    "total_stocks_used",
+    (
+      requestCart.equipmentsCart.reduce(
+        (acc: any, equipment: any) => acc + equipment.quantity,
+        0
+      ) +
+      requestCart.foodsuppliesCart.reduce(
+        (acc: any, foodsupply: any) => acc + foodsupply.quantity,
+        0
+      ) +
+      requestCart.vehiclesCart.reduce(
+        (acc: any, vehicle: any) => acc + vehicle.quantity,
+        0
+      )
+    ).toFixed(3)
+  );
+  form.setValue(
+    "total_price",
+    Number(
+      (
+        requestCart.equipmentsCart.reduce(
+          (acc: any, equipment: any) => acc + equipment.quantity,
+          0
+        ) +
+        requestCart.foodsuppliesCart.reduce(
+          (acc: any, foodsupply: any) => acc + foodsupply.quantity,
+          0
+        ) +
+        requestCart.vehiclesCart.reduce(
+          (acc: any, vehicle: any) => acc + vehicle.quantity,
+          0
+        )
+      )
+        .toFixed(3)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    )
+  );
 
   async function onSubmit(data: any) {
     startTransition(async () => {
@@ -479,79 +480,35 @@ export default function RequestForm({ setDialogOpen }: any) {
               </Accordion>
               <div className="w-full flex-col relative">
                 <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
-                  {/* <span className="w-full text-end text-slate-400">
+                  <span className="w-full text-end text-slate-400">
                     Subtotal
                   </span>
-                  <span className="w-[20%] text-end">{`₱ ${(
-                    requestCart.foodsuppliesCart.reduce(
+                  <span className="w-[20%] text-end">
+                    {(requestCart.foodsuppliesCart?.reduce(
                       (acc: any, foodsupply: any) =>
-                        acc + foodsupply.price * foodsupply.quantity,
+                        acc + (foodsupply.quantity ?? 0),
                       0
-                    ) +
-                    requestCart.vehiclesCart.reduce(
-                      (acc: any, vehicle: any) =>
-                        acc + vehicle.price * vehicle.quantity,
-                      0
-                    ) +
-                    requestCart.equipmentsCart.reduce(
-                      (acc: any, equipment: any) =>
-                        acc + equipment.price * equipment.quantity,
-                      0
-                    )
-                  )
-                    .toFixed(
-                      // sum all the food_supplies and equipments
-                      3
-                    )
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span> */}
+                    ) ?? 0) +
+                      (requestCart.vehiclesCart?.reduce(
+                        (acc: any, vehicle: any) =>
+                          acc + (vehicle.quantity ?? 0),
+                        0
+                      ) ?? 0) +
+                      (requestCart.equipmentsCart?.reduce(
+                        (acc: any, equipment: any) =>
+                          acc + (equipment.quantity ?? 0),
+                        0
+                      ) ?? 0)}
+                  </span>
                 </div>
 
-                {/* <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
-                  <span className="w-full text-end text-slate-400">Tax</span>
-                  <span className="w-[20%] text-end">₱ 0.00</span>
-                </div>
-                <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
-                  <span className="w-full text-end text-slate-400">VAT</span>
-                  <span className="w-[20%] text-end">₱ 0.00</span>
-                </div>
-                <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
-                  <span className="w-full text-end text-slate-400">
-                    Discount{" "}
-                    {Number(form.watch("discount")) > 0 &&
-                      `(${form.getValues("discount")}%)`}
-                  </span>
-                  <span className="w-[20%] text-end">
-                    {`- ₱ ${(
-                      requestCart.foodsuppliesCart.reduce(
-                        (acc: any, foodsupply: any) =>
-                          acc + foodsupply.price * foodsupply.quantity,
-                        0
-                      ) +
-                      (requestCart.vehiclesCart.reduce(
-                        (acc: any, vehicle: any) =>
-                          acc + vehicle.price * vehicle.quantity,
-                        0
-                      ) +
-                        requestCart.equipmentsCart.reduce(
-                          (acc: any, equipment: any) =>
-                            acc + equipment.price * equipment.quantity,
-                          0
-                        )) *
-                        (Number(form.getValues("discount")) / 100)
-                    )
-                      .toFixed(3)
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-                  </span>
-                </div> */}
                 <div className="w-full py-6 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-lg font-bold">
                   <span className="w-full text-end">Total</span>
                   <span className="w-[20%] text-end">
-                    {(
-                      requestCart.foodsuppliesCart.reduce(
-                        (acc: any, foodsupply: any) =>
-                          acc + foodsupply.quantity,
-                        0
-                      ) +
+                    {requestCart.foodsuppliesCart.reduce(
+                      (acc: any, foodsupply: any) => acc + foodsupply.quantity,
+                      0
+                    ) +
                       requestCart.vehiclesCart.reduce(
                         (acc: any, vehicle: any) => acc + vehicle.quantity,
                         0
@@ -559,13 +516,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                       requestCart.equipmentsCart.reduce(
                         (acc: any, equipment: any) => acc + equipment.quantity,
                         0
-                      )
-                    )
-                      .toFixed(
-                        // sum all the food_supplies and equipments
-                        3
-                      )
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      )}
                   </span>
                 </div>
               </div>
@@ -577,13 +528,6 @@ export default function RequestForm({ setDialogOpen }: any) {
           <Button
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
-            disabled={
-              requestCart.vehiclesCart.length === 0 &&
-              requestCart.equipmentsCart.length === 0 &&
-              requestCart.foodsuppliesCart.length === 0
-                ? true
-                : false
-            }
           >
             <span className={cn({ hidden: isPending })}>Create Request</span>
             <AiOutlineLoading3Quarters
