@@ -36,7 +36,7 @@ export function UserNav({ data }: any) {
     });
   };
 
-  const viewProfile = () => {
+  const Page = () => {
     router.push(`/application/profile/${data.id}`);
   };
 
@@ -62,12 +62,11 @@ export function UserNav({ data }: any) {
           <DropdownMenuItem
             className="rounded-lg cursor-pointer"
             onClick={() => {
-              viewProfile();
+              Page();
             }}
           >
             <User className="mr-2 h-7 w-4" />
             <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -78,7 +77,6 @@ export function UserNav({ data }: any) {
           }}
         >
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
