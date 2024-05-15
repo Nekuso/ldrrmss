@@ -1,3 +1,5 @@
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { z } from "zod";
@@ -426,6 +428,8 @@ export default function RequestForm({ setDialogOpen }: any) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
+                                    <div className="w-full flex flex-col gap-4 px-2">
+                      <div className="w-full flex gap-4">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Equipments Summary
@@ -476,6 +480,49 @@ export default function RequestForm({ setDialogOpen }: any) {
                       data={requestCart.vehiclesCart}
                     />
                   </AccordionContent>
+                                      <div className="w-full flex flex-col gap-4 px-2">
+                      <div className="w-full flex gap-4">
+                        <div className="w-[75%] flex flex-col">
+                  <AccordionItem value="item-4">
+                  
+                    <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
+                      Search Location
+                    </AccordionTrigger>
+                    <AccordionContent className="bg-darkComponentBg rounded-xl">
+                      <iframe
+                        width="100%"
+                        height={500}
+                        frameBorder="0"
+                        scrolling="no"
+                        marginHeight={0}
+                        marginWidth={0}
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
+                        style={{ border: "1px solid black" }}
+                      ></iframe>
+
+                      <FormField
+                        control={form.control}
+                        name="location_search"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs">
+                              Search Location
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                                {...field}
+                                type="text"
+                                placeholder="Enter Location"
+                                value={field.value || ""}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
                 </AccordionItem>
               </Accordion>
               <div className="w-full flex-col relative">
