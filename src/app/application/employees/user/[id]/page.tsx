@@ -8,7 +8,27 @@ import React, { useEffect } from "react";
 import Loading from "./skeleton";
 import UserContent from "./user-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
-export default function Page({ params }: any) {
+import { ROLES } from "@/lib/actions/roles";
+import { useSelector } from "react-redux";
+import { useAuthMiddleware } from "@/lib/actions/useMiddleware";
+import { useRouter } from "next/router";
+
+export default function Page({ params }: { params: any }) {
+  const router = useRouter();
+  const { ADMINISTRATOR, STAFF } = ROLES;
+  const currentSession = useSelector((state: any) => state.currentSession);
+  const access = useAuthMiddleware([ADMINISTRATOR, STAFF], currentSession);
+  if (!access.allowed) {
+    router.push(access.defaultRoute);
+    return (
+      <div className="w-full h-full flex justify-center place-items-center">
+        <h1 className="text-xl font-semibold text-slate-200 text-center">
+          Unauthorized
+        </h1>
+      </div>
+    );
+  }
+
   const { getEmployee, currentEmployeeData } = useEmployees();
   const { getRoles, allRolesData } = useRoles();
 
@@ -45,7 +65,7 @@ export default function Page({ params }: any) {
       ) : (
         <UserContent
           params={params}
-          employee={currentEmployeeData[0]}
+          employee={currentEmployeeData}
           roles={allRolesData}
         />
       )}

@@ -14,7 +14,7 @@ import { ROLES } from "@/lib/actions/roles";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuthMiddleware } from "@/lib/actions/useMiddleware";
 
-export default function User({ params }: { params: any }) {
+export default function Page({ params }: { params: any }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const { ADMINISTRATOR, STAFF } = ROLES;
