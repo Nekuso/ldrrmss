@@ -45,6 +45,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import StatusInput from "./status-input";
 import RescuerInput from "./rescuer-input";
+import { resetRequestvehicleCart } from "@/redux/slices/orderVehicleCartSlice";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -184,14 +185,34 @@ export default function RequestForm({ setDialogOpen }: any) {
 
       setDialogOpen(false);
       sonner("✨Success", {
-        description: `Request Successful!`,
+        description: `Service Order Successful!`,
+        // action: {
+        //   label: "Print",
+        //   onClick: () =>
+        //     router.push(
+        //       `/application/requests/order_service/${result.data[0].id}`
+        //     ),
+        // },
       });
-      console.log(data);
-      alert("Request Successful!");
+      // toast({
+      //   title: "You submitted the following values:",
+      //   description: (
+      //     <pre className="mt-2 w-[1340px] h-[600px] rounded-md bg-slate-950 p-4 overflow-y-scroll">
+      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+      //     </pre>
+      //   ),
+      // });
       new Promise((resolve) => setTimeout(resolve, 500)).then(() => {
         dispatch(resetCart());
+        dispatch(resetRequestvehicleCart());
       });
     });
+  }
+
+  function onCancel() {
+    dispatch(resetCart());
+    dispatch(resetRequestvehicleCart());
+    setDialogOpen(false);
   }
 
   return (
@@ -204,7 +225,7 @@ export default function RequestForm({ setDialogOpen }: any) {
           <div className="w-[60%] 2xl:w-[50%] h-full rounded-lg overflow-hidden">
             <RequestCartOptions />
           </div>
-           <ScrollArea className="w-full h-[553px] 2xl:h-[657px] flex flex-col justify-between bg-darkBg rounded-lg border border-lightBorder p-0 px-4 gap-0 relative">
+          <ScrollArea className="w-full h-[553px] 2xl:h-[657px] flex flex-col justify-between bg-darkBg rounded-lg border border-lightBorder p-0 px-4 gap-0 relative">
             <div className="w-full h-full flex flex-col gap-6 justify-between relative">
               <Accordion
                 type="multiple"
@@ -442,7 +463,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                     />
                   </AccordionContent>
                 </AccordionItem>
-      
+
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Food Supply Summary
@@ -478,37 +499,36 @@ export default function RequestForm({ setDialogOpen }: any) {
                       }
                       data={requestCart.vehiclesCart}
                     />
-
                   </AccordionContent>
-                </AccordionItem>     
+                </AccordionItem>
 
-                <AccordionItem value="item-4">     
-                    <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                      Search Location
-                    </AccordionTrigger>
-                    <AccordionContent className="bg-darkComponentBg rounded-xl">
-                      <iframe
-                        width="100%"
-                        height={500}
-                        frameBorder="0"
-                        scrolling="no"
-                        marginHeight={0}
-                        marginWidth={0}
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
-                        style={{ border: "1px solid black" }}
-                      ></iframe>
-                    <div className="w-[14vw] h-full flex flex-col gap-6 justify-between relative p-2">
+                <AccordionItem value="item-4">
+                  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
+                    Search Location
+                  </AccordionTrigger>
+                  <AccordionContent className="bg-darkComponentBg rounded-xl">
+                    <iframe
+                      width="100%"
+                      height={500}
+                      frameBorder="0"
+                      scrolling="no"
+                      marginHeight={0}
+                      marginWidth={0}
+                      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
+                      style={{ border: "1px solid black" }}
+                    ></iframe>
+                    <div className="flex p-2 pt-4 gap-4">
                       <FormField
                         control={form.control}
                         name="location_search"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="flex-grow">
                             <FormLabel className="text-xs">
                               Search Location
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
                                 {...field}
                                 type="text"
                                 placeholder="Enter Location"
@@ -517,13 +537,34 @@ export default function RequestForm({ setDialogOpen }: any) {
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )}                     
-                        />
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="location_coordinates"
+                        render={({ field }) => (
+                          <FormItem className="flex-grow">
+                            <FormLabel className="text-xs">
+                              Coordinates
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+                                {...field}
+                                type="text"
+                                placeholder="Show coordinates"
+                                value={field.value || ""}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
-                    </AccordionContent>
+                  </AccordionContent>
                 </AccordionItem>
               </Accordion>
-              
+
               <div className="w-full flex-col relative">
                 <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
                   <span className="w-full text-end text-slate-400">
@@ -568,9 +609,14 @@ export default function RequestForm({ setDialogOpen }: any) {
               </div>
             </div>
           </ScrollArea>
-        
-</div>
+        </div>
         <DialogFooter>
+          <Button
+            className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-red-500 primary-glow transition-all duration-300"
+            onClick={onCancel}
+          >
+            Cancel
+          </Button>
           <Button
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
             type="submit"
@@ -583,6 +629,5 @@ export default function RequestForm({ setDialogOpen }: any) {
         </DialogFooter>
       </form>
     </Form>
-
   );
 }

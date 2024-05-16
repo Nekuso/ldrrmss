@@ -106,9 +106,6 @@ const requestCart = createSlice({
       state.foodsuppliesCart = [];
       state.equipmentsCart = [];
       state.vehiclesCart = [];
-      state.foodsuppliesTotalPrice = 0;
-      state.equipmentsTotalPrice = 0;
-      state.vehiclesTotalPrice = 0;
     },
   },
 });
