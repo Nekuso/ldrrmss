@@ -3,14 +3,12 @@ import { Sora } from "next/font/google";
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { MainNav } from "@/components/application/main-nav";
-import { UserNav } from "@/components/application/user-nav";
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Navbar from "@/components/layouts/nav-bar/navbar";
 import Providers from "@/redux/Provider";
+import { createClient } from "@supabase/supabase-js";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -32,6 +30,30 @@ export default async function RootLayout({
   if (error || !data?.user) {
     redirect("/auth/login");
   }
+  console.log(data);
+  const supabase2 = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
+  );
+  const result: any = !error
+    ? await supabase2
+        .from("employees")
+        .select(
+          `
+        id,
+        email,
+        first_name,
+        last_name,
+        image_url,
+        address,
+        contact_number,
+        roles (id, role),
+        created_at,
+        password
+      `
+        )
+        .eq("id", data.user.id)
+    : null;
 
   return (
     <html lang="en">
@@ -44,7 +66,7 @@ export default async function RootLayout({
           </div>
 
           <div className="flex flex-col place-items-center justify-start w-full min-h-screen bg-zinc-500 bg-opacity-50 relative max-lg:hidden">
-            <Navbar />
+            <Navbar  data={result.data[0]} />
             <div className="w-full flex justify-center py-4">{children}</div>
           </div>
           <Sonner />

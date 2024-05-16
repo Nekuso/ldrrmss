@@ -204,7 +204,7 @@ export default function RequestForm({ setDialogOpen }: any) {
           <div className="w-[60%] 2xl:w-[50%] h-full rounded-lg overflow-hidden">
             <RequestCartOptions />
           </div>
-          <ScrollArea className="w-full h-[553px] 2xl:h-[657px] flex flex-col justify-between bg-darkBg rounded-lg border border-lightBorder p-0 px-4 gap-0 relative">
+           <ScrollArea className="w-full h-[553px] 2xl:h-[657px] flex flex-col justify-between bg-darkBg rounded-lg border border-lightBorder p-0 px-4 gap-0 relative">
             <div className="w-full h-full flex flex-col gap-6 justify-between relative">
               <Accordion
                 type="multiple"
@@ -428,8 +428,6 @@ export default function RequestForm({ setDialogOpen }: any) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                                    <div className="w-full flex flex-col gap-4 px-2">
-                      <div className="w-full flex gap-4">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Equipments Summary
@@ -442,9 +440,9 @@ export default function RequestForm({ setDialogOpen }: any) {
                       )}
                       data={requestCart.equipmentsCart}
                     />
-                        <div className="w-[75%] flex flex-col"></div>
                   </AccordionContent>
                 </AccordionItem>
+      
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Food Supply Summary
@@ -480,12 +478,11 @@ export default function RequestForm({ setDialogOpen }: any) {
                       }
                       data={requestCart.vehiclesCart}
                     />
+
                   </AccordionContent>
-                                      <div className="w-full flex flex-col gap-4 px-2">
-                      <div className="w-full flex gap-4">
-                        <div className="w-[75%] flex flex-col">
-                  <AccordionItem value="item-4">
-                  
+                </AccordionItem>     
+
+                <AccordionItem value="item-4">     
                     <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                       Search Location
                     </AccordionTrigger>
@@ -500,7 +497,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                         src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
                         style={{ border: "1px solid black" }}
                       ></iframe>
-
+                    <div className="w-[14vw] h-full flex flex-col gap-6 justify-between relative p-2">
                       <FormField
                         control={form.control}
                         name="location_search"
@@ -520,12 +517,13 @@ export default function RequestForm({ setDialogOpen }: any) {
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )}
-                      />
+                        )}                     
+                        />
+                    </div>
                     </AccordionContent>
-                  </AccordionItem>
                 </AccordionItem>
               </Accordion>
+              
               <div className="w-full flex-col relative">
                 <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
                   <span className="w-full text-end text-slate-400">
@@ -570,8 +568,8 @@ export default function RequestForm({ setDialogOpen }: any) {
               </div>
             </div>
           </ScrollArea>
-        </div>
-
+        
+</div>
         <DialogFooter>
           <Button
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
@@ -585,5 +583,6 @@ export default function RequestForm({ setDialogOpen }: any) {
         </DialogFooter>
       </form>
     </Form>
+
   );
 }

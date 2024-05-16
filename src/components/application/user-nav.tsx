@@ -27,6 +27,7 @@ export function UserNav({ data }: any) {
   const router = useRouter();
   const dispatch = useDispatch();
   dispatch(setCurrentUser(data));
+  console.log(data);
 
   const [isPending, startTransition] = useTransition();
   const onSignOut = async () => {
