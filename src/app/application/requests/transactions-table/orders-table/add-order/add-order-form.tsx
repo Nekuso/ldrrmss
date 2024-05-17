@@ -167,7 +167,13 @@ export default function RequestForm({ setDialogOpen }: any) {
         .toFixed(3)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     )
-  );
+  ); [
+    requestCart.foodsuppliesCart,
+    requestCart.equipmentsCart,
+    requestCart.vehiclesCart,
+    minTotalPrice,
+    form,
+  ];
 
   async function onSubmit(data: any) {
     startTransition(async () => {
@@ -186,33 +192,23 @@ export default function RequestForm({ setDialogOpen }: any) {
       setDialogOpen(false);
       sonner("✨Success", {
         description: `Service Order Successful!`,
-        // action: {
-        //   label: "Print",
-        //   onClick: () =>
-        //     router.push(
-        //       `/application/requests/order_service/${result.data[0].id}`
-        //     ),
-        // },
       });
-      // toast({
-      //   title: "You submitted the following values:",
-      //   description: (
-      //     <pre className="mt-2 w-[1340px] h-[600px] rounded-md bg-slate-950 p-4 overflow-y-scroll">
-      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-      //     </pre>
-      //   ),
-      // });
+
       new Promise((resolve) => setTimeout(resolve, 500)).then(() => {
         dispatch(resetCart());
         dispatch(resetRequestvehicleCart());
       });
     });
   }
-
+  
   function onCancel() {
     dispatch(resetCart());
     dispatch(resetRequestvehicleCart());
     setDialogOpen(false);
+  }
+
+  function searchLocation(value: string) {
+    throw new Error("Function not implemented.");
   }
 
   return (
@@ -518,27 +514,31 @@ export default function RequestForm({ setDialogOpen }: any) {
                       style={{ border: "1px solid black" }}
                     ></iframe>
                     <div className="flex p-2 pt-4 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="location_search"
-                        render={({ field }) => (
-                          <FormItem className="flex-grow">
-                            <FormLabel className="text-xs">
-                              Search Location
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                                {...field}
-                                type="text"
-                                placeholder="Enter Location"
-                                value={field.value || ""}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                    <FormField
+  control={form.control}
+  name="location_search"
+  render={({ field }) => (
+    <FormItem className="flex-grow">
+      <FormLabel className="text-xs">
+        Search Location
+      </FormLabel>
+      <FormControl>
+        <Input
+          className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+          {...field}
+          type="text"
+          placeholder="Enter Location"
+          value={field.value || ""}
+          onChange={async (e) => {
+            const searchResults = await searchLocation(e.target.value);
+            // Do something with searchResults, like displaying them in a dropdown
+          }}
+        />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
                       <FormField
                         control={form.control}
                         name="location_coordinates"
@@ -613,7 +613,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         <DialogFooter>
           <Button
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-red-500 primary-glow transition-all duration-300"
-            onClick={onCancel}
+            onClick={() => onCancel()}
           >
             Cancel
           </Button>

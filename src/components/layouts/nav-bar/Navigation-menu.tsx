@@ -59,7 +59,7 @@ export function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         {/* <Dead-end>*/}
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/application/announcement" legacyBehavior passHref>
             <NavigationMenuLink
               className={`bg-transparent ${navigationMenuTriggerStyle()}`}
@@ -67,9 +67,9 @@ export function NavigationMenuDemo() {
               Announcements
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         {/* <Dead-end>*/}
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/application/settings" legacyBehavior passHref>
             <NavigationMenuLink
               className={`bg-transparent ${navigationMenuTriggerStyle()}`}
@@ -77,7 +77,7 @@ export function NavigationMenuDemo() {
               Settings
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         {/* <Dead-end>*/}
       </NavigationMenuList>
     </NavigationMenu>
