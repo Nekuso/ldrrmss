@@ -8,12 +8,12 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 type cartItem = {
   foodsupply_id: number;
   name: string;
+  plate_number: string;
   description: string;
   image_url: string;
   quantity: number;
   status: string;
   created_at: string;
-  inventory: any;
 };
 
 export const initiateColumns = () => {
@@ -44,6 +44,12 @@ export const initiateColumns = () => {
               </p>
               <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
                 {`STATUS: • ${row.original.status}`}
+              </p>
+              <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
+                {`DESCRIPTION: • ${row.original.description}`}
+              </p>
+              <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
+                {`PLATE NUMBER: • ${row.original.plate_number}`}
               </p>
             </div>
           </div>

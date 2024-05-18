@@ -9,10 +9,9 @@ type cartItem = {
   name: string;
   description: string;
   image_url: string;
-  quantity: number;
+  plate_number: string;
   status: string;
   created_at: string;
-  inventory: any;
 };
 
 export const initiateColumns = () => {
@@ -42,7 +41,7 @@ export const initiateColumns = () => {
                 {`Status: ${row.original.status}`}
               </p>
               <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
-                {`Quantity: • ${row.original.quantity}`}
+                {`Plate Number: • ${row.original.plate_number}`}
               </p>
             </div>
           </div>
@@ -57,7 +56,7 @@ export const initiateColumns = () => {
       cell: ({ row }) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
-            <p className="text-white font-bold">x {row.original.quantity}</p>
+            {/* <p className="text-white font-bold">x {row.original.quantity}</p> */}
           </div>
         );
       },

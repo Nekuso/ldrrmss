@@ -49,7 +49,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
               </p> */}
               <p className="text-xs max-w-[181px] truncate text-slate-500">
                 Plate Number: {row.original.plate_number}
-                <span
+                {/* <span
                   className={cn(
                     "",
                     row.original.stock_quantity === 0 ? "text-red-500" : ""
@@ -57,7 +57,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
                 >
                   {" "}
                   {row.original.stock_quantity}
-                </span>
+                </span> */}
               </p>
             </div>
           </div>
@@ -90,6 +90,7 @@ export const initiateColumns = (dispatch: any, vehiclesCart: any) => {
                   addVehicleToCart({
                     vehicle_id: row.original.id,
                     name: row.original.name,
+                    plate_number: row.original.plate_number,
                     description: row.original.description,
                     image: row.original.image_url,
                     quantity: 1,

@@ -12,7 +12,6 @@ type cartItem = {
   quantity: number;
   status: string;
   created_at: string;
-  inventory: any;
 };
 
 export const initiateColumns = () => {

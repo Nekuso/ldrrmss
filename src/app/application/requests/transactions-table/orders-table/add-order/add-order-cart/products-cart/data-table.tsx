@@ -124,13 +124,13 @@ export function DataTable<TData, TValue>({
             </TableBody>
             <TableFooter className="bg-transparent border-lightBorder">
               <TableRow className="h-20">
-                <TableCell colSpan={2}>Total</TableCell>
-                <TableCell className="text-right text-md font-bold text-white">
-                  {`₱ ${data
+                <TableCell colSpan={1}>Total</TableCell>
+                <TableCell className="text-right text-md font-bold text-black">
+                  {` ${data
                     .reduce((acc, item: any) => {
-                      return acc + item.price * item.quantity;
+                      return acc + item.quantity;
                     }, 0)
-                    .toFixed(2)
+                    .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                 </TableCell>
               </TableRow>

@@ -76,7 +76,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         equipment_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
-        image: z.string(),
+        image_url: z.string(),
         quantity: z.coerce.number(),
       })
     ),
@@ -85,7 +85,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         foodsupply_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
-        image: z.string(),
+        image_url: z.string(),
         quantity: z.coerce.number(),
       })
     ),
@@ -94,7 +94,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         vehicle_id: z.coerce.number(),
         name: z.string(),
         description: z.string(),
-        image: z.string(),
+        image_url: z.string(),
         quantity: z.coerce.number(),
       })
     ),
@@ -167,7 +167,8 @@ export default function RequestForm({ setDialogOpen }: any) {
         .toFixed(3)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     )
-  ); [
+  );
+  [
     requestCart.foodsuppliesCart,
     requestCart.equipmentsCart,
     requestCart.vehiclesCart,
@@ -200,11 +201,16 @@ export default function RequestForm({ setDialogOpen }: any) {
       });
     });
   }
-  
-  function onCancel() {
+
+  function onCancel(event: React.MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
     dispatch(resetCart());
     dispatch(resetRequestvehicleCart());
     setDialogOpen(false);
+    sonner("✨Cancelled", {
+      description: `Service Order Cancelled!`,
+    });
   }
 
   function searchLocation(value: string) {
@@ -514,31 +520,33 @@ export default function RequestForm({ setDialogOpen }: any) {
                       style={{ border: "1px solid black" }}
                     ></iframe>
                     <div className="flex p-2 pt-4 gap-4">
-                    <FormField
-  control={form.control}
-  name="location_search"
-  render={({ field }) => (
-    <FormItem className="flex-grow">
-      <FormLabel className="text-xs">
-        Search Location
-      </FormLabel>
-      <FormControl>
-        <Input
-          className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-          {...field}
-          type="text"
-          placeholder="Enter Location"
-          value={field.value || ""}
-          onChange={async (e) => {
-            const searchResults = await searchLocation(e.target.value);
-            // Do something with searchResults, like displaying them in a dropdown
-          }}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+                      <FormField
+                        control={form.control}
+                        name="location_search"
+                        render={({ field }) => (
+                          <FormItem className="flex-grow">
+                            <FormLabel className="text-xs">
+                              Search Location
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+                                {...field}
+                                type="text"
+                                placeholder="Enter Location"
+                                value={field.value || ""}
+                                onChange={async (e) => {
+                                  const searchResults = await searchLocation(
+                                    e.target.value
+                                  );
+                                  // Do something with searchResults, like displaying them in a dropdown
+                                }}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <FormField
                         control={form.control}
                         name="location_coordinates"
@@ -613,7 +621,7 @@ export default function RequestForm({ setDialogOpen }: any) {
         <DialogFooter>
           <Button
             className="text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-red-500 primary-glow transition-all duration-300"
-            onClick={() => onCancel()}
+            onClick={(event) => onCancel(event)}
           >
             Cancel
           </Button>

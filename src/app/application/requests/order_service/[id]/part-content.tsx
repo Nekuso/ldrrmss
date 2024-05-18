@@ -99,7 +99,7 @@ export default function EquipmentContent({ equipment, brands }: any) {
                 </span>
                 <div className="w-full flex justify-between place-items-center min-w-0  bg-lightBorder rounded-lg">
                   <p className="text-md 2xl:text-lg text-white gap-2 max-w-[260px] p-3 truncate">
-                    ₱ {equipment[0].price}
+                    {equipment[0].price}
                   </p>
                   <TooltipProvider>
                     <Tooltip>

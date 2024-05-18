@@ -190,7 +190,7 @@ export default function RequestContent({ request }: any) {
                   foodsupplies Total
                 </p>
                 <p className="text-xs 2xl:text-sm text-slate-50">
-                  ₱{" "}
+                  {" "}
                   {request[0].use_foodsupplies
                     .reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
@@ -207,7 +207,7 @@ export default function RequestContent({ request }: any) {
                   equipments Total
                 </p>
                 <p className="text-xs 2xl:text-sm text-slate-50">
-                  ₱{" "}
+                  {" "}
                   {request[0].use_equipments
                     .reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
@@ -220,7 +220,7 @@ export default function RequestContent({ request }: any) {
 
             <div className="flex justify-between">
               <p className="text-xs 2xl:text-sm text-slate-400">Tax</p>
-              <p className="text-xs 2xl:text-sm text-slate-50">₱ 0</p>
+              <p className="text-xs 2xl:text-sm text-slate-50"> 0</p>
             </div>
 
             {request && request.length > 0 && request[0].discount && (
@@ -229,7 +229,7 @@ export default function RequestContent({ request }: any) {
                   Discount ({request[0].discount}%)
                 </p>
                 <p className="text-xs 2xl:text-sm text-slate-50">
-                  - ₱{" "}
+                  -{" "}
                   {(
                     (request[0].use_foodsupplies.reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
@@ -254,7 +254,7 @@ export default function RequestContent({ request }: any) {
                 <div className="flex justify-between">
                   <p className="text-xs 2xl:text-sm text-slate-400">Total</p>
                   <p className="text-md 2xl:text-lg text-slate-50 font-bold">
-                    ₱ {request[0].total_price.toFixed(2)}
+                    {request[0].total_price.toFixed(2)}
                   </p>
                 </div>
                 <div className="flex justify-between">
@@ -262,13 +262,13 @@ export default function RequestContent({ request }: any) {
                     Amount Paid
                   </p>
                   <p className="text-xs 2xl:text-sm text-slate-50">
-                    - ₱ {request[0].amount_paid.toFixed(2)}
+                    - {request[0].amount_paid.toFixed(2)}
                   </p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-xs 2xl:text-sm text-slate-400">Change</p>
                   <p className="text-xs 2xl:text-sm text-slate-50">
-                    ₱{" "}
+                    {" "}
                     {(request[0].amount_paid - request[0].total_price).toFixed(
                       2
                     )}
@@ -423,7 +423,7 @@ export default function RequestContent({ request }: any) {
                       </p>
                     </div>
                     <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                      ₱ {(item.price * item.quantity).toFixed(2)}
+                      {(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
                 ))}
@@ -433,7 +433,7 @@ export default function RequestContent({ request }: any) {
                   Total
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱{" "}
+                  {" "}
                   {request &&
                     request[0] &&
                     request[0].use_foodsupplies &&
@@ -468,7 +468,7 @@ export default function RequestContent({ request }: any) {
                         </p>
                       </div>
                       <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                        ₱ {(item.price * item.quantity).toFixed(2)}
+                        {(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   ))}
@@ -479,7 +479,7 @@ export default function RequestContent({ request }: any) {
                     Total
                   </p>
                   <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                    ₱{" "}
+                    {" "}
                     {request &&
                       request[0] &&
                       request[0].use_equipments &&
@@ -501,7 +501,7 @@ export default function RequestContent({ request }: any) {
                   Subtotal
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱{" "}
+                  {" "}
                   {request &&
                     request[0] &&
                     request[0].use_foodsupplies &&
@@ -525,7 +525,7 @@ export default function RequestContent({ request }: any) {
                   Tax
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱ 0
+                  0
                 </p>
               </div>
               <div className="flex justify-between">
@@ -533,7 +533,7 @@ export default function RequestContent({ request }: any) {
                   VAT
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱ 0
+                  0
                 </p>
               </div>
               <div className="flex justify-between">
@@ -544,7 +544,7 @@ export default function RequestContent({ request }: any) {
                     : ""}
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  - ₱{" "}
+                  -{" "}
                   {request &&
                     request[0] &&
                     request[0].use_foodsupplies &&
@@ -574,7 +574,7 @@ export default function RequestContent({ request }: any) {
                   Total
                 </p>
                 <p className="text-md 2xl:text-lg text-black space-mono-regular tracking-tighter font-bold">
-                  ₱{" "}
+                  {" "}
                   {request && request[0] && request[0].total_price
                     ? request[0].total_price.toFixed(2)
                     : "0.00"}
@@ -585,7 +585,7 @@ export default function RequestContent({ request }: any) {
                   Amount Paid
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  - ₱{" "}
+                  -{" "}
                   {request && request[0] && request[0].amount_paid
                     ? request[0].amount_paid.toFixed(2)
                     : "0.00"}
@@ -596,7 +596,7 @@ export default function RequestContent({ request }: any) {
                   Change
                 </p>
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  ₱{" "}
+                  {" "}
                   {request &&
                   request[0] &&
                   request[0].amount_paid &&
