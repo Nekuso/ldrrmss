@@ -28,26 +28,26 @@ export default function Page() {
     getRoles();
   }, []);
 
-  useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    const subscribedChannel = supabase
-      .channel("employees-follow-up")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "employees" },
-        (payload: any) => {
-          getEmployees();
-          sonner("Announcment", {
-            description: `${payload.new.first_name} ${payload.new.last_name} has been updated`,
-          });
-        }
-      )
-      .subscribe();
+  // useEffect(() => {
+  //   const supabase = createSupabaseBrowserClient();
+  //   const subscribedChannel = supabase
+  //     .channel("employees-follow-up")
+  //     .on(
+  //       "postgres_changes",
+  //       { event: "*", schema: "public", table: "employees" },
+  //       (payload: any) => {
+  //         getEmployees();
+  //         sonner("Announcment", {
+  //           description: `${payload.new.first_name} ${payload.new.last_name} has been updated`,
+  //         });
+  //       }
+  //     )
+  //     .subscribe();
 
-    return () => {
-      supabase.removeChannel(subscribedChannel);
-    };
-  }, []);
+  //   return () => {
+  //     supabase.removeChannel(subscribedChannel);
+  //   };
+  // }, []);
 
   return (
     <>
