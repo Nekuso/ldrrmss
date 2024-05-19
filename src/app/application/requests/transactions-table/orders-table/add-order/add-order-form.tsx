@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -214,27 +214,43 @@ export default function RequestForm({ setDialogOpen }: any) {
   }
 
   //Map start
-  const AddOrderForm = () => {
-    const [mapUrl, setMapUrl] = useState(
-      "https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
-    );
 
-    async function searchLocation(value: string) {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${value}`
-      );
-      const data = await response.json();
-      return data;
-    }
-  };
-  function setMapUrl(arg0: string) {
-    throw new Error("Function not implemented.");
-  }
+  // function SearchField({ field }: { field: any }) {
+  //   const map = useMap();
 
-  function searchLocation(value: string) {
-    throw new Error("Function not implemented.");
-  }
-  const mapUrl = "";
+  //   async function searchLocation(location: any): Promise<void> {
+  //     const response = await fetch(
+  //       `https://nominatim.openstreetmap.org/search?format=json&q=${location}`
+  //     );
+  //     const searchResults = await response.json();
+  //     if (searchResults && searchResults[0]) {
+  //       const { lat, lon } = searchResults[0];
+  //       map.flyTo([lat, lon], 13); // Fly to the location with zoom level 13
+  //     }
+  //   }
+
+  //   // Call searchLocation when the field value changes
+  //   useEffect(() => {
+  //     searchLocation(field.value);
+  //   }, [field.value]);
+
+  //   return null; // This component does not render anything
+  // }
+  // function searchLocation(value: string): void {
+  //   const map = useMap();
+
+  //   fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${value}`)
+  //     .then((response) => response.json())
+  //     .then((searchResults) => {
+  //       if (searchResults && searchResults[0]) {
+  //         const { lat, lon } = searchResults[0];
+  //         map.flyTo([lat, lon], 13); // Fly to the location with zoom level 13
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // }
 
   //Map end
 
@@ -360,17 +376,6 @@ export default function RequestForm({ setDialogOpen }: any) {
                               </FormItem>
                             )}
                           />
-                          {/* <FormField
-                            control={form.control}
-                            name="requester_email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">Email</FormLabel>
-                                <BranchInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          /> */}
                         </div>
                         <div className="w-[75%] flex flex-col">
                           <FormField
@@ -403,72 +408,6 @@ export default function RequestForm({ setDialogOpen }: any) {
                           />
                         </div>
                       </div>
-                      {/* <div className="w-full flex gap-4">
-                        <div className="w-[75%] flex flex-col">
-                        <FormField
-                            control={form.control}
-                            name="requester_email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">Email</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                    type="text"
-                                    placeholder="example@gmail.com"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-[75%] flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="amount_paid"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Amount Paid
-                                  </FormLabel>
-                                <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg ">
-                                  <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
-                                  <TbCurrencyPeso className="h-full w-5 text-center" />
-                                  </div>
-                                  <FormControl>
-                                    <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                      type="number"
-                                      placeholder="Amount"
-                                      value={field.value || ""}
-                                    />
-                                  </FormControl>
-                                </div>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                            />
-                        </div>
-                        <div className="w-full flex flex-col ">
-                        <FormField
-                            control={form.control}
-                            name="discount"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                Discount
-                                </FormLabel>
-                                <DiscountInput data={field} />
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                            />
-                        </div>
-                      </div> */}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -529,54 +468,41 @@ export default function RequestForm({ setDialogOpen }: any) {
                     Search Location
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <iframe
-                      width="100%"
-                      height={500}
-                      frameBorder="0"
-                      scrolling="no"
-                      marginHeight={0}
-                      marginWidth={0}
-                      src={mapUrl}
-                      style={{ border: "1px solid black" }}
-                    ></iframe>
-                    <div className="flex p-2 pt-4 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="location_search"
-                        render={({ field }) => (
-                          <FormItem className="flex-grow">
-                            <FormLabel className="text-xs">
-                              Search Location
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                                {...field}
-                                type="text"
-                                placeholder="Enter Location"
-                                defaultValue={field.value || ""}
-                                onChange={async (e) => {
-                                  const searchResults = await searchLocation(
-                                    e.target.value
-                                  );
-                                  if (searchResults && searchResults[0]) {
-                                    const { lat, lon } = searchResults[0];
-                                    setMapUrl(
-                                      `https://www.openstreetmap.org/export/embed.html?bbox=${
-                                        lon - 0.0018
-                                      }%2C${lat - 0.0018}%2C${lon + 0.0018}%2C${
-                                        lat + 0.0018
-                                      }&amp;layer=mapnik`
-                                    );
-                                  }
-                                }}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                    <>
+                      <MapContainer
+                        center={[45, 10]}
+                        zoom={4}
+                        style={{ height: "500px", width: "100%" }}
+                      >
+                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                      </MapContainer>
+                      <div className="flex p-2 pt-4 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="location_search"
+                          render={({ field }) => (
+                            <FormItem className="flex-grow">
+                              <FormLabel className="text-xs">
+                                Search Location
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+                                  {...field}
+                                  type="text"
+                                  placeholder="Enter Location"
+                                  defaultValue={field.value || ""}
+                                  onChange={(e) => {
+                                    field.onChange(e.target.value);
+                                  }}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
