@@ -213,9 +213,30 @@ export default function RequestForm({ setDialogOpen }: any) {
     });
   }
 
+  //Map start
+  const AddOrderForm = () => {
+    const [mapUrl, setMapUrl] = useState(
+      "https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
+    );
+
+    async function searchLocation(value: string) {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${value}`
+      );
+      const data = await response.json();
+      return data;
+    }
+  };
+  function setMapUrl(arg0: string) {
+    throw new Error("Function not implemented.");
+  }
+
   function searchLocation(value: string) {
     throw new Error("Function not implemented.");
   }
+  const mapUrl = "";
+
+  //Map end
 
   return (
     <Form {...form}>
@@ -384,7 +405,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                       </div>
                       {/* <div className="w-full flex gap-4">
                         <div className="w-[75%] flex flex-col">
-                          <FormField
+                        <FormField
                             control={form.control}
                             name="requester_email"
                             render={({ field }) => (
@@ -412,15 +433,15 @@ export default function RequestForm({ setDialogOpen }: any) {
                               <FormItem>
                                 <FormLabel className="text-xs">
                                   Amount Paid
-                                </FormLabel>
+                                  </FormLabel>
                                 <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg ">
                                   <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
-                                    <TbCurrencyPeso className="h-full w-5 text-center" />
+                                  <TbCurrencyPeso className="h-full w-5 text-center" />
                                   </div>
                                   <FormControl>
                                     <Input
-                                      className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                      {...field}
+                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                                    {...field}
                                       type="number"
                                       placeholder="Amount"
                                       value={field.value || ""}
@@ -428,24 +449,24 @@ export default function RequestForm({ setDialogOpen }: any) {
                                   </FormControl>
                                 </div>
                                 <FormMessage />
-                              </FormItem>
+                                </FormItem>
                             )}
-                          />
+                            />
                         </div>
                         <div className="w-full flex flex-col ">
-                          <FormField
+                        <FormField
                             control={form.control}
                             name="discount"
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="text-xs">
-                                  Discount
+                                Discount
                                 </FormLabel>
                                 <DiscountInput data={field} />
                                 <FormMessage />
-                              </FormItem>
+                                </FormItem>
                             )}
-                          />
+                            />
                         </div>
                       </div> */}
                     </div>
@@ -503,7 +524,6 @@ export default function RequestForm({ setDialogOpen }: any) {
                     />
                   </AccordionContent>
                 </AccordionItem>
-
                 <AccordionItem value="item-4">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Search Location
@@ -516,7 +536,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                       scrolling="no"
                       marginHeight={0}
                       marginWidth={0}
-                      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0918407440185547%2C51.50332341270031%2C-0.08812665939331056%2C51.50595084191568&amp;layer=mapnik"
+                      src={mapUrl}
                       style={{ border: "1px solid black" }}
                     ></iframe>
                     <div className="flex p-2 pt-4 gap-4">
@@ -534,34 +554,22 @@ export default function RequestForm({ setDialogOpen }: any) {
                                 {...field}
                                 type="text"
                                 placeholder="Enter Location"
-                                value={field.value || ""}
+                                defaultValue={field.value || ""}
                                 onChange={async (e) => {
                                   const searchResults = await searchLocation(
                                     e.target.value
                                   );
-                                  // Do something with searchResults, like displaying them in a dropdown
+                                  if (searchResults && searchResults[0]) {
+                                    const { lat, lon } = searchResults[0];
+                                    setMapUrl(
+                                      `https://www.openstreetmap.org/export/embed.html?bbox=${
+                                        lon - 0.0018
+                                      }%2C${lat - 0.0018}%2C${lon + 0.0018}%2C${
+                                        lat + 0.0018
+                                      }&amp;layer=mapnik`
+                                    );
+                                  }
                                 }}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="location_coordinates"
-                        render={({ field }) => (
-                          <FormItem className="flex-grow">
-                            <FormLabel className="text-xs">
-                              Coordinates
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                                {...field}
-                                type="text"
-                                placeholder="Show coordinates"
-                                value={field.value || ""}
                               />
                             </FormControl>
                             <FormMessage />
