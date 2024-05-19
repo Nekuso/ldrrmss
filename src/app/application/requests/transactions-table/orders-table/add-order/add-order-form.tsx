@@ -1,4 +1,3 @@
-
 import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -16,8 +15,8 @@ import { initiateColumns as initiateFoodSupplyCartColumns } from "./add-order-ca
 import { initiateColumns as initiateEquipmentsCartColumns } from "./add-order-cart/parts-cart/columns";
 import { initiateColumns as initiateVehiclesCartColumns } from "./add-order-cart/vehicles-cart/columns";
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet-routing-machine';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet-routing-machine";
 
 import {
   Form,
@@ -55,7 +54,10 @@ export default function RequestForm({ setDialogOpen }: any) {
   const { createRequest } = useRequests();
   const dispatch = useDispatch();
   const router = useRouter();
-  const [coordinates, setCoordinates] = useState([-0.0918407440185547, 51.50332341270031, -0.08812665939331056, 51.50595084191568]);
+  const [coordinates, setCoordinates] = useState([
+    -0.0918407440185547, 51.50332341270031, -0.08812665939331056,
+    51.50595084191568,
+  ]);
 
   const requestCart = useSelector((state: any) => state.requestCart);
   const requestCartOptions = useSelector(
@@ -509,91 +511,101 @@ export default function RequestForm({ setDialogOpen }: any) {
                 </AccordionItem>
 
                 <AccordionItem value="item-4">
-  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-    Search Location
-  </AccordionTrigger>
-  <AccordionContent className="bg-darkComponentBg rounded-xl">
-    <iframe
-      width="100%"
-      height={500}
-      frameBorder="0"
-      scrolling="no"
-      marginHeight={0}
-      marginWidth={0}
-      src={`https://www.openstreetmap.org/export/embed.html?bbox=${coordinates[0]}%2C${coordinates[1]}%2C${coordinates[0]}%2C${coordinates[1]}&amp;layer=mapnik`}
-      style={{ border: "1px solid black" }}
-    ></iframe>
-    <div className="flex p-2 pt-4 gap-4">
-      <FormField
-        control={form.control}
-        name="location_from"
-        render={({ field }) => (
-          <FormItem className="flex-grow">
-            <FormLabel className="text-xs">From</FormLabel>
-            <FormControl>
-              <Input
-                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                {...field}
-                type="text"
-                placeholder="Enter From Location"
-                onChange={async (e) => {
-                  const searchQuery = e.target.value;
-                  field.onChange(e); // Update the value of the input
-                  if (searchQuery.length > 0) {
-                    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`);
-                    const searchResults = await response.json();
-                    if (searchResults.length > 0) {
-                      setFrom([searchResults[0].lat, searchResults[0].lon]);
-                    }
-                  }
-                }}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={form.control}
-        name="location_to"
-        render={({ field }) => (
-          <FormItem className="flex-grow">
-            <FormLabel className="text-xs">To</FormLabel>
-            <FormControl>
-              <Input
-                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                {...field}
-                type="text"
-                placeholder="Enter To Location"
-                onChange={async (e) => {
-                  const searchQuery = e.target.value;
-                  field.onChange(e); // Update the value of the input
-                  if (searchQuery.length > 0) {
-                    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`);
-                    const searchResults = await response.json();
-                    if (searchResults.length > 0) {
-                      setTo([searchResults[0].lat, searchResults[0].lon]);
-                    }
-                  }
-                }}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <button
-        onClick={() => {
-          if (from && to) {
-            // Add your routing logic here
-          }
-        }}
-      >
-        Go
-      </button>
-    </div>
-  </AccordionContent>
-</AccordionItem>
+                  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
+                    Search Location
+                  </AccordionTrigger>
+                  <AccordionContent className="bg-darkComponentBg rounded-xl">
+                    <iframe
+                      width="100%"
+                      height={500}
+                      frameBorder="0"
+                      scrolling="no"
+                      marginHeight={0}
+                      marginWidth={0}
+                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${coordinates[0]}%2C${coordinates[1]}%2C${coordinates[0]}%2C${coordinates[1]}&amp;layer=mapnik`}
+                      style={{ border: "1px solid black" }}
+                    ></iframe>
+                    <div className="flex p-2 pt-4 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="location_from"
+                        render={({ field }) => (
+                          <FormItem className="flex-grow">
+                            <FormLabel className="text-xs">From</FormLabel>
+                            <FormControl>
+                              <Input
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+                                {...field}
+                                type="text"
+                                placeholder="Enter From Location"
+                                onChange={async (e) => {
+                                  const searchQuery = e.target.value;
+                                  field.onChange(e); // Update the value of the input
+                                  if (searchQuery.length > 0) {
+                                    const response = await fetch(
+                                      `https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`
+                                    );
+                                    const searchResults = await response.json();
+                                    if (searchResults.length > 0) {
+                                      setFrom([
+                                        searchResults[0].lat,
+                                        searchResults[0].lon,
+                                      ]);
+                                    }
+                                  }
+                                }}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="location_to"
+                        render={({ field }) => (
+                          <FormItem className="flex-grow">
+                            <FormLabel className="text-xs">To</FormLabel>
+                            <FormControl>
+                              <Input
+                                className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
+                                {...field}
+                                type="text"
+                                placeholder="Enter To Location"
+                                onChange={async (e) => {
+                                  const searchQuery = e.target.value;
+                                  field.onChange(e); // Update the value of the input
+                                  if (searchQuery.length > 0) {
+                                    const response = await fetch(
+                                      `https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`
+                                    );
+                                    const searchResults = await response.json();
+                                    if (searchResults.length > 0) {
+                                      setTo([
+                                        searchResults[0].lat,
+                                        searchResults[0].lon,
+                                      ]);
+                                    }
+                                  }
+                                }}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <button
+                        onClick={() => {
+                          if (from && to) {
+                            // Add your routing logic here
+                          }
+                        }}
+                      >
+                        Go
+                      </button>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
               </Accordion>
 
               <div className="w-full flex-col relative">
