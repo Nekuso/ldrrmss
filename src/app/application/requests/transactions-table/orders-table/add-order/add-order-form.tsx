@@ -1,4 +1,13 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
+import { useFormContext, Controller } from "react-hook-form";
+
 import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -46,6 +55,8 @@ import { useRouter } from "next/navigation";
 import StatusInput from "./status-input";
 import RescuerInput from "./rescuer-input";
 import { resetRequestvehicleCart } from "@/redux/slices/orderVehicleCartSlice";
+// import { MapComponent } from "./MapComponent";
+import { LocationSearch } from "./LocationSearch";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
@@ -468,41 +479,12 @@ export default function RequestForm({ setDialogOpen }: any) {
                     Search Location
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <>
-                      <MapContainer
-                        center={[45, 10]}
-                        zoom={4}
-                        style={{ height: "500px", width: "100%" }}
-                      >
-                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                      </MapContainer>
-                      <div className="flex p-2 pt-4 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="location_search"
-                          render={({ field }) => (
-                            <FormItem className="flex-grow">
-                              <FormLabel className="text-xs">
-                                Search Location
-                              </FormLabel>
-                              <FormControl>
-                                <Input
-                                  className="rounded-lg bg-lightComponentBg border-slate-600/50 w-full"
-                                  {...field}
-                                  type="text"
-                                  placeholder="Enter Location"
-                                  defaultValue={field.value || ""}
-                                  onChange={(e) => {
-                                    field.onChange(e.target.value);
-                                  }}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                    <div className="flex flex-row gap-4 px-4 py-2 w-full">
+                      <LocationSearch control={form.control} />
+                      <div className="flex flex-col">
+                        <MapContainer></MapContainer>
                       </div>
-                    </>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
