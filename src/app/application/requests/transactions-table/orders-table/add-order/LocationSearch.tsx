@@ -21,6 +21,24 @@ export const LocationSearch = ({ control }: { control: any }) => {
     popupAnchor: [-3, -76],
   });
 
+  // Remove the existing declaration of 'fetchRoute'
+  // const fetchRoute = async (from: [number, number], to: [number, number]) => {
+  const newFetchRoute = async (
+    from: [number, number],
+    to: [number, number]
+  ) => {
+    const response = await fetch(
+      `https://api.openrouteservice.org/v2/directions/driving-car?api_key=your_api_key&start=${from[1]},${from[0]}&end=${to[1]},${to[0]}`
+    );
+    const data = await response.json();
+    if (data.features && data.features[0] && data.features[0].geometry) {
+      return data.features[0].geometry.coordinates.map(
+        ([lon, lat]: [number, number]) => [lat, lon]
+      );
+    }
+    return null;
+  };
+
   const fetchLocation = async (location: string) => {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${location}`
