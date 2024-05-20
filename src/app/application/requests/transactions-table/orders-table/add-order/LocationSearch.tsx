@@ -53,55 +53,88 @@ export const LocationSearch = ({ control }: { control: any }) => {
 
   return (
     <>
-      <Controller
-        name="start_location"
-        control={control}
-        render={({ field }) => (
-          <Input
-            {...field}
-            type="text"
-            placeholder="Enter Start Location"
-            defaultValue={field.value || ""}
-            onChange={async (e) => {
-              field.onChange(e.target.value);
-              const newPosition = await fetchLocation(e.target.value);
-              setStartPosition(newPosition);
-            }}
-          />
-        )}
-      />
-      <Controller
-        name="end_location"
-        control={control}
-        render={({ field }) => (
-          <Input
-            {...field}
-            type="text"
-            placeholder="Enter End Location"
-            defaultValue={field.value || ""}
-            onChange={async (e) => {
-              field.onChange(e.target.value);
-              const newPosition = await fetchLocation(e.target.value);
-              setEndPosition(newPosition);
-            }}
-          />
-        )}
-      />
-      <Button onClick={handleGoClick}>Go</Button>
-      <MapContainer
-        center={[45, 10]}
-        zoom={4}
-        style={{ height: "800px", width: "100%" }}
+      <div className="grid grid-cols-5 gap-4">
+        <Controller
+          name="start_location"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              type="text"
+              placeholder="Enter Start Location"
+              defaultValue={field.value || ""}
+              onChange={async (e) => {
+                field.onChange(e.target.value);
+                const newPosition = await fetchLocation(e.target.value);
+                setStartPosition(newPosition);
+              }}
+            />
+          )}
+        />
+        <Controller
+          name="start_coordinates"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              type="text"
+              placeholder="Start Coordinates"
+              value={startPosition ? startPosition.join(", ") : ""}
+              readOnly
+            />
+          )}
+        />
+        <Controller
+          name="end_location"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              type="text"
+              placeholder="Enter End Location"
+              defaultValue={field.value || ""}
+              onChange={async (e) => {
+                field.onChange(e.target.value);
+                const newPosition = await fetchLocation(e.target.value);
+                setEndPosition(newPosition);
+              }}
+            />
+          )}
+        />
+        <Controller
+          name="end_coordinates"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              type="text"
+              placeholder="End Coordinates"
+              value={endPosition ? endPosition.join(", ") : ""}
+              readOnly
+            />
+          )}
+        />
+        <Button onClick={handleGoClick}>Go</Button>
+      </div>
+      <div
+        className="mt-4 d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {startPosition && (
-          <Marker position={startPosition} icon={customMarkerIcon} />
-        )}
-        {endPosition && (
-          <Marker position={endPosition} icon={customMarkerIcon} />
-        )}
-        {route && <Polyline positions={route} />}
-      </MapContainer>
+        <MapContainer
+          center={[45, 10]}
+          zoom={4}
+          style={{ height: "500px", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {startPosition && (
+            <Marker position={startPosition} icon={customMarkerIcon} />
+          )}
+          {endPosition && (
+            <Marker position={endPosition} icon={customMarkerIcon} />
+          )}
+          {route && <Polyline positions={route} />}
+        </MapContainer>
+      </div>
     </>
   );
 };

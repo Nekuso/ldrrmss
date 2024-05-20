@@ -478,10 +478,10 @@ export default function RequestForm({ setDialogOpen }: any) {
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Search Location
                   </AccordionTrigger>
-                  <AccordionContent className="bg-darkComponentBg rounded-xl">
+                  <AccordionContent className="bg-darkComponentBg rounded-xl flex flex-row">
                     <div className="flex flex-row gap-4 px-4 py-2 w-full">
-                      <LocationSearch control={form.control} />
                       <div className="flex flex-col">
+                        <LocationSearch control={form.control} />
                         <MapContainer></MapContainer>
                       </div>
                     </div>
