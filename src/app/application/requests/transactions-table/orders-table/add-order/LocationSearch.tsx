@@ -120,6 +120,38 @@ export const LocationSearch = ({ control }: { control: any }) => {
     return route ? <Polyline positions={route} color="red" /> : null;
   };
 
+  const [currentPosition, setCurrentPosition] = useState<
+    [number, number] | null
+  >(null);
+
+  const [useDeviceLocation, setUseDeviceLocation] = useState(false);
+
+  useEffect(() => {
+    if (navigator.geolocation && useDeviceLocation) {
+      navigator.geolocation.watchPosition((position) => {
+        setCurrentPosition([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, [useDeviceLocation]);
+
+  useEffect(() => {
+    const start = useDeviceLocation ? currentPosition : startPosition;
+    if (start && endPosition) {
+      fetchRoute(start, endPosition).then((routeData) => {
+        if (routeData) {
+          setRoute(routeData.coordinates);
+          setInstructions(routeData.instructions);
+          zoomToRoute(routeData.coordinates);
+        }
+      });
+    }
+  }, [useDeviceLocation, currentPosition, startPosition, endPosition]);
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -191,6 +223,15 @@ export const LocationSearch = ({ control }: { control: any }) => {
         >
           Go
         </Button>
+        <button
+          type="button"
+          className="items-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
+          onClick={() => setUseDeviceLocation(!useDeviceLocation)}
+        >
+          {useDeviceLocation
+            ? "Use manual start location"
+            : "Use device location as start"}
+        </button>
         <button
           type="button"
           className="items-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
