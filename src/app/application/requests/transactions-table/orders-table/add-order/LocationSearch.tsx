@@ -21,20 +21,19 @@ export const LocationSearch = ({ control }: { control: any }) => {
     popupAnchor: [-3, -76],
   });
 
-  // Remove the existing declaration of 'fetchRoute'
-  // const fetchRoute = async (from: [number, number], to: [number, number]) => {
-  const newFetchRoute = async (
-    from: [number, number],
-    to: [number, number]
-  ) => {
+  const fetchRoute = async (from: [number, number], to: [number, number]) => {
     const response = await fetch(
-      `https://api.openrouteservice.org/v2/directions/driving-car?api_key=your_api_key&start=${from[1]},${from[0]}&end=${to[1]},${to[0]}`
+      `https://api.openrouteservice.org/v2/directions/driving-car?api_key=<your_api_key>&start=${from[1]},${from[0]}&end=${to[1]},${to[0]}&instructions=true`
     );
     const data = await response.json();
     if (data.features && data.features[0] && data.features[0].geometry) {
-      return data.features[0].geometry.coordinates.map(
-        ([lon, lat]: [number, number]) => [lat, lon]
+      const route = data.features[0].geometry.coordinates.map(
+        ([lon, lat]: [number, number]) => [lon, lat]
       );
+      const instructions = data.features[0].properties.segments[0].steps.map(
+        (step: any) => step.instruction
+      );
+      return { route, instructions };
     }
     return null;
   };
@@ -51,26 +50,37 @@ export const LocationSearch = ({ control }: { control: any }) => {
     return null;
   };
 
-  const fetchRoute = async (from: [number, number], to: [number, number]) => {
-    // Fetch the route from the API and set it
-    // This is a placeholder, replace with your actual implementation
-    return [
-      [from[0], from[1]],
-      [to[0], to[1]],
-    ];
-  };
+  const [instructions, setInstructions] = useState<string[]>([]); // Declare the instructions state variable
 
   const handleGoClick = async () => {
     if (startPosition && endPosition) {
-      const newRoute: [number, number][] = (
-        await fetchRoute(startPosition, endPosition)
-      ).map(([lat, lon]) => [lat, lon]);
-      setRoute(newRoute);
+      const routeData = await fetchRoute(startPosition, endPosition);
+      if (routeData) {
+        const { route, instructions } = routeData;
+        const newRoute: [number, number][] = route.map(
+          ([lat, lon]: [number, number]) => [lat, lon]
+        );
+        setRoute(newRoute);
+        setInstructions(instructions); // set the instructions
+      }
     }
   };
 
   return (
     <>
+      <div>
+        <ul>
+          {instructions.map(
+            (
+              instruction: string,
+              index: number // Specify the types for the instruction and index parameters
+            ) => (
+              <li key={index}>{instruction}</li>
+            )
+          )}
+        </ul>
+      </div>
+
       <div className="grid grid-cols-5 gap-4">
         <Controller
           name="start_location"
