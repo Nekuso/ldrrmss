@@ -41,30 +41,39 @@ export const LocationSearch = ({ control }: { control: any }) => {
     return null;
   };
 
-  const [instructions, setInstructions] = useState<string[]>([]); // Declare the instructions state variable
+  const [instructions, setInstructions] = useState<string[]>([]);
+
   const fetchRoute = async (from: [number, number], to: [number, number]) => {
+    console.log("Fetching route from:", from, "to:", to);
     try {
       const response = await fetch(
-        `https://router.project-osrm.org/route/v1/driving/${from[1]},${from[0]};${to[1]},${to[0]}?overview=full&steps=true`
+        `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf62489d58851d849f4aaabf3b5400c49deaf2&start=${from[1]},${from[0]}&end=${to[1]},${to[0]}`
       );
       const data = await response.json();
+      console.log("Response from OpenRouteService API:", data);
       if (
-        !data.routes ||
-        !data.routes[0] ||
-        !data.routes[0].geometry ||
-        !data.routes[0].geometry.coordinates
+        !data.features ||
+        !data.features[0] ||
+        !data.features[0].geometry ||
+        !data.features[0].geometry.coordinates
       ) {
-        console.error("Unexpected response format from OSRM API:", data);
+        console.error(
+          "Unexpected response format from OpenRouteService API:",
+          data
+        );
         return { coordinates: [], instructions: [] };
       }
       const coordinates: [number, number][] =
-        data.routes[0].geometry.coordinates;
-      const instructions: string[] = data.routes[0].legs.flatMap((leg: any) =>
-        leg.steps.map((step: any) => step.maneuver.instruction)
-      );
+        data.features[0].geometry.coordinates.map(
+          ([lon, lat]: [number, number]) => [lat, lon]
+        );
+      const instructions: string[] =
+        data.features[0].properties.segments[0].steps.map(
+          (step: any) => step.instruction
+        );
       return { coordinates, instructions };
     } catch (error) {
-      console.error("Error fetching route from OSRM API:", error);
+      console.error("Error fetching route from OpenRouteService API:", error);
       return { coordinates: [], instructions: [] };
     }
   };
@@ -73,12 +82,9 @@ export const LocationSearch = ({ control }: { control: any }) => {
     if (startPosition && endPosition) {
       const routeData = await fetchRoute(startPosition, endPosition);
       if (routeData) {
-        const newRoute: [number, number][] = routeData.coordinates.map(
-          ([lon, lat]: [number, number]) => [lat, lon]
-        );
-        setRoute(newRoute); // Remove the square brackets around newRoute
-        setInstructions(routeData.instructions); // Save the instructions to state
-        zoomToRoute(newRoute); // Add this line
+        setRoute(routeData.coordinates);
+        setInstructions(routeData.instructions);
+        zoomToRoute(routeData.coordinates);
       }
     }
   };
@@ -99,12 +105,17 @@ export const LocationSearch = ({ control }: { control: any }) => {
 
     useEffect(() => {
       if (route && route.length > 0) {
-        const bounds: LatLngBoundsLiteral = route.map(
-          ([lat, lon]) => [lat, lon] as LatLngTuple
-        );
+        const latitudes = route.map(([lat, _]) => lat);
+        const longitudes = route.map(([_, lon]) => lon);
+        const bounds: LatLngBoundsLiteral = [
+          [Math.min(...latitudes), Math.min(...longitudes)],
+          [Math.max(...latitudes), Math.max(...longitudes)],
+        ];
         map.fitBounds(bounds);
       }
     }, [route, map]);
+
+    console.log(route); // Add this line
 
     return route ? <Polyline positions={route} color="red" /> : null;
   };
@@ -192,6 +203,11 @@ export const LocationSearch = ({ control }: { control: any }) => {
         className="mt-4 d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
       >
+        <div className="instructions">
+          {instructions.map((instruction, index) => (
+            <p key={index}>{instruction}</p>
+          ))}
+        </div>
         <MapContainer
           center={startPosition || [9.4401, 123.187]}
           zoom={13}
