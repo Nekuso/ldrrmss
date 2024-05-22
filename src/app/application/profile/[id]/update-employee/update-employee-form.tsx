@@ -59,10 +59,10 @@ export default function EmployeeForm({
       .string()
       .min(1, { message: "Role is required" })
       .transform((arg) => new Number(arg)),
-    branch: z
-      .string()
-      .min(1, { message: "Branch is required" })
-      .transform((arg) => new Number(arg)),
+    // branch: z
+    //   .string()
+    //   .min(1, { message: "Branch is required" })
+    //   .transform((arg) => new Number(arg)),
     status: z.string().default("Available"),
   });
   const form = useForm<z.infer<typeof employeeSchema>>({
@@ -78,7 +78,7 @@ export default function EmployeeForm({
       gender: employee.gender,
       dob: employee.dob,
       role: employee.roles.id.toString(),
-      branch: employee.branches.id.toString(),
+      // branch: employee.branches.id.toString(),
       status: employee.status,
     },
   });
@@ -282,7 +282,7 @@ export default function EmployeeForm({
             </div>
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col gap-2">
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="branch"
                   render={({ field }) => (
@@ -292,7 +292,7 @@ export default function EmployeeForm({
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
               </div>
             </div>
             <div className="w-full flex gap-4 place-items-end">

@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { useEmployees } from "@/hooks/useEmployees";
 import { useRoles } from "@/hooks/useRoles";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Loading from "./skeleton";
 import UserContent from "./user-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
@@ -12,6 +12,7 @@ import { ROLES } from "@/lib/actions/roles";
 import { useSelector } from "react-redux";
 import { useAuthMiddleware } from "@/lib/actions/useMiddleware";
 import { useRouter } from "next/router";
+import EmployeeNotFound from "./not-found";
 
 export default function Page({ params }: { params: any }) {
   const router = useRouter();
@@ -28,39 +29,50 @@ export default function Page({ params }: { params: any }) {
       </div>
     );
   }
-
+  const [error, setError] = useState(null);
   const { getEmployee, currentEmployeeData } = useEmployees();
   const { getRoles, allRolesData } = useRoles();
 
   useEffect(() => {
-    getEmployee(params.id, 2000);
-    getRoles();
+    const initialFetch = async () => {
+      const result = await getEmployee(params.id, 1000);
+      if (result) setError(result);
+      getRoles();
+    };
+
+    initialFetch();
   }, []);
 
   useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    const subscribedChannel = supabase
-      .channel("employee-follow-up")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "employees" },
-        (payload: any) => {
-          getEmployee(params.id, 0);
-        }
-      )
-      .subscribe();
+    if (!error) {
+      const supabase = createSupabaseBrowserClient();
+      const subscribedChannel = supabase
+        .channel("employee-follow-up")
+        .on(
+          "postgres_changes",
+          {
+            event: "*",
+            schema: "public",
+            table: "employees",
+            filter: `id=eq.${params.id}`,
+          },
+          (payload: any) => {
+            getEmployee(params.id, 0);
+          }
+        )
+        .subscribe();
 
-    return () => {
-      supabase.removeChannel(subscribedChannel);
-    };
+      return () => {
+        supabase.removeChannel(subscribedChannel);
+      };
+    }
   }, []);
 
   return (
-    //   <pre className="w-[400px]">
-    //     <code>{JSON.stringify(currentEmployeeData, null, 2)}</code>
-    //   </pre>
     <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
-      {currentEmployeeData.length === 0 ? (
+      {error ? (
+        <EmployeeNotFound />
+      ) : currentEmployeeData.length === 0 ? (
         <Loading />
       ) : (
         <UserContent

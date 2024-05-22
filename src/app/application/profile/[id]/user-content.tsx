@@ -12,10 +12,10 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FaEye } from "react-icons/fa";
 import { MdShowChart } from "react-icons/md";
-import { Rating as ReactRating, Star } from "@smastrom/react-rating";
+// import { Rating as ReactRating, Star } from "@smastrom/react-rating";
 import { format } from "date-fns";
 
-import Banner from "@/images/banner.jpg";
+// import Banner from "@/images/banner.jpg";
 import Image from "next/image";
 import { LuRefreshCcw } from "react-icons/lu";
 import UpdateEmployeeButton from "./update-employee/update-employee-dialog";
@@ -23,7 +23,7 @@ import UpdateEmployeeStatusButton from "./update-employee-status/update-employee
 
 export default function UserContent({
   employee,
-  branches,
+  // branches,
   roles,
   currentSession,
 }: any) {
@@ -98,11 +98,11 @@ export default function UserContent({
       <div className="w-full h-full flex flex-col gap-7 rounded-xl">
         <div className="w-full p-6 bg-darkComponentBg flex flex-col gap-2 2xl:gap-4 rounded-xl shadow-lg border border-lightBorder">
           <div className="w-full h-[170px] 2xl:h-[210px] bg-black rounded-xl relative">
-            <Image
+            {/* <Image
               src={Banner}
               alt="something"
               className="w-full h-full object-cover rounded-xl opacity-75"
-            />
+            /> */}
 
             <Avatar className="w-48 h-48 cursor-pointer z-0 absolute -bottom-[30%] left-7 border-8 border-darkComponentBg">
               <AvatarImage src={employee[0].image_url} alt={employee[0].id} />
@@ -116,7 +116,7 @@ export default function UserContent({
             currentSession.roles.role === "Manager" ? (
               <UpdateEmployeeButton
                 employeeData={employee[0]}
-                branchesData={branches}
+                // branchesData={branches}
                 rolesData={roles}
               />
             ) : null}
@@ -211,14 +211,14 @@ export default function UserContent({
               </span>
               <div className="w-full min-w-0 bg-lightBorder rounded-lg">
                 <p className="text-sm 2xl:text-md text-white gap-2 p-2 max-w-[260px] truncate">
-                  {employee[0].branches.branch_name}
+                  {/* {employee[0].branches.branch_name} */}
                 </p>
               </div>
             </div>
             <div className="w-full flex flex-col gap-2">
               <span className="text-xs 2xl:text-md font-semibold text-gray-400 flex justify-center place-items-center w-fit gap-1">
                 <MdOutlineManageAccounts />
-                Branch Position
+                Position
               </span>
               <div className="w-full min-w-0 bg-lightBorder rounded-lg">
                 <p className="text-sm 2xl:text-md text-white gap-2 p-2 max-w-[260px] truncate">
@@ -233,7 +233,7 @@ export default function UserContent({
               </span>
               <div className="w-full h-full bg-lightBorder rounded-lg">
                 <span className="text-sm 2xl:text-md text-white flex justify-start place-items-start gap-2 p-2 w-full h-full">
-                  {employee[0].branches.branch_location}
+                  {/* {employee[0].branches.branch_location} */}
                 </span>
               </div>
             </div>
@@ -256,7 +256,7 @@ export default function UserContent({
             <h1 className="text-5xl 2xl:text-6xl font-black">4.6</h1>
             <div className="w-full flex flex-col">
               <div className="flex place-items-center">
-                <ReactRating
+                {/* <ReactRating
                   className="max-w-[80%]"
                   itemStyles={{
                     itemShapes: Star,
@@ -266,7 +266,7 @@ export default function UserContent({
                   }}
                   value={4.6}
                   readOnly
-                />
+                /> */}
               </div>
               <p className="text-xs 2xl:text-sm text-slate-400 font-semibold">
                 Based on 321 ratings

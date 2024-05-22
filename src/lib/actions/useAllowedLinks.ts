@@ -1,4 +1,4 @@
-import { sideLinks } from "$lib/data/sideLinks";
+import { sideLinks } from "@/components/layouts/nav-bar/sideLinks";
 
 // a function that takes in a role parameter and returns an array of allowed links
 export const useAllowedLinks = (role: string) => {
@@ -12,9 +12,9 @@ export const useAllowedLinks = (role: string) => {
         (link) =>
           link.title !== "Reports" &&
           link.title !== "Dashboard" &&
-          link.title !== "Analytics" &&
+          link.title !== "Requests" &&
           link.title !== "Inventory" &&
-          link.title !== "Management"
+          link.title !== "Employees"
       );
     case "Staff":
       return sideLinks.filter(
