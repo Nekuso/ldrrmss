@@ -44,7 +44,7 @@ export default function Request({ params }: { params: any }) {
   return (
     <div className="w-full flex justify-center place-items-center">
       {/* {error ? (
-      ) : currentOrderData.length === 0 ? (
+      ) : currentRequestData.length === 0 ? (
         <Loading />
       ) : (
       )} */}

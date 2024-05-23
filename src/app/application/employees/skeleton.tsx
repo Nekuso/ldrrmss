@@ -1,5 +1,9 @@
 "use client";
 
 export default function UserSkeleton() {
-  return <h1>Loading please wait...</h1>;
+  return (
+    <div className="w-full h-full flex justify-center place-items-center">
+      Loading please wait...
+    </div>
+  );
 }
