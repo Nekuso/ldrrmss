@@ -44,7 +44,7 @@ export default function SelectDemo({ data, rolesData }: any) {
           />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black bg-white">
         <SelectGroup>
           {userSession.roles.role === "Administrator"
             ? rolesData.map((role: any) => (

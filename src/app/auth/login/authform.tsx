@@ -25,6 +25,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -109,7 +110,17 @@ export function Authform() {
               />
             </div>
           </CardContent>
-          <CardFooter className="flex justify-end">
+
+          <CardFooter className="flex justify-between items-center">
+            <div className="text-black text-xs flex gap-3">
+              Issues logging in?{" "}
+              <Link
+                href="#"
+                className="text-xs font-bold underline underline-offset-4"
+              >
+                Contact support
+              </Link>
+            </div>
             {/* <Accadminreq /> */}
             <Button type="submit">
               <span className={cn({ hidden: isPending })}>Login</span>

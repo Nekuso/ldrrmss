@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import DobInput from "./dob-input";
 import RoleInput from "./roles-input";
 import GenderInput from "./gender-input";
-import BranchInput from "./branch-input";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -116,7 +115,7 @@ export default function EmployeeForm({
               name="image_url"
               render={({ field }) => (
                 <FormItem>
-                  <FormControl>
+                  <FormControl className="bg-gray-300 rounded-lg">
                     <ImageInput data={field} />
                   </FormControl>
                   <FormMessage />
@@ -127,55 +126,13 @@ export default function EmployeeForm({
               <div className="w-full flex flex-col">
                 <FormField
                   control={form.control}
-                  name="first_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">First Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                          {...field}
-                          type="text"
-                          placeholder="Enter First Name"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full flex flex-col">
-                <FormField
-                  control={form.control}
-                  name="last_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Last Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                          {...field}
-                          type="text"
-                          placeholder="Enter Last Name"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="w-full flex gap-4">
-              <div className="w-full flex flex-col">
-                <FormField
-                  control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">Email</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50"
+                          className="rounded-lg  border-slate-600/50"
                           {...field}
                           type="text"
                           placeholder="example@gmail.com"
@@ -197,12 +154,27 @@ export default function EmployeeForm({
                       <FormLabel className="text-xs">Password</FormLabel>
                       <FormControl className="h-full">
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none h-9"
+                          className="rounded-lg  border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none h-9"
                           type="text"
                           {...field}
                           placeholder="••••••••"
                         />
                       </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="w-full h-full flex gap-4">
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
+                  name="role"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">Role</FormLabel>
+                      <RoleInput data={field} rolesData={roles} />
                       <FormMessage />
                     </FormItem>
                   )}
@@ -216,13 +188,56 @@ export default function EmployeeForm({
               <div className="w-full flex flex-col gap-2">
                 <FormField
                   control={form.control}
+                  name="first_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">First Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="rounded-lg  border-slate-600/50"
+                          {...field}
+                          type="text"
+                          placeholder="Enter First Name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
+                  name="last_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">Last Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="rounded-lg  border-slate-600/50"
+                          {...field}
+                          type="text"
+                          placeholder="Enter Last Name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="w-full flex gap-4">
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
                   name="contact_number"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">Contact Number</FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded-lg bg-lightComponentBg border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          className="rounded-lg  border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                           {...field}
                           accept="number"
                           type="number"
@@ -240,7 +255,7 @@ export default function EmployeeForm({
                   name="gender"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs">Gender</FormLabel>
+                      <FormLabel className="text-xs">Sex</FormLabel>
                       <FormControl>
                         <GenderInput data={field} />
                       </FormControl>
@@ -250,6 +265,7 @@ export default function EmployeeForm({
                 />
               </div>
             </div>
+
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col gap-2">
                 <FormField
@@ -266,34 +282,6 @@ export default function EmployeeForm({
                   )}
                 />
               </div>
-              <div className="w-full flex flex-col gap-2">
-                <FormField
-                  control={form.control}
-                  name="role"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Role</FormLabel>
-                      <RoleInput data={field} rolesData={roles} />
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="w-full flex gap-4">
-              <div className="w-full flex flex-col gap-2">
-                {/* <FormField
-                  control={form.control}
-                  name="branch"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Branch</FormLabel>
-                      <BranchInput data={field} branchesData={branches} />
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                /> */}
-              </div>
             </div>
             <div className="w-full flex gap-4 place-items-end">
               <div className="w-full flex flex-col gap-2">
@@ -304,7 +292,7 @@ export default function EmployeeForm({
                     <FormItem>
                       <FormLabel className="text-xs">Address</FormLabel>
                       <Textarea
-                        className="bg-lightComponentBg border-slate-600/50 w-full h-full resize-none"
+                        className=" border-slate-600/50 w-full h-full resize-none"
                         placeholder="Address"
                         {...field}
                       />
@@ -318,7 +306,7 @@ export default function EmployeeForm({
         </div>
         <DialogFooter>
           <Button
-            className="text-xs font-bold min-w-[120px] rounded-md flex gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
+            // className="text-xs font-bold min-w-[120px] rounded-md flex gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>Update User</span>

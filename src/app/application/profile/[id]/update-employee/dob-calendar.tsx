@@ -81,7 +81,7 @@ function Calendar({
               </SelectTrigger>
               <SelectContent
                 position="popper"
-                className="border-none text-white"
+                className="border-none text-black"
               >
                 <ScrollArea className="h-80 bg-lightComponentBg border-none">
                   {options.map((option, id: number) => (

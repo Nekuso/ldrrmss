@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { useEmployees } from "@/hooks/useEmployees";
 import { useRoles } from "@/hooks/useRoles";
@@ -9,17 +7,18 @@ import Loading from "./skeleton";
 import UserContent from "./user-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
 import { ROLES } from "@/lib/actions/roles";
-import { useSelector } from "react-redux";
 import { useAuthMiddleware } from "@/lib/actions/useMiddleware";
 import { useRouter } from "next/router";
 import EmployeeNotFound from "./not-found";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Page({ params }: { params: any }) {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { ADMINISTRATOR, STAFF } = ROLES;
   const currentSession = useSelector((state: any) => state.currentSession);
   const access = useAuthMiddleware([ADMINISTRATOR, STAFF], currentSession);
-  if (!access.allowed) {
+  if (params.id !== currentSession?.id) {
     router.push(access.defaultRoute);
     return (
       <div className="w-full h-full flex justify-center place-items-center">
@@ -29,6 +28,7 @@ export default function Page({ params }: { params: any }) {
       </div>
     );
   }
+
   const [error, setError] = useState(null);
   const { getEmployee, currentEmployeeData } = useEmployees();
   const { getRoles, allRolesData } = useRoles();
@@ -41,7 +41,7 @@ export default function Page({ params }: { params: any }) {
     };
 
     initialFetch();
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     if (!error) {
@@ -69,7 +69,7 @@ export default function Page({ params }: { params: any }) {
   }, []);
 
   return (
-    <div className="flex flex-col justify-start place-items-center w-full h-full gap-7 p-8">
+    <div className="w-full flex justify-center place-items-center">
       {error ? (
         <EmployeeNotFound />
       ) : currentEmployeeData.length === 0 ? (
@@ -79,6 +79,7 @@ export default function Page({ params }: { params: any }) {
           params={params}
           employee={currentEmployeeData}
           roles={allRolesData}
+          currentSession={currentSession}
         />
       )}
     </div>

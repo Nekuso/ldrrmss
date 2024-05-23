@@ -16,21 +16,21 @@ export default function SampleDatePicker({ data }: { data: any }) {
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start text-left font-normal bg-lightComponentBg border-slate-600/50 rounded-lg text-white hover:bg-lightComponentBg hover:text-white",
+            "w-full justify-start text-left font-normal bg-lightComponentBg border-slate-600/50 rounded-lg text-black hover:bg-lightComponentBg",
             !data.value && "text-muted-foreground"
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4 text-white" />
+          <CalendarIcon className="mr-2 h-4 w-4 text-black" />
           {data.value ? (
             format(data.value, "PPP")
           ) : (
-            <span className="text-white/35">Pick a date</span>
+            <span className="text-black">Pick a date</span>
           )}
         </Button>
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className=" w-auto p-0 border-none rounded-lg bg-transparent overflow-hidden shadow-2xl"
+        className=" w-auto p-0 border-none rounded-lg overflow-hidden shadow-2xl bg-white"
       >
         <Calendar
           mode="single"
@@ -39,7 +39,7 @@ export default function SampleDatePicker({ data }: { data: any }) {
           onSelect={data.onChange}
           fromYear={1960}
           toYear={2900}
-          className="text-white bg-lightComponentBg border-slate-600/50"
+          className="text-black bg-lightComponentBg border-slate-600/50"
           {...data}
         />
       </PopoverContent>

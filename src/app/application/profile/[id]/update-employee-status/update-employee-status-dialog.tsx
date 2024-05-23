@@ -25,7 +25,7 @@ export default function UpdateEmployeeStatusDialog({ employeeData }: any) {
             "text-xs rounded-full py-1 px-2 border font-normal flex place-items-center gap-1 cursor-pointer",
             employee.status === "Available"
               ? "text-green-500 bg-green-500 bg-opacity-20 border-green-500"
-              : employee.status === "In Progress"
+              : employee.status === "Busy"
               ? "text-yellow-300 bg-yellow-300 bg-opacity-20 border-yellow-300"
               : "text-red-500 bg-red-500 bg-opacity-20 border-red-500"
           )}
@@ -35,7 +35,7 @@ export default function UpdateEmployeeStatusDialog({ employeeData }: any) {
               "w-2 h-2 rounded-full",
               employee.status === "Available"
                 ? " bg-green-500 "
-                : employee.status === "In Progress"
+                : employee.status === "Busy"
                 ? "bg-yellow-300 "
                 : "bg-red-500"
             )}
@@ -43,7 +43,7 @@ export default function UpdateEmployeeStatusDialog({ employeeData }: any) {
           {employee.status}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Update user status</DialogTitle>
           <DialogDescription>
