@@ -49,7 +49,7 @@ export default function Request({ params }: { params: any }) {
       ) : (
       )} */}
       <RequestNotFound />
-      <RequestContent params={params} order={currentRequestData} />
+      <RequestContent params={params} request={currentRequestData} />
     </div>
   );
 }
