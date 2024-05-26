@@ -15,7 +15,7 @@ const getDefaultRoute = (userRole: any) => {
     case STAFF:
       return "/application/requests";
     default:
-      return "/application/announcements";
+      return "/application/employees";
   }
 };
 

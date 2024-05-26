@@ -10,7 +10,7 @@ export default function Navbar({data}:any) {
       <div className="w-[90%] flex justify-between place-items-center">
         <MainNav className="mx-6" />
         <div className="flex items-center gap-4 mx-6">
-          <Search />
+          {/* <Search /> */}
           <UserNav data={data} />
         </div>
       </div>

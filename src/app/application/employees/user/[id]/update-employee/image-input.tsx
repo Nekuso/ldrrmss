@@ -7,7 +7,7 @@ export default function ImageInput({ data }: { data: any }) {
     <div className="w-full flex place-items-center justify-center gap-2 mb-5">
       <Avatar className="w-20 h-20 rounded-lg  cursor-pointer z-0">
         <AvatarImage className="rounded-lg" src={""} alt={"something"} />
-        <AvatarFallback className=" rounded-lg">CB</AvatarFallback>
+        <AvatarFallback className=" rounded-lg">+</AvatarFallback>
       </Avatar>
       <div className="w-full h-full flex flex-col gap-2">
         <Label className="text-xs">Profile Picture</Label>

@@ -8,7 +8,7 @@ import UserContent from "./user-content";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
 import { ROLES } from "@/lib/actions/roles";
 import { useAuthMiddleware } from "@/lib/actions/useMiddleware";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import EmployeeNotFound from "./not-found";
 import { useDispatch, useSelector } from "react-redux";
 
