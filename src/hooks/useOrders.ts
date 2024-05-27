@@ -23,6 +23,7 @@ export const useRequests: any = () => {
         image_url: props.image_url,
         status: props.status,
         total_stocks_used: 0,
+        coordinates: props.coordinates,
       })
       .select();
 
@@ -74,6 +75,7 @@ export const useRequests: any = () => {
         status,
         requester_first_name,
         requester_last_name,
+        coordinates,
 
         employees(
         id,
@@ -84,7 +86,7 @@ export const useRequests: any = () => {
         email,
         roles(role)),
         
-        calamity_types(
+        use_calamity_types(
         id,
         name,
         description)
@@ -173,6 +175,7 @@ export const useRequests: any = () => {
         requester_last_name,
         requester_contact_number,
         requester_email,
+        coordinates,
         employees(
           id,
           first_name,
@@ -224,6 +227,7 @@ export const useRequests: any = () => {
         created_at
     `
       )
+
       .eq("id", id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));

@@ -217,12 +217,6 @@ export const LocationSearch = ({ control }: { control: any }) => {
         />
       </div>
       <div className=" flex-row gap-4 mt-4 grid grid-cols-1 md:grid-cols-5">
-        <Button
-          className="items-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
-          onClick={handleGoClick}
-        >
-          START
-        </Button>
         <button
           type="button"
           className="items-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
@@ -239,6 +233,12 @@ export const LocationSearch = ({ control }: { control: any }) => {
         >
           Toggle Satellite
         </button>
+        <Button
+          className="items-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
+          onClick={handleGoClick}
+        >
+          START
+        </Button>
       </div>
       <div
         className="mt-4 d-flex justify-content-center align-items-center"

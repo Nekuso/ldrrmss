@@ -81,6 +81,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     employee_id: z.string(),
     rescuer_id: z.string(),
     calamity_types_id: z.string(),
+    coordinates: z.string(),
 
     use_equipments: z.array(
       z.object({
