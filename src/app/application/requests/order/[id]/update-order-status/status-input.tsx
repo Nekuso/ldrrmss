@@ -17,15 +17,15 @@ export default function SelectDemo({ data }: { data: any }) {
         {...data}
       >
         <SelectValue
-          className="text-white"
+          className="text-black"
           placeholder={data ? data.value : "Select Status"}
         />
       </SelectTrigger>
       <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
         <SelectGroup>
-          <SelectItem value="Paid">Paid</SelectItem>
-          <SelectItem value="Pending">Pending</SelectItem>
-          <SelectItem value="Archive">Archive</SelectItem>
+          <SelectItem value="Complete">Complete</SelectItem>
+          <SelectItem value="Ongoing">Ongoing</SelectItem>
+          <SelectItem value="Archived">Archived</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
