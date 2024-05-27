@@ -34,9 +34,6 @@ export const foodSupplyScheema = z.object({
     message: "Food Supply description is required",
   }),
   image_url: z.string().default("something"),
-  // barcode: z.string().min(1, {
-  //   message: "Food Supply barcode is required",
-  // }),
   stock_quantity: z.coerce.number().min(1, {
     message: "Food Supply quantity must be at least 1",
   }),
@@ -58,7 +55,6 @@ export default function FoodSupplyForm({ setDialogOpen, foodSupply }: any) {
       name: foodSupply.name,
       description: foodSupply.description,
       image_url: foodSupply.image_url,
-      // barcode: foodSupply.barcode,
       stock_quantity: foodSupply.stock_quantity,
       status: foodSupply.status,
     },

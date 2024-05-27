@@ -124,6 +124,7 @@ export type allPurchaseRequestsDisplay = {
   requester_last_name: string;
   requester_contact_number: string;
   requester_email: string;
+  coordinates: string;
   employees: {
     id: number;
     first_name: string;
@@ -141,6 +142,7 @@ export type allPurchaseRequestsDisplay = {
   use_foodsupplies: {}[];
   use_equipments: {}[];
   use_vehicles: {}[];
+  use_calamity_types: {}[];
   total_price: number;
   payment_method: string;
   status: string;
@@ -148,6 +150,7 @@ export type allPurchaseRequestsDisplay = {
 };
 export type allPurchaseRequestsVehicleDisplay = {
   id: string | any;
+  coordinates: string | any;
   requester_first_name: string | any;
   requester_last_name: string | any;
   requester_contact_number: string | any;
