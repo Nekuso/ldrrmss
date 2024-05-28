@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -18,16 +19,16 @@ export default function Page({ params }: { params: any }) {
   const { ADMINISTRATOR, STAFF } = ROLES;
   const currentSession = useSelector((state: any) => state.currentSession);
   const access = useAuthMiddleware([ADMINISTRATOR, STAFF], currentSession);
-  if (params.id !== currentSession?.id) {
-    router.push(access.defaultRoute);
-    return (
-      <div className="w-full h-full flex justify-center place-items-center">
-        <h1 className="text-xl font-semibold text-slate-200 text-center">
-          Unauthorized
-        </h1>
-      </div>
-    );
-  }
+  // if (params.id !== currentSession?.id) {
+  //   router.push(access.defaultRoute);
+  //   return (
+  //     <div className="w-full h-full flex justify-center place-items-center">
+  //       <h1 className="text-xl font-semibold text-slate-200 text-center">
+  //         Unauthorized
+  //       </h1>
+  //     </div>
+  //   );
+  // }
 
   const [error, setError] = useState(null);
   const { getEmployee, currentEmployeeData } = useEmployees();

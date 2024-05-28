@@ -26,6 +26,7 @@ export const useRequests: any = () => {
     if (result.error) {
       return result.error;
     }
+    console.log(result);
 
     const foodsupplyResult = await supabase
       .from("use_foodsupplies")
