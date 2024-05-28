@@ -126,6 +126,7 @@ export default function RequestForm({ setDialogOpen }: any) {
       use_foodsupplies: [],
       use_vehicles: [],
       status: "Completed",
+      coordinates: "",
     },
   });
 
