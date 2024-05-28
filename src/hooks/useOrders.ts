@@ -17,13 +17,10 @@ export const useRequests: any = () => {
         requester_last_name: props.requester_last_name,
         requester_contact_number: props.requester_contact_number,
         requester_email: props.requester_email,
-        employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
-        calamity_type_id: props.calamity_type_id,
-        description: props.description,
-        image_url: props.image_url,
         status: props.status,
-        total_stocks_used: 0,
+        employee_id: props.employee_id,
         coordinates: props.coordinates,
+        employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
       })
       .select();
 
@@ -32,19 +29,34 @@ export const useRequests: any = () => {
     }
 
     const foodsupplyResult = await supabase
-      .from("use_food_supplies")
+      .from("use_foodsupplies")
       .insert(
         props.use_foodsupply.map((foodsupply: any) => ({
           request_id: result.data[0].id,
           foodsupply_id: foodsupply.foodsupply_id,
           name: foodsupply.name,
           description: foodsupply.description,
-          inventory_id: foodsupply.inventory_id,
           image_url: foodsupply.image,
           quantity: foodsupply.quantity,
         }))
       )
       .select();
+
+      
+    const vehicleResult = await supabase
+    .from("use_vehicles")
+    .insert(
+      props.use_vehicle.map((vehicle: any) => ({
+        request_id: result.data[0].id,
+        vehicle_id: vehicle.vehicle_id,
+        name: vehicle.name,
+        description: vehicle.description,
+        platenumber: vehicle.plate_number,
+        image_url: vehicle.image,
+        quantity: vehicle.quantity,
+      }))
+    )
+    .select();
 
     const EquipmentResult = await supabase
       .from("use_equipments")
@@ -54,7 +66,6 @@ export const useRequests: any = () => {
           equipment_id: equipment.equipment_id,
           name: equipment.name,
           description: equipment.description,
-          inventory_id: equipment.inventory_id,
           image_url: equipment.image,
           quantity: equipment.quantity,
         }))
@@ -65,8 +76,8 @@ export const useRequests: any = () => {
 
     return result;
   };
-  const getRequests = async () => {
-    const result = await supabase
+  const getRequests = async (props?: any) => {
+    const result = props?.roles?.role === "Administrator" ? await supabase
       .from("requests")
       .select(
         `            
@@ -92,72 +103,31 @@ export const useRequests: any = () => {
         description)
 
       `
-        // id,
-        // requester_first_name,
-        // requester_last_name,
-        // requester_contact_number,
-        // requester_email,
-        // created_at
-
-        // requesters(
-        //   id,
-        //   first_name,
-        //   last_name,
-        //   image_url,
-        //   contact_number,
-        //   email,
-        // ),
-
-        // employees(
-        //     id,
-        //     first_name,
-        //     last_name,
-        //     image_url,
-        //     contact_number,
-        //     email,
-        //     roles(
-        //         role
-        //       )
-        //     ),
-        //     inventory(
-        //         id,
-        //         branches(
-        //             id,
-        //     branch_name,
-        //     branch_location
-        //   )
-        // ),
-        // use_products(
-        //     id,
-        //     product_id,
-        //     name,
-        //     description,
-        //   image_url,
-        //   barcode,
-        //   price,
-        //   quantity,
-        //   uom_name
-        // ),
-        // use_parts(
-        //     id,
-        //   part_id,
-        //   name,
-        //   description,
-        //   image_url,
-        //   barcode,
-        //   price,
-        //   quantity,
-        //   brand
-        // ),
-        // subtotal,
-        // total_price,
-        // amount_paid,
-        // status,
-        // discount,
-        // payment_method,
+    // )
+    //   .request("created_at", { ascending: false }): await supabase 
+    //   .from("requests") 
+    //   .select( 
+    //     ` id, 
+    //     created_at, 
+    //     status, 
+    //     requester_first_name, 
+    //     requester_last_name, 
+    //     coordinates, 
+    //     employees( 
+    //     id,
+    //     first_name, 
+    //     last_name,
+    //     image_url,
+    //     contact_number,
+    //     email,
+    //     roles(role)),
+    //     use_calamity_types(
+    //     id, 
+    //     name, 
+    //     description) `
       )
-      .order("created_at", { ascending: false });
-    console.log(result);
+      .request("created_at", { ascending: false });
+  
 
     const { data, error } = result;
     if (error) {
@@ -187,16 +157,7 @@ export const useRequests: any = () => {
             role
           )
         ),
-        inventory(
-          id,
-          branches(
-            id,
-            branch_name,
-            branch_location,
-            contact_number
-          )
-        ),
-        use_products(
+        use_food_supplies(
           id,
           product_id,
           name,
@@ -207,7 +168,7 @@ export const useRequests: any = () => {
           quantity,
           uom_name
         ),
-        use_parts(
+        use_equipments(
           id,
           part_id,
           name,
@@ -218,12 +179,30 @@ export const useRequests: any = () => {
           quantity,
           brand
         ),
-        subtotal,
-        total_price,
-        amount_paid,
+        use_vehicles(
+          id,
+          part_id,
+          name,
+          description,
+          barcode,
+          image_url,
+          price,
+          quantity,
+          brand
+        ),
+        use_calamity_types(
+          id,
+          part_id,
+          name,
+          description,
+          barcode,
+          image_url,
+          price,
+          quantity,
+          brand
+        ),
+
         status,
-        discount,
-        payment_method,
         created_at
     `
       )
