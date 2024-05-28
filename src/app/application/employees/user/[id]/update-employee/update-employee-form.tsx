@@ -24,12 +24,18 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { toast as sonner } from "sonner";
+import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import { useEmployees } from "@/hooks/useEmployees";
 
-export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
+export default function EmployeeForm({
+  setDialogOpen,
+  employee,
+  branches,
+  roles,
+}: any) {
   const [isPending, startTransition] = useTransition();
   const { updateEmployee } = useEmployees();
 
@@ -52,6 +58,10 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
       .string()
       .min(1, { message: "Role is required" })
       .transform((arg) => new Number(arg)),
+    // branch: z
+    //   .string()
+    //   .min(1, { message: "Branch is required" })
+    //   .transform((arg) => new Number(arg)),
     status: z.string().default("Available"),
   });
   const form = useForm<z.infer<typeof employeeSchema>>({
@@ -67,6 +77,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
       gender: employee.gender,
       dob: employee.dob,
       role: employee.roles.id.toString(),
+      // branch: employee.branches.id.toString(),
       status: employee.status,
     },
   });
@@ -74,6 +85,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
   async function onSubmit(data: z.infer<typeof employeeSchema>) {
     startTransition(async () => {
       const result = await updateEmployee(data, 4000);
+
       const { error } = JSON.parse(result);
       if (error?.message) {
         toast({
@@ -94,64 +106,22 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5 h-fit"
+        className="flex flex-col gap-5"
       >
-        <div className="w-full flex flex-col gap-2">
+        <div className="w-full flex min-h-[300px] gap-6">
           <div className="w-full h-full flex flex-col gap-2">
-            {/* <FormField
+            <FormField
               control={form.control}
               name="image_url"
               render={({ field }) => (
                 <FormItem>
-                  <FormControl>
+                  <FormControl className="bg-gray-300 rounded-lg">
                     <ImageInput data={field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
-            /> */}
-            <div className="w-full flex gap-4">
-              <div className="w-full flex flex-col">
-                <FormField
-                  control={form.control}
-                  name="first_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">First Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="rounded-lg  border-slate-600/50"
-                          {...field}
-                          type="text"
-                          placeholder="Enter First Name"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full flex flex-col">
-                <FormField
-                  control={form.control}
-                  name="last_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Last Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="rounded-lg  border-slate-600/50"
-                          {...field}
-                          type="text"
-                          placeholder="Enter Last Name"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
+            />
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col">
                 <FormField
@@ -187,7 +157,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                           className="rounded-lg  border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none h-9"
                           type="text"
                           {...field}
-                          placeholder="Password"
+                          placeholder="••••••••"
                         />
                       </FormControl>
                       <FormMessage />
@@ -196,9 +166,67 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                 />
               </div>
             </div>
+            <div className="w-full h-full flex gap-4">
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
+                  name="role"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">Role</FormLabel>
+                      <RoleInput data={field} rolesData={roles} />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
           </div>
-          {/* <Separator orientation="vertical" className="bg-white/10" /> */}
+          <Separator orientation="vertical" className="bg-white/10" />
           <div className="w-full h-full flex flex-col gap-2">
+            <div className="w-full flex gap-4">
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
+                  name="first_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">First Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="rounded-lg  border-slate-600/50"
+                          {...field}
+                          type="text"
+                          placeholder="Enter First Name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="w-full flex flex-col gap-2">
+                <FormField
+                  control={form.control}
+                  name="last_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs">Last Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="rounded-lg  border-slate-600/50"
+                          {...field}
+                          type="text"
+                          placeholder="Enter Last Name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col gap-2">
                 <FormField
@@ -237,6 +265,7 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                 />
               </div>
             </div>
+
             <div className="w-full flex gap-4">
               <div className="w-full flex flex-col gap-2">
                 <FormField
@@ -253,23 +282,9 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
                   )}
                 />
               </div>
-              <div className="w-full flex flex-col gap-2">
-                <FormField
-                  control={form.control}
-                  name="role"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs">Role</FormLabel>
-                      <RoleInput data={field} rolesData={roles} />
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
             </div>
-            <div className="w-full flex gap-4"></div>
-            <div className="w-full h-full flex gap-4 place-items-end">
-              <div className="w-full h-full flex flex-col gap-2">
+            <div className="w-full flex gap-4 place-items-end">
+              <div className="w-full flex flex-col gap-2">
                 <FormField
                   control={form.control}
                   name="address"
@@ -291,8 +306,8 @@ export default function EmployeeForm({ setDialogOpen, employee, roles }: any) {
         </div>
         <DialogFooter>
           <Button
+            // className="text-xs font-bold min-w-[120px] rounded-md flex gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
-            className="rounded-lg flex justify-center place-items-start w-[120px]"
           >
             <span className={cn({ hidden: isPending })}>Update User</span>
             <AiOutlineLoading3Quarters

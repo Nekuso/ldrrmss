@@ -20,7 +20,6 @@ export const useRequests: any = () => {
         status: props.status,
         employee_id: props.employee_id,
         coordinates: props.coordinates,
-        employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
       })
       .select();
 
@@ -42,21 +41,20 @@ export const useRequests: any = () => {
       )
       .select();
 
-      
     const vehicleResult = await supabase
-    .from("use_vehicles")
-    .insert(
-      props.use_vehicle.map((vehicle: any) => ({
-        request_id: result.data[0].id,
-        vehicle_id: vehicle.vehicle_id,
-        name: vehicle.name,
-        description: vehicle.description,
-        platenumber: vehicle.plate_number,
-        image_url: vehicle.image,
-        quantity: vehicle.quantity,
-      }))
-    )
-    .select();
+      .from("use_vehicles")
+      .insert(
+        props.use_vehicle.map((vehicle: any) => ({
+          request_id: result.data[0].id,
+          vehicle_id: vehicle.vehicle_id,
+          name: vehicle.name,
+          description: vehicle.description,
+          platenumber: vehicle.plate_number,
+          image_url: vehicle.image,
+          quantity: vehicle.quantity,
+        }))
+      )
+      .select();
 
     const EquipmentResult = await supabase
       .from("use_equipments")
@@ -77,62 +75,21 @@ export const useRequests: any = () => {
     return result;
   };
   const getRequests = async (props?: any) => {
-    const result = props?.roles?.role === "Administrator" ? await supabase
+    if (props?.roles?.role !== "Administrator") {
+      return;
+    }
+
+    const { data, error } = await supabase
       .from("requests")
       .select(
-        `            
-        id,
-        created_at,
-        status,
-        requester_first_name,
-        requester_last_name,
-        coordinates,
-
-        employees(
-        id,
-        first_name,
-        last_name,
-        image_url,
-        contact_number,
-        email,
-        roles(role)),
-        
-        use_calamity_types(
-        id,
-        name,
-        description)
-
-      `
-    // )
-    //   .request("created_at", { ascending: false }): await supabase 
-    //   .from("requests") 
-    //   .select( 
-    //     ` id, 
-    //     created_at, 
-    //     status, 
-    //     requester_first_name, 
-    //     requester_last_name, 
-    //     coordinates, 
-    //     employees( 
-    //     id,
-    //     first_name, 
-    //     last_name,
-    //     image_url,
-    //     contact_number,
-    //     email,
-    //     roles(role)),
-    //     use_calamity_types(
-    //     id, 
-    //     name, 
-    //     description) `
+        "id,created_at, status, requester_first_name, requester_last_name, coordinates, employees(id, first_name, last_name, image_url, contact_number, email, roles(role)), use_calamity_types(id, name, description)"
       )
-      .request("created_at", { ascending: false });
-  
+      .order("created_at", { ascending: false });
 
-    const { data, error } = result;
     if (error) {
       return error;
     }
+
     return setRequestsData(data);
   };
   const getRequest = async (id: string, duration?: number) => {

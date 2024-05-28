@@ -35,7 +35,7 @@ export default function UserContent({ employee, roles, currentSession }: any) {
                   className="w-full h-full object-cover rounded-xl opacity-75"
                 /> */}
 
-                <Avatar className="w-32 h-32 cursor-pointer z-0 absolute -bottom-[30%] left-7 border-8 border-gray-800">
+                <Avatar className="w-32 h-32 cursor-pointer z-0 absolute -bottom-[30%] left-7 border-8 border-white">
                   <AvatarImage
                     src={employee[0].image_url}
                     alt={employee[0].id}

@@ -19,6 +19,8 @@ import { useTransition } from "react";
 import { toast as sonner } from "sonner";
 import { signOut } from "@/lib/actions/index";
 import { User } from "lucide-react";
+import { DoorOpen } from "lucide-react";
+
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "@/redux/slices/userSessionSlice";
 import { useRouter } from "next/navigation";
@@ -45,9 +47,11 @@ export function UserNav({ data }: any) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-10 w-10 text-black">
-            <AvatarImage src="" alt="@shadcn" />
-            <AvatarFallback></AvatarFallback>
+          <Avatar className="w-12 h-12 cursor-pointer rounded-lg shadow-2xl duration-300">
+            <AvatarImage
+              src={data.image_url}
+              className=" shadow-2xl rounded-md duration-300"
+            />
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -55,13 +59,13 @@ export function UserNav({ data }: any) {
         {data && (
           <DropdownMenuLabel className="font-normal flex flex-col gap-1">
             <span>{`${data.first_name} ${data.last_name}`}</span>
-            <span className="text-xs text-gray-300">{data.roles.role}</span>
+            <span className="text-xs text-gray-900">{data.roles.role}</span>
           </DropdownMenuLabel>
         )}
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem
-            className="rounded-lg cursor-pointer"
+            className="rounded-lg cursor-pointer hover:bg-blue-400 hover:text-white"
             onClick={() => {
               Page();
             }}
@@ -72,12 +76,13 @@ export function UserNav({ data }: any) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          className="rounded-lg cursor-pointer hover:bg-red-500 hover:text-white"
+          className="rounded-lg cursor-pointer hover:bg-red-400 hover:text-white"
           onClick={() => {
             onSignOut();
           }}
         >
-          Log out
+          <DoorOpen className="mr-2 h-7 w-4" />
+          <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -14,11 +14,7 @@ import {
 import UpdateEmployeeForm from "./update-employee-form";
 import { MdOutlineModeEdit } from "react-icons/md";
 
-export default function UpdateEmployeeDialog({
-  employeeData,
-  branchesData,
-  rolesData,
-}: any) {
+export default function UpdateEmployeeDialog({ employeeData, rolesData }: any) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -40,7 +36,6 @@ export default function UpdateEmployeeDialog({
           setDialogOpen={setDialogIsOpen}
           dialogIsOpen={dialogIsOpen}
           employee={employeeData}
-          branches={branchesData}
           roles={rolesData}
         />
       </DialogContent>

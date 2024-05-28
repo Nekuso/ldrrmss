@@ -34,9 +34,7 @@ export default function EmployeeForm({ setDialogIsOpen }: any) {
   const [isPending, startTransition] = useTransition();
   const { updateEmployeeStatus } = useEmployees();
 
-  const employee = useSelector(
-    (state: any) => state.currentEmployee.employeeData
-  );
+  const employee = useSelector((state: any) => state.currentSession);
   const form = useForm<z.infer<typeof employeeStatusSchema>>({
     resolver: zodResolver(employeeStatusSchema),
     defaultValues: {
@@ -47,7 +45,7 @@ export default function EmployeeForm({ setDialogIsOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await updateEmployeeStatus(data, 4000);
+      const result = await updateEmployeeStatus(data, 1000);
       const { error } = JSON.parse(result);
       if (error?.message) {
         toast({
@@ -97,7 +95,7 @@ export default function EmployeeForm({ setDialogIsOpen }: any) {
         </div>
         <DialogFooter>
           <Button
-            className="text-xs font-bold min-w-[120px] rounded-full flex gap-2 bg-/90 hover:bg- primary-glow transition-all duration-300"
+            // className="text-xs font-bold min-w-[120px] rounded-full flex gap-2 bg-applicationPrimary/90 hover:bg-applicationPrimary primary-glow transition-all duration-300"
             type="submit"
           >
             <span className={cn({ hidden: isPending })}>Update</span>
