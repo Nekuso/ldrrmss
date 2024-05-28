@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // LocationSearch.tsx
 import { useEffect, useState } from "react";
 import { useMap } from "react-leaflet";
@@ -8,7 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "antd";
 import { LatLngBoundsLiteral, LatLngTuple } from "leaflet";
 
-export const LocationSearch = ({ control }: { control: any }) => {
+export const LocationSearch = ({
+  control,
+  form,
+}: {
+  control: any;
+  form: any;
+}) => {
   const [isSatellite, setIsSatellite] = useState(false); // Add this line
   const [startPosition, setStartPosition] = useState<[number, number] | null>(
     null

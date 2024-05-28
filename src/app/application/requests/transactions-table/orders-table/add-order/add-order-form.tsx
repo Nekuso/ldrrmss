@@ -69,6 +69,8 @@ export default function RequestForm({ setDialogOpen }: any) {
     (state: any) => state.requestCartOptionSlice
   );
 
+  console.log(requestCart);
+
   const [minTotalPrice, setMinTotalPrice] = useState(0);
 
   const RequestSchema: any = z.object({
@@ -85,36 +87,37 @@ export default function RequestForm({ setDialogOpen }: any) {
 
     use_equipments: z.array(
       z.object({
-        equipment_id: z.coerce.number(),
+        equipment_id: z.number(),
         name: z.string(),
         description: z.string(),
-        image_url: z.string(),
-        quantity: z.coerce.number(),
+        image: z.string(),
+        quantity: z.number(),
       })
     ),
+
     use_foodsupplies: z.array(
       z.object({
-        foodsupply_id: z.coerce.number(),
+        foodsupply_id: z.number(),
         name: z.string(),
         description: z.string(),
-        image_url: z.string(),
-        quantity: z.coerce.number(),
+        image: z.string(),
+        quantity: z.number(),
       })
     ),
+
     use_vehicles: z.array(
       z.object({
-        vehicle_id: z.coerce.number(),
+        vehicle_id: z.number(),
         name: z.string(),
         description: z.string(),
-        image_url: z.string(),
-        quantity: z.coerce.number(),
+        image: z.string(),
+        quantity: z.number(),
       })
     ),
   });
   const form = useForm<z.infer<typeof RequestSchema>>({
     resolver: zodResolver(RequestSchema),
     defaultValues: {
-      requester_first_name: "",
       requester_last_name: "",
       requester_email: "",
       requester_contact_number: 0,
@@ -124,8 +127,7 @@ export default function RequestForm({ setDialogOpen }: any) {
       total_stocks_used: 0,
       use_equipments: [],
       use_foodsupplies: [],
-      use_vehicles: [],
-      status: "Completed",
+      status: "Pending",
       coordinates: "",
     },
   });
@@ -189,19 +191,25 @@ export default function RequestForm({ setDialogOpen }: any) {
     form,
   ];
 
+  useEffect(() => {
+    console.log(form.formState.errors);
+  }, [form.formState.errors]);
+
   async function onSubmit(data: any) {
     startTransition(async () => {
-      const result = await createRequest(data, 500);
+      // const result = await createRequest(data, 500);
 
-      const { error } = result;
-      if (error?.message) {
-        toast({
-          variant: "destructive",
-          title: "⚠️Error",
-          description: error.message,
-        });
-        return;
-      }
+      // const { error } = result;
+      // if (error?.message) {
+      //   toast({
+      //     variant: "destructive",
+      //     title: "⚠️Error",
+      //     description: error.message,
+      //   });
+      //   return;
+      // }
+
+      console.log(data);
 
       setDialogOpen(false);
       sonner("✨Success", {
@@ -221,7 +229,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     dispatch(resetCart());
     dispatch(resetRequestvehicleCart());
     setDialogOpen(false);
-    sonner("✨Cancelled", {
+    sonner("Cancelled", {
       description: `Service Order Cancelled!`,
     });
   }
@@ -483,7 +491,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                   <AccordionContent className="bg-darkComponentBg rounded-xl flex flex-row">
                     <div className="flex flex-row gap-4 px-4 py-2 w-full">
                       <div className="flex flex-col">
-                        <LocationSearch control={form.control} />
+                        <LocationSearch control={form.control} form={form} />
                         <MapContainer></MapContainer>
                       </div>
                     </div>
